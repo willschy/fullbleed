@@ -12,77 +12,81 @@ const categories = [
   { id: "tools-you-can-steal", label: "Steal This" },
   { id: "new-possible", label: "New Possible" },
   { id: "business-plays", label: "Business Plays" },
-];
+].map((c) => ({ ...c, count: entries.filter((e) => e.data.category === c.id).length }));
 ---
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
-  <header class="masthead">
-    <div class="masthead-inner">
+  <div class="shell">
+    <aside class="side">
       <a class="wordmark" href="/" aria-label="Full Bleed home">
-        FULL BLEED<span class="reg" aria-hidden="true">⌖</span>
+        <span>FULL</span>
+        <span>BLEED<span class="reg" aria-hidden="true">⌖</span></span>
       </a>
-      <p class="tagline meta">Real work · shown · with the how</p>
-    </div>
-  </header>
+      <p class="tagline meta">Real work · shown<br />· with the how</p>
 
-  <nav class="filters" aria-label="Catalog filters">
-    <div class="filters-inner">
-      <div class="filter-group" role="group" aria-label="Category">
-        <button class="chip meta is-active" data-filter="all">All</button>
+      <nav class="cats" aria-label="Catalog filters">
+        <button class="cat meta is-active" data-filter="all">
+          <span>All</span><span class="count">{entries.length}</span>
+        </button>
         {categories.map((c) => (
-          <button class="chip meta" data-filter={c.id}>{c.label}</button>
+          <button class="cat meta" data-filter={c.id}>
+            <span>{c.label}</span><span class="count">{c.count}</span>
+          </button>
         ))}
-      </div>
+      </nav>
+
       <label class="current-toggle meta">
         <input type="checkbox" id="current-only" />
         <span class="switch" aria-hidden="true"></span>
         Current only
       </label>
-    </div>
-  </nav>
 
-  <main class="catalog">
-    <div class="grid" id="grid">
-      {entries.map((entry) => <Card entry={entry} />)}
-    </div>
-    <p class="empty meta" id="empty" hidden>Nothing here yet — the bar stays high.</p>
-  </main>
+      <p class="side-foot meta">
+        Curated by a working creative.<br />
+        Credited to the makers,<br />
+        linked to the source.
+      </p>
+    </aside>
 
-  <footer class="footer">
-    <p class="meta">Full Bleed — curated by a working creative, credited to the makers, linked to the source.</p>
-  </footer>
+    <main class="catalog">
+      <div class="grid" id="grid">
+        {entries.map((entry) => <Card entry={entry} />)}
+      </div>
+      <p class="empty meta" id="empty" hidden>Nothing here yet — the bar stays high.</p>
+    </main>
+  </div>
 </Base>
 
 <style>
-  .masthead {
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .masthead-inner {
+  .shell {
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: var(--s8) var(--s6) var(--s6);
+  }
+
+  /* ---------- sidebar (desktop) ---------- */
+  .side {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--s4);
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--s6);
+    padding: var(--s8) var(--s6);
   }
 
   .wordmark {
-    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-    font-weight: 800;
-    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+    font-weight: var(--w-black);
+    letter-spacing: -0.04em;
+    line-height: 0.95;
     text-decoration: none;
-    line-height: 1;
   }
 
   .reg {
     color: var(--accent);
-    font-weight: 400;
-    font-size: 0.5em;
+    font-weight: var(--w-body);
+    font-size: 0.45em;
     vertical-align: super;
-    margin-left: 0.25em;
+    margin-left: 0.2em;
   }
 
   .tagline {
@@ -90,48 +94,46 @@ const categories = [
     margin: 0;
   }
 
-  .filters {
-    position: sticky;
-    top: 0;
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--hairline);
-    z-index: 30;
+  .cats {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--hairline);
   }
 
-  .filters-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: var(--s3) var(--s6);
+  .cat {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: var(--s4);
-    flex-wrap: wrap;
-  }
-
-  .filter-group {
-    display: flex;
-    gap: var(--s2);
-    flex-wrap: wrap;
-  }
-
-  .chip {
+    align-items: center;
+    gap: var(--s3);
     background: none;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    padding: var(--s2) var(--s3);
+    border: none;
+    border-bottom: 1px solid var(--hairline);
+    padding: var(--s3) 0;
     color: var(--ink-50);
-    transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    text-align: left;
+    transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur-fast) var(--ease-out);
   }
 
-  .chip:hover {
+  .cat:hover {
     color: var(--ink);
   }
 
-  .chip.is-active {
+  .cat.is-active {
     color: var(--ink);
-    border-color: var(--ink);
+    font-weight: var(--w-title);
+  }
+
+  .cat.is-active span:first-child::before {
+    content: "●";
+    color: var(--accent);
+    font-size: 0.6em;
+    margin-right: 0.6em;
+    vertical-align: 0.15em;
+  }
+
+  .count {
+    color: var(--ink-35);
+    font-weight: var(--w-body);
   }
 
   .current-toggle {
@@ -154,6 +156,7 @@ const categories = [
     border: 1px solid var(--ink-35);
     border-radius: 999px;
     position: relative;
+    flex: none;
     transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
   }
 
@@ -184,33 +187,12 @@ const categories = [
     outline-offset: 2px;
   }
 
-  @media (max-width: 640px) {
-    .filters-inner {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-left: var(--s4);
-      padding-right: var(--s4);
-    }
-
-    .filters-inner::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-group {
-      flex-wrap: nowrap;
-    }
-
-    .chip,
-    .current-toggle {
-      white-space: nowrap;
-      flex: none;
-    }
+  .side-foot {
+    color: var(--ink-35);
+    margin: 0;
   }
 
   .catalog {
-    max-width: var(--maxw);
-    margin: 0 auto;
     padding: var(--s8) var(--s6) var(--s16);
   }
 
@@ -226,11 +208,64 @@ const categories = [
     padding: var(--s16) 0;
   }
 
-  .footer {
-    border-top: 1px solid var(--hairline);
-    padding: var(--s8) var(--s6);
-    color: var(--ink-50);
-    text-align: center;
+  /* ---------- desktop: pinned sidebar + scrolling grid ---------- */
+  @media (min-width: 1024px) {
+    .shell {
+      display: grid;
+      grid-template-columns: 264px 1fr;
+    }
+
+    .side {
+      position: sticky;
+      top: 0;
+      height: 100dvh;
+      border-right: 1px solid var(--hairline);
+    }
+
+    .side-foot {
+      margin-top: auto;
+    }
+  }
+
+  /* ---------- mobile/tablet: stacked header, scrollable filter row ---------- */
+  @media (max-width: 1023px) {
+    .side {
+      gap: var(--s4);
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: var(--s4);
+    }
+
+    .wordmark {
+      flex-direction: row;
+      gap: 0.3em;
+      font-size: 2rem;
+    }
+
+    .cats {
+      flex-direction: row;
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-top: none;
+      gap: var(--s4);
+    }
+
+    .cats::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat {
+      border-bottom: none;
+      white-space: nowrap;
+      flex: none;
+    }
+
+    .count {
+      display: none;
+    }
+
+    .side-foot {
+      display: none;
+    }
   }
 </style>
 
@@ -238,31 +273,22 @@ const categories = [
   const grid = document.getElementById("grid")!;
   const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
   const emptyMsg = document.getElementById("empty")!;
-  const HOVER_INTENT_MS = 350;
   const canHover = window.matchMedia("(hover: hover)").matches;
 
-  /* ---- hover-expand with intent delay (desktop) ---- */
+  /* ---- hover-expand, no intent delay (desktop) ---- */
   if (canHover) {
-    let timer: number | undefined;
     let open: HTMLElement | null = null;
-
-    const close = () => {
-      open?.classList.remove("is-open");
-      open = null;
-    };
-
     for (const card of cards) {
       card.addEventListener("mouseenter", () => {
-        window.clearTimeout(timer);
-        timer = window.setTimeout(() => {
-          close();
-          card.classList.add("is-open");
-          open = card;
-        }, HOVER_INTENT_MS);
+        open?.classList.remove("is-open");
+        card.classList.add("is-open");
+        open = card;
       });
       card.addEventListener("mouseleave", () => {
-        window.clearTimeout(timer);
-        if (open === card) close();
+        if (open === card) {
+          card.classList.remove("is-open");
+          open = null;
+        }
       });
     }
   } else {
@@ -288,7 +314,7 @@ const categories = [
   }
 
   /* ---- filtering ---- */
-  const chips = [...document.querySelectorAll<HTMLButtonElement>(".chip")];
+  const cats = [...document.querySelectorAll<HTMLButtonElement>(".cat")];
   const currentOnly = document.getElementById("current-only") as HTMLInputElement;
   let activeCategory = "all";
 
@@ -304,10 +330,10 @@ const categories = [
     emptyMsg.hidden = visible > 0;
   }
 
-  for (const chip of chips) {
-    chip.addEventListener("click", () => {
-      chips.forEach((c) => c.classList.toggle("is-active", c === chip));
-      activeCategory = chip.dataset.filter ?? "all";
+  for (const cat of cats) {
+    cat.addEventListener("click", () => {
+      cats.forEach((c) => c.classList.toggle("is-active", c === cat));
+      activeCategory = cat.dataset.filter ?? "all";
       apply();
     });
   }

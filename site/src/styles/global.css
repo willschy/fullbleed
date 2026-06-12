@@ -3,9 +3,16 @@
    assets — swap here, everything downstream follows.  */
 
 :root {
-  /* type */
-  --font-sans: "Archivo", system-ui, -apple-system, sans-serif;
+  /* type — Rubik carries titles and prose; mono carries metadata */
+  --font-sans: "Rubik", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  /* weight system: 400 body · 500 emphasis/titles-small · 600 card titles · 700 page titles · 900 wordmark */
+  --w-body: 400;
+  --w-med: 500;
+  --w-title: 600;
+  --w-display: 700;
+  --w-black: 900;
 
   /* color — gallery neutrals, print-room accent */
   --paper: #fafaf7;
