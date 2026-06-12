@@ -1,79 +1,70 @@
 <footer class="footer" id="newsletter">
-  <div class="footer-inner">
-    <div class="f-brand">
-      <span class="f-mark">FULL BLEED<span class="reg" aria-hidden="true">⌖</span></span>
-      <p class="f-line">Real-world AI work, for working creatives. Shown, credited, and explained well enough to steal.</p>
+  <div class="footer-card">
+    <div class="f-cta">
+      <p class="f-kicker">The weekly-ish best of</p>
+      <h2 class="f-head">The finds that cleared the bar,<br />in your inbox.</h2>
+      <form class="f-form" id="nl-form" novalidate>
+        <div class="f-row">
+          <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address" />
+          <button type="submit">Join</button>
+        </div>
+        <p class="f-fine" id="nl-fine">No noise — only real work, credited and explained.</p>
+      </form>
     </div>
 
-    <form class="f-form" id="nl-form" novalidate>
-      <p class="f-label">The weekly-ish best of</p>
-      <div class="f-row">
-        <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address" />
-        <button type="submit">Join</button>
+    <div class="f-base">
+      <div class="f-brand">
+        <span class="f-mark">FULL BLEED<span class="reg" aria-hidden="true">⌖</span></span>
+        <p class="f-line">Real-world AI work, for working creatives.</p>
       </div>
-      <p class="f-fine" id="nl-fine">No noise — only the finds that cleared the bar.</p>
-    </form>
-
-    <nav class="f-links" aria-label="Footer">
-      <a href="/about/">About</a>
-      <a href="/about/">Credit & takedown</a>
-    </nav>
+      <nav class="f-links" aria-label="Footer">
+        <a href="/about/">About</a>
+        <a href="/about/">Credit &amp; takedown</a>
+      </nav>
+      <p class="f-colophon">Set in Rubik &amp; Plex Mono · Curated by hand</p>
+    </div>
   </div>
 </footer>
 
 <style>
   .footer {
-    border-top: 1px solid var(--hairline);
-    margin-top: var(--s16);
-    background: var(--surface);
+    padding: var(--s16) var(--s4) var(--s4);
   }
 
-  .footer-inner {
-    max-width: var(--maxw);
+  /* the footer is a card too — same language as the catalog */
+  .footer-card {
+    max-width: calc(var(--maxw) - 2 * var(--s4));
     margin: 0 auto;
-    padding: var(--s12) var(--s6);
-    display: grid;
-    gap: var(--s8);
-    grid-template-columns: 1fr;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-rest);
+    padding: var(--s16) var(--s6) var(--s6);
   }
 
-  @media (min-width: 860px) {
-    .footer-inner {
-      grid-template-columns: 1.2fr 1fr 0.6fr;
-      gap: var(--s12);
-    }
+  /* ---- centered newsletter moment ---- */
+  .f-cta {
+    max-width: 460px;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  .f-mark {
-    font-size: 0.9375rem;
-    font-weight: var(--w-display);
-    letter-spacing: 0.01em;
-  }
-
-  .reg {
-    color: var(--accent);
-    font-weight: var(--w-body);
-    font-size: 0.6em;
-    vertical-align: super;
-    margin-left: 0.2em;
-  }
-
-  .f-line {
-    margin: var(--s3) 0 0;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--ink-50);
-    max-width: 36ch;
-  }
-
-  .f-label {
+  .f-kicker {
     margin: 0 0 var(--s3);
     font-family: var(--font-mono);
     font-size: 0.625rem;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink-35);
+  }
+
+  .f-head {
+    margin: 0 0 var(--s6);
+    font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+    font-weight: var(--w-display);
+    letter-spacing: -0.015em;
+    line-height: 1.25;
   }
 
   .f-row {
@@ -84,7 +75,7 @@
   .f-row input {
     flex: 1;
     min-width: 0;
-    height: 42px;
+    height: 46px;
     border: 1px solid var(--hairline);
     border-radius: var(--r-pill);
     background: var(--paper);
@@ -92,6 +83,7 @@
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--ink);
+    text-align: center;
     transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   }
 
@@ -106,7 +98,7 @@
   }
 
   .f-row button {
-    height: 42px;
+    height: 46px;
     padding: 0 var(--s6);
     border: none;
     border-radius: var(--r-pill);
@@ -127,7 +119,7 @@
   }
 
   .f-fine {
-    margin: var(--s2) 0 0;
+    margin: var(--s3) 0 0;
     font-size: 0.75rem;
     color: var(--ink-35);
     transition: color var(--dur) var(--ease-out);
@@ -137,22 +129,57 @@
     color: var(--ink);
   }
 
+  /* ---- base row ---- */
+  .f-base {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+    align-items: end;
+    margin-top: var(--s16);
+    padding-top: var(--s6);
+    border-top: 1px solid var(--hairline);
+  }
+
+  @media (min-width: 860px) {
+    .f-base {
+      grid-template-columns: 1fr auto 1fr;
+    }
+  }
+
+  .f-mark {
+    font-size: 0.9375rem;
+    font-weight: var(--w-display);
+    letter-spacing: 0.01em;
+  }
+
+  .reg {
+    color: var(--accent);
+    font-weight: var(--w-body);
+    font-size: 0.6em;
+    vertical-align: super;
+    margin-left: 0.2em;
+  }
+
+  .f-line {
+    margin: var(--s2) 0 0;
+    font-size: 0.8125rem;
+    color: var(--ink-50);
+  }
+
   .f-links {
     display: flex;
-    flex-direction: column;
-    gap: var(--s2);
-    justify-self: start;
+    gap: var(--s6);
+    justify-content: start;
   }
 
   @media (min-width: 860px) {
     .f-links {
-      justify-self: end;
-      text-align: right;
+      justify-content: center;
     }
   }
 
   .f-links a {
-    font-size: 0.8438rem;
+    font-size: 0.8125rem;
     font-weight: var(--w-med);
     color: var(--ink-50);
     text-decoration: none;
@@ -161,6 +188,22 @@
 
   .f-links a:hover {
     color: var(--ink);
+  }
+
+  .f-colophon {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-35);
+  }
+
+  @media (min-width: 860px) {
+    .f-colophon {
+      text-align: right;
+    }
   }
 </style>
 

@@ -160,6 +160,16 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name])
     max-width: calc(100vw - 24px);
   }
 
+  .dock {
+    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+  }
+
+  .dock.is-hidden {
+    opacity: 0;
+    transform: translate(-50%, 14px);
+    pointer-events: none;
+  }
+
   .dock-bar {
     display: flex;
     align-items: center;
@@ -455,10 +465,23 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name])
     if ((e.target as HTMLElement).id === "current-only") apply();
   });
 
+  /* the dock steps aside while the footer is in view */
+  function updateDock() {
+    const dock = document.getElementById("dock");
+    const footer = document.querySelector(".footer");
+    if (!dock || !footer) return;
+    const footerTop = footer.getBoundingClientRect().top;
+    dock.classList.toggle("is-hidden", footerTop < window.innerHeight * 0.92);
+  }
+
+  document.addEventListener("scroll", updateDock, { passive: true });
+  window.addEventListener("resize", updateDock);
+
   document.addEventListener("astro:page-load", () => {
     state.category = "all";
     state.tool = "all";
     state.query = "";
     apply();
+    updateDock();
   });
 </script>
