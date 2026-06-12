@@ -125,9 +125,11 @@ Tool and discipline tags come from a **controlled vocabulary** in config (canoni
 - Source list also grows automatically via search-driven standing orders (Section 9)
 
 ### Infra note
-- GitHub Actions IPs get blocked by Reddit's public pages → use the free official Reddit API (script app, takes 2 min to set up)
-- Start on free GitHub Actions (public repo); pay for the ~$5/mo server only if cron jitter proves painful in practice — two weeks of data will say
-- **Reddit API terms, eyes open:** free tier is fine at this volume, but Reddit's data terms restrict commercial reuse. Own-words summaries + thumbnail + heavy credit + link back is the defensible end of the spectrum. Revisit before any paid tier.
+- **Reddit API now requires pre-approval (discovered June 12, 2026):** since late 2025, ALL Data API access — including personal script apps — requires an application via Reddit's support form under the Responsible Builder Policy. Reported turnaround: 2–4 weeks. Unauthenticated JSON endpoints return 403. App creation at reddit.com/prefs/apps is gated behind this approval.
+- **RSS feeds still work unauthenticated** (confirmed 200 on June 12, 2026): titles, links, authors, thumbnails, post bodies — but no vote counts or flair, so velocity promotion can't run on RSS alone. Usable for development and as a degraded fallback, not the production pipeline.
+- **Plan:** submit the API application immediately (non-commercial editorial curation, credit + linkback, drives traffic to Reddit); reorder the build so the site design phase happens during the approval wait, using clearly-marked fixture entries that get replaced by the real backfill.
+- Start on free GitHub Actions (public repo); pay for the ~$5/mo server only if cron jitter proves painful in practice
+- **Reddit API terms, eyes open:** own-words summaries + thumbnail + heavy credit + link back is the defensible end of the spectrum. Revisit commercial terms before any paid tier.
 
 ---
 
