@@ -149,6 +149,8 @@ const related = allEntries
     width: 100%;
     max-height: 64vh;
     object-fit: cover;
+    /* radius on the img itself keeps view-transition snapshots rounded mid-morph */
+    border-radius: var(--r-xl);
   }
 
   .hero-back {
@@ -425,6 +427,38 @@ const related = allEntries
   @media (max-width: 899px) {
     .infocard {
       position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .entry {
+      padding: var(--s2) var(--s3) var(--s12);
+    }
+
+    .hero {
+      border-radius: var(--r-lg);
+    }
+
+    .hero img {
+      border-radius: var(--r-lg);
+      max-height: 48vh;
+    }
+
+    .hero-back {
+      top: 10px;
+      left: 10px;
+      padding: 7px 12px;
+    }
+
+    .hero-superseded {
+      inset-inline: 10px;
+      bottom: 10px;
+      font-size: 0.7813rem;
+    }
+
+    .layout {
+      margin-top: var(--s6);
+      gap: var(--s6);
     }
   }
 

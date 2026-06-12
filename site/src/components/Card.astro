@@ -106,6 +106,8 @@ const stamp = d.date
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* radius lives on the img too so view-transition snapshots stay rounded mid-morph */
+    border-radius: var(--r-lg);
     transition: transform var(--dur-slow) var(--ease-out);
   }
 
