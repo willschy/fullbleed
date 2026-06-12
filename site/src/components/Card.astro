@@ -4,9 +4,10 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
   entry: CollectionEntry<"entries">;
   index?: number;
+  feature?: boolean;
 }
 
-const { entry, index = 0 } = Astro.props;
+const { entry, index = 0, feature = false } = Astro.props;
 const d = entry.data;
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -24,14 +25,24 @@ const stamp = d.date
 ---
 
 <article
-  class="card"
+  class={`card ${feature ? "is-feature" : ""}`}
   style={`animation-delay: ${Math.min(index, 10) * 45}ms`}
   data-category={d.category}
   data-tools={d.tools.join("|")}
   data-superseded={d.supersededBy ? "true" : "false"}
 >
   <a class="card-link" href={`/entry/${entry.id}/`} aria-label={d.title}>
-    {d.thumbnail && <img class="card-img" src={d.thumbnail} alt="" loading="lazy" width="800" height="600" />}
+    {d.thumbnail && (
+      <img
+        class="card-img"
+        src={d.thumbnail}
+        alt=""
+        loading={feature ? "eager" : "lazy"}
+        width="800"
+        height="600"
+        transition:name={`hero-${entry.id}`}
+      />
+    )}
 
     {freshness === "superseded" && (
       <span class="badge badge-superseded">Superseded</span>
@@ -234,7 +245,27 @@ const stamp = d.date
     overflow: hidden;
   }
 
-  /* ------- open state ------- */
+  /* ------- feature (lead story) ------- */
+  /* spans 2 columns; ratio chosen so its height matches a 4:3 neighbor (2w + gap) */
+  .card.is-feature .card-link {
+    aspect-ratio: 2.72 / 1;
+  }
+
+  .card.is-feature .card-title {
+    font-size: 1.1875rem;
+  }
+
+  @media (max-width: 859px) {
+    .card.is-feature .card-link {
+      aspect-ratio: 4 / 3;
+    }
+
+    .card.is-feature .card-title {
+      font-size: 0.9375rem;
+    }
+  }
+
+  /* ------- open state (JS .is-open for touch, :hover for pointers) ------- */
   .card.is-open {
     transform: translateY(-4px) scale(1.015);
     box-shadow: var(--shadow-lift);
@@ -258,5 +289,32 @@ const stamp = d.date
     opacity: 1;
     transform: none;
     pointer-events: auto;
+  }
+
+  @media (hover: hover) {
+    .card:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: var(--shadow-lift);
+      z-index: 20;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.045);
+    }
+
+    .card:hover .card-veil {
+      opacity: 0.4;
+    }
+
+    .card:hover .card-face {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    .card:hover .card-panel {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
   }
 </style>

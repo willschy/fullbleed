@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import TopNav from "../../components/TopNav.astro";
+import Card from "../../components/Card.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("entries");
@@ -25,6 +26,10 @@ const stamp = d.date.toLocaleDateString("en-US", { month: "long", day: "numeric"
 
 const allEntries = await getCollection("entries");
 const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededBy) : null;
+const related = allEntries
+  .filter((e) => e.id !== entry.id && e.data.category === d.category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <Base title={`${d.title} — Full Bleed`} description={d.hoverWhat}>
@@ -32,7 +37,9 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
 
   <main class="entry">
     <figure class="hero">
-      {d.thumbnail && <img src={d.thumbnail} alt={d.title} width="1200" height="800" />}
+      {d.thumbnail && (
+        <img src={d.thumbnail} alt={d.title} width="1200" height="800" transition:name={`hero-${entry.id}`} />
+      )}
       <a class="hero-back" href="/">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M19 12H5m6-7-7 7 7 7" />
@@ -98,6 +105,15 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
         <p class="info-credit">Their work. We just pointed at it.</p>
       </aside>
     </div>
+
+    {related.length > 0 && (
+      <section class="related">
+        <h2 class="related-label">More {CATEGORY_LABELS[d.category]}</h2>
+        <div class="related-grid">
+          {related.map((e, i) => <Card entry={e} index={i} />)}
+        </div>
+      </section>
+    )}
   </main>
 </Base>
 
@@ -410,5 +426,26 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
     .infocard {
       position: static;
     }
+  }
+
+  /* ---------- related ---------- */
+  .related {
+    margin-top: var(--s16);
+  }
+
+  .related-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-35);
+    margin: 0 0 var(--s4);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--s4);
   }
 </style>

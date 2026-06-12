@@ -26,7 +26,7 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name])
 
   <main class="catalog">
     <div class="grid" id="grid">
-      {entries.map((entry, i) => <Card entry={entry} index={i} />)}
+      {entries.map((entry, i) => <Card entry={entry} index={i} feature={i === 0} />)}
     </div>
     <p class="empty" id="empty" hidden>Nothing here yet — the bar stays high.</p>
   </main>
@@ -79,6 +79,13 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name])
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--s4);
+    align-items: start;
+  }
+
+  @media (min-width: 860px) {
+    .grid > :global(.is-feature) {
+      grid-column: span 2;
+    }
   }
 
   .empty {
@@ -139,6 +146,17 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name])
   .chip:hover {
     color: var(--ink);
     background: rgba(19, 19, 18, 0.06);
+  }
+
+  .chip:active {
+    transform: scale(0.94);
+  }
+
+  .chip {
+    transition:
+      color var(--dur-fast) var(--ease-out),
+      background var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-spring);
   }
 
   .chip.is-active {
@@ -305,102 +323,92 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name])
 </style>
 
 <script>
-  const grid = document.getElementById("grid")!;
-  const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
-  const emptyMsg = document.getElementById("empty")!;
-  const resultCount = document.getElementById("result-count")!;
-  const canHover = window.matchMedia("(hover: hover)").matches;
-
-  /* ---- hover reveal, instant ---- */
-  if (canHover) {
-    let open: HTMLElement | null = null;
-    for (const card of cards) {
-      card.addEventListener("mouseenter", () => {
-        open?.classList.remove("is-open");
-        card.classList.add("is-open");
-        open = card;
-      });
-      card.addEventListener("mouseleave", () => {
-        if (open === card) {
-          card.classList.remove("is-open");
-          open = null;
-        }
-      });
-    }
-  } else {
-    let open: HTMLElement | null = null;
-    for (const card of cards) {
-      const link = card.querySelector<HTMLAnchorElement>(".card-link")!;
-      link.addEventListener("click", (e) => {
-        if (open !== card) {
-          e.preventDefault();
-          open?.classList.remove("is-open");
-          card.classList.add("is-open");
-          open = card;
-        }
-      });
-    }
-    document.addEventListener("click", (e) => {
-      if (open && !open.contains(e.target as Node)) {
-        open.classList.remove("is-open");
-        open = null;
-      }
-    });
-  }
-
-  /* ---- dock expand ---- */
-  const dock = document.getElementById("dock")!;
-  const moreBtn = document.getElementById("dock-more")!;
-  const moreDot = document.getElementById("more-dot")!;
-
-  moreBtn.addEventListener("click", () => {
-    const isOpen = dock.classList.toggle("is-open");
-    moreBtn.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  document.addEventListener("click", (e) => {
-    if (dock.classList.contains("is-open") && !dock.contains(e.target as Node)) {
-      dock.classList.remove("is-open");
-      moreBtn.setAttribute("aria-expanded", "false");
-    }
-  });
-
-  /* ---- filtering ---- */
-  const facetChips = [...document.querySelectorAll<HTMLButtonElement>("[data-facet]")];
-  const currentOnly = document.getElementById("current-only") as HTMLInputElement;
-  const searchInput = document.getElementById("search-input") as HTMLInputElement | null;
+  /* All handlers are delegated at document level so they survive
+     ClientRouter page swaps; state resets on astro:page-load. */
   const state = { category: "all", tool: "all", query: "" };
 
   function apply() {
+    const grid = document.getElementById("grid");
+    if (!grid) return;
+    const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
+    const currentOnly = document.getElementById("current-only") as HTMLInputElement | null;
     let visible = 0;
     for (const card of cards) {
       const catOk = state.category === "all" || card.dataset.category === state.category;
       const toolOk = state.tool === "all" || (card.dataset.tools ?? "").split("|").includes(state.tool);
-      const freshOk = !currentOnly.checked || card.dataset.superseded !== "true";
+      const freshOk = !currentOnly?.checked || card.dataset.superseded !== "true";
       const queryOk = state.query === "" || (card.textContent ?? "").toLowerCase().includes(state.query);
       const show = catOk && toolOk && freshOk && queryOk;
       card.style.display = show ? "" : "none";
       if (show) visible++;
     }
-    emptyMsg.hidden = visible > 0;
-    resultCount.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
-    moreDot.hidden = state.tool === "all" && !currentOnly.checked;
+    const emptyMsg = document.getElementById("empty");
+    const resultCount = document.getElementById("result-count");
+    const moreDot = document.getElementById("more-dot");
+    if (emptyMsg) emptyMsg.hidden = visible > 0;
+    if (resultCount) resultCount.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+    if (moreDot) moreDot.hidden = state.tool === "all" && !currentOnly?.checked;
   }
 
-  for (const chip of facetChips) {
-    chip.addEventListener("click", () => {
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    /* facet chips */
+    const chip = target.closest<HTMLButtonElement>("[data-facet]");
+    if (chip) {
       const facet = chip.dataset.facet as "category" | "tool";
       state[facet] = chip.dataset.value ?? "all";
-      facetChips
-        .filter((c) => c.dataset.facet === facet)
+      document
+        .querySelectorAll<HTMLButtonElement>(`[data-facet="${facet}"]`)
         .forEach((c) => c.classList.toggle("is-active", c === chip));
       apply();
-    });
-  }
+      return;
+    }
 
-  currentOnly.addEventListener("change", apply);
-  searchInput?.addEventListener("input", () => {
-    state.query = searchInput.value.trim().toLowerCase();
+    /* dock expand/collapse */
+    const dock = document.getElementById("dock");
+    const moreBtn = document.getElementById("dock-more");
+    if (moreBtn && target.closest("#dock-more")) {
+      const isOpen = dock!.classList.toggle("is-open");
+      moreBtn.setAttribute("aria-expanded", String(isOpen));
+      return;
+    }
+    if (dock?.classList.contains("is-open") && !dock.contains(target)) {
+      dock.classList.remove("is-open");
+      moreBtn?.setAttribute("aria-expanded", "false");
+    }
+
+    /* touch devices: first tap reveals, second tap navigates */
+    if (!window.matchMedia("(hover: hover)").matches) {
+      const link = target.closest<HTMLAnchorElement>(".card-link");
+      const card = link?.closest<HTMLElement>(".card");
+      const open = document.querySelector<HTMLElement>(".card.is-open");
+      if (card && card !== open) {
+        e.preventDefault();
+        open?.classList.remove("is-open");
+        card.classList.add("is-open");
+      } else if (!card && open) {
+        open.classList.remove("is-open");
+      }
+    }
+  });
+
+  document.addEventListener("input", (e) => {
+    const t = e.target as HTMLInputElement;
+    if (t.id === "search-input") {
+      state.query = t.value.trim().toLowerCase();
+      apply();
+    }
+  });
+
+  document.addEventListener("change", (e) => {
+    if ((e.target as HTMLElement).id === "current-only") apply();
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    state.category = "all";
+    state.tool = "all";
+    state.query = "";
     apply();
   });
 </script>

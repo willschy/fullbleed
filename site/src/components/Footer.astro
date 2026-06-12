@@ -1,0 +1,185 @@
+<footer class="footer" id="newsletter">
+  <div class="footer-inner">
+    <div class="f-brand">
+      <span class="f-mark">FULL BLEED<span class="reg" aria-hidden="true">⌖</span></span>
+      <p class="f-line">Real-world AI work, for working creatives. Shown, credited, and explained well enough to steal.</p>
+    </div>
+
+    <form class="f-form" id="nl-form" novalidate>
+      <p class="f-label">The weekly-ish best of</p>
+      <div class="f-row">
+        <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address" />
+        <button type="submit">Join</button>
+      </div>
+      <p class="f-fine" id="nl-fine">No noise — only the finds that cleared the bar.</p>
+    </form>
+
+    <nav class="f-links" aria-label="Footer">
+      <a href="/about/">About</a>
+      <a href="/about/">Credit & takedown</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--hairline);
+    margin-top: var(--s16);
+    background: var(--surface);
+  }
+
+  .footer-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: var(--s12) var(--s6);
+    display: grid;
+    gap: var(--s8);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 860px) {
+    .footer-inner {
+      grid-template-columns: 1.2fr 1fr 0.6fr;
+      gap: var(--s12);
+    }
+  }
+
+  .f-mark {
+    font-size: 0.9375rem;
+    font-weight: var(--w-display);
+    letter-spacing: 0.01em;
+  }
+
+  .reg {
+    color: var(--accent);
+    font-weight: var(--w-body);
+    font-size: 0.6em;
+    vertical-align: super;
+    margin-left: 0.2em;
+  }
+
+  .f-line {
+    margin: var(--s3) 0 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--ink-50);
+    max-width: 36ch;
+  }
+
+  .f-label {
+    margin: 0 0 var(--s3);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-35);
+  }
+
+  .f-row {
+    display: flex;
+    gap: var(--s2);
+  }
+
+  .f-row input {
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-pill);
+    background: var(--paper);
+    padding: 0 var(--s4);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--ink);
+    transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  }
+
+  .f-row input::placeholder {
+    color: var(--ink-35);
+  }
+
+  .f-row input:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: var(--shadow-rest);
+  }
+
+  .f-row button {
+    height: 42px;
+    padding: 0 var(--s6);
+    border: none;
+    border-radius: var(--r-pill);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: var(--w-med);
+    transition: transform var(--dur-fast) var(--ease-spring), opacity var(--dur-fast) var(--ease-out);
+  }
+
+  .f-row button:hover {
+    opacity: 0.85;
+  }
+
+  .f-row button:active {
+    transform: scale(0.96);
+  }
+
+  .f-fine {
+    margin: var(--s2) 0 0;
+    font-size: 0.75rem;
+    color: var(--ink-35);
+    transition: color var(--dur) var(--ease-out);
+  }
+
+  .f-fine.is-done {
+    color: var(--ink);
+  }
+
+  .f-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+    justify-self: start;
+  }
+
+  @media (min-width: 860px) {
+    .f-links {
+      justify-self: end;
+      text-align: right;
+    }
+  }
+
+  .f-links a {
+    font-size: 0.8438rem;
+    font-weight: var(--w-med);
+    color: var(--ink-50);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .f-links a:hover {
+    color: var(--ink);
+  }
+</style>
+
+<script>
+  // email capture lands with launch — until then, honest local note
+  document.addEventListener("submit", (e) => {
+    const form = e.target as HTMLFormElement;
+    if (form.id !== "nl-form") return;
+    e.preventDefault();
+    const email = (document.getElementById("nl-email") as HTMLInputElement).value.trim();
+    const fine = document.getElementById("nl-fine")!;
+    if (!email || !email.includes("@")) {
+      fine.textContent = "That email doesn't look right — try again?";
+      return;
+    }
+    localStorage.setItem("fb-newsletter-intent", email);
+    form.querySelector("input")!.setAttribute("disabled", "");
+    form.querySelector("button")!.setAttribute("disabled", "");
+    fine.textContent = "✓ Noted — the list goes live with launch, and you're first on it.";
+    fine.classList.add("is-done");
+  });
+</script>

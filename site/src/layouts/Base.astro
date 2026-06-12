@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -22,8 +24,10 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <ClientRouter />
   </head>
   <body>
     <slot />
+    <Footer />
   </body>
 </html>
