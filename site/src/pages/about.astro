@@ -1,0 +1,77 @@
+---
+import Base from "../layouts/Base.astro";
+import TopNav from "../components/TopNav.astro";
+---
+
+<Base title="About — Full Bleed">
+  <TopNav />
+
+  <main class="about">
+    <h1>For creatives, by creatives.</h1>
+    <p class="lede">
+      Full Bleed is a curated catalog of groundbreaking real-world AI work — the campaigns, workflows,
+      and business plays that working designers, art directors, and photographers are actually shipping.
+      Every entry shows the work, names the maker, and explains the how.
+    </p>
+
+    <h2 class="meta">How curation works</h2>
+    <p>
+      A pipeline watches maker communities around the web and surfaces candidates; an editorial pass
+      kills most of them. What survives is real work, shown, with a workflow you could learn from.
+      If a niche has nothing good, we publish nothing — empty-but-honest beats filler.
+    </p>
+
+    <h2 class="meta">Credit</h2>
+    <p>
+      Every entry credits its creator by name, links to the original post, and summarizes the work in
+      our own words. We store only a small preview image; the work belongs to the people who made it.
+      Featured and want something corrected — or just want it gone?
+    </p>
+
+    <h2 class="meta">Takedown</h2>
+    <p>
+      If you're the creator of featured work and want it removed or corrected, contact us and it
+      happens — no questions, no friction. <span class="placeholder">[contact route lands with launch]</span>
+    </p>
+  </main>
+</Base>
+
+<style>
+  .about {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--s12) var(--s6) var(--s16);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: var(--w-display);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .lede {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    margin: var(--s4) 0 0;
+  }
+
+  h2.meta {
+    color: var(--ink-35);
+    margin: var(--s12) 0 var(--s2);
+    padding-top: var(--s6);
+    border-top: 1px solid var(--hairline);
+    font-weight: var(--w-med);
+  }
+
+  p {
+    line-height: 1.65;
+    color: var(--ink-70);
+    margin: 0;
+  }
+
+  .placeholder {
+    color: var(--ink-35);
+  }
+</style>

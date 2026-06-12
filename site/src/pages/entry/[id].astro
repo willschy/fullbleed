@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import TopNav from "../../components/TopNav.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("entries");
@@ -28,12 +29,14 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
 ---
 
 <Base title={`${d.title} — Full Bleed`} description={d.hoverWhat}>
-  <header class="topbar">
-    <a class="back meta" href="/">← Full Bleed</a>
-    <span class="meta crumb">{CATEGORY_LABELS[d.category]}</span>
-  </header>
+  <TopNav />
 
   <main class="entry">
+    <div class="crumbline">
+      <a class="back meta" href="/">← Catalog</a>
+      <span class="meta crumb">{CATEGORY_LABELS[d.category]}</span>
+    </div>
+
     {successor && (
       <aside class="superseded-banner">
         <span class="meta">Superseded</span>
@@ -80,10 +83,8 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
 </Base>
 
 <style>
-  .topbar {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: var(--s6);
+  .crumbline {
+    padding: var(--s6) 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -143,10 +144,10 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
 
   h1 {
     margin: 0;
-    font-size: clamp(1.75rem, 4.5vw, 2.75rem);
-    font-weight: 750;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
+    font-size: clamp(1.625rem, 4vw, 2.5rem);
+    font-weight: var(--w-display);
+    letter-spacing: -0.02em;
+    line-height: 1.12;
   }
 
   .stampline {

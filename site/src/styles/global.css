@@ -7,12 +7,11 @@
   --font-sans: "Rubik", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
 
-  /* weight system: 400 body · 500 emphasis/titles-small · 600 card titles · 700 page titles · 900 wordmark */
+  /* weight system: 400 body · 500 titles/emphasis · 600 display + wordmark. Nothing heavier. */
   --w-body: 400;
   --w-med: 500;
-  --w-title: 600;
-  --w-display: 700;
-  --w-black: 900;
+  --w-title: 500;
+  --w-display: 600;
 
   /* color — gallery neutrals, print-room accent */
   --paper: #fafaf7;

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
+import TopNav from "../components/TopNav.astro";
 import Card from "../components/Card.astro";
 
 const entries = (await getCollection("entries")).sort(
@@ -13,42 +14,56 @@ const categories = [
   { id: "new-possible", label: "New Possible" },
   { id: "business-plays", label: "Business Plays" },
 ].map((c) => ({ ...c, count: entries.filter((e) => e.data.category === c.id).length }));
+
+const toolCounts = new Map<string, number>();
+for (const e of entries) for (const t of e.data.tools) toolCounts.set(t, (toolCounts.get(t) ?? 0) + 1);
+const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count }));
 ---
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
-  <div class="shell">
-    <aside class="side">
-      <a class="wordmark" href="/" aria-label="Full Bleed home">
-        <span>FULL</span>
-        <span>BLEED<span class="reg" aria-hidden="true">⌖</span></span>
-      </a>
-      <p class="tagline meta">Real work · shown<br />· with the how</p>
+  <TopNav showSearch={true} />
 
-      <nav class="cats" aria-label="Catalog filters">
-        <button class="cat meta is-active" data-filter="all">
-          <span>All</span><span class="count">{entries.length}</span>
+  <div class="shell">
+    <aside class="rail" aria-label="Catalog filters">
+      <section class="facet">
+        <h2 class="facet-title meta">Category</h2>
+        <button class="facet-row is-active" data-facet="category" data-value="all">
+          <span>All</span><span class="count meta">{entries.length}</span>
         </button>
         {categories.map((c) => (
-          <button class="cat meta" data-filter={c.id}>
-            <span>{c.label}</span><span class="count">{c.count}</span>
+          <button class="facet-row" data-facet="category" data-value={c.id}>
+            <span>{c.label}</span><span class="count meta">{c.count}</span>
           </button>
         ))}
-      </nav>
+      </section>
 
-      <label class="current-toggle meta">
-        <input type="checkbox" id="current-only" />
-        <span class="switch" aria-hidden="true"></span>
-        Current only
-      </label>
+      <section class="facet">
+        <h2 class="facet-title meta">Tool</h2>
+        <button class="facet-row is-active" data-facet="tool" data-value="all">
+          <span>All</span><span class="count meta">{entries.length}</span>
+        </button>
+        {tools.map((t) => (
+          <button class="facet-row" data-facet="tool" data-value={t.name}>
+            <span>{t.name}</span><span class="count meta">{t.count}</span>
+          </button>
+        ))}
+      </section>
 
-      <p class="side-foot meta">
-        Curated by a working creative.<br />
-        Credited to the makers,<br />
-        linked to the source.
-      </p>
+      <section class="facet">
+        <h2 class="facet-title meta">Freshness</h2>
+        <label class="current-toggle">
+          <input type="checkbox" id="current-only" />
+          <span class="switch" aria-hidden="true"></span>
+          <span class="toggle-label">Current only</span>
+        </label>
+        <p class="facet-hint">Hides superseded workflows — only approaches that are still the best way.</p>
+      </section>
     </aside>
 
     <main class="catalog">
+      <div class="resultbar">
+        <p class="meta" id="result-count">{entries.length} entries</p>
+      </div>
       <div class="grid" id="grid">
         {entries.map((entry) => <Card entry={entry} />)}
       </div>
@@ -63,84 +78,76 @@ const categories = [
     margin: 0 auto;
   }
 
-  /* ---------- sidebar (desktop) ---------- */
-  .side {
+  /* ---------- left rail ---------- */
+  .rail {
     display: flex;
     flex-direction: column;
-    gap: var(--s6);
+    gap: var(--s8);
     padding: var(--s8) var(--s6);
   }
 
-  .wordmark {
+  .facet {
     display: flex;
     flex-direction: column;
-    font-size: 2.5rem;
-    font-weight: var(--w-black);
-    letter-spacing: -0.04em;
-    line-height: 0.95;
-    text-decoration: none;
   }
 
-  .reg {
-    color: var(--accent);
-    font-weight: var(--w-body);
-    font-size: 0.45em;
-    vertical-align: super;
-    margin-left: 0.2em;
+  .facet-title {
+    color: var(--ink-35);
+    margin: 0 0 var(--s2);
+    font-weight: var(--w-med);
   }
 
-  .tagline {
-    color: var(--ink-50);
-    margin: 0;
-  }
-
-  .cats {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--hairline);
-  }
-
-  .cat {
+  .facet-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--s3);
     background: none;
     border: none;
-    border-bottom: 1px solid var(--hairline);
-    padding: var(--s3) 0;
-    color: var(--ink-50);
+    padding: var(--s2) var(--s2);
+    margin: 0 calc(-1 * var(--s2));
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: var(--w-body);
+    color: var(--ink-70);
     text-align: left;
-    transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur-fast) var(--ease-out);
+    transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
   }
 
-  .cat:hover {
+  .facet-row:hover {
+    background: rgba(19, 19, 18, 0.045);
     color: var(--ink);
   }
 
-  .cat.is-active {
+  .facet-row.is-active {
     color: var(--ink);
-    font-weight: var(--w-title);
+    font-weight: var(--w-med);
+    background: rgba(19, 19, 18, 0.06);
   }
 
-  .cat.is-active span:first-child::before {
-    content: "●";
-    color: var(--accent);
-    font-size: 0.6em;
-    margin-right: 0.6em;
-    vertical-align: 0.15em;
+  .facet-row.is-active span:first-child::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 0.55em;
+    vertical-align: 0.18em;
   }
 
   .count {
     color: var(--ink-35);
-    font-weight: var(--w-body);
   }
 
   .current-toggle {
     display: flex;
     align-items: center;
-    gap: var(--s2);
-    color: var(--ink-50);
+    gap: var(--s3);
+    padding: var(--s2) 0;
+    font-size: 0.875rem;
+    color: var(--ink-70);
     cursor: pointer;
     user-select: none;
   }
@@ -151,8 +158,8 @@ const categories = [
   }
 
   .switch {
-    width: 28px;
-    height: 16px;
+    width: 30px;
+    height: 18px;
     border: 1px solid var(--ink-35);
     border-radius: 999px;
     position: relative;
@@ -165,8 +172,8 @@ const categories = [
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--ink-35);
     transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
@@ -187,13 +194,27 @@ const categories = [
     outline-offset: 2px;
   }
 
-  .side-foot {
+  .facet-hint {
+    margin: var(--s2) 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
     color: var(--ink-35);
-    margin: 0;
   }
 
+  /* ---------- catalog ---------- */
   .catalog {
-    padding: var(--s8) var(--s6) var(--s16);
+    padding: var(--s6) var(--s6) var(--s16);
+  }
+
+  .resultbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--s4);
+  }
+
+  .resultbar p {
+    margin: 0;
+    color: var(--ink-35);
   }
 
   .grid {
@@ -208,63 +229,65 @@ const categories = [
     padding: var(--s16) 0;
   }
 
-  /* ---------- desktop: pinned sidebar + scrolling grid ---------- */
+  /* ---------- desktop: pinned rail ---------- */
   @media (min-width: 1024px) {
     .shell {
       display: grid;
-      grid-template-columns: 264px 1fr;
+      grid-template-columns: 232px 1fr;
     }
 
-    .side {
+    .rail {
       position: sticky;
-      top: 0;
-      height: 100dvh;
+      top: 56px;
+      height: calc(100dvh - 56px);
+      overflow-y: auto;
       border-right: 1px solid var(--hairline);
-    }
-
-    .side-foot {
-      margin-top: auto;
     }
   }
 
-  /* ---------- mobile/tablet: stacked header, scrollable filter row ---------- */
+  /* ---------- mobile/tablet ---------- */
   @media (max-width: 1023px) {
-    .side {
-      gap: var(--s4);
-      border-bottom: 1px solid var(--hairline);
-      padding-bottom: var(--s4);
-    }
-
-    .wordmark {
+    .rail {
       flex-direction: row;
-      gap: 0.3em;
-      font-size: 2rem;
-    }
-
-    .cats {
-      flex-direction: row;
+      align-items: center;
+      gap: var(--s6);
       overflow-x: auto;
       scrollbar-width: none;
-      border-top: none;
-      gap: var(--s4);
+      padding: var(--s3) var(--s4);
+      border-bottom: 1px solid var(--hairline);
     }
 
-    .cats::-webkit-scrollbar {
+    .rail::-webkit-scrollbar {
       display: none;
     }
 
-    .cat {
-      border-bottom: none;
-      white-space: nowrap;
+    .facet {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--s2);
       flex: none;
     }
 
-    .count {
+    .facet-title {
+      margin: 0 var(--s2) 0 0;
+    }
+
+    .facet-row {
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .count,
+    .facet-hint {
       display: none;
     }
 
-    .side-foot {
-      display: none;
+    .toggle-label {
+      white-space: nowrap;
+    }
+
+    .catalog {
+      padding: var(--s4) var(--s4) var(--s12);
     }
   }
 </style>
@@ -273,9 +296,10 @@ const categories = [
   const grid = document.getElementById("grid")!;
   const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
   const emptyMsg = document.getElementById("empty")!;
+  const resultCount = document.getElementById("result-count")!;
   const canHover = window.matchMedia("(hover: hover)").matches;
 
-  /* ---- hover-expand, no intent delay (desktop) ---- */
+  /* ---- hover-expand, instant (desktop) ---- */
   if (canHover) {
     let open: HTMLElement | null = null;
     for (const card of cards) {
@@ -313,29 +337,41 @@ const categories = [
     });
   }
 
-  /* ---- filtering ---- */
-  const cats = [...document.querySelectorAll<HTMLButtonElement>(".cat")];
+  /* ---- faceted filtering + search ---- */
+  const facetRows = [...document.querySelectorAll<HTMLButtonElement>(".facet-row")];
   const currentOnly = document.getElementById("current-only") as HTMLInputElement;
-  let activeCategory = "all";
+  const searchInput = document.getElementById("search-input") as HTMLInputElement | null;
+  const state = { category: "all", tool: "all", query: "" };
 
   function apply() {
     let visible = 0;
     for (const card of cards) {
-      const catOk = activeCategory === "all" || card.dataset.category === activeCategory;
+      const catOk = state.category === "all" || card.dataset.category === state.category;
+      const toolOk = state.tool === "all" || (card.dataset.tools ?? "").split("|").includes(state.tool);
       const freshOk = !currentOnly.checked || card.dataset.superseded !== "true";
-      const show = catOk && freshOk;
+      const queryOk = state.query === "" || (card.textContent ?? "").toLowerCase().includes(state.query);
+      const show = catOk && toolOk && freshOk && queryOk;
       card.style.display = show ? "" : "none";
       if (show) visible++;
     }
     emptyMsg.hidden = visible > 0;
+    resultCount.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
   }
 
-  for (const cat of cats) {
-    cat.addEventListener("click", () => {
-      cats.forEach((c) => c.classList.toggle("is-active", c === cat));
-      activeCategory = cat.dataset.filter ?? "all";
+  for (const row of facetRows) {
+    row.addEventListener("click", () => {
+      const facet = row.dataset.facet as "category" | "tool";
+      state[facet] = row.dataset.value ?? "all";
+      facetRows
+        .filter((r) => r.dataset.facet === facet)
+        .forEach((r) => r.classList.toggle("is-active", r === row));
       apply();
     });
   }
+
   currentOnly.addEventListener("change", apply);
+  searchInput?.addEventListener("input", () => {
+    state.query = searchInput.value.trim().toLowerCase();
+    apply();
+  });
 </script>
