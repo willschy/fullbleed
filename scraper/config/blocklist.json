@@ -1,0 +1,19 @@
+{
+  "_note": "Matched as whole phrases (word-boundary, case-insensitive) against title + selftext. Tune during backfill.",
+  "phrases": [
+    "ai girlfriend",
+    "ai boyfriend",
+    "waitlist",
+    "roast my",
+    "my course",
+    "free course",
+    "online course",
+    "coupon",
+    "promo code",
+    "discount code",
+    "giveaway",
+    "affiliate",
+    "we are hiring",
+    "dm me for access"
+  ]
+}

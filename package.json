@@ -1,0 +1,17 @@
+{
+  "name": "fullbleed",
+  "private": true,
+  "workspaces": [
+    "scraper",
+    "site"
+  ],
+  "scripts": {
+    "listen": "npm run -w scraper listen",
+    "promote": "npm run -w scraper promote",
+    "score": "npm run -w scraper score",
+    "review": "npm run -w scraper review",
+    "backfill": "npm run -w scraper backfill",
+    "dev": "npm run -w site dev",
+    "build": "npm run -w site build"
+  }
+}

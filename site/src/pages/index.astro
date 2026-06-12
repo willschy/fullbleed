@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+
+const entries = (await getCollection("entries"))
+  .filter((e) => !e.data.supersededBy)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Full Bleed</title>
+    <meta name="description" content="A curated, always-fresh catalog of groundbreaking real-world AI work — for working creatives, by working creatives." />
+  </head>
+  <body>
+    <!-- Placeholder shell. The real design phase begins once backfill content exists — see project-spec.md §8. -->
+    <main>
+      <h1>FULL BLEED</h1>
+      <p>{entries.length} entries in the catalog.</p>
+      <ul>
+        {entries.map((e) => (
+          <li>
+            <strong>{e.data.title}</strong> · {e.data.category} · {e.data.date.toISOString().slice(0, 10)}
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>

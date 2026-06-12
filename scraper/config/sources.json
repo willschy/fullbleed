@@ -1,0 +1,14 @@
+{
+  "_note": "flairs: [] = accept all flairs; minScore = raw-upvote promotion floor; minVelocity = upvotes/hour alternative floor. Tune during backfill.",
+  "subreddits": [
+    { "name": "ClaudeAI", "flairs": [], "minScore": 10, "minVelocity": 3 },
+    { "name": "ClaudeCode", "flairs": [], "minScore": 10, "minVelocity": 3 },
+    { "name": "SideProject", "flairs": [], "minScore": 20, "minVelocity": 5 },
+    { "name": "InternetIsBeautiful", "flairs": [], "minScore": 20, "minVelocity": 5 },
+    { "name": "ChatGPTCoding", "flairs": [], "minScore": 15, "minVelocity": 4 },
+    { "name": "cursor", "flairs": [], "minScore": 15, "minVelocity": 4 },
+    { "name": "LocalLLaMA", "flairs": [], "minScore": 25, "minVelocity": 6 },
+    { "name": "StableDiffusion", "flairs": [], "minScore": 25, "minVelocity": 6 },
+    { "name": "comfyui", "flairs": [], "minScore": 15, "minVelocity": 4 }
+  ]
+}

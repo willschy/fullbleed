@@ -1,0 +1,16 @@
+{
+  "_note": "Controlled vocabulary. The model must pick from these lists or propose an addition for approval — never freestyle.",
+  "categories": ["client-work", "tools-you-can-steal", "new-possible", "business-plays"],
+  "tools": [
+    "Claude", "Claude Code", "ChatGPT", "Codex", "Gemini",
+    "Midjourney", "Flux", "Stable Diffusion", "ComfyUI",
+    "Runway", "Veo", "Sora", "Kling", "Higgsfield",
+    "ElevenLabs", "Cursor", "Figma", "Blender", "n8n",
+    "Next.js", "Astro", "Supabase"
+  ],
+  "disciplines": [
+    "Graphic Design", "Branding", "Photography", "Motion", "Video",
+    "3D", "Web Design", "Product Design", "Illustration",
+    "Advertising", "Packaging", "Copywriting", "Creative Direction"
+  ]
+}
