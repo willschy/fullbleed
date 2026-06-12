@@ -22,6 +22,7 @@ const entries = defineCollection({
       subreddit: z.string(),
     }),
     supersededBy: z.string().nullable(),
+    fixture: z.boolean().default(false),
   }),
 });
 
