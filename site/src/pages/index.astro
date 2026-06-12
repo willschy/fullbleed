@@ -1,31 +1,315 @@
 ---
 import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Card from "../components/Card.astro";
 
-const entries = (await getCollection("entries"))
-  .filter((e) => !e.data.supersededBy)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const entries = (await getCollection("entries")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const categories = [
+  { id: "client-work", label: "Client Work" },
+  { id: "tools-you-can-steal", label: "Steal This" },
+  { id: "new-possible", label: "New Possible" },
+  { id: "business-plays", label: "Business Plays" },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Full Bleed</title>
-    <meta name="description" content="A curated, always-fresh catalog of groundbreaking real-world AI work — for working creatives, by working creatives." />
-  </head>
-  <body>
-    <!-- Placeholder shell. The real design phase begins once backfill content exists — see project-spec.md §8. -->
-    <main>
-      <h1>FULL BLEED</h1>
-      <p>{entries.length} entries in the catalog.</p>
-      <ul>
-        {entries.map((e) => (
-          <li>
-            <strong>{e.data.title}</strong> · {e.data.category} · {e.data.date.toISOString().slice(0, 10)}
-          </li>
+<Base title="Full Bleed — real-world AI work, for working creatives">
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/" aria-label="Full Bleed home">
+        FULL BLEED<span class="reg" aria-hidden="true">⌖</span>
+      </a>
+      <p class="tagline meta">Real work · shown · with the how</p>
+    </div>
+  </header>
+
+  <nav class="filters" aria-label="Catalog filters">
+    <div class="filters-inner">
+      <div class="filter-group" role="group" aria-label="Category">
+        <button class="chip meta is-active" data-filter="all">All</button>
+        {categories.map((c) => (
+          <button class="chip meta" data-filter={c.id}>{c.label}</button>
         ))}
-      </ul>
-    </main>
-  </body>
-</html>
+      </div>
+      <label class="current-toggle meta">
+        <input type="checkbox" id="current-only" />
+        <span class="switch" aria-hidden="true"></span>
+        Current only
+      </label>
+    </div>
+  </nav>
+
+  <main class="catalog">
+    <div class="grid" id="grid">
+      {entries.map((entry) => <Card entry={entry} />)}
+    </div>
+    <p class="empty meta" id="empty" hidden>Nothing here yet — the bar stays high.</p>
+  </main>
+
+  <footer class="footer">
+    <p class="meta">Full Bleed — curated by a working creative, credited to the makers, linked to the source.</p>
+  </footer>
+</Base>
+
+<style>
+  .masthead {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .masthead-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: var(--s8) var(--s6) var(--s6);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s4);
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .reg {
+    color: var(--accent);
+    font-weight: 400;
+    font-size: 0.5em;
+    vertical-align: super;
+    margin-left: 0.25em;
+  }
+
+  .tagline {
+    color: var(--ink-50);
+    margin: 0;
+  }
+
+  .filters {
+    position: sticky;
+    top: 0;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+    z-index: 30;
+  }
+
+  .filters-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: var(--s3) var(--s6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s4);
+    flex-wrap: wrap;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: var(--s2);
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: var(--s2) var(--s3);
+    color: var(--ink-50);
+    transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .chip:hover {
+    color: var(--ink);
+  }
+
+  .chip.is-active {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .current-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    color: var(--ink-50);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .current-toggle input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .switch {
+    width: 28px;
+    height: 16px;
+    border: 1px solid var(--ink-35);
+    border-radius: 999px;
+    position: relative;
+    transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ink-35);
+    transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  }
+
+  .current-toggle input:checked + .switch {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .current-toggle input:checked + .switch::after {
+    transform: translateX(12px);
+    background: var(--paper);
+  }
+
+  .current-toggle input:focus-visible + .switch {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .filters-inner {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-left: var(--s4);
+      padding-right: var(--s4);
+    }
+
+    .filters-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-group {
+      flex-wrap: nowrap;
+    }
+
+    .chip,
+    .current-toggle {
+      white-space: nowrap;
+      flex: none;
+    }
+  }
+
+  .catalog {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: var(--s8) var(--s6) var(--s16);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--s8) var(--s6);
+  }
+
+  .empty {
+    color: var(--ink-50);
+    text-align: center;
+    padding: var(--s16) 0;
+  }
+
+  .footer {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s8) var(--s6);
+    color: var(--ink-50);
+    text-align: center;
+  }
+</style>
+
+<script>
+  const grid = document.getElementById("grid")!;
+  const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
+  const emptyMsg = document.getElementById("empty")!;
+  const HOVER_INTENT_MS = 350;
+  const canHover = window.matchMedia("(hover: hover)").matches;
+
+  /* ---- hover-expand with intent delay (desktop) ---- */
+  if (canHover) {
+    let timer: number | undefined;
+    let open: HTMLElement | null = null;
+
+    const close = () => {
+      open?.classList.remove("is-open");
+      open = null;
+    };
+
+    for (const card of cards) {
+      card.addEventListener("mouseenter", () => {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => {
+          close();
+          card.classList.add("is-open");
+          open = card;
+        }, HOVER_INTENT_MS);
+      });
+      card.addEventListener("mouseleave", () => {
+        window.clearTimeout(timer);
+        if (open === card) close();
+      });
+    }
+  } else {
+    /* ---- mobile: first tap expands, second tap navigates ---- */
+    let open: HTMLElement | null = null;
+    for (const card of cards) {
+      const link = card.querySelector<HTMLAnchorElement>(".card-link")!;
+      link.addEventListener("click", (e) => {
+        if (open !== card) {
+          e.preventDefault();
+          open?.classList.remove("is-open");
+          card.classList.add("is-open");
+          open = card;
+        }
+      });
+    }
+    document.addEventListener("click", (e) => {
+      if (open && !open.contains(e.target as Node)) {
+        open.classList.remove("is-open");
+        open = null;
+      }
+    });
+  }
+
+  /* ---- filtering ---- */
+  const chips = [...document.querySelectorAll<HTMLButtonElement>(".chip")];
+  const currentOnly = document.getElementById("current-only") as HTMLInputElement;
+  let activeCategory = "all";
+
+  function apply() {
+    let visible = 0;
+    for (const card of cards) {
+      const catOk = activeCategory === "all" || card.dataset.category === activeCategory;
+      const freshOk = !currentOnly.checked || card.dataset.superseded !== "true";
+      const show = catOk && freshOk;
+      card.style.display = show ? "" : "none";
+      if (show) visible++;
+    }
+    emptyMsg.hidden = visible > 0;
+  }
+
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+      activeCategory = chip.dataset.filter ?? "all";
+      apply();
+    });
+  }
+  currentOnly.addEventListener("change", apply);
+</script>

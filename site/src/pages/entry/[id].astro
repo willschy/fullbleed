@@ -1,0 +1,225 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("entries");
+  return entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+const CATEGORY_LABELS: Record<string, string> = {
+  "client-work": "Client Work",
+  "tools-you-can-steal": "Steal This",
+  "new-possible": "New Possible",
+  "business-plays": "Business Play",
+};
+
+const stamp = d.date
+  .toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })
+  .replace(",", "")
+  .toUpperCase();
+
+const allEntries = await getCollection("entries");
+const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededBy) : null;
+---
+
+<Base title={`${d.title} — Full Bleed`} description={d.hoverWhat}>
+  <header class="topbar">
+    <a class="back meta" href="/">← Full Bleed</a>
+    <span class="meta crumb">{CATEGORY_LABELS[d.category]}</span>
+  </header>
+
+  <main class="entry">
+    {successor && (
+      <aside class="superseded-banner">
+        <span class="meta">Superseded</span>
+        <a href={`/entry/${successor.id}/`}>A newer approach replaced this one — see “{successor.data.title}” →</a>
+      </aside>
+    )}
+
+    {d.thumbnail && (
+      <figure class="hero">
+        <img src={d.thumbnail} alt={d.title} width="1200" height="800" />
+      </figure>
+    )}
+
+    <div class="head">
+      <h1>{d.title}</h1>
+      <div class="stampline meta">
+        <span>{stamp}</span>
+        {d.modelVersions && <span class="sep" aria-hidden="true">·</span>}
+        {d.modelVersions && <span>{d.modelVersions}</span>}
+      </div>
+    </div>
+
+    <section class="scan">
+      <p class="what">{d.hoverWhat}</p>
+      <p class="why">{d.hoverWhy}</p>
+    </section>
+
+    <article class="body">
+      <Content />
+    </article>
+
+    <footer class="credit">
+      <p class="meta">
+        via <a href={d.source.permalink} rel="noopener">u/{d.source.author} on r/{d.source.subreddit}</a>
+        {d.source.outboundUrl && (
+          <> · <a href={d.source.outboundUrl} rel="noopener">project link</a></>
+        )}
+      </p>
+      <p class="meta tags">
+        {[...d.tools, ...d.disciplines].join(" · ")}
+      </p>
+    </footer>
+  </main>
+</Base>
+
+<style>
+  .topbar {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: var(--s6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .back {
+    text-decoration: none;
+    color: var(--ink-50);
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .back:hover {
+    color: var(--ink);
+  }
+
+  .crumb {
+    color: var(--ink-50);
+  }
+
+  .entry {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 var(--s6) var(--s16);
+  }
+
+  .superseded-banner {
+    display: flex;
+    gap: var(--s3);
+    align-items: baseline;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: var(--s3) var(--s4);
+    margin-bottom: var(--s6);
+  }
+
+  .superseded-banner .meta {
+    color: var(--accent);
+  }
+
+  .superseded-banner a {
+    font-size: 0.875rem;
+  }
+
+  .hero {
+    margin: 0;
+  }
+
+  .hero img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+  }
+
+  .head {
+    margin-top: var(--s8);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .stampline {
+    margin-top: var(--s3);
+    color: var(--ink-50);
+    display: flex;
+    gap: var(--s2);
+  }
+
+  .scan {
+    margin-top: var(--s6);
+    padding-top: var(--s6);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .what {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .why {
+    margin: var(--s4) 0 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--ink-70);
+    border-left: 2px solid var(--accent);
+    padding-left: var(--s4);
+  }
+
+  .body {
+    margin-top: var(--s8);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 68ch;
+  }
+
+  .body :global(h2) {
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    margin: var(--s8) 0 var(--s3);
+    padding-top: var(--s6);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .body :global(ol) {
+    padding-left: 1.25rem;
+  }
+
+  .body :global(li) {
+    margin-bottom: var(--s2);
+  }
+
+  .credit {
+    margin-top: var(--s12);
+    padding-top: var(--s6);
+    border-top: 1px solid var(--hairline);
+    color: var(--ink-50);
+  }
+
+  .credit p {
+    margin: 0 0 var(--s2);
+  }
+
+  .credit a {
+    color: var(--ink-70);
+  }
+
+  .tags {
+    color: var(--ink-35);
+  }
+</style>
