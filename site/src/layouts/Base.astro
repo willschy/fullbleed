@@ -25,6 +25,19 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
       rel="stylesheet"
     />
     <ClientRouter />
+    <script is:inline>
+      // theme init before first paint — no flash; reapplied after client-side swaps
+      (function () {
+        const apply = () => {
+          const theme =
+            localStorage.getItem("fb-theme") ??
+            (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = theme;
+        };
+        apply();
+        document.addEventListener("astro:after-swap", apply);
+      })();
+    </script>
   </head>
   <body>
     <slot />

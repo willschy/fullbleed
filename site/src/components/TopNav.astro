@@ -26,6 +26,15 @@ const { showSearch = false } = Astro.props;
     <nav class="topnav-links" aria-label="Site">
       <a href="/about/" class="topnav-link">About</a>
       <a href="#newsletter" class="topnav-link">Newsletter</a>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" />
+          <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5m14 0h2.5M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19" />
+        </svg>
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z" />
+        </svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -88,7 +97,7 @@ const { showSearch = false } = Astro.props;
     height: 38px;
     border: 1px solid transparent;
     border-radius: var(--r-pill);
-    background: rgba(19, 19, 18, 0.05);
+    background: var(--fill-1);
     padding: 0 var(--s4) 0 38px;
     font-family: var(--font-sans);
     font-size: 0.875rem;
@@ -104,7 +113,7 @@ const { showSearch = false } = Astro.props;
   }
 
   .search input:hover {
-    background: rgba(19, 19, 18, 0.07);
+    background: var(--fill-2);
   }
 
   .search input:focus {
@@ -132,7 +141,40 @@ const { showSearch = false } = Astro.props;
 
   .topnav-link:hover {
     color: var(--ink);
-    background: rgba(19, 19, 18, 0.05);
+    background: var(--fill-1);
+  }
+
+  .theme-btn {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: none;
+    background: none;
+    border-radius: var(--r-pill);
+    color: var(--ink-50);
+    transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-spring);
+  }
+
+  .theme-btn:hover {
+    color: var(--ink);
+    background: var(--fill-1);
+  }
+
+  .theme-btn:active {
+    transform: scale(0.9);
+  }
+
+  .icon-sun {
+    display: none;
+  }
+
+  :global(html[data-theme="dark"]) .icon-sun {
+    display: block;
+  }
+
+  :global(html[data-theme="dark"]) .icon-moon {
+    display: none;
   }
 
   .search-kbd {
@@ -181,6 +223,15 @@ const { showSearch = false } = Astro.props;
 </style>
 
 <script>
+  // theme toggle — persisted, survives client-side routing
+  document.addEventListener("click", (e) => {
+    if (!(e.target as HTMLElement).closest("#theme-toggle")) return;
+    const html = document.documentElement;
+    const next = html.dataset.theme === "dark" ? "light" : "dark";
+    html.dataset.theme = next;
+    localStorage.setItem("fb-theme", next);
+  });
+
   // "/" focuses search from anywhere (Linear/GitHub convention)
   document.addEventListener("keydown", (e) => {
     if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
