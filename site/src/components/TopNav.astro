@@ -7,7 +7,7 @@ const { showSearch = false } = Astro.props;
 ---
 
 <header class="topnav">
-  <div class="topnav-inner">
+  <div class="topnav-inner" data-search={showSearch ? "true" : "false"}>
     <a class="wordmark" href="/" aria-label="Full Bleed home">
       FULL BLEED<span class="reg" aria-hidden="true">⌖</span>
     </a>
@@ -22,7 +22,7 @@ const { showSearch = false } = Astro.props;
       </div>
     )}
 
-    <nav class="topnav-links meta" aria-label="Site">
+    <nav class="topnav-links" aria-label="Site">
       <a href="/about/" class="topnav-link">About</a>
       <a href="#newsletter" class="topnav-link">Newsletter</a>
     </nav>
@@ -34,28 +34,29 @@ const { showSearch = false } = Astro.props;
     position: sticky;
     top: 0;
     z-index: 40;
-    background: color-mix(in srgb, var(--paper) 94%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--hairline);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
   .topnav-inner {
     max-width: var(--maxw);
     margin: 0 auto;
     padding: 0 var(--s6);
-    height: 56px;
-    display: flex;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: var(--s8);
+    gap: var(--s6);
   }
 
   .wordmark {
-    font-size: 1.0625rem;
+    justify-self: start;
+    font-size: 1rem;
     font-weight: var(--w-display);
     letter-spacing: 0.01em;
     text-decoration: none;
     white-space: nowrap;
-    flex: none;
   }
 
   .reg {
@@ -66,15 +67,15 @@ const { showSearch = false } = Astro.props;
     margin-left: 0.2em;
   }
 
+  /* search sits dead-center of the page */
   .search {
     position: relative;
-    flex: 1;
-    max-width: 420px;
+    width: min(440px, 42vw);
   }
 
   .search-icon {
     position: absolute;
-    left: 12px;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--ink-35);
@@ -83,15 +84,18 @@ const { showSearch = false } = Astro.props;
 
   .search input {
     width: 100%;
-    height: 36px;
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-    background: var(--surface);
-    padding: 0 var(--s4) 0 34px;
+    height: 38px;
+    border: 1px solid transparent;
+    border-radius: var(--r-pill);
+    background: rgba(19, 19, 18, 0.05);
+    padding: 0 var(--s4) 0 38px;
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--ink);
-    transition: border-color var(--dur-fast) var(--ease-out);
+    transition:
+      background var(--dur-fast) var(--ease-out),
+      border-color var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur) var(--ease-out);
   }
 
   .search input::placeholder {
@@ -99,34 +103,47 @@ const { showSearch = false } = Astro.props;
   }
 
   .search input:hover {
-    border-color: var(--ink-35);
+    background: rgba(19, 19, 18, 0.07);
   }
 
   .search input:focus {
     outline: none;
-    border-color: var(--ink);
+    background: var(--surface);
+    border-color: var(--hairline);
+    box-shadow: var(--shadow-rest);
   }
 
   .topnav-links {
-    margin-left: auto;
+    justify-self: end;
     display: flex;
-    gap: var(--s6);
+    gap: var(--s2);
   }
 
   .topnav-link {
     text-decoration: none;
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
     color: var(--ink-50);
-    transition: color var(--dur-fast) var(--ease-out);
+    padding: var(--s2) var(--s3);
+    border-radius: var(--r-pill);
+    transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
   }
 
   .topnav-link:hover {
     color: var(--ink);
+    background: rgba(19, 19, 18, 0.05);
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 720px) {
     .topnav-inner {
+      grid-template-columns: auto 1fr;
       gap: var(--s4);
       padding: 0 var(--s4);
+    }
+
+    .search {
+      width: 100%;
+      justify-self: stretch;
     }
 
     .topnav-links {

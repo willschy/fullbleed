@@ -9,144 +9,231 @@ const entries = (await getCollection("entries")).sort(
 );
 
 const categories = [
+  { id: "all", label: "All" },
   { id: "client-work", label: "Client Work" },
   { id: "tools-you-can-steal", label: "Steal This" },
   { id: "new-possible", label: "New Possible" },
   { id: "business-plays", label: "Business Plays" },
-].map((c) => ({ ...c, count: entries.filter((e) => e.data.category === c.id).length }));
+];
 
 const toolCounts = new Map<string, number>();
 for (const e of entries) for (const t of e.data.tools) toolCounts.set(t, (toolCounts.get(t) ?? 0) + 1);
-const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count }));
+const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name]) => name);
 ---
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
   <TopNav showSearch={true} />
 
-  <div class="shell">
-    <aside class="rail" aria-label="Catalog filters">
-      <section class="facet">
-        <h2 class="facet-title meta">Category</h2>
-        <button class="facet-row is-active" data-facet="category" data-value="all">
-          <span>All</span><span class="count meta">{entries.length}</span>
-        </button>
-        {categories.map((c) => (
-          <button class="facet-row" data-facet="category" data-value={c.id}>
-            <span>{c.label}</span><span class="count meta">{c.count}</span>
-          </button>
-        ))}
-      </section>
+  <main class="catalog">
+    <div class="grid" id="grid">
+      {entries.map((entry, i) => <Card entry={entry} index={i} />)}
+    </div>
+    <p class="empty" id="empty" hidden>Nothing here yet — the bar stays high.</p>
+  </main>
 
-      <section class="facet">
-        <h2 class="facet-title meta">Tool</h2>
-        <button class="facet-row is-active" data-facet="tool" data-value="all">
-          <span>All</span><span class="count meta">{entries.length}</span>
-        </button>
+  <div class="dock" id="dock">
+    <div class="dock-panel" id="dock-panel">
+      <p class="panel-label">Tool</p>
+      <div class="panel-chips" id="tool-chips">
+        <button class="chip is-active" data-facet="tool" data-value="all">All</button>
         {tools.map((t) => (
-          <button class="facet-row" data-facet="tool" data-value={t.name}>
-            <span>{t.name}</span><span class="count meta">{t.count}</span>
-          </button>
+          <button class="chip" data-facet="tool" data-value={t}>{t}</button>
         ))}
-      </section>
-
-      <section class="facet">
-        <h2 class="facet-title meta">Freshness</h2>
+      </div>
+      <div class="panel-foot">
         <label class="current-toggle">
           <input type="checkbox" id="current-only" />
           <span class="switch" aria-hidden="true"></span>
-          <span class="toggle-label">Current only</span>
+          Current only
         </label>
-        <p class="facet-hint">Hides superseded workflows — only approaches that are still the best way.</p>
-      </section>
-    </aside>
+        <span class="result-count" id="result-count">{entries.length} entries</span>
+      </div>
+    </div>
 
-    <main class="catalog">
-      <div class="resultbar">
-        <p class="meta" id="result-count">{entries.length} entries</p>
-      </div>
-      <div class="grid" id="grid">
-        {entries.map((entry) => <Card entry={entry} />)}
-      </div>
-      <p class="empty meta" id="empty" hidden>Nothing here yet — the bar stays high.</p>
-    </main>
+    <div class="dock-bar">
+      {categories.map((c, i) => (
+        <button class={`chip dock-chip ${i === 0 ? "is-active" : ""}`} data-facet="category" data-value={c.id}>
+          {c.label}
+        </button>
+      ))}
+      <span class="dock-divider" aria-hidden="true"></span>
+      <button class="chip dock-chip dock-more" id="dock-more" aria-expanded="false" aria-controls="dock-panel">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M7 12h10M10 17h4" />
+        </svg>
+        Filters
+        <span class="more-dot" id="more-dot" hidden></span>
+      </button>
+    </div>
   </div>
 </Base>
 
 <style>
-  .shell {
+  .catalog {
     max-width: var(--maxw);
     margin: 0 auto;
+    padding: var(--s6) var(--s6) calc(var(--s16) + 96px);
   }
 
-  /* ---------- left rail ---------- */
-  .rail {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s8);
-    padding: var(--s8) var(--s6);
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--s4);
   }
 
-  .facet {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .facet-title {
-    color: var(--ink-35);
-    margin: 0 0 var(--s2);
-    font-weight: var(--w-med);
-  }
-
-  .facet-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--s3);
-    background: none;
-    border: none;
-    padding: var(--s2) var(--s2);
-    margin: 0 calc(-1 * var(--s2));
-    border-radius: 4px;
-    font-family: var(--font-sans);
+  .empty {
+    color: var(--ink-50);
+    text-align: center;
+    padding: var(--s16) 0;
     font-size: 0.875rem;
-    font-weight: var(--w-body);
-    color: var(--ink-70);
-    text-align: left;
-    transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
   }
 
-  .facet-row:hover {
-    background: rgba(19, 19, 18, 0.045);
-    color: var(--ink);
+  /* ---------- floating dock ---------- */
+  .dock {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s2);
+    width: max-content;
+    max-width: calc(100vw - 24px);
   }
 
-  .facet-row.is-active {
-    color: var(--ink);
+  .dock-bar {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 5px;
+    background: var(--glass);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(19, 19, 18, 0.07);
+    border-radius: var(--r-pill);
+    box-shadow: var(--shadow-dock);
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .dock-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    border: none;
+    background: none;
+    border-radius: var(--r-pill);
+    padding: 8px 14px;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
     font-weight: var(--w-med);
+    color: var(--ink-50);
+    white-space: nowrap;
+    transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  }
+
+  .chip:hover {
+    color: var(--ink);
     background: rgba(19, 19, 18, 0.06);
   }
 
-  .facet-row.is-active span:first-child::before {
-    content: "";
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-right: 0.55em;
-    vertical-align: 0.18em;
+  .chip.is-active {
+    background: var(--ink);
+    color: var(--paper);
   }
 
-  .count {
+  .dock-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--hairline);
+    margin: 0 3px;
+    flex: none;
+  }
+
+  .dock-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .more-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* expanding panel */
+  .dock-panel {
+    width: min(520px, calc(100vw - 24px));
+    background: var(--glass);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(19, 19, 18, 0.07);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-dock);
+    padding: var(--s4);
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    pointer-events: none;
+    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-spring);
+  }
+
+  .dock.is-open .dock-panel {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .panel-label {
+    margin: 0 0 var(--s2);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--ink-35);
+  }
+
+  .panel-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .panel-chips .chip {
+    padding: 6px 12px;
+    background: rgba(19, 19, 18, 0.05);
+  }
+
+  .panel-chips .chip:hover {
+    background: rgba(19, 19, 18, 0.09);
+  }
+
+  .panel-chips .chip.is-active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .panel-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--s4);
+    padding-top: var(--s3);
+    border-top: 1px solid var(--hairline);
   }
 
   .current-toggle {
     display: flex;
     align-items: center;
-    gap: var(--s3);
-    padding: var(--s2) 0;
-    font-size: 0.875rem;
+    gap: var(--s2);
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
     color: var(--ink-70);
     cursor: pointer;
     user-select: none;
@@ -160,11 +247,11 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   .switch {
     width: 30px;
     height: 18px;
-    border: 1px solid var(--ink-35);
-    border-radius: 999px;
+    border-radius: var(--r-pill);
+    background: rgba(19, 19, 18, 0.14);
     position: relative;
     flex: none;
-    transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    transition: background var(--dur-fast) var(--ease-out);
   }
 
   .switch::after {
@@ -172,21 +259,20 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--ink-35);
-    transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(19, 19, 18, 0.25);
+    transition: transform var(--dur-fast) var(--ease-spring);
   }
 
   .current-toggle input:checked + .switch {
     background: var(--ink);
-    border-color: var(--ink);
   }
 
   .current-toggle input:checked + .switch::after {
     transform: translateX(12px);
-    background: var(--paper);
   }
 
   .current-toggle input:focus-visible + .switch {
@@ -194,100 +280,26 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     outline-offset: 2px;
   }
 
-  .facet-hint {
-    margin: var(--s2) 0 0;
-    font-size: 0.75rem;
-    line-height: 1.5;
+  .result-count {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--ink-35);
   }
 
-  /* ---------- catalog ---------- */
-  .catalog {
-    padding: var(--s6) var(--s6) var(--s16);
-  }
-
-  .resultbar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: var(--s4);
-  }
-
-  .resultbar p {
-    margin: 0;
-    color: var(--ink-35);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--s8) var(--s6);
-  }
-
-  .empty {
-    color: var(--ink-50);
-    text-align: center;
-    padding: var(--s16) 0;
-  }
-
-  /* ---------- desktop: pinned rail ---------- */
-  @media (min-width: 1024px) {
-    .shell {
-      display: grid;
-      grid-template-columns: 232px 1fr;
-    }
-
-    .rail {
-      position: sticky;
-      top: 56px;
-      height: calc(100dvh - 56px);
-      overflow-y: auto;
-      border-right: 1px solid var(--hairline);
-    }
-  }
-
-  /* ---------- mobile/tablet ---------- */
-  @media (max-width: 1023px) {
-    .rail {
-      flex-direction: row;
-      align-items: center;
-      gap: var(--s6);
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding: var(--s3) var(--s4);
-      border-bottom: 1px solid var(--hairline);
-    }
-
-    .rail::-webkit-scrollbar {
-      display: none;
-    }
-
-    .facet {
-      flex-direction: row;
-      align-items: center;
-      gap: var(--s2);
-      flex: none;
-    }
-
-    .facet-title {
-      margin: 0 var(--s2) 0 0;
-    }
-
-    .facet-row {
-      white-space: nowrap;
-      margin: 0;
-    }
-
-    .count,
-    .facet-hint {
-      display: none;
-    }
-
-    .toggle-label {
-      white-space: nowrap;
-    }
-
+  @media (max-width: 640px) {
     .catalog {
-      padding: var(--s4) var(--s4) var(--s12);
+      padding: var(--s4) var(--s3) calc(var(--s16) + 88px);
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--s3);
+    }
+
+    .dock {
+      bottom: 14px;
     }
   }
 </style>
@@ -299,7 +311,7 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   const resultCount = document.getElementById("result-count")!;
   const canHover = window.matchMedia("(hover: hover)").matches;
 
-  /* ---- hover-expand, instant (desktop) ---- */
+  /* ---- hover reveal, instant ---- */
   if (canHover) {
     let open: HTMLElement | null = null;
     for (const card of cards) {
@@ -316,7 +328,6 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
       });
     }
   } else {
-    /* ---- mobile: first tap expands, second tap navigates ---- */
     let open: HTMLElement | null = null;
     for (const card of cards) {
       const link = card.querySelector<HTMLAnchorElement>(".card-link")!;
@@ -337,8 +348,25 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     });
   }
 
-  /* ---- faceted filtering + search ---- */
-  const facetRows = [...document.querySelectorAll<HTMLButtonElement>(".facet-row")];
+  /* ---- dock expand ---- */
+  const dock = document.getElementById("dock")!;
+  const moreBtn = document.getElementById("dock-more")!;
+  const moreDot = document.getElementById("more-dot")!;
+
+  moreBtn.addEventListener("click", () => {
+    const isOpen = dock.classList.toggle("is-open");
+    moreBtn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (dock.classList.contains("is-open") && !dock.contains(e.target as Node)) {
+      dock.classList.remove("is-open");
+      moreBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  /* ---- filtering ---- */
+  const facetChips = [...document.querySelectorAll<HTMLButtonElement>("[data-facet]")];
   const currentOnly = document.getElementById("current-only") as HTMLInputElement;
   const searchInput = document.getElementById("search-input") as HTMLInputElement | null;
   const state = { category: "all", tool: "all", query: "" };
@@ -356,15 +384,16 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     }
     emptyMsg.hidden = visible > 0;
     resultCount.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+    moreDot.hidden = state.tool === "all" && !currentOnly.checked;
   }
 
-  for (const row of facetRows) {
-    row.addEventListener("click", () => {
-      const facet = row.dataset.facet as "category" | "tool";
-      state[facet] = row.dataset.value ?? "all";
-      facetRows
-        .filter((r) => r.dataset.facet === facet)
-        .forEach((r) => r.classList.toggle("is-active", r === row));
+  for (const chip of facetChips) {
+    chip.addEventListener("click", () => {
+      const facet = chip.dataset.facet as "category" | "tool";
+      state[facet] = chip.dataset.value ?? "all";
+      facetChips
+        .filter((c) => c.dataset.facet === facet)
+        .forEach((c) => c.classList.toggle("is-active", c === chip));
       apply();
     });
   }

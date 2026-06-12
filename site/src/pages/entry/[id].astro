@@ -19,10 +19,9 @@ const CATEGORY_LABELS: Record<string, string> = {
   "business-plays": "Business Play",
 };
 
-const stamp = d.date
-  .toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })
-  .replace(",", "")
-  .toUpperCase();
+const ageDays = (Date.now() - d.date.valueOf()) / 86_400_000;
+const freshness = d.supersededBy ? "superseded" : ageDays <= 30 ? "fresh" : ageDays <= 180 ? "aging" : "old";
+const stamp = d.date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
 const allEntries = await getCollection("entries");
 const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededBy) : null;
@@ -32,195 +31,384 @@ const successor = d.supersededBy ? allEntries.find((e) => e.id === d.supersededB
   <TopNav />
 
   <main class="entry">
-    <div class="crumbline">
-      <a class="back meta" href="/">← Catalog</a>
-      <span class="meta crumb">{CATEGORY_LABELS[d.category]}</span>
-    </div>
+    <figure class="hero">
+      {d.thumbnail && <img src={d.thumbnail} alt={d.title} width="1200" height="800" />}
+      <a class="hero-back" href="/">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5m6-7-7 7 7 7" />
+        </svg>
+        Catalog
+      </a>
+      {successor && (
+        <a class="hero-superseded" href={`/entry/${successor.id}/`}>
+          <span class="sup-label">Superseded</span>
+          <span>A newer approach replaced this — see “{successor.data.title}”</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14m-7-7 7 7-7 7" />
+          </svg>
+        </a>
+      )}
+    </figure>
 
-    {successor && (
-      <aside class="superseded-banner">
-        <span class="meta">Superseded</span>
-        <a href={`/entry/${successor.id}/`}>A newer approach replaced this one — see “{successor.data.title}” →</a>
-      </aside>
-    )}
+    <div class="layout">
+      <div class="main-col">
+        <div class="titleblock">
+          <h1>{d.title}</h1>
+          <p class="standfirst">{d.hoverWhat}</p>
+          <p class="why">{d.hoverWhy}</p>
+        </div>
 
-    {d.thumbnail && (
-      <figure class="hero">
-        <img src={d.thumbnail} alt={d.title} width="1200" height="800" />
-      </figure>
-    )}
-
-    <div class="head">
-      <h1>{d.title}</h1>
-      <div class="stampline meta">
-        <span>{stamp}</span>
-        {d.modelVersions && <span class="sep" aria-hidden="true">·</span>}
-        {d.modelVersions && <span>{d.modelVersions}</span>}
+        <article class="body">
+          <Content />
+        </article>
       </div>
+
+      <aside class="infocard">
+        <div class="info-section">
+          <p class="info-label">Category</p>
+          <span class="pill pill-ink">{CATEGORY_LABELS[d.category]}</span>
+        </div>
+
+        <div class="info-section">
+          <p class="info-label">Stack</p>
+          <div class="pill-row">
+            {d.tools.map((t) => <span class="pill">{t}</span>)}
+          </div>
+          {d.modelVersions && <p class="info-fine">{d.modelVersions}</p>}
+        </div>
+
+        <div class="info-section">
+          <p class="info-label">Freshness</p>
+          <p class={`info-fresh is-${freshness}`}>
+            {freshness === "fresh" && <span class="dot" aria-hidden="true"></span>}
+            {stamp}
+          </p>
+        </div>
+
+        <div class="info-section">
+          <p class="info-label">Source</p>
+          <a class="info-link" href={d.source.permalink} rel="noopener">
+            u/{d.source.author} · r/{d.source.subreddit}
+          </a>
+          {d.source.outboundUrl && (
+            <a class="info-link" href={d.source.outboundUrl} rel="noopener">Project link ↗</a>
+          )}
+        </div>
+
+        <p class="info-credit">Their work. We just pointed at it.</p>
+      </aside>
     </div>
-
-    <section class="scan">
-      <p class="what">{d.hoverWhat}</p>
-      <p class="why">{d.hoverWhy}</p>
-    </section>
-
-    <article class="body">
-      <Content />
-    </article>
-
-    <footer class="credit">
-      <p class="meta">
-        via <a href={d.source.permalink} rel="noopener">u/{d.source.author} on r/{d.source.subreddit}</a>
-        {d.source.outboundUrl && (
-          <> · <a href={d.source.outboundUrl} rel="noopener">project link</a></>
-        )}
-      </p>
-      <p class="meta tags">
-        {[...d.tools, ...d.disciplines].join(" · ")}
-      </p>
-    </footer>
   </main>
 </Base>
 
 <style>
-  .crumbline {
-    padding: var(--s6) 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .back {
-    text-decoration: none;
-    color: var(--ink-50);
-    transition: color var(--dur-fast) var(--ease-out);
-  }
-
-  .back:hover {
-    color: var(--ink);
-  }
-
-  .crumb {
-    color: var(--ink-50);
-  }
-
   .entry {
-    max-width: 860px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0 var(--s6) var(--s16);
+    padding: var(--s4) var(--s6) var(--s16);
   }
 
-  .superseded-banner {
-    display: flex;
-    gap: var(--s3);
-    align-items: baseline;
-    border: 1px solid var(--accent);
-    border-radius: var(--radius);
-    padding: var(--s3) var(--s4);
-    margin-bottom: var(--s6);
-  }
-
-  .superseded-banner .meta {
-    color: var(--accent);
-  }
-
-  .superseded-banner a {
-    font-size: 0.875rem;
-  }
-
+  /* ---------- hero ---------- */
   .hero {
+    position: relative;
     margin: 0;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-rest);
+    animation: hero-in 0.6s var(--ease-out) backwards;
+  }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.995);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .hero img {
     width: 100%;
-    height: auto;
-    border-radius: var(--radius);
+    max-height: 64vh;
+    object-fit: cover;
   }
 
-  .head {
+  .hero-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    border-radius: var(--r-pill);
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 12px rgba(10, 10, 9, 0.12);
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform var(--dur-fast) var(--ease-spring), box-shadow var(--dur-fast) var(--ease-out);
+  }
+
+  .hero-back:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(10, 10, 9, 0.18);
+  }
+
+  .hero-superseded {
+    position: absolute;
+    inset-inline: 16px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--s3);
+    padding: var(--s3) var(--s4);
+    border-radius: var(--r-md);
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-size: 0.8438rem;
+    font-weight: var(--w-med);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .hero-superseded:hover {
+    transform: translateY(-2px);
+  }
+
+  .sup-label {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.6563rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    flex: none;
+  }
+
+  .hero-superseded svg {
+    margin-left: auto;
+    flex: none;
+    color: var(--ink-50);
+  }
+
+  /* ---------- two-column layout ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s8);
     margin-top: var(--s8);
   }
 
-  h1 {
+  @media (min-width: 900px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--s12);
+    }
+  }
+
+  .titleblock h1 {
     margin: 0;
-    font-size: clamp(1.625rem, 4vw, 2.5rem);
+    font-size: clamp(1.625rem, 3.6vw, 2.375rem);
     font-weight: var(--w-display);
     letter-spacing: -0.02em;
     line-height: 1.12;
   }
 
-  .stampline {
-    margin-top: var(--s3);
-    color: var(--ink-50);
-    display: flex;
-    gap: var(--s2);
-  }
-
-  .scan {
-    margin-top: var(--s6);
-    padding-top: var(--s6);
-    border-top: 1px solid var(--hairline);
-  }
-
-  .what {
-    margin: 0;
-    font-size: 1.125rem;
-    line-height: 1.6;
+  .standfirst {
+    margin: var(--s4) 0 0;
+    font-size: 1.0938rem;
+    line-height: 1.62;
+    color: var(--ink);
   }
 
   .why {
     margin: var(--s4) 0 0;
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1.0938rem;
+    line-height: 1.62;
     color: var(--ink-70);
-    border-left: 2px solid var(--accent);
+    border-left: 2.5px solid var(--accent);
     padding-left: var(--s4);
   }
 
+  /* ---------- body ---------- */
   .body {
     margin-top: var(--s8);
-    font-size: 1rem;
+    font-size: 0.9688rem;
     line-height: 1.7;
-    max-width: 68ch;
-  }
-
-  .body :global(h2) {
-    font-size: 0.8125rem;
-    font-family: var(--font-mono);
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-50);
-    margin: var(--s8) 0 var(--s3);
-    padding-top: var(--s6);
-    border-top: 1px solid var(--hairline);
-  }
-
-  .body :global(ol) {
-    padding-left: 1.25rem;
-  }
-
-  .body :global(li) {
-    margin-bottom: var(--s2);
-  }
-
-  .credit {
-    margin-top: var(--s12);
-    padding-top: var(--s6);
-    border-top: 1px solid var(--hairline);
-    color: var(--ink-50);
-  }
-
-  .credit p {
-    margin: 0 0 var(--s2);
-  }
-
-  .credit a {
     color: var(--ink-70);
   }
 
-  .tags {
+  .body :global(h2) {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     color: var(--ink-35);
+    margin: var(--s8) 0 var(--s4);
+  }
+
+  .body :global(ol) {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+  }
+
+  .body :global(ol li) {
+    counter-increment: step;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid rgba(19, 19, 18, 0.06);
+    border-radius: var(--r-md);
+    padding: var(--s3) var(--s4) var(--s3) 52px;
+    box-shadow: 0 1px 2px rgba(19, 19, 18, 0.03);
+  }
+
+  .body :global(ol li)::before {
+    content: counter(step);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(19, 19, 18, 0.06);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .body :global(p) {
+    margin: 0 0 var(--s3);
+  }
+
+  /* ---------- info card ---------- */
+  .infocard {
+    align-self: start;
+    position: sticky;
+    top: 76px;
+    background: var(--surface);
+    border: 1px solid rgba(19, 19, 18, 0.06);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-rest);
+    padding: var(--s6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s6);
+    animation: hero-in 0.6s var(--ease-out) 0.12s backwards;
+  }
+
+  .info-label {
+    margin: 0 0 var(--s2);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-35);
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: var(--r-pill);
+    background: rgba(19, 19, 18, 0.05);
+    font-size: 0.75rem;
+    font-weight: var(--w-med);
+    color: var(--ink-70);
+  }
+
+  .pill-ink {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .info-fine {
+    margin: var(--s2) 0 0;
+    font-size: 0.75rem;
+    color: var(--ink-35);
+  }
+
+  .info-fresh {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    font-size: 0.8438rem;
+    font-weight: var(--w-med);
+  }
+
+  .info-fresh.is-aging,
+  .info-fresh.is-old {
+    color: var(--ink-50);
+  }
+
+  .info-fresh.is-superseded {
+    color: var(--ink-35);
+    text-decoration: line-through;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
+  .info-link {
+    display: block;
+    font-size: 0.8438rem;
+    font-weight: var(--w-med);
+    color: var(--ink);
+    text-decoration: none;
+    padding: var(--s2) 0;
+    border-bottom: 1px solid var(--hairline);
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .info-link:last-of-type {
+    border-bottom: none;
+  }
+
+  .info-link:hover {
+    color: var(--accent);
+  }
+
+  .info-credit {
+    margin: 0;
+    padding-top: var(--s4);
+    border-top: 1px solid var(--hairline);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--ink-35);
+  }
+
+  @media (max-width: 899px) {
+    .infocard {
+      position: static;
+    }
   }
 </style>
