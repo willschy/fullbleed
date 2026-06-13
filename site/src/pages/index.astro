@@ -21,7 +21,7 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 ---
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
-  <TopNav showSearch={true} />
+  <TopNav />
 
   <div class="shell">
     <aside class="rail" aria-label="Filters">
@@ -506,7 +506,11 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   document.addEventListener("astro:page-load", () => {
     state.category = "all";
     state.tool = "all";
-    state.query = "";
+    // honor a search arriving from another page (?q=…)
+    const q = new URLSearchParams(window.location.search).get("q") ?? "";
+    state.query = q.trim().toLowerCase();
+    const searchInput = document.getElementById("search-input") as HTMLInputElement | null;
+    if (searchInput && q) searchInput.value = q;
     apply(false);
   });
 </script>

@@ -1,27 +1,20 @@
 ---
-interface Props {
-  showSearch?: boolean;
-}
-
-const { showSearch = false } = Astro.props;
 ---
 
 <header class="topnav">
-  <div class="topnav-inner" data-search={showSearch ? "true" : "false"}>
+  <div class="topnav-inner">
     <a class="wordmark" href="/" aria-label="Full Bleed home">
       FULL BLEED<span class="reg" aria-hidden="true">⌖</span>
     </a>
 
-    {showSearch && (
-      <div class="search">
-        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" />
-          <path d="m20 20-3.5-3.5" />
-        </svg>
-        <input id="search-input" type="search" placeholder="Search the catalog…" autocomplete="off" aria-label="Search the catalog" />
-        <kbd class="search-kbd" aria-hidden="true">/</kbd>
-      </div>
-    )}
+    <form class="search" role="search" action="/" method="get">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </svg>
+      <input id="search-input" name="q" type="search" placeholder="Search the catalog…" autocomplete="off" aria-label="Search the catalog" />
+      <kbd class="search-kbd" aria-hidden="true">/</kbd>
+    </form>
 
     <nav class="topnav-links" aria-label="Site">
       <a href="/about/" class="topnav-link">About</a>
@@ -232,6 +225,15 @@ const { showSearch = false } = Astro.props;
     const next = html.dataset.theme === "dark" ? "light" : "dark";
     html.dataset.theme = next;
     localStorage.setItem("fb-theme", next);
+  });
+
+  // search submit: on the catalog, filtering is live (don't reload);
+  // from any other page, let it navigate to /?q=… and filter on arrival
+  document.addEventListener("submit", (e) => {
+    const form = e.target as HTMLElement;
+    if (form.classList?.contains("search") && document.getElementById("grid")) {
+      e.preventDefault();
+    }
   });
 
   // "/" focuses search from anywhere (Linear/GitHub convention)
