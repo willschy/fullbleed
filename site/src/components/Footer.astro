@@ -1,34 +1,22 @@
 <footer class="footer" id="newsletter">
-  <div class="footer-card">
-    <div class="f-top">
-      <div class="f-cta">
-        <p class="f-kicker">The weekly-ish best of</p>
-        <h2 class="f-head">The finds that cleared the bar, in your inbox.</h2>
-        <form class="f-form" id="nl-form" novalidate>
-          <div class="f-row">
-            <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address" />
-            <button type="submit">Join</button>
-          </div>
-          <p class="f-fine" id="nl-fine">No noise — only real work, credited and explained.</p>
-        </form>
-      </div>
+  <div class="footer-bar">
+    <a class="f-brand" href="/" aria-label="Full Bleed home">
+      <span class="f-mark">FULL BLEED</span>
+      <span class="reg" aria-hidden="true">⌖</span>
+    </a>
 
-      <nav class="f-nav" aria-label="Footer">
-        <p class="f-navlabel">Explore</p>
-        <a href="/about/">About</a>
-        <a href="/about/">Credit &amp; takedown</a>
-        <a href="#newsletter">Newsletter</a>
-      </nav>
-    </div>
+    <form class="f-form" id="nl-form" novalidate>
+      <input id="nl-email" type="email" required placeholder="you@studio.com — the weekly-ish best" aria-label="Email address for the weekly-ish best of Full Bleed" />
+      <button type="submit">Join</button>
+    </form>
 
-    <div class="f-base">
-      <div class="f-brand">
-        <span class="f-mark">FULL BLEED<span class="reg" aria-hidden="true">⌖</span></span>
-        <span class="f-line">Real-world AI work, for working creatives.</span>
-      </div>
-      <p class="f-colophon">Set in Rubik &amp; Plex Mono · Curated by hand</p>
-    </div>
+    <nav class="f-links" aria-label="Footer">
+      <a href="/about/">About</a>
+      <a href="/about/">Credit &amp; takedown</a>
+      <a href="#newsletter">Newsletter</a>
+    </nav>
   </div>
+  <p class="f-fine" id="nl-fine" hidden></p>
 </footer>
 
 <style>
@@ -36,196 +24,143 @@
     padding: 0 var(--s4) var(--s4);
   }
 
-  .footer-card {
+  .footer-bar {
     max-width: calc(var(--maxw) - 2 * var(--s4));
     margin: 0 auto;
     background: var(--surface);
     border: 1px solid var(--border-soft);
-    border-radius: var(--r-xl);
+    border-radius: var(--r-lg);
     box-shadow: var(--shadow-rest);
-    padding: var(--s8) var(--s8) var(--s6);
-  }
-
-  /* ---- top: CTA left, nav right ---- */
-  .f-top {
+    padding: var(--s3) var(--s5, 1.25rem);
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--s8);
-  }
-
-  @media (min-width: 760px) {
-    .f-top {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--s12);
-      align-items: start;
-    }
-  }
-
-  .f-cta {
-    max-width: 440px;
-  }
-
-  .f-kicker {
-    margin: 0 0 var(--s2);
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-35);
-  }
-
-  .f-head {
-    margin: 0 0 var(--s5, 1.25rem);
-    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-    font-weight: var(--w-display);
-    letter-spacing: -0.015em;
-    line-height: 1.25;
-  }
-
-  .f-row {
-    display: flex;
-    gap: var(--s2);
-    margin-top: var(--s4);
-  }
-
-  .f-row input {
-    flex: 1;
-    min-width: 0;
-    height: 46px;
-    border: 1px solid var(--hairline);
-    border-radius: var(--r-pill);
-    background: var(--paper);
-    padding: 0 var(--s4);
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    color: var(--ink);
-    transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
-  }
-
-  .f-row input::placeholder {
-    color: var(--ink-35);
-  }
-
-  .f-row input:focus {
-    outline: none;
-    border-color: var(--ink);
-    box-shadow: var(--shadow-rest);
-  }
-
-  .f-row button {
-    height: 46px;
-    padding: 0 var(--s6);
-    border: none;
-    border-radius: var(--r-pill);
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: var(--w-med);
-    transition: transform var(--dur-fast) var(--ease-spring), opacity var(--dur-fast) var(--ease-out);
-  }
-
-  .f-row button:hover {
-    opacity: 0.85;
-  }
-
-  .f-row button:active {
-    transform: scale(0.96);
-  }
-
-  .f-fine {
-    margin: var(--s3) 0 0;
-    font-size: 0.75rem;
-    color: var(--ink-35);
-    transition: color var(--dur) var(--ease-out);
-  }
-
-  .f-fine.is-done {
-    color: var(--ink);
-  }
-
-  /* ---- nav, right-aligned ---- */
-  .f-nav {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s2);
-  }
-
-  @media (min-width: 760px) {
-    .f-nav {
-      text-align: right;
-    }
-  }
-
-  .f-navlabel {
-    margin: 0 0 var(--s1);
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-35);
-  }
-
-  .f-nav a {
-    font-size: 0.875rem;
-    font-weight: var(--w-med);
-    color: var(--ink-50);
-    text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-out);
-  }
-
-  .f-nav a:hover {
-    color: var(--ink);
-  }
-
-  /* ---- base: brand left, colophon right ---- */
-  .f-base {
-    display: flex;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: var(--s4);
-    flex-wrap: wrap;
-    margin-top: var(--s8);
-    padding-top: var(--s6);
-    border-top: 1px solid var(--hairline);
   }
 
+  /* ---- brand (left) ---- */
   .f-brand {
-    display: flex;
+    justify-self: start;
+    display: inline-flex;
     align-items: baseline;
-    gap: var(--s3);
-    flex-wrap: wrap;
+    text-decoration: none;
+    color: var(--ink);
   }
 
   .f-mark {
-    font-size: 0.9375rem;
-    font-weight: var(--w-display);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1;
     letter-spacing: 0.01em;
   }
 
   .reg {
     color: var(--accent);
-    font-weight: var(--w-body);
-    font-size: 0.6em;
+    font-size: 0.5rem;
     vertical-align: super;
-    margin-left: 0.2em;
+    margin-left: 0.3em;
   }
 
-  .f-line {
+  /* ---- email (center) ---- */
+  .f-form {
+    justify-self: center;
+    display: flex;
+    gap: var(--s2);
+    width: clamp(280px, 34vw, 440px);
+  }
+
+  .f-form input {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-pill);
+    background: var(--paper);
+    padding: 0 var(--s4);
+    font-family: var(--font-sans);
     font-size: 0.8125rem;
-    color: var(--ink-50);
+    color: var(--ink);
+    transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   }
 
-  .f-colophon {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
+  .f-form input::placeholder {
     color: var(--ink-35);
+  }
+
+  .f-form input:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: var(--shadow-rest);
+  }
+
+  .f-form button {
+    height: 40px;
+    padding: 0 var(--s5, 1.25rem);
+    border: none;
+    border-radius: var(--r-pill);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
+    transition: transform var(--dur-fast) var(--ease-spring), opacity var(--dur-fast) var(--ease-out);
+  }
+
+  .f-form button:hover {
+    opacity: 0.85;
+  }
+
+  .f-form button:active {
+    transform: scale(0.95);
+  }
+
+  /* ---- links (right) ---- */
+  .f-links {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
+  }
+
+  .f-links a {
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
+    color: var(--ink-50);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .f-links a:hover {
+    color: var(--ink);
+  }
+
+  .f-fine {
+    max-width: calc(var(--maxw) - 2 * var(--s4));
+    margin: var(--s2) auto 0;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--ink);
+  }
+
+  /* ---- mobile: stack the three zones ---- */
+  @media (max-width: 820px) {
+    .footer-bar {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: var(--s3);
+      padding: var(--s4) var(--s4);
+    }
+
+    .f-brand,
+    .f-form,
+    .f-links {
+      justify-self: center;
+    }
+
+    .f-form {
+      width: 100%;
+    }
   }
 </style>
 
@@ -238,13 +173,14 @@
     const email = (document.getElementById("nl-email") as HTMLInputElement).value.trim();
     const fine = document.getElementById("nl-fine")!;
     if (!email || !email.includes("@")) {
+      fine.hidden = false;
       fine.textContent = "That email doesn't look right — try again?";
       return;
     }
     localStorage.setItem("fb-newsletter-intent", email);
     form.querySelector("input")!.setAttribute("disabled", "");
     form.querySelector("button")!.setAttribute("disabled", "");
+    fine.hidden = false;
     fine.textContent = "✓ Noted — the list goes live with launch, and you're first on it.";
-    fine.classList.add("is-done");
   });
 </script>

@@ -6,6 +6,7 @@
   /* type — Rubik carries titles and prose; mono carries metadata */
   --font-sans: "Rubik", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  --font-display: "Climate Crisis", "Rubik", sans-serif; /* the FULL BLEED wordmark only */
 
   /* weight system: 400 body · 500 titles/emphasis · 600 display + wordmark. Nothing heavier. */
   --w-body: 400;
