@@ -36,6 +36,11 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
         };
         apply();
         document.addEventListener("astro:after-swap", apply);
+        // mark the document once we navigate client-side, so entrance
+        // animations only run on the very first load, not every route change
+        document.addEventListener("astro:after-swap", () => {
+          document.documentElement.classList.add("vt-nav");
+        });
       })();
     </script>
   </head>

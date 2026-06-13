@@ -143,6 +143,20 @@ button {
   line-height: 1.4;
 }
 
+/* page navigations swap instantly — no global cross-fade (ClientRouter keeps it SPA-fast) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* entrance animations play on first load only — not on every client-side navigation */
+html.vt-nav .card,
+html.vt-nav .lede,
+html.vt-nav .hero,
+html.vt-nav .infocard {
+  animation: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
