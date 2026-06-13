@@ -45,6 +45,55 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
         });
       })();
     </script>
+
+    <script is:inline>
+      // bookmarks — localStorage, no account. Global + delegated so it works
+      // on every page and survives client-side navigation.
+      (function () {
+        const KEY = "fb-saved";
+        const read = () => {
+          try { return new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); }
+          catch { return new Set(); }
+        };
+        const write = (set) => localStorage.setItem(KEY, JSON.stringify([...set]));
+
+        // expose for the catalog filter
+        window.fbSaved = {
+          has: (id) => read().has(id),
+          count: () => read().size,
+        };
+
+        function syncUI() {
+          const saved = read();
+          document.querySelectorAll("[data-bookmark]").forEach((btn) => {
+            const on = saved.has(btn.dataset.id);
+            btn.classList.toggle("is-saved", on);
+            btn.setAttribute("aria-pressed", String(on));
+            const label = btn.querySelector("[data-bookmark-label]");
+            if (label) label.textContent = on ? "Saved" : "Save";
+          });
+          document.querySelectorAll("[data-saved-count]").forEach((el) => {
+            el.textContent = String(saved.size);
+          });
+        }
+
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-bookmark]");
+          if (!btn) return;
+          e.preventDefault();
+          e.stopPropagation();
+          const set = read();
+          const id = btn.dataset.id;
+          if (set.has(id)) set.delete(id); else set.add(id);
+          write(set);
+          syncUI();
+          document.dispatchEvent(new CustomEvent("fb-saved-changed"));
+        });
+
+        syncUI();
+        document.addEventListener("astro:page-load", syncUI);
+      })();
+    </script>
   </head>
   <body>
     <slot />

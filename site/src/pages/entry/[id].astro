@@ -71,6 +71,13 @@ const related = allEntries
       </div>
 
       <aside class="infocard">
+        <button class="save-btn" type="button" data-bookmark data-id={entry.id} aria-pressed="false">
+          <svg class="save-icon" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+            <path d="M6 4.5h12a1 1 0 0 1 1 1v14l-7-4-7 4v-14a1 1 0 0 1 1-1z" />
+          </svg>
+          <span data-bookmark-label>Save</span>
+        </button>
+
         <div class="info-section">
           <p class="info-label">Category</p>
           <span class="pill pill-ink">{CATEGORY_LABELS[d.category]}</span>
@@ -330,6 +337,49 @@ const related = allEntries
     flex-direction: column;
     gap: var(--s6);
     animation: hero-in 0.6s var(--ease-out) 0.12s backwards;
+  }
+
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s2);
+    width: 100%;
+    padding: var(--s3);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-pill);
+    background: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: var(--w-med);
+    color: var(--ink);
+    transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-spring);
+  }
+
+  .save-btn:hover {
+    border-color: var(--ink-35);
+  }
+
+  .save-btn:active {
+    transform: scale(0.97);
+  }
+
+  .save-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linejoin: round;
+    transition: fill 0.2s var(--ease-out);
+  }
+
+  .save-btn.is-saved {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .save-btn.is-saved .save-icon {
+    fill: var(--accent);
+    stroke: var(--accent);
   }
 
   .info-label {

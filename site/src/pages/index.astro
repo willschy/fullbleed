@@ -26,6 +26,18 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   <div class="shell">
     <aside class="rail" aria-label="Filters">
       <section class="facet">
+        <button class="facet-row saved-row" id="saved-toggle" aria-pressed="false">
+          <span class="facet-name">
+            <svg class="saved-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+              <path d="M6 4.5h12a1 1 0 0 1 1 1v14l-7-4-7 4v-14a1 1 0 0 1 1-1z" />
+            </svg>
+            Saved
+          </span>
+          <span class="facet-count" data-saved-count>0</span>
+        </button>
+      </section>
+
+      <section class="facet">
         <h2 class="facet-title">Category</h2>
         <button class="facet-row is-active" data-facet="category" data-value="all">
           <span class="facet-name">All</span><span class="facet-count">{entries.length}</span>
@@ -150,6 +162,25 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     color: var(--ink-35);
+  }
+
+  .saved-row .saved-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linejoin: round;
+    margin-right: 0.55em;
+  }
+
+  .saved-row.is-active {
+    background: var(--fill-2);
+    color: var(--ink);
+    font-weight: var(--w-med);
+  }
+
+  .saved-row.is-active .saved-icon {
+    fill: var(--accent);
+    stroke: var(--accent);
   }
 
   .facet-fresh {
@@ -345,7 +376,7 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 
 <script>
   /* delegated so handlers survive ClientRouter swaps; state resets per page-load */
-  const state = { category: "all", tool: "all", query: "" };
+  const state = { category: "all", tool: "all", query: "", savedOnly: false };
   const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
   function matches(card: HTMLElement): boolean {
@@ -354,7 +385,8 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     const toolOk = state.tool === "all" || (card.dataset.tools ?? "").split("|").includes(state.tool);
     const freshOk = !currentOnly?.checked || card.dataset.superseded !== "true";
     const queryOk = state.query === "" || (card.textContent ?? "").toLowerCase().includes(state.query);
-    return catOk && toolOk && freshOk && queryOk;
+    const savedOk = !state.savedOnly || (window as any).fbSaved?.has(card.dataset.id);
+    return catOk && toolOk && freshOk && queryOk && savedOk;
   }
 
   function resetFloating(card: HTMLElement): void {
@@ -465,6 +497,16 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
 
+    // "Saved" filter toggle
+    const savedBtn = target.closest<HTMLButtonElement>("#saved-toggle");
+    if (savedBtn) {
+      state.savedOnly = !state.savedOnly;
+      savedBtn.classList.toggle("is-active", state.savedOnly);
+      savedBtn.setAttribute("aria-pressed", String(state.savedOnly));
+      apply();
+      return;
+    }
+
     const row = target.closest<HTMLButtonElement>("[data-facet]");
     if (row) {
       const facet = row.dataset.facet as "category" | "tool";
@@ -501,6 +543,11 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 
   document.addEventListener("change", (e) => {
     if ((e.target as HTMLElement).id === "current-only") apply();
+  });
+
+  // re-filter when a bookmark is toggled (e.g. unsaving while in the Saved view)
+  document.addEventListener("fb-saved-changed", () => {
+    if (state.savedOnly) apply();
   });
 
   document.addEventListener("astro:page-load", () => {
