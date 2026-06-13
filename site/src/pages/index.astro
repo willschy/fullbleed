@@ -254,6 +254,7 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   }
 
   .grid {
+    position: relative; /* anchor for cards floating out during filter */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--s4);
@@ -345,26 +346,120 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 <script>
   /* delegated so handlers survive ClientRouter swaps; state resets per page-load */
   const state = { category: "all", tool: "all", query: "" };
+  const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-  function apply() {
-    const grid = document.getElementById("grid");
-    if (!grid) return;
-    const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
+  function matches(card: HTMLElement): boolean {
     const currentOnly = document.getElementById("current-only") as HTMLInputElement | null;
-    let visible = 0;
-    for (const card of cards) {
-      const catOk = state.category === "all" || card.dataset.category === state.category;
-      const toolOk = state.tool === "all" || (card.dataset.tools ?? "").split("|").includes(state.tool);
-      const freshOk = !currentOnly?.checked || card.dataset.superseded !== "true";
-      const queryOk = state.query === "" || (card.textContent ?? "").toLowerCase().includes(state.query);
-      const show = catOk && toolOk && freshOk && queryOk;
-      card.style.display = show ? "" : "none";
-      if (show) visible++;
+    const catOk = state.category === "all" || card.dataset.category === state.category;
+    const toolOk = state.tool === "all" || (card.dataset.tools ?? "").split("|").includes(state.tool);
+    const freshOk = !currentOnly?.checked || card.dataset.superseded !== "true";
+    const queryOk = state.query === "" || (card.textContent ?? "").toLowerCase().includes(state.query);
+    return catOk && toolOk && freshOk && queryOk;
+  }
+
+  function resetFloating(card: HTMLElement): void {
+    delete card.dataset.exiting;
+    for (const p of ["position", "left", "top", "width", "height", "margin", "pointerEvents", "zIndex"] as const) {
+      card.style[p] = "";
     }
+    card.style.display = "none";
+  }
+
+  function updateMeta(cards: HTMLElement[]): void {
+    const visible = cards.filter((c) => matches(c)).length;
     const emptyMsg = document.getElementById("empty");
     const resultCount = document.getElementById("result-count");
     if (emptyMsg) emptyMsg.hidden = visible > 0;
     if (resultCount) resultCount.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+  }
+
+  function apply(animate = true): void {
+    const grid = document.getElementById("grid");
+    if (!grid) return;
+    const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // clear any cards still mid-exit from a previous rapid change
+    for (const c of cards) if (c.dataset.exiting) resetFloating(c);
+
+    const willShow = new Map(cards.map((c) => [c, matches(c)]));
+
+    if (!animate || reduce) {
+      for (const c of cards) c.style.display = willShow.get(c) ? "" : "none";
+      updateMeta(cards);
+      return;
+    }
+
+    // FLIP — First: positions of everything currently in flow
+    const gridRect = grid.getBoundingClientRect();
+    const first = new Map<HTMLElement, DOMRect>();
+    for (const c of cards) if (c.style.display !== "none") first.set(c, c.getBoundingClientRect());
+
+    // apply visibility; collect cards leaving the flow to float out separately
+    const exiting: [HTMLElement, DOMRect][] = [];
+    for (const c of cards) {
+      if (willShow.get(c)) {
+        c.style.display = "";
+      } else {
+        if (first.has(c)) exiting.push([c, first.get(c)!]);
+        c.style.display = "none";
+      }
+    }
+
+    // Last: new positions of the survivors
+    const last = new Map<HTMLElement, DOMRect>();
+    for (const c of cards) if (willShow.get(c)) last.set(c, c.getBoundingClientRect());
+
+    for (const c of cards) {
+      if (!willShow.get(c)) continue;
+      c.getAnimations().forEach((a) => { if (a.id === "fb-flip") a.cancel(); });
+      const f = first.get(c);
+      const l = last.get(c)!;
+      if (f) {
+        // survivor — glide from old position to new
+        const dx = f.left - l.left;
+        const dy = f.top - l.top;
+        if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+          const a = c.animate(
+            [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "translate(0, 0)" }],
+            { duration: 460, easing: EASE },
+          );
+          a.id = "fb-flip";
+        }
+      } else {
+        // newcomer — fade and lift in
+        const a = c.animate(
+          [{ opacity: 0, transform: "scale(0.97) translateY(8px)" }, { opacity: 1, transform: "none" }],
+          { duration: 420, easing: EASE, delay: 80 },
+        );
+        a.id = "fb-flip";
+      }
+    }
+
+    // float the removed cards out over their old spots while the grid reflows beneath
+    for (const [c, f] of exiting) {
+      c.dataset.exiting = "1";
+      c.style.display = "";
+      c.style.position = "absolute";
+      c.style.margin = "0";
+      c.style.left = `${f.left - gridRect.left}px`;
+      c.style.top = `${f.top - gridRect.top}px`;
+      c.style.width = `${f.width}px`;
+      c.style.height = `${f.height}px`;
+      c.style.pointerEvents = "none";
+      c.style.zIndex = "0";
+      const a = c.animate(
+        [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(0.96)" }],
+        { duration: 280, easing: EASE },
+      );
+      const done = () => resetFloating(c); // idempotent
+      a.onfinish = done;
+      a.oncancel = done;
+      // fallback: if animation events are throttled (e.g. backgrounded tab), still clean up
+      setTimeout(done, 360);
+    }
+
+    updateMeta(cards);
   }
 
   document.addEventListener("click", (e) => {
@@ -412,6 +507,6 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
     state.category = "all";
     state.tool = "all";
     state.query = "";
-    apply();
+    apply(false);
   });
 </script>
