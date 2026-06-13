@@ -143,10 +143,32 @@ button {
   line-height: 1.4;
 }
 
-/* page navigations swap instantly — no global cross-fade (ClientRouter keeps it SPA-fast) */
-::view-transition-old(root),
+/* one intentional page transition: outgoing settles back + fades,
+   incoming rises into place. Exit quicker than enter so it feels snappy. */
+::view-transition-old(root) {
+  animation: 180ms var(--ease-out) both fb-page-out;
+}
+
 ::view-transition-new(root) {
-  animation: none;
+  animation: 320ms var(--ease-spring) 60ms both fb-page-in;
+}
+
+@keyframes fb-page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fb-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* entrance animations play on first load only — not on every client-side navigation */
@@ -163,5 +185,10 @@ html.vt-nav .infocard {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }
