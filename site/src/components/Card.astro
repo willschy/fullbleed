@@ -44,6 +44,8 @@ const stamp = d.date
       />
     )}
 
+    <div class="card-veil" aria-hidden="true"></div>
+
     {freshness === "superseded" && (
       <span class="badge badge-superseded">Superseded</span>
     )}
@@ -51,20 +53,24 @@ const stamp = d.date
       <span class="badge badge-fresh"><span class="dot" aria-hidden="true"></span>New</span>
     )}
 
-    <div class="card-veil" aria-hidden="true"></div>
+    <span class="card-open" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 17 17 7M9 7h8v8" />
+      </svg>
+    </span>
 
-    <div class="card-face">
-      <h3 class="card-title">{d.title}</h3>
-      <span class="card-stamp">{stamp}</span>
-    </div>
-
-    <div class="card-panel">
-      <div class="panel-tags">
-        <span class="tag">{CATEGORY_LABELS[d.category]}</span>
-        {d.tools.slice(0, 2).map((t) => <span class="tag tag-tool">{t}</span>)}
+    <div class="card-content">
+      <div class="card-reveal">
+        <div class="reveal-tags">
+          <span class="tag tag-cat">{CATEGORY_LABELS[d.category]}</span>
+          {d.tools.slice(0, 2).map((t) => <span class="tag">{t}</span>)}
+        </div>
+        <p class="reveal-why">{d.hoverWhy}</p>
       </div>
-      <p class="panel-what">{d.hoverWhat}</p>
-      <p class="panel-why">{d.hoverWhy}</p>
+      <div class="card-face">
+        <h3 class="card-title">{d.title}</h3>
+        <span class="card-stamp">{stamp}</span>
+      </div>
     </div>
   </a>
 </article>
@@ -108,19 +114,24 @@ const stamp = d.date
     object-fit: cover;
     /* radius lives on the img too so view-transition snapshots stay rounded mid-morph */
     border-radius: var(--r-lg);
-    transition: transform var(--dur-slow) var(--ease-out);
+    transition: transform 0.5s var(--ease-out);
   }
 
-  /* gradient veil that grows on hover so panel text always reads */
+  /* cinematic gradient — the image is always the substrate, never an opaque sheet */
   .card-veil {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10, 10, 9, 0.62) 0%, rgba(10, 10, 9, 0.18) 26%, transparent 48%);
-    opacity: 0.9;
+    background: linear-gradient(
+      to top,
+      rgba(8, 8, 7, 0.7) 0%,
+      rgba(8, 8, 7, 0.32) 22%,
+      rgba(8, 8, 7, 0.04) 42%,
+      transparent 60%
+    );
     transition: opacity var(--dur) var(--ease-out);
   }
 
-  /* floating status badges */
+  /* floating status badge */
   .badge {
     position: absolute;
     top: 12px;
@@ -151,18 +162,90 @@ const stamp = d.date
     background: var(--accent);
   }
 
-  /* resting face: title + date over the image's lower edge */
-  .card-face {
+  /* "opens" cue — appears on hover, signals the card is a doorway */
+  .card-open {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-spring);
+  }
+
+  /* bottom-anchored content; reveal grows upward above the always-on title */
+  .card-content {
     position: absolute;
     inset-inline: 0;
     bottom: 0;
     z-index: 2;
+    padding: var(--s4);
+  }
+
+  .card-reveal {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(6px);
+    transition:
+      max-height var(--dur-slow) var(--ease-out),
+      opacity var(--dur) var(--ease-out),
+      transform var(--dur-slow) var(--ease-spring);
+  }
+
+  .reveal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-bottom: var(--s3);
+  }
+
+  .tag {
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 0.6563rem;
+    font-weight: var(--w-med);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .tag-cat {
+    background: #fff;
+    color: #131312;
+  }
+
+  .reveal-why {
+    margin: 0 0 var(--s3);
+    font-size: 0.8438rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.92);
+    border-left: 2px solid var(--accent);
+    padding-left: var(--s3);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-face {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: var(--s3);
-    padding: var(--s4);
-    transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-out);
   }
 
   .card-title {
@@ -171,7 +254,7 @@ const stamp = d.date
     font-weight: var(--w-med);
     line-height: 1.3;
     color: #fff;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.45);
   }
 
   .card-stamp {
@@ -179,72 +262,9 @@ const stamp = d.date
     font-size: 0.625rem;
     font-weight: 500;
     letter-spacing: 0.06em;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.78);
     white-space: nowrap;
-  }
-
-  /* hover panel: glass sheet that rises inside the card — one object */
-  .card-panel {
-    position: absolute;
-    inset-inline: 10px;
-    bottom: 10px;
-    z-index: 3;
-    border-radius: var(--r-md);
-    background: var(--glass);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 24px -8px rgba(10, 10, 9, 0.3);
-    padding: var(--s4);
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-    pointer-events: none;
-    transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-spring);
-  }
-
-  .panel-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: var(--s3);
-  }
-
-  .tag {
-    padding: 3px 9px;
-    border-radius: var(--r-pill);
-    background: var(--ink);
-    color: var(--paper);
-    font-size: 0.6563rem;
-    font-weight: var(--w-med);
-    letter-spacing: 0.02em;
-  }
-
-  .tag-tool {
-    background: var(--fill-2);
-    color: var(--ink-70);
-  }
-
-  .panel-what {
-    margin: 0;
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: var(--ink);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .panel-why {
-    margin: var(--s2) 0 0;
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: var(--ink-70);
-    border-left: 2px solid var(--accent);
-    padding-left: var(--s3);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    flex: none;
   }
 
   /* ------- feature (lead story) ------- */
@@ -257,6 +277,10 @@ const stamp = d.date
     font-size: 1.1875rem;
   }
 
+  .card.is-feature .reveal-why {
+    max-width: 46ch;
+  }
+
   @media (max-width: 859px) {
     .card.is-feature .card-link {
       aspect-ratio: 4 / 3;
@@ -267,56 +291,68 @@ const stamp = d.date
     }
   }
 
-  /* ------- open state (JS .is-open for touch, :hover for pointers) ------- */
+  /* ------- open state (.is-open for touch, :hover for pointers) ------- */
   .card.is-open {
-    transform: translateY(-4px) scale(1.015);
+    transform: translateY(-5px) scale(1.012);
     box-shadow: var(--shadow-lift);
     z-index: 20;
   }
 
   .card.is-open .card-img {
-    transform: scale(1.045);
+    transform: scale(1.06);
   }
 
-  .card.is-open .card-veil {
-    opacity: 0.4;
-  }
-
-  .card.is-open .card-face {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-
-  .card.is-open .card-panel {
+  .card.is-open .card-open {
     opacity: 1;
     transform: none;
-    pointer-events: auto;
+  }
+
+  .card.is-open .card-reveal {
+    max-height: 180px;
+    opacity: 1;
+    transform: none;
   }
 
   @media (hover: hover) {
     .card:hover {
-      transform: translateY(-4px) scale(1.015);
+      transform: translateY(-5px) scale(1.012);
       box-shadow: var(--shadow-lift);
       z-index: 20;
     }
 
     .card:hover .card-img {
-      transform: scale(1.045);
+      transform: scale(1.06);
     }
 
-    .card:hover .card-veil {
-      opacity: 0.4;
-    }
-
-    .card:hover .card-face {
-      opacity: 0;
-      transform: translateY(-6px);
-    }
-
-    .card:hover .card-panel {
+    .card:hover .card-open {
       opacity: 1;
       transform: none;
-      pointer-events: auto;
+    }
+
+    .card:hover .card-reveal {
+      max-height: 180px;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* the deepening of the gradient on hover: scale its alpha via a second layer */
+  .card-veil::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8, 8, 7, 0.55) 0%, rgba(8, 8, 7, 0.12) 35%, transparent 65%);
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease-out);
+  }
+
+  .card.is-open .card-veil::after {
+    opacity: 1;
+  }
+
+  @media (hover: hover) {
+    .card:hover .card-veil::after {
+      opacity: 1;
     }
   }
 </style>
