@@ -1,26 +1,31 @@
 <footer class="footer" id="newsletter">
   <div class="footer-card">
-    <div class="f-cta">
-      <p class="f-kicker">The weekly-ish best of</p>
-      <h2 class="f-head">The finds that cleared the bar,<br />in your inbox.</h2>
-      <form class="f-form" id="nl-form" novalidate>
-        <div class="f-row">
-          <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address" />
-          <button type="submit">Join</button>
-        </div>
-        <p class="f-fine" id="nl-fine">No noise — only real work, credited and explained.</p>
-      </form>
+    <div class="f-top">
+      <div class="f-cta">
+        <p class="f-kicker">The weekly-ish best of</p>
+        <h2 class="f-head">The finds that cleared the bar, in your inbox.</h2>
+        <form class="f-form" id="nl-form" novalidate>
+          <div class="f-row">
+            <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address" />
+            <button type="submit">Join</button>
+          </div>
+          <p class="f-fine" id="nl-fine">No noise — only real work, credited and explained.</p>
+        </form>
+      </div>
+
+      <nav class="f-nav" aria-label="Footer">
+        <p class="f-navlabel">Explore</p>
+        <a href="/about/">About</a>
+        <a href="/about/">Credit &amp; takedown</a>
+        <a href="#newsletter">Newsletter</a>
+      </nav>
     </div>
 
     <div class="f-base">
       <div class="f-brand">
         <span class="f-mark">FULL BLEED<span class="reg" aria-hidden="true">⌖</span></span>
-        <p class="f-line">Real-world AI work, for working creatives.</p>
+        <span class="f-line">Real-world AI work, for working creatives.</span>
       </div>
-      <nav class="f-links" aria-label="Footer">
-        <a href="/about/">About</a>
-        <a href="/about/">Credit &amp; takedown</a>
-      </nav>
       <p class="f-colophon">Set in Rubik &amp; Plex Mono · Curated by hand</p>
     </div>
   </div>
@@ -31,7 +36,6 @@
     padding: 0 var(--s4) var(--s4);
   }
 
-  /* the footer is a card too — same language as the catalog */
   .footer-card {
     max-width: calc(var(--maxw) - 2 * var(--s4));
     margin: 0 auto;
@@ -39,18 +43,30 @@
     border: 1px solid var(--border-soft);
     border-radius: var(--r-xl);
     box-shadow: var(--shadow-rest);
-    padding: var(--s8) var(--s6) var(--s6);
+    padding: var(--s8) var(--s8) var(--s6);
   }
 
-  /* ---- centered newsletter moment ---- */
+  /* ---- top: CTA left, nav right ---- */
+  .f-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s8);
+  }
+
+  @media (min-width: 760px) {
+    .f-top {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--s12);
+      align-items: start;
+    }
+  }
+
   .f-cta {
-    max-width: 460px;
-    margin: 0 auto;
-    text-align: center;
+    max-width: 440px;
   }
 
   .f-kicker {
-    margin: 0 0 var(--s3);
+    margin: 0 0 var(--s2);
     font-family: var(--font-mono);
     font-size: 0.625rem;
     font-weight: 500;
@@ -60,8 +76,8 @@
   }
 
   .f-head {
-    margin: 0 0 var(--s6);
-    font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+    margin: 0 0 var(--s5, 1.25rem);
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
     font-weight: var(--w-display);
     letter-spacing: -0.015em;
     line-height: 1.25;
@@ -70,6 +86,7 @@
   .f-row {
     display: flex;
     gap: var(--s2);
+    margin-top: var(--s4);
   }
 
   .f-row input {
@@ -83,7 +100,6 @@
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--ink);
-    text-align: center;
     transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   }
 
@@ -129,21 +145,58 @@
     color: var(--ink);
   }
 
-  /* ---- base row ---- */
+  /* ---- nav, right-aligned ---- */
+  .f-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+  }
+
+  @media (min-width: 760px) {
+    .f-nav {
+      text-align: right;
+    }
+  }
+
+  .f-navlabel {
+    margin: 0 0 var(--s1);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-35);
+  }
+
+  .f-nav a {
+    font-size: 0.875rem;
+    font-weight: var(--w-med);
+    color: var(--ink-50);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+
+  .f-nav a:hover {
+    color: var(--ink);
+  }
+
+  /* ---- base: brand left, colophon right ---- */
   .f-base {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--s6);
-    align-items: end;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s4);
+    flex-wrap: wrap;
     margin-top: var(--s8);
     padding-top: var(--s6);
     border-top: 1px solid var(--hairline);
   }
 
-  @media (min-width: 860px) {
-    .f-base {
-      grid-template-columns: 1fr auto 1fr;
-    }
+  .f-brand {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s3);
+    flex-wrap: wrap;
   }
 
   .f-mark {
@@ -161,33 +214,8 @@
   }
 
   .f-line {
-    margin: var(--s2) 0 0;
     font-size: 0.8125rem;
     color: var(--ink-50);
-  }
-
-  .f-links {
-    display: flex;
-    gap: var(--s6);
-    justify-content: start;
-  }
-
-  @media (min-width: 860px) {
-    .f-links {
-      justify-content: center;
-    }
-  }
-
-  .f-links a {
-    font-size: 0.8125rem;
-    font-weight: var(--w-med);
-    color: var(--ink-50);
-    text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-out);
-  }
-
-  .f-links a:hover {
-    color: var(--ink);
   }
 
   .f-colophon {
@@ -198,12 +226,6 @@
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--ink-35);
-  }
-
-  @media (min-width: 860px) {
-    .f-colophon {
-      text-align: right;
-    }
   }
 </style>
 
