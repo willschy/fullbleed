@@ -18,6 +18,8 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {/* TODO: remove at public launch — keeps placeholder/fixture content out of search indexes */}
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
