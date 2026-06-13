@@ -61,11 +61,13 @@ const stamp = d.date
 
     <div class="card-content">
       <div class="card-reveal">
-        <div class="reveal-tags">
-          <span class="tag tag-cat">{CATEGORY_LABELS[d.category]}</span>
-          {d.tools.slice(0, 2).map((t) => <span class="tag">{t}</span>)}
+        <div class="card-reveal-inner">
+          <div class="reveal-tags">
+            <span class="tag tag-cat">{CATEGORY_LABELS[d.category]}</span>
+            {d.tools.slice(0, 2).map((t) => <span class="tag">{t}</span>)}
+          </div>
+          <p class="reveal-why">{d.hoverWhy}</p>
         </div>
-        <p class="reveal-why">{d.hoverWhy}</p>
       </div>
       <div class="card-face">
         <h3 class="card-title">{d.title}</h3>
@@ -76,10 +78,12 @@ const stamp = d.date
 </article>
 
 <style>
+  /* calm, no-overshoot easing for the reveal — premium, not bouncy */
   .card {
+    --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
     border-radius: var(--r-lg);
     box-shadow: var(--shadow-rest);
-    transition: transform var(--dur) var(--ease-spring), box-shadow var(--dur) var(--ease-out);
+    transition: transform 0.4s var(--ease-calm), box-shadow 0.4s var(--ease-out);
     animation: card-rise 0.55s var(--ease-out) backwards;
   }
 
@@ -114,7 +118,7 @@ const stamp = d.date
     object-fit: cover;
     /* radius lives on the img too so view-transition snapshots stay rounded mid-morph */
     border-radius: var(--r-lg);
-    transition: transform 0.5s var(--ease-out);
+    transition: transform 0.7s var(--ease-out);
   }
 
   /* cinematic gradient — the image is always the substrate, never an opaque sheet */
@@ -131,7 +135,7 @@ const stamp = d.date
     transition: opacity var(--dur) var(--ease-out);
   }
 
-  /* floating status badge */
+  /* floating status badge — solid fill, no backdrop-filter */
   .badge {
     position: absolute;
     top: 12px;
@@ -142,17 +146,24 @@ const stamp = d.date
     gap: 6px;
     padding: 5px 11px;
     border-radius: var(--r-pill);
-    background: var(--glass);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(10, 10, 9, 0.5);
     font-size: 0.6875rem;
     font-weight: var(--w-med);
     letter-spacing: 0.02em;
-    color: var(--ink-70);
+    color: #fff;
   }
 
   .badge-superseded {
-    color: var(--accent);
+    color: #fff;
+  }
+
+  .badge-superseded .dot,
+  .badge-superseded::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .dot {
@@ -162,7 +173,7 @@ const stamp = d.date
     background: var(--accent);
   }
 
-  /* "opens" cue — appears on hover, signals the card is a doorway */
+  /* "opens" cue — solid fill (no backdrop-filter, so it never pops in late) */
   .card-open {
     position: absolute;
     top: 12px;
@@ -173,16 +184,14 @@ const stamp = d.date
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(10, 10, 9, 0.5);
     color: #fff;
     opacity: 0;
-    transform: scale(0.8);
-    transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-spring);
+    transform: translateY(-4px);
+    transition: opacity 0.35s var(--ease-out), transform 0.45s var(--ease-calm);
   }
 
-  /* bottom-anchored content; reveal grows upward above the always-on title */
+  /* bottom-anchored content; reveal slides up from behind the always-on title */
   .card-content {
     position: absolute;
     inset-inline: 0;
@@ -191,15 +200,18 @@ const stamp = d.date
     padding: var(--s4);
   }
 
+  /* grid-rows 0fr→1fr is the smooth, clipped height reveal (no janky max-height) */
   .card-reveal {
-    max-height: 0;
-    opacity: 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s var(--ease-calm);
+  }
+
+  .card-reveal-inner {
     overflow: hidden;
-    transform: translateY(6px);
-    transition:
-      max-height var(--dur-slow) var(--ease-out),
-      opacity var(--dur) var(--ease-out),
-      transform var(--dur-slow) var(--ease-spring);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s var(--ease-out), transform 0.55s var(--ease-calm);
   }
 
   .reveal-tags {
@@ -212,9 +224,7 @@ const stamp = d.date
   .tag {
     padding: 3px 9px;
     border-radius: var(--r-pill);
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(10, 10, 9, 0.5);
     color: #fff;
     font-size: 0.6563rem;
     font-weight: var(--w-med);
@@ -231,10 +241,10 @@ const stamp = d.date
     margin: 0 0 var(--s3);
     font-size: 0.8438rem;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.94);
     border-left: 2px solid var(--accent);
     padding-left: var(--s3);
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -293,13 +303,13 @@ const stamp = d.date
 
   /* ------- open state (.is-open for touch, :hover for pointers) ------- */
   .card.is-open {
-    transform: translateY(-5px) scale(1.012);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lift);
     z-index: 20;
   }
 
   .card.is-open .card-img {
-    transform: scale(1.06);
+    transform: scale(1.04);
   }
 
   .card.is-open .card-open {
@@ -308,20 +318,23 @@ const stamp = d.date
   }
 
   .card.is-open .card-reveal {
-    max-height: 180px;
+    grid-template-rows: 1fr;
+  }
+
+  .card.is-open .card-reveal-inner {
     opacity: 1;
     transform: none;
   }
 
   @media (hover: hover) {
     .card:hover {
-      transform: translateY(-5px) scale(1.012);
+      transform: translateY(-4px);
       box-shadow: var(--shadow-lift);
       z-index: 20;
     }
 
     .card:hover .card-img {
-      transform: scale(1.06);
+      transform: scale(1.04);
     }
 
     .card:hover .card-open {
@@ -330,7 +343,10 @@ const stamp = d.date
     }
 
     .card:hover .card-reveal {
-      max-height: 180px;
+      grid-template-rows: 1fr;
+    }
+
+    .card:hover .card-reveal-inner {
       opacity: 1;
       transform: none;
     }
