@@ -46,10 +46,10 @@ export async function publishCandidate(c: ScoredCandidate): Promise<string> {
     hoverWhy: c.hoverWhy,
     modelVersions: c.modelVersions,
     source: {
-      permalink: c.post.permalink,
+      origin: c.post.sourceLabel,
+      permalink: c.post.url,
       outboundUrl: c.post.outboundUrl,
       author: c.post.author,
-      subreddit: c.post.subreddit,
     },
     supersededBy: null,
   };

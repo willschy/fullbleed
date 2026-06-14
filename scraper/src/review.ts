@@ -29,11 +29,11 @@ async function main() {
       return;
     }
     for (const { id, candidate: c } of items) {
-      console.log(`\n[${id}] ${c.score}/10 · ${c.category} · r/${c.post.subreddit}`);
+      console.log(`\n[${id}] ${c.score}/10 · ${c.category} · ${c.post.sourceLabel}`);
       console.log(`  ${c.title}`);
       console.log(`  ${c.hoverWhat}`);
       console.log(`  why: ${c.hoverWhy}`);
-      console.log(`  source: ${c.post.permalink}`);
+      console.log(`  source: ${c.post.url}`);
     }
     console.log(`\n${items.length} awaiting review. Approve: npm run review -- approve <id> · Kill: npm run review -- kill <id>`);
     return;
@@ -53,7 +53,7 @@ async function main() {
     mkdirSync(join(DATA_DIR, "published"), { recursive: true });
     renameSync(join(REVIEW_DIR, `${id}.json`), join(DATA_DIR, "published", `${id}.json`));
     console.log(`Published: site/src/content/entries/${slug}.md`);
-    console.log(`Don't forget the creator note → ${item.candidate.post.author} via ${item.candidate.post.permalink}`);
+    console.log(`Don't forget the creator note → ${item.candidate.post.author} via ${item.candidate.post.url}`);
   } else if (command === "kill") {
     mkdirSync(KILLED_DIR, { recursive: true });
     renameSync(join(REVIEW_DIR, `${id}.json`), join(KILLED_DIR, `${id}.json`));

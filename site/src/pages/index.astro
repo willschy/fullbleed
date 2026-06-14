@@ -9,10 +9,11 @@ const entries = (await getCollection("entries")).sort(
 );
 
 const categories = [
-  { id: "client-work", label: "Client Work" },
-  { id: "tools-you-can-steal", label: "Steal This" },
-  { id: "new-possible", label: "New Possible" },
-  { id: "business-plays", label: "Business Plays" },
+  { id: "tools", label: "Tools" },
+  { id: "automations", label: "Automations" },
+  { id: "models", label: "Models" },
+  { id: "plugins-skills", label: "Plugins & Skills" },
+  { id: "papers", label: "Papers" },
 ].map((c) => ({ ...c, count: entries.filter((e) => e.data.category === c.id).length }));
 
 const toolCounts = new Map<string, number>();

@@ -8,6 +8,9 @@
   "scripts": {
     "listen": "npm run -w scraper listen",
     "promote": "npm run -w scraper promote",
+    "judge": "npm run -w scraper judge",
+    "writeup": "npm run -w scraper writeup",
+    "publish-entries": "npm run -w scraper publish-entries",
     "score": "npm run -w scraper score",
     "review": "npm run -w scraper review",
     "backfill": "npm run -w scraper backfill",

@@ -11,10 +11,11 @@ const { entry, index = 0, feature = false } = Astro.props;
 const d = entry.data;
 
 const CATEGORY_LABELS: Record<string, string> = {
-  "client-work": "Client Work",
-  "tools-you-can-steal": "Steal This",
-  "new-possible": "New Possible",
-  "business-plays": "Business Play",
+  "tools": "Tools",
+  "automations": "Automations",
+  "models": "Models",
+  "plugins-skills": "Plugins & Skills",
+  "papers": "Papers",
 };
 
 const ageDays = (Date.now() - d.date.valueOf()) / 86_400_000;

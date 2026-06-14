@@ -1,125 +1,128 @@
 # Project State — Full Bleed
 
-_Snapshot: June 13, 2026._
+*Snapshot: June 13/14, 2026. Rewritten this session to reflect the multi-source compiler, the curation brief, the voice, the end-to-end pipeline, and the live site.*
+
+## The big shift this session
+
+It went from a Reddit-only scraper (code-complete but never run) to a **working multi-source compiler that runs end to end** and has 20 real, voiced entries on the site. The Reddit API approval is still pending, but it no longer blocks anything because we built around it with public no-approval sources.
 
 ## Repository shape (npm workspaces monorepo)
 
 ```
 / (repo root)
-├── package.json            # workspaces: ["scraper", "site"]; root scripts delegate to site
-├── package-lock.json       # committed (reproducible CI builds)
-├── .nvmrc                  # "22" — pins Cloudflare/CI Node version
-├── .env.example            # template for secrets (real .env is gitignored)
-├── project-spec.md         # product spec (source of truth)
-├── VOICE.md                # house voice for AI writeups (DRAFT — needs Will's redline)
-├── handoff/                # this briefing
-├── scraper/                # the pipeline (TypeScript, run with tsx)
+├── CURATION.md            # THE curation brief (written this session) — what gets in, the 5 categories, the bar
+├── VOICE.md               # the locked house writeup voice (rewritten this session)
+├── project-spec.md        # original spec (history; categories/voice/freshness now superseded by CURATION.md)
+├── README.md
+├── handoff/               # this briefing
+├── .env                   # ANTHROPIC_API_KEY is set. Reddit + GitHub token + Unsplash not yet. (gitignored)
+├── scraper/               # the pipeline (TypeScript, run with tsx)
 │   ├── config/
-│   │   ├── sources.json    # subreddits + per-sub thresholds (minScore, minVelocity)
-│   │   ├── blocklist.json  # keyword kill list
-│   │   └── tags.json       # controlled vocab: categories, tools, disciplines
+│   │   ├── sources.json   # per-source config + a top-level "filters" block (maxAgeDays, englishOnly)
+│   │   ├── blocklist.json
+│   │   └── tags.json      # controlled vocab (categories here are the OLD names; the live taxonomy is the 5 in CURATION.md)
 │   └── src/
-│       ├── types.ts
-│       ├── store.ts        # paths, JSON load/save, .env loader
-│       ├── reddit.ts       # OAuth + listing/info fetch (403s without creds now)
-│       ├── filters.ts      # dumb filters (flair, blocklist, must-have-demo)
-│       ├── dedup.ts        # seen-set: postId / normalized URL / normalized title
-│       ├── listen.ts       # poll sources → dumb-filter → holding pen
-│       ├── promote.ts      # hourly: velocity-based promotion pen → scoring queue
-│       ├── score.ts        # Claude Sonnet scores 1–10 + writeup (VOICE.md sys prompt)
-│       ├── publish.ts      # writes entry .md + downloads thumbnail
-│       ├── review.ts       # CLI: list / approve <id> / kill <id>
-│       └── backfill.ts     # one-time: top posts of past year through same pipeline
-└── site/                   # Astro 5 static site
-    ├── astro.config.mjs    # site url, devToolbar disabled
+│       ├── types.ts            # Candidate (source-agnostic), Source adapter, all config types
+│       ├── store.ts            # paths, JSON load/save, .env loader
+│       ├── filters.ts          # dumbFilter (blocklist + demo), looksEnglish, recencyOk, candidateDate
+│       ├── dedup.ts            # seen-set over Candidate (cross-source dedup by id/url/title)
+│       ├── reddit.ts           # low-level Reddit fetch + redditToCandidate mapper
+│       ├── sources/            # the adapters (this is the compiler)
+│       │   ├── index.ts        # buildSources() registry — add a source = 1 adapter + 1 line here
+│       │   ├── reddit.ts       # skips gracefully if no creds
+│       │   ├── hackernews.ts   # Algolia, no key
+│       │   ├── github.ts       # search API, optional GITHUB_TOKEN
+│       │   ├── arena.ts        # channel contents, needs UA (currently disabled in config)
+│       │   ├── arxiv.ts        # Atom API (currently disabled; HF Papers is primary)
+│       │   ├── huggingface.ts  # models API (Models lane)
+│       │   └── hfpapers.ts     # HF daily_papers, upvote-ranked (Papers lane)
+│       ├── listen.ts           # poll all enabled sources → recency + english + dumb filter → holding pen
+│       ├── promote.ts          # pen → scoring queue (source-aware; Reddit velocity, others stored signal)
+│       ├── judge.ts            # THE TASTE GATE: Sonnet scores vs CURATION.md, 7+ keeps (npm run judge)
+│       ├── writeup.ts          # writes cardTitle/digest/bodyMd in VOICE.md voice (npm run writeup)
+│       ├── publish-entries.ts  # writeups → Astro entry .md + harvested thumbnail (npm run publish-entries)
+│       ├── backfill.ts         # Reddit top-of-year seed (legacy/Reddit-era)
+│       ├── score.ts            # LEGACY Reddit-era scorer (superseded by judge+writeup; kept compiling)
+│       ├── publish.ts          # LEGACY publisher used by review.ts
+│       └── review.ts           # LEGACY approve/kill CLI
+│   └── data/                   # SCRATCH pipeline state (regenerated by runs; safe to delete/regenerate)
+│       ├── pen.json            # holding pen (caught candidates)
+│       ├── seen.json           # dedup set
+│       ├── verdicts.json       # judge results (24 keepers ≤180d among them)
+│       ├── writeups.json       # 20 generated entries
+│       └── keepers.md          # human-readable list of the keepers (browse this)
+└── site/                       # Astro 5 static site
     ├── src/
-    │   ├── content.config.ts          # entries collection schema (incl. fixture flag)
-    │   ├── styles/global.css          # design tokens (light+dark), page transition
-    │   ├── layouts/Base.astro         # head, fonts, ClientRouter, theme + bookmark scripts, Footer
-    │   ├── components/
-    │   │   ├── TopNav.astro           # persistent nav: wordmark + search + links + theme toggle
-    │   │   ├── Footer.astro           # persistent slim footer: brand + email + links
-    │   │   └── Card.astro             # catalog card: image-forward hover + save button
+    │   ├── content.config.ts   # entries schema — UPDATED to the 5 categories + generic source object
+    │   ├── components/Card.astro      # UPDATED category labels (5)
     │   └── pages/
-    │       ├── index.astro            # catalog: rail + grid + FLIP filtering + saved filter
-    │       ├── about.astro            # about / credit & takedown
-    │       └── entry/[id].astro       # entry page: hero + body + sticky info card + related
-    └── src/content/entries/*.md       # THE DATABASE — 9 fixture entries (fixture: true)
+    │       ├── index.astro     # UPDATED category facet list (5)
+    │       ├── entry/[id].astro# UPDATED labels + generic source line; dropped redundant why-line
+    │       └── lab.astro        # SCRATCH thumbnail treatment prototype (the duotone lab; delete later)
+    ├── public/
+    │   ├── thumbs/             # downloaded entry thumbnails (scratch-ish, regenerated by publish)
+    │   └── lab/                # SCRATCH sample images for the duotone lab (s1/s2/s3.jpg; delete later)
+    └── src/content/entries/*.md  # THE DATABASE — 20 real entries (the 10 fixtures were deleted)
 ```
 
-## The pipeline (Reddit → site)
+## The pipeline (commands, all from repo root)
 
-Flow: **listen (15 min) → dedup → holding pen → promote (hourly, velocity) → Sonnet score+writeup → review queue → publish → (manual) creator note**
+Flow: **listen → (promote) → judge → writeup → publish-entries → site**
 
-Commands (from repo root):
 ```
-npm run listen     # poll sources, dumb-filter, fill holding pen
-npm run promote    # promote pen posts with traction to scoring queue
-npm run score      # Sonnet scores 1–10 + writes entry; 7+ → review queue
-npm run review     # list | approve <id> | kill <id>  (approve publishes)
-npm run backfill   # seed from top-of-year posts (--dry to preview)
-npm run dev        # run the site locally
-npm run build      # build the site
+npm run listen           # poll enabled sources, recency+english+dumb filter, fill holding pen
+npm run promote          # pen → scoring queue (optional; judge currently reads the pen directly)
+npm run judge            # Sonnet taste gate vs CURATION.md; npm run judge -- --all for the whole pen
+npm run writeup          # generate entries in VOICE.md voice; -- --ids=a,b targets specific keepers
+npm run publish-entries  # write the 20 entries into the site + harvest thumbnails
+npm run dev              # run the site locally (Astro). Preview/launch config: .claude/launch.json ("site", port 4321)
+npm run build            # build the site (output site/dist)
 ```
-- Scoring model: `claude-sonnet-4-6`. Publish threshold: 7+. State lives in `scraper/data/` (committed).
-- **Status: code-complete + offline-tested, but never run against live Reddit** (blocked on API approval).
 
-## Site — what's built (V1 essentially complete)
+- Scoring/writeup model: `claude-sonnet-4-6`. Keep threshold: 7+. Needs `ANTHROPIC_API_KEY` (set in .env).
+- Judge cost is ~1 cent per item on Sonnet. A full-pen pass is ~$2 one time; ongoing is pennies because dedup means only new items get judged.
 
-- Catalog grid, full-bleed image-forward cards, cinematic lead card (newest entry spans 2 cols)
-- Card hover: image stays visible, gradient deepens, digest rises on a calm clipped slide;
-  save (bookmark) button top-right; tap-to-expand on touch
-- Left **faceted rail**: Saved · Category · Tool (with counts) · Freshness (current-only toggle);
-  collapses to scrolling chip rows on mobile
-- **FLIP-animated filtering** (survivors glide, newcomers fade-lift, removed cards float out)
-- **Global search** in the nav (works from any page; submits to `/?q=` and filters on arrival)
-- **Entry pages**: rounded hero + glass back pill, standfirst + why-line, "The how" as numbered
-  step cards, "Run it back", sticky info card (category/stack/freshness/source + Save button),
-  related-entries rail, superseded-banner forward link
-- **Dark mode**: full theme system, no-flash init, sun/moon toggle, follows system pref
-- **Page transition**: one intentional rise-and-fade between routes (exit faster than enter)
-- **Persistent chrome**: nav + footer use `transition:persist` (static, content transitions inside)
-- **Bookmarks**: localStorage `fb-saved`, save on cards + entry pages, Saved filter with live count
-- **Slim footer**: Climate Crisis wordmark (left), email capture (center, stores locally), links (right)
-- Deployed to Cloudflare Pages, auto-deploy on push, noindexed pre-launch
+## Sources status
 
-## NOT built yet (gaps)
+| Source | State | Notes |
+|---|---|---|
+| Hacker News | live, no key | Show HN pre-qualified; "story" stream gated on creative keywords. Low yield for this audience (0/18 kept in the full run). |
+| GitHub | live, optional token | Strongest signal. Search is 10/min unauth, 30/min with a free GITHUB_TOKEN. |
+| Hugging Face models | live, no key | Models lane. Pulls top-liked + newest per creative pipeline tag. |
+| HF daily papers | live, no key | Papers lane. Upvote-ranked (the notability signal arXiv lacks). |
+| Reddit | pending API approval | Adapter built; skips gracefully until REDDIT_CLIENT_ID/SECRET are set. |
+| Are.na | built, disabled | Generic public AI channels were noisy; needs Will's own channels. |
+| arXiv | built, disabled | Raw firehose of incremental papers; HF Papers replaced it as primary. |
 
-| Gap | Notes |
-|---|---|
-| **Pipeline scheduling** | No GitHub Actions workflows run the scraper. The "always-on listener" is currently manual-only. Highest-leverage infra to build. |
-| **Semantic search v1** | Current nav search is plain text-substring match. Spec wants embeddings-based meaning search (Cloudflare Workers AI `bge-small`, build-time index). The killer feature, still faked. |
-| **Query logging** | Spec: log every search from day one (→ V2 standing orders). Needs a small endpoint (Cloudflare Function/Worker). |
-| **Email service wiring** | Footer form stores intent in localStorage only; not connected to Buttondown/etc. Needed before launch. |
-| **Share polish** | No OG image, no favicon, no custom 404. Link unfurls blank when shared. |
-| **Analytics** | Cloudflare Web Analytics not enabled (free, no cookie banner). |
-| **Creator notification** | Manual "you got featured" template not written. |
-| **Real content + media** | All entries are fixtures w/ picsum images; thumbnail rehosting in publish.ts untested vs real Reddit. |
+## The curation brief (see CURATION.md for the full text)
 
-## Blocked / waiting (not our keyboard)
+- Five categories: **Tools · Automations · Models · Plugins & Skills · Papers** (Papers last, it is the smallest lane).
+- Discipline is a secondary tag axis ("image/video/design/decks…"), surfaced on the site as "what you do," not as "discipline."
+- The bar: new (nothing older than ~6 months by creation date, target ~2), genuinely impressive or useful, differentiated, English, shows real work. Anti-slop is the whole point.
+- The mission: not preaching to AI haters. It serves the AI-curious and enthusiasts, education and curation, by creators for creators.
 
-- **Reddit API approval** — application submitted June 12, 2026; ~2–4 week review. Unblocks real
-  content → backfill → calibration. Until then, unauthenticated Reddit JSON 403s.
-- **Voice-doc redline** — `VOICE.md` is a strong draft; Will needs to mark it up. Improves writeup
-  quality. Pipeline can run on the draft meanwhile.
-- **Domain** — `fullbleed.ai` confirmed unregistered (June 12); registration deferred to launch.
+## The voice (see VOICE.md)
 
-## Deferred to V2 (explicitly, per spec)
+Pragmatic, warm-but-not-best-friend, dry, specific, honest about weaknesses. Hard rules: no em dashes, no semicolons, no exclamation points, no hype words, no AI tells, vary sentence length. The LTX-2 entry is the calibration target. (Lesson learned: an early "dry, terse" pass read cold and condescending; warmth comes from varied sentence length and not stating the obvious.)
 
-Magic-link accounts (= the bookmark→email sync bridge), on-demand "hunt" search, newsletter sends,
-surge mode, X / tool-community sources, monetization.
+## Current catalog state
 
-## Prioritized roadmap
+- Full-pen judge run: 174 judged, 35 kept, then the recency fix (creation date) trimmed to **24 keepers ≤180 days**.
+- Category split of the 24: Models 10, Plugins & Skills 12, Papers 2, Tools 0 (the two Tools entries were just over 180 days). Heavy ComfyUI/open-model skew because GitHub + HF are the sources.
+- **20 entries published** (4 writeups failed transiently). Browse `scraper/data/keepers.md` for the list.
 
-1. **Shareable polish** — OG image, favicon, custom 404, Cloudflare Web Analytics. (quick wins)
-2. **Pipeline scheduling** — GitHub Actions workflows + repo secrets (ANTHROPIC_API_KEY, Reddit creds). Arm it pre-approval.
-3. **Semantic search v1** — embeddings + build-time index + runtime query; log queries from day one.
-4. **On Reddit approval** — `npm run backfill --dry` to tune thresholds → real backfill → score → a
-   calibration session where Will hand-judges ~50 borderline posts vs Sonnet (tune rubric to ~90% agreement) → launch at 50–75 entries.
-5. **Email wiring** (Buttondown) before launch.
-6. **Launch** — register `fullbleed.ai`, swap real content in, remove the `noindex` meta in Base.astro, announce.
+## Thumbnails (the active task)
 
-## Design polish still open (surfaces during device review)
+Decided after a long exploration (see DECISIONS for the full journey): **filtered stock**. Pull a photo from Unsplash per entry, run it through a house **duotone** treatment, each category a different cohesive highlight color, applied as an SVG filter at render time. Prototyped and working at `site/src/pages/lab.astro` (`/lab`). Pending: Will locks the palette, then wire into Card.astro + entry hero, then add the Unsplash pull (needs a free key).
 
-Entry hero can eat the fold (consider capping height), empty states could be more charming,
-a quick accessibility pass (focus states / keyboard / alt text), mobile entry-page two-col stacking.
+## Pending / blocked
+
+- **Thumbnail palette lock** (Will) → then Card duotone + Unsplash key. ACTIVE.
+- **Reddit API approval** (external, ~2 to 4 weeks from June 12).
+- **Unsplash key** (Will, self-serve, free) for the stock pull.
+- 4 failed writeups to re-run; tool-tagger needs word-boundary matching (a "WAN" false positive on LTX-2).
+- Site copy redo (homepage/about) deferred; scheduling deferred; commit deferred.
+
+## Git / scratch state
+
+57 files changed, nothing committed. Scratch that can be deleted or regenerated: `scraper/data/*`, `site/public/thumbs/*`, `site/public/lab/*`, `site/src/pages/lab.astro`. Real work to keep: everything in `scraper/src/`, `scraper/config/sources.json`, `CURATION.md`, `VOICE.md`, the site component/schema edits, and the 20 entry .md files.

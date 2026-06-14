@@ -14,10 +14,11 @@ const d = entry.data;
 const { Content } = await render(entry);
 
 const CATEGORY_LABELS: Record<string, string> = {
-  "client-work": "Client Work",
-  "tools-you-can-steal": "Steal This",
-  "new-possible": "New Possible",
-  "business-plays": "Business Play",
+  "tools": "Tools",
+  "automations": "Automations",
+  "models": "Models",
+  "plugins-skills": "Plugins & Skills",
+  "papers": "Papers",
 };
 
 const ageDays = (Date.now() - d.date.valueOf()) / 86_400_000;
@@ -62,7 +63,6 @@ const related = allEntries
         <div class="titleblock">
           <h1>{d.title}</h1>
           <p class="standfirst">{d.hoverWhat}</p>
-          <p class="why">{d.hoverWhy}</p>
         </div>
 
         <article class="body">
@@ -102,7 +102,7 @@ const related = allEntries
         <div class="info-section">
           <p class="info-label">Source</p>
           <a class="info-link" href={d.source.permalink} rel="noopener">
-            u/{d.source.author} · r/{d.source.subreddit}
+            {d.source.author} · via {d.source.origin}
           </a>
           {d.source.outboundUrl && (
             <a class="info-link" href={d.source.outboundUrl} rel="noopener">Project link ↗</a>

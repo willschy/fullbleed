@@ -1,22 +1,23 @@
 import { join } from "node:path";
-import { fetchListing } from "./reddit.js";
-import { dumbFilter } from "./filters.js";
+import { fetchListing, redditToCandidate } from "./reddit.js";
+import { dumbFilter, redditFlairOk } from "./filters.js";
 import { isDuplicate, loadSeen, markSeen, saveSeen } from "./dedup.js";
 import { DATA_DIR, loadConfig, loadJson, saveJson } from "./store.js";
-import type { RedditPost, SubredditConfig } from "./types.js";
+import type { Candidate, SourcesConfig } from "./types.js";
 
 const QUEUE_PATH = join(DATA_DIR, "queue.json");
 const PAGES = 2; // 2 x 100 = top ~200 posts of the year per subreddit
 
 async function main() {
   const dry = process.argv.includes("--dry");
-  const { subreddits } = loadConfig<{ subreddits: SubredditConfig[] }>("sources.json");
+  const config = loadConfig<SourcesConfig>("sources.json");
+  const subreddits = config.reddit?.subreddits ?? [];
   const { phrases } = loadConfig<{ phrases: string[] }>("blocklist.json");
   const seen = loadSeen();
-  const queue = loadJson<RedditPost[]>(QUEUE_PATH, []);
-  const queued = new Set(queue.map((p) => p.id));
+  const queue = loadJson<Candidate[]>(QUEUE_PATH, []);
+  const queued = new Set(queue.map((c) => c.id));
 
-  console.log(`Backfill${dry ? " (dry run)" : ""}: top posts of the past year\n`);
+  console.log(`Backfill${dry ? " (dry run)" : ""}: top posts of the past year (Reddit)\n`);
   let totalCandidates = 0;
 
   for (const sub of subreddits) {
@@ -30,8 +31,13 @@ async function main() {
       scanned += res.posts.length;
 
       for (const post of res.posts) {
-        if (queued.has(post.id) || isDuplicate(post, seen)) continue;
-        const verdict = dumbFilter(post, sub, phrases);
+        const c = redditToCandidate(post);
+        if (queued.has(c.id) || isDuplicate(c, seen)) continue;
+        if (!redditFlairOk(post.flair, sub.flairs)) {
+          killCounts["flair"] = (killCounts["flair"] ?? 0) + 1;
+          continue;
+        }
+        const verdict = dumbFilter(c, phrases);
         if (!verdict.pass) {
           killCounts[verdict.reason.split(":")[0]] = (killCounts[verdict.reason.split(":")[0]] ?? 0) + 1;
           continue;
@@ -42,9 +48,9 @@ async function main() {
         }
         candidates++;
         if (!dry) {
-          queue.push(post);
-          queued.add(post.id);
-          markSeen(post, seen);
+          queue.push(c);
+          queued.add(c.id);
+          markSeen(c, seen);
         }
       }
 

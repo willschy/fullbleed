@@ -1,68 +1,72 @@
 # Full Bleed — Handoff / Resume Here
 
-This folder is a self-contained briefing so a **new chat** (or you) can pick up this
-project exactly where it was left off. Read these four files in order:
+*Updated June 13/14, 2026. This supersedes the original handoff. Read these four files in order.*
 
-1. **README.md** (this file) — orientation + how to resume + quick status
-2. **PROJECT-STATE.md** — what exists, what's built, what's pending/blocked, file map
-3. **DECISIONS-AND-LEARNINGS.md** — every decision + design-taste calibration + technical gotchas
-4. **ACCOUNTS-AND-ACCESS.md** — accounts, URLs, IDs, secrets needed, your open homework
+1. **README.md** (this file) — orientation, how to resume, status, and the exact next step.
+2. **PROJECT-STATE.md** — architecture, what is built, the pipeline, the file map, what is pending.
+3. **DECISIONS-AND-LEARNINGS.md** — every decision, the taste calibration, the gotchas. The "Session 2" section at the bottom is everything from the most recent run of work.
+4. **ACCOUNTS-AND-ACCESS.md** — accounts, API keys, secrets, and Will's open homework.
 
-The original source-of-truth docs also live in the repo root:
-- `project-spec.md` — the full product spec (running doc)
-- `VOICE.md` — the house voice for AI-written summaries (draft, needs your redline)
+Source-of-truth docs in the repo root:
+- **CURATION.md** — what gets in, the five categories, the bar. This is THE curation brief and it was written this session. Read it.
+- **VOICE.md** — the locked house voice for entry writeups. Rewritten this session.
+- **project-spec.md** — the original product spec. Still useful for history, but partly superseded by CURATION.md (categories, voice, freshness rule all changed).
+
+The assistant's persistent memory also auto-loads in a new chat in this directory and already holds the key facts. `handoff/` is the fuller version-controlled reference.
 
 ---
 
 ## How to resume in a new chat
 
-Open a new chat **in this project directory** (`/Users/wschlesinger/Documents/AI Catalog Scraper Tool`).
-The assistant's persistent memory auto-loads, but to be safe, paste this as your first message:
+Open a new chat in this project directory (`/Users/wschlesinger/Documents/AI Catalog Scraper Tool`) and paste:
 
-> Read everything in `handoff/` then give me a 5-line status and the top 3 next moves.
-> Don't build anything until I say go.
-
-That's it. The new chat will be fully caught up.
+> Read everything in `handoff/` then give me a 5-line status and the top 3 next moves. Don't build anything until I say go.
 
 ---
 
 ## What this is (one paragraph)
 
-**Full Bleed** is a curated, always-fresh catalog of groundbreaking real-world AI work,
-for working creatives (designers, ADs, CDs, photographers). A scraper pipeline (Reddit
-first) finds candidates → filters hard → Claude Sonnet scores them 1–10 against a taste
-rubric (only 7+ publishes) and writes them up in a house voice → they appear on a
-visual-first catalog site. Repo-as-database (entries are markdown files). Freshness/
-superseded system is the moat. Semantic search is the planned killer feature.
+Full Bleed is a curated, always-fresh catalog of new, genuinely useful AI work for working creatives. It is now a multi-source **compiler**, not a Reddit scraper. It catches candidates from many no-approval public sources (Hacker News, GitHub, Hugging Face models, Hugging Face daily papers; Reddit is pending API approval), filters them hard, runs each through a Claude Sonnet **taste gate** that scores 1 to 10 against CURATION.md (7+ keeps), then a **writeup stage** writes each one in the house voice (VOICE.md), and they publish as entries on an Astro site. The repo is the database. The product is the curation, the sources are just pipes.
 
 ---
 
-## Status at a glance (as of June 13, 2026)
+## Status at a glance (June 13/14, 2026)
 
-- **Site: LIVE (private preview)** → https://fullbleed.pages.dev
-  (Cloudflare Pages, auto-deploys on every push to `main`. Noindexed until real launch.)
-- **Design: essentially complete** — catalog grid, faceted rail, image-forward card hover,
-  entry pages, dark mode, animated filtering, page transitions, bookmarks. Looks/feels strong
-  on desktop and mobile.
-- **Pipeline: code-complete, not yet running** — all stages written + offline-tested, but
-  nothing schedules them yet, and it's blocked on Reddit API approval for real data.
-- **This is a PREVIEW, not a launch.** Fixture/placeholder content, no real domain.
+- The **full pipeline runs end to end**: listen, judge, writeup, publish, live site.
+- **20 real, voiced entries are published** on the local site. 4 of the 24 keepers failed their writeup on transient errors and need a quick re-run.
+- The site is updated to the **five new categories**. It runs on the local preview. **Nothing is committed** (57 changed files in the working tree).
+- The one thing in flight is the **thumbnail treatment**. Decision is locked: filtered stock photography run through a per-category **duotone**. The look is prototyped at `/lab` and it works. We are waiting on Will to lock the five-color palette.
 
-## The single most important gotcha for the next chat
+---
 
-**The Claude Preview tool runs its browser tab _backgrounded_, which freezes all CSS/JS
-animation (view transitions, Web Animations API sit at currentTime 0). You CANNOT see or
-screenshot motion in the preview.** Verify motion *logic* structurally (check classes/state),
-then confirm the actual feel on the live deploy / a real device. Screenshots also occasionally
-glitch to a 1px sliver or a stale frame — fix with `preview_resize` to a real size.
+## THE IMMEDIATE NEXT STEP (pick up exactly here)
 
-## Top 3 next moves (my recommendation)
+We were dialing in the thumbnail look. The decision is made: **stock photos plus one house duotone treatment, each category a different but cohesive highlight color.** A working prototype lives at `site/src/pages/lab.astro` (run the dev server and open `/lab`). The starter palette:
 
-1. **Shareable polish** (quick, the preview link is being shared): OG link-preview image,
-   favicon, custom 404, Cloudflare Web Analytics.
-2. **Pipeline scheduling**: GitHub Actions workflows that actually run the scraper on a
-   cadence, so it's armed the moment Reddit approves.
-3. **Semantic search v1**: replace the current fake text-filter with real embeddings-based
-   search (the spec's headline feature).
+| Category | Highlight |
+|---|---|
+| Tools | peach `#F4C7AE` |
+| Automations | amber `#F1D8A6` |
+| Models | teal `#BCDFDD` |
+| Plugins & Skills | lilac `#D5C9EB` |
+| Papers | sage `#CCDDBB` |
 
-See PROJECT-STATE.md for the full prioritized roadmap.
+All five share a near-black ink shadow (`#131312`), which is what makes them read as one family.
+
+**Next, in order:**
+1. Will reacts to and locks the five-color palette (the only open question). Tuning notes: Tools and Automations are both warm and a bit close; highlights run hot on bright photos, so the highlight stop can come down a notch.
+2. Wire the SVG duotone into `Card.astro` and the entry hero, keyed by category.
+3. Get a free Unsplash API key (self-serve, instant), add a stock-pull step that searches an abstract or textural photo per entry, and tint it at render time.
+4. Re-run the 4 missing writeups so the catalog is the full 24.
+
+---
+
+## Top next moves (the broader roadmap)
+
+1. **Finish thumbnails** (palette lock, Card duotone, Unsplash pull). This is the active task.
+2. **Backfill to full strength** — re-run the 4 failed writeups, and re-run listen/judge for fresh candidates. We are at 24 keepers and the launch goal is 50 to 75.
+3. **Site copy** — homepage hero and about page in the new voice. The entry writeup voice is locked. The site chrome copy is the remaining corny stuff and was deliberately deferred.
+4. **Scheduling** — GitHub Actions to run the catcher on a cadence. Parked on purpose until curation and imagery are locked, so we do not automate a half-finished pipeline.
+5. **Commit** — 57 files are uncommitted. Decide what is real vs scratch (PROJECT-STATE lists the scratch) and commit the milestone.
+
+See PROJECT-STATE.md for the full architecture and file map, and DECISIONS-AND-LEARNINGS.md for why everything is the way it is.

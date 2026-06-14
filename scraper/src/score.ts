@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { DATA_DIR, REPO_ROOT, loadConfig, loadJson, saveJson } from "./store.js";
-import type { RedditPost, ScoredCandidate } from "./types.js";
+import type { Candidate, ScoredCandidate } from "./types.js";
 
 const QUEUE_PATH = join(DATA_DIR, "queue.json");
 const MODEL = "claude-sonnet-4-6";
@@ -24,7 +24,7 @@ ${voice}
 
 # Your task
 
-You receive one Reddit post. Score it 1-10 against this rubric, then (if 7+) write it up in the house voice above.
+You receive one candidate post from across our sources (Reddit, Hacker News, GitHub, Are.na). Score it 1-10 against this rubric, then (if 7+) write it up in the house voice above.
 
 The rubric — all three must be strong for a 7+:
 1. REAL: a real, shipped thing is shown — with the workflow, numbers, or artifact someone could learn from. No demo or "how" = max 4.
@@ -53,27 +53,31 @@ Respond with ONLY a JSON object (no markdown fence):
 }`;
 }
 
-function postToUserMessage(post: RedditPost): string {
+/** Candidate ids are namespaced ("gh:owner/repo") — make them safe for a flat filename. */
+export function fileId(id: string): string {
+  return id.replace(/[^a-z0-9]+/gi, "_");
+}
+
+function postToUserMessage(post: Candidate): string {
   return JSON.stringify(
     {
-      subreddit: post.subreddit,
+      source: post.sourceLabel,
       title: post.title,
       author: post.author,
-      flair: post.flair,
-      upvotes: post.score,
-      comments: post.numComments,
+      [post.signal.label]: post.signal.score,
+      comments: post.signal.comments,
       outboundUrl: post.outboundUrl,
-      permalink: post.permalink,
+      permalink: post.url,
       hasImage: post.hasImage,
       hasVideo: post.hasVideo,
-      selftext: post.selftext.slice(0, 6000),
+      body: post.body.slice(0, 6000),
     },
     null,
     2,
   );
 }
 
-export async function scorePost(client: Anthropic, system: string, post: RedditPost): Promise<ScoredCandidate> {
+export async function scorePost(client: Anthropic, system: string, post: Candidate): Promise<ScoredCandidate> {
   const res = await client.messages.create({
     model: MODEL,
     max_tokens: 2000,
@@ -93,7 +97,7 @@ async function main() {
   const vocab = loadConfig<TagVocab>("tags.json");
   const system = buildSystemPrompt(vocab);
   const client = new Anthropic();
-  const queue = loadJson<RedditPost[]>(QUEUE_PATH, []);
+  const queue = loadJson<Candidate[]>(QUEUE_PATH, []);
 
   if (queue.length === 0) {
     console.log("Scoring queue is empty.");
@@ -101,12 +105,12 @@ async function main() {
   }
 
   let passed = 0;
-  const remaining: RedditPost[] = [];
+  const remaining: Candidate[] = [];
   for (const post of queue) {
     try {
       const candidate = await scorePost(client, system, post);
       if (candidate.score >= PUBLISH_THRESHOLD) {
-        saveJson(join(DATA_DIR, "review", `${post.id}.json`), candidate);
+        saveJson(join(DATA_DIR, "review", `${fileId(post.id)}.json`), candidate);
         passed++;
         console.log(`${candidate.score}/10 → REVIEW QUEUE: "${candidate.title}" [${candidate.category}]`);
       } else {

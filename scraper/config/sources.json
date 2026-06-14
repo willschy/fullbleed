@@ -1,14 +1,107 @@
 {
-  "_note": "flairs: [] = accept all flairs; minScore = raw-upvote promotion floor; minVelocity = upvotes/hour alternative floor. Tune during backfill.",
-  "subreddits": [
-    { "name": "ClaudeAI", "flairs": [], "minScore": 10, "minVelocity": 3 },
-    { "name": "ClaudeCode", "flairs": [], "minScore": 10, "minVelocity": 3 },
-    { "name": "SideProject", "flairs": [], "minScore": 20, "minVelocity": 5 },
-    { "name": "InternetIsBeautiful", "flairs": [], "minScore": 20, "minVelocity": 5 },
-    { "name": "ChatGPTCoding", "flairs": [], "minScore": 15, "minVelocity": 4 },
-    { "name": "cursor", "flairs": [], "minScore": 15, "minVelocity": 4 },
-    { "name": "LocalLLaMA", "flairs": [], "minScore": 25, "minVelocity": 6 },
-    { "name": "StableDiffusion", "flairs": [], "minScore": 25, "minVelocity": 6 },
-    { "name": "comfyui", "flairs": [], "minScore": 15, "minVelocity": 4 }
-  ]
+  "_note": "One config per source. enabled=false to mute a source. Reddit thresholds are per-sub (raw upvotes OR upvotes/hour). HN/GitHub/Are.na carry their own signal at catch time. Tune during the first live runs.",
+
+  "filters": {
+    "_note": "Cross-cutting gates from CURATION.md. maxAgeDays = hard recency ceiling (~6mo); target is fresher.",
+    "maxAgeDays": 180,
+    "englishOnly": true
+  },
+
+  "reddit": {
+    "enabled": true,
+    "_note": "Skipped automatically until REDDIT_CLIENT_ID/SECRET are set (API approval pending).",
+    "subreddits": [
+      { "name": "ClaudeAI", "flairs": [], "minScore": 10, "minVelocity": 3 },
+      { "name": "ClaudeCode", "flairs": [], "minScore": 10, "minVelocity": 3 },
+      { "name": "SideProject", "flairs": [], "minScore": 20, "minVelocity": 5 },
+      { "name": "InternetIsBeautiful", "flairs": [], "minScore": 20, "minVelocity": 5 },
+      { "name": "ChatGPTCoding", "flairs": [], "minScore": 15, "minVelocity": 4 },
+      { "name": "cursor", "flairs": [], "minScore": 15, "minVelocity": 4 },
+      { "name": "LocalLLaMA", "flairs": [], "minScore": 25, "minVelocity": 6 },
+      { "name": "StableDiffusion", "flairs": [], "minScore": 25, "minVelocity": 6 },
+      { "name": "comfyui", "flairs": [], "minScore": 15, "minVelocity": 4 }
+    ]
+  },
+
+  "hackernews": {
+    "enabled": true,
+    "streams": ["show_hn", "story"],
+    "minPoints": 20,
+    "lookbackHours": 96,
+    "perStream": 60,
+    "_note": "Deliberately omits bare 'ai/gpt/llm/agent' — those match political/news stories. Concrete creative-tool terms only; the Sonnet taste gate is the real filter.",
+    "mustMatch": [
+      "diffusion", "comfyui", "midjourney", "flux", "generative art", "generative design",
+      "text-to-image", "text to image", "image generation", "video generation", "text-to-video",
+      "design tool", "figma plugin", "animation tool", "3d model", "render engine",
+      "lora", "upscal", "img2img", "virtual try", "photoshoot", "ai video", "ai image",
+      "logo generator", "branding", "typography", "illustration", "nano banana", "runway ml"
+    ]
+  },
+
+  "github": {
+    "enabled": true,
+    "minStars": 50,
+    "createdWithinDays": 365,
+    "perQuery": 25,
+    "queries": [
+      "ai design tool",
+      "comfyui custom node",
+      "generative art",
+      "text to image",
+      "ai video generation",
+      "ai image editing",
+      "stable diffusion workflow",
+      "creative coding ai"
+    ]
+  },
+
+  "arena": {
+    "enabled": false,
+    "_note": "Human curation IS the signal. Swap these for channels Will actually follows.",
+    "perChannel": 50,
+    "channels": [
+      "artificial-intelligence",
+      "artificial-intelligence-design",
+      "ai-artificial-intelligence-j4j2h24cw08"
+    ]
+  },
+
+  "hfpapers": {
+    "enabled": true,
+    "_note": "Papers lane (primary). HF daily papers ranked by community upvotes — the notability signal raw arXiv lacks. Tune minUpvotes for the 'worth-knowing' bar.",
+    "minUpvotes": 15,
+    "limit": 100
+  },
+
+  "arxiv": {
+    "enabled": false,
+    "_note": "Papers lane (backup, muted). Raw arXiv keyword search floods incremental papers with no notability signal — HF Papers is primary. Re-enable only if a topic isn't covered there.",
+    "perQuery": 15,
+    "categories": ["cs.CV", "cs.GR", "cs.AI", "cs.CL", "cs.LG"],
+    "queries": [
+      "text-to-image",
+      "image generation",
+      "video generation",
+      "virtual try-on",
+      "consistent character",
+      "3d generation",
+      "image editing",
+      "diffusion model"
+    ]
+  },
+
+  "huggingface": {
+    "enabled": true,
+    "_note": "Models lane. Two passes per pipeline (top-liked + newest), so fresh drops aren't lost behind all-time hits. minLikes keeps the fresh pass honest.",
+    "minLikes": 10,
+    "perPipeline": 25,
+    "pipelines": [
+      "text-to-image",
+      "image-to-image",
+      "text-to-video",
+      "image-to-video",
+      "text-to-3d"
+    ]
+  }
 }

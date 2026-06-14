@@ -5,6 +5,9 @@
   "scripts": {
     "listen": "tsx src/listen.ts",
     "promote": "tsx src/promote.ts",
+    "judge": "tsx src/judge.ts",
+    "writeup": "tsx src/writeup.ts",
+    "publish-entries": "tsx src/publish-entries.ts",
     "score": "tsx src/score.ts",
     "review": "tsx src/review.ts",
     "backfill": "tsx src/backfill.ts"

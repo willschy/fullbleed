@@ -92,3 +92,121 @@ or re-hitting solved problems.
   `site/dist`. Local Node is 26; CI pinned to 22 via `.nvmrc` + `NODE_VERSION` env.
 - **`noindex` meta is intentional** (Base.astro) to keep fixture content out of search. REMOVE at
   real launch.
+
+---
+
+# SESSION 2 (June 13/14, 2026) — the compiler, the curation, the voice, the imagery
+
+Everything above is still valid. This section captures the most recent run of work, where the project
+went from a Reddit-only scraper to a working multi-source compiler with real, voiced entries on the site.
+
+## The big pivot: a compiler, not a Reddit scraper
+
+- Will wanted to stop waiting on Reddit (1 to 2 week API approval) and pull from many publicly available,
+  no-approval sources. The whole pipeline was refactored around a source-agnostic `Candidate` type and a
+  tiny `Source` adapter interface. Adding a source is now one adapter file plus one line in `sources/index.ts`.
+- The insight that makes it work: the **taste gate is the equalizer**. Sources have different signals
+  (HN points, GitHub stars, HF likes, paper upvotes), but the Sonnet judge scores the work itself, so a
+  many-source compiler with one judge actually strengthens the bar.
+- Sources he chose to start (all no-approval): Hacker News, GitHub, Are.na. Then we added Hugging Face
+  models and HF daily papers for the Models and Papers lanes. Are.na and raw arXiv ended up disabled
+  (Are.na's public AI channels were noisy; arXiv was an incremental-paper firehose).
+
+## Curation is the product (CURATION.md is the source of truth)
+
+This was the heart of the session. Will was clear: **curation is the whole thing, the sources are pipes.**
+Key decisions, all captured in `CURATION.md`:
+
+- **Mission, corrected mid-conversation.** It is NOT a conversion engine for AI haters and NOT preaching.
+  It serves the **AI-curious and AI-enthusiasts**, people already a little in. The stance is pragmatic:
+  "this exists and is not going away, learn it to leverage it." Use the words **education** and **curation**,
+  by creators for creators. He explicitly rejected "empowerment" as corny. Do NOT write the
+  "AI isn't going away" thesis literally in copy; it is the spirit, not a line.
+- **The category journey (he reverses cheaply, this is normal).** Started at 4 spec categories he hated →
+  considered 2 lanes (tools / new drops) → considered a "usability to wow" spectrum (he hated the slider,
+  "what the fuck does that mean") → landed on **discrete categories**. Final five: **Tools, Automations,
+  Models, Plugins & Skills, Papers** (Papers last). Cut "Demos" (redundant, builds ship with demos) and
+  "Techniques" (too vague). 
+- **Per-category specifics.** Models entries always cover what it is / why it matters / what it improved on /
+  strengths / weaknesses, and **notable big models ALWAYS qualify** (do not slop-filter a major release as
+  "generic" — that was a calibration miss we fixed). Tools/Automations get a real how-to-use walkthrough.
+  Plugins & Skills is the techie lane (plugins, AI skills, MCP servers, API drops). Papers are judged on
+  "notable and worth knowing" not "usable tomorrow" (Will loves bleeding-edge arXiv, e.g. SAM-class releases),
+  while genuinely off-domain work (surveillance, pure ML infra) still dies.
+- **Money is out.** No monetization framing as a category or angle; it is a byproduct of good curation.
+- **Tools vs Automations tiebreaker:** Tool = use it as-is (a finished product); Automation = you assemble
+  it into your workflow (a recipe, ships with a setup walkthrough).
+- **Discipline is a tag, not a category.** Surfaced on the site as "what you do," never labeled "discipline."
+
+## Freshness rule (and a real bug we fixed)
+
+- Will: **nothing older than ~6 months ever surfaces, ideal ~2 months.** He reacted hard ("this is trash")
+  when stale entries showed up.
+- The bug: recency was judging GitHub repos by **last commit**, so a repo created 8 months ago with a recent
+  push slipped through. Fixed `candidateDate()` to always use **creation/publish/post date** for every source.
+  "New" means newly created, not recently touched. After the fix, the 35 keepers became **24 within 180 days**.
+- Distribution reality: at ≤180d there were 24, at ≤90d only 11, at ≤60d only 6. The 6-month line is the
+  workable pool right now.
+
+## Source findings (from a full-pen judge run)
+
+- **GitHub is the strongest source.** Real shipped tools with demos.
+- **Hacker News is low-yield** for this audience (0 of 18 kept). Candidate to mute.
+- **The catalog skews hard to the ComfyUI / Stable-Diffusion / open-model world**, because GitHub + HF are
+  the sources. Great for "what's newly possible," thin on the everyday 9-to-5 creative tool lane. Open
+  question for Will: lean into the generative skew, or broaden sources (Product Hunt, X, Behance) for the
+  everyday-creative lane. Not yet resolved.
+
+## The voice (VOICE.md is locked)
+
+- The old VOICE.md and site copy were the corny pre-pivot framing ("groundbreaking real-world AI work",
+  campaigns/business plays). Replaced wholesale.
+- **Hard style rules from Will: NO em dashes, NO semicolons, NO exclamation points.** Run copy through the
+  humanizer skill. No hype words, no AI tells.
+- **The key lesson:** the first rewrite over-corrected into cold, clipped, condescending copy ("sounds like a
+  fucking asshole"). Warmth is a **rhythm** problem — vary sentence length, let some sentences breathe, and
+  never explain the obvious. Warm but not best-friend-warm. The **LTX-2 entry is the approved calibration
+  target** (it is in VOICE.md).
+- Split insight: judging and writing are separate jobs. The judge only needs CURATION.md (no voice). Only the
+  writeup needs VOICE.md. That is why we could run the taste gate before the voice was finished.
+- The **entry voice is locked. Site chrome copy (homepage, about) is deliberately deferred.**
+
+## The thumbnail saga (this is where we left off)
+
+A long exploration, because the content (models, code, papers) has no good hero imagery and the site is
+image-forward. The path, and why each was rejected:
+
+1. **Scraped thumbnails** (GitHub OG cards, arXiv PDF pages, HF none) — text-heavy and weak. No.
+2. **Typographic / diagram cards** — mocked with the visualize tool. Will passed (still a fine fallback).
+3. **AI-generated house-style covers** — risograph look via the Higgsfield `generate_image` MCP. Will liked
+   the style, then rejected it: for an anti-slop site, generated covers still read as slop. (Tech note: the
+   model alias is `nano_banana_pro` → real id `nano_banana_2`; the bare id `nano_banana_2` coerces to
+   `nano_banana_flash`. 2k works.)
+4. **Real artifact harvest** (model sample images, GitHub README hero, paper figures) — built into
+   publish-entries.ts and it half-worked. Microsoft Lens and ERNIE-Image pulled great real images, but many
+   repos fell back to text OG cards and papers stayed as PDF pages. Will then changed direction.
+5. **FINAL: filtered stock.** Stock photos (Unsplash) run through ONE house **duotone** treatment, each
+   category a different cohesive highlight color. Real photos kill the slop problem, the duotone gives
+   cohesion and a design-first signature, and an aggressive-but-tasteful treatment hides stock cliché.
+   Prototyped and working at `site/src/pages/lab.astro`. Starter palette and next steps are in README.md.
+
+## How Will works (reinforced this session)
+
+- He articulates by feel and **reverses directions freely** (4 categories → spectrum → 5 categories; AI
+  covers → stock; etc.). With everything tokenized this is cheap. Build and let him react. Do not over-plan.
+- **Show, don't ask.** Concrete samples and screenshots move him; abstract descriptions do not.
+- He has a sharp anti-slop, anti-corny radar. He will call cold or fake copy immediately. Take the design and
+  copy bar as primary, not as a wrapper.
+- He is cost-aware (asked about per-image and per-judge cost). Real numbers, not hand-waving.
+
+## Technical gotchas (new this session)
+
+- **The Claude Preview screenshots glitch to a 1px sliver** intermittently (a known trap, also in the
+  original gotchas). Fix by `preview_resize` to a real size, and make demo pages fit one viewport so you do
+  not have to scroll (scroll + screenshot was unreliable).
+- The Sonnet writeup occasionally slipped a negative-parallelism AI tell ("not just X, it is Y"); the writeup
+  prompt now bans it explicitly.
+- Papers carry the highest hallucination risk (the model elaborates a mechanism it cannot fully see), so
+  fact-check papers against the source before publishing.
+- The image-gen and Unsplash work needs no Reddit/scraper credentials. Anthropic key is in .env. GitHub
+  token is optional (raises rate limits). Unsplash key is the next one needed.

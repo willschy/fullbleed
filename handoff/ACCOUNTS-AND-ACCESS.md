@@ -19,7 +19,12 @@ things live, and what credentials are needed + where they go.
 - **Cloudflare:** account `William.b.schlesinger@gmail.com` (signed up via GitHub OAuth).
   Account ID `9b99a1ac2f1e71808c11d40a01657724`. Pages project name: `fullbleed`.
 - **Reddit:** account `u/willschybot`. API application submitted June 12, 2026 (awaiting approval).
-- **Anthropic API:** key not yet created/added (needed for the scoring pipeline).
+- **Anthropic API:** key created and set in `.env` as of June 13, 2026. Powers the judge and writeup
+  stages (`claude-sonnet-4-6`). Working.
+- **Unsplash:** no account/key yet. NEEDED for the thumbnail stock-pull (free, self-serve at
+  unsplash.com/developers, register an app, copy the Access Key). This is the next key required.
+- **Higgsfield MCP** (`generate_image`): used this session to explore AI-generated covers (direction
+  since abandoned in favor of filtered stock). Available if needed for other image work.
 
 ## Cloudflare Pages build config (already set, for reference)
 
@@ -33,21 +38,29 @@ things live, and what credentials are needed + where they go.
 
 Local dev (`.env` at repo root — gitignored; template in `.env.example`):
 ```
-REDDIT_CLIENT_ID=        # from Reddit script app, once API approved
+ANTHROPIC_API_KEY=sk-...   # SET — powers judge + writeup (claude-sonnet-4-6)
+GITHUB_TOKEN=              # optional — raises GitHub search rate limit 10→30/min (no scopes needed)
+UNSPLASH_ACCESS_KEY=      # NEEDED NEXT — for the thumbnail stock-pull (self-serve, free)
+REDDIT_CLIENT_ID=         # from Reddit script app, once API approved (still pending)
 REDDIT_CLIENT_SECRET=
-ANTHROPIC_API_KEY=       # for the scoring stage (npm run score / backfill)
 ```
 For the future GitHub Actions pipeline: the same values go in the repo's
 **Settings → Secrets and variables → Actions** (not yet set up — see PROJECT-STATE roadmap #2).
 
 ## Will's open homework (the human-only items)
 
-1. **Redline `VOICE.md`** — blocks nothing hard, but improves AI writeup quality. (3-min read.)
-2. **Register `fullbleed.ai`** — ~$70–90/yr, 2-yr minimum (registry rule). Deferred to launch;
-   snipe risk on a guessable name. Also grab social handles while at it.
-3. **Anthropic API key** — create one; drop into `.env` for local pipeline runs.
-4. **Reddit script-app credentials** — once the API application is approved, create the script
-   app at reddit.com/prefs/apps and add client id + secret to `.env`.
+1. **Lock the thumbnail palette** — react to the five duotone colors at `/lab`. This is the active
+   blocker for finishing imagery. (See handoff README "immediate next step".)
+2. **Unsplash Access Key** — free, self-serve at unsplash.com/developers. Needed for the stock-pull.
+   Drop into `.env` as `UNSPLASH_ACCESS_KEY`.
+3. **Register `fullbleed.ai`** — ~$70–90/yr, 2-yr minimum. Deferred to launch; snipe risk on a
+   guessable name. Grab social handles too.
+4. **Reddit script-app credentials** — once the API application is approved (submitted June 12,
+   ~2–4 wk), create the script app at reddit.com/prefs/apps and add client id + secret to `.env`.
+   Not blocking anything thanks to the no-approval sources.
+
+Done since the original handoff: Anthropic API key created and added (item used to be here). VOICE.md
+was rewritten and locked this session, so the old "redline VOICE.md" task is superseded.
 
 ## Persistent memory (auto-loads in new chats in this project dir)
 

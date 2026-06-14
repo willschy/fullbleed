@@ -1,17 +1,23 @@
 import { join } from "node:path";
 import { DATA_DIR, loadJson, saveJson } from "./store.js";
-import type { RedditPost } from "./types.js";
+import type { Candidate } from "./types.js";
 
 interface SeenState {
-  postIds: Record<string, true>;
-  urls: Record<string, string>;   // normalized outbound url -> post id
-  titles: Record<string, string>; // normalized title -> post id
+  ids: Record<string, true>;
+  urls: Record<string, string>;   // normalized outbound url -> candidate id
+  titles: Record<string, string>; // normalized title -> candidate id
 }
 
 const SEEN_PATH = join(DATA_DIR, "seen.json");
 
 export function loadSeen(): SeenState {
-  return loadJson<SeenState>(SEEN_PATH, { postIds: {}, urls: {}, titles: {} });
+  // Back-compat: older state used `postIds`; fold it in if present.
+  const raw = loadJson<Partial<SeenState> & { postIds?: Record<string, true> }>(SEEN_PATH, {});
+  return {
+    ids: { ...(raw.postIds ?? {}), ...(raw.ids ?? {}) },
+    urls: raw.urls ?? {},
+    titles: raw.titles ?? {},
+  };
 }
 
 export function saveSeen(seen: SeenState): void {
@@ -35,15 +41,18 @@ export function normalizeTitle(title: string): string {
   return title.toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
 }
 
-export function isDuplicate(post: RedditPost, seen: SeenState): boolean {
-  if (seen.postIds[post.id]) return true;
-  if (post.outboundUrl && seen.urls[normalizeUrl(post.outboundUrl)]) return true;
-  if (seen.titles[normalizeTitle(post.title)]) return true;
+export function isDuplicate(c: Candidate, seen: SeenState): boolean {
+  if (seen.ids[c.id]) return true;
+  // Same work surfaced on two sources (e.g. a repo on both HN and GitHub) collapses here.
+  if (c.outboundUrl && seen.urls[normalizeUrl(c.outboundUrl)]) return true;
+  const t = normalizeTitle(c.title);
+  if (t && seen.titles[t]) return true;
   return false;
 }
 
-export function markSeen(post: RedditPost, seen: SeenState): void {
-  seen.postIds[post.id] = true;
-  if (post.outboundUrl) seen.urls[normalizeUrl(post.outboundUrl)] = post.id;
-  seen.titles[normalizeTitle(post.title)] = post.id;
+export function markSeen(c: Candidate, seen: SeenState): void {
+  seen.ids[c.id] = true;
+  if (c.outboundUrl) seen.urls[normalizeUrl(c.outboundUrl)] = c.id;
+  const t = normalizeTitle(c.title);
+  if (t) seen.titles[t] = c.id;
 }

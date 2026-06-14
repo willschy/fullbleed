@@ -1,4 +1,4 @@
-import type { RedditPost } from "./types.js";
+import type { Candidate, RedditPost } from "./types.js";
 
 const UA = "macos:fullbleed-scraper:v0.1 (curation pipeline with credit + linkback)";
 
@@ -102,4 +102,24 @@ export async function fetchByFullnames(fullnames: string[]): Promise<RedditPost[
     out.push(...json.data.children.map((c: any) => normalize(c.data)));
   }
   return out;
+}
+
+/** Map Reddit's raw shape into the source-agnostic Candidate currency. */
+export function redditToCandidate(p: RedditPost): Candidate {
+  return {
+    source: "reddit",
+    id: `reddit:${p.id}`,
+    sourceLabel: `r/${p.subreddit}`,
+    title: p.title,
+    author: p.author,
+    createdUtc: p.createdUtc,
+    url: p.permalink,
+    outboundUrl: p.outboundUrl,
+    body: p.selftext,
+    thumbnailUrl: p.thumbnailUrl,
+    hasImage: p.hasImage,
+    hasVideo: p.hasVideo,
+    signal: { score: p.score, comments: p.numComments, label: "upvotes" },
+    meta: { subreddit: p.subreddit, flair: p.flair, fullname: p.fullname },
+  };
 }
