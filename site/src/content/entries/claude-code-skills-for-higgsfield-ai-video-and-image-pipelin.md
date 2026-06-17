@@ -3,7 +3,8 @@ title: Claude Code skills for Higgsfield AI video and image pipelines
 date: 2026-04-13
 sourceDate: 2026-04-13
 category: plugins-skills
-thumbnail: /thumbs/claude-code-skills-for-higgsfield-ai-video-and-image-pipelin.png
+thumbnail: /thumbs/claude-code-skills-for-higgsfield-ai-video-and-image-pipelin-cover.jpg
+credit: "Kirill Sh / Unsplash"
 tools:
   - Claude
   - WAN

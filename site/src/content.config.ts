@@ -11,6 +11,7 @@ const entries = defineCollection({
     tools: z.array(z.string()),
     disciplines: z.array(z.string()),
     thumbnail: z.string().nullable(),
+    credit: z.string().nullable().default(null),
     score: z.number(),
     hoverWhat: z.string(),
     hoverWhy: z.string(),

@@ -3,7 +3,8 @@ title: 3D human motion generation trained on 2D video alone
 date: 2026-06-11
 sourceDate: 2026-06-11
 category: papers
-thumbnail: /thumbs/3d-human-motion-generation-trained-on-2d-video-alone.png
+thumbnail: /thumbs/3d-human-motion-generation-trained-on-2d-video-alone-cover.jpg
+credit: "Ahmad Odeh / Unsplash"
 tools: []
 disciplines: []
 score: 7

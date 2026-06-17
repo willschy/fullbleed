@@ -7,7 +7,8 @@ tools:
   - Figma
   - WAN
 disciplines: []
-thumbnail: /thumbs/pitch-agent-ai-slide-generation-that-works-from-your-actual-.gif
+thumbnail: /thumbs/pitch-agent-ai-slide-generation-that-works-from-your-actual--cover.jpg
+credit: "Roman Budnikov / Unsplash"
 score: 7
 hoverWhat: An AI inside Pitch that builds presentations from your own templates
   and design language, not a generic layout with your colors dropped in.

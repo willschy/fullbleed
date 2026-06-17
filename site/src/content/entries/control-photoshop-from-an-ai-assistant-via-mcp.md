@@ -3,7 +3,8 @@ title: Control Photoshop from an AI assistant via MCP
 date: 2026-01-26
 sourceDate: 2026-01-26
 category: plugins-skills
-thumbnail: /thumbs/control-photoshop-from-an-ai-assistant-via-mcp.png
+thumbnail: /thumbs/control-photoshop-from-an-ai-assistant-via-mcp-cover.jpg
+credit: "Luca Nicoletti / Unsplash"
 tools:
   - Claude
   - Photoshop

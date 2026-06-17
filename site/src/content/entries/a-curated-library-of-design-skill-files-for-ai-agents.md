@@ -3,7 +3,8 @@ title: A curated library of design skill files for AI agents
 date: 2026-03-09
 sourceDate: 2026-03-09
 category: plugins-skills
-thumbnail: /thumbs/a-curated-library-of-design-skill-files-for-ai-agents.png
+thumbnail: /thumbs/a-curated-library-of-design-skill-files-for-ai-agents-cover.jpg
+credit: "Judy Beth Morris / Unsplash"
 tools:
   - Claude
 disciplines: []

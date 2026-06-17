@@ -6,7 +6,8 @@ category: models
 tools:
   - Claude
 disciplines: []
-thumbnail: /thumbs/claude-opus-4-6-anthropic-s-agentic-reasoning-model.jpg
+thumbnail: /thumbs/claude-opus-4-6-anthropic-s-agentic-reasoning-model-cover.jpg
+credit: "Vitaliy Shevchenko / Unsplash"
 score: 8
 hoverWhat: Anthropic's most capable Claude yet, built for long-running tasks and
   deep reasoning across large amounts of context.

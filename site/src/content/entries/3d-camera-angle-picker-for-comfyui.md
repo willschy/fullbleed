@@ -3,7 +3,8 @@ title: 3D camera angle picker for ComfyUI
 date: 2026-01-08
 sourceDate: 2026-01-08
 category: plugins-skills
-thumbnail: /thumbs/3d-camera-angle-picker-for-comfyui.png
+thumbnail: /thumbs/3d-camera-angle-picker-for-comfyui-cover.jpg
+credit: "Agence Olloweb / Unsplash"
 tools:
   - ComfyUI
   - Qwen

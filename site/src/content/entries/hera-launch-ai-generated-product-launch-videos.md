@@ -6,7 +6,8 @@ category: tools
 tools:
   - WAN
 disciplines: []
-thumbnail: /thumbs/hera-launch-ai-generated-product-launch-videos.png
+thumbnail: /thumbs/hera-launch-ai-generated-product-launch-videos-cover.jpg
+credit: "SpaceX / Unsplash"
 score: 7
 hoverWhat: Paste in a prompt and Hera hands back a finished launch video with
   pacing, typography, and motion already decided, which matters if you are a

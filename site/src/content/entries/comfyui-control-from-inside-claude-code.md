@@ -3,7 +3,8 @@ title: ComfyUI control from inside Claude Code
 date: 2026-02-15
 sourceDate: 2026-02-15
 category: plugins-skills
-thumbnail: /thumbs/comfyui-control-from-inside-claude-code.png
+thumbnail: /thumbs/comfyui-control-from-inside-claude-code-cover.jpg
+credit: "Dennis Brekke / Unsplash"
 tools:
   - ComfyUI
   - Claude

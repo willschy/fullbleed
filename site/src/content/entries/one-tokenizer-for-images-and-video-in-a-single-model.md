@@ -3,7 +3,8 @@ title: One tokenizer for images and video in a single model
 date: 2026-06-11
 sourceDate: 2026-06-11
 category: papers
-thumbnail: /thumbs/one-tokenizer-for-images-and-video-in-a-single-model.png
+thumbnail: /thumbs/one-tokenizer-for-images-and-video-in-a-single-model-cover.jpg
+credit: "Hossein Nasr / Unsplash"
 tools: []
 disciplines: []
 score: 7

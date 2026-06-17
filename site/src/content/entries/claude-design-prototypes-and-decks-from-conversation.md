@@ -8,7 +8,8 @@ tools:
   - Figma
   - WAN
 disciplines: []
-thumbnail: /thumbs/claude-design-prototypes-and-decks-from-conversation.png
+thumbnail: /thumbs/claude-design-prototypes-and-decks-from-conversation-cover.jpg
+credit: "Nsey Benajah / Unsplash"
 score: 8
 hoverWhat: Anthropic's design-focused Claude mode lets you talk your way to a
   working prototype, slide deck, or one-pager without leaving the chat.

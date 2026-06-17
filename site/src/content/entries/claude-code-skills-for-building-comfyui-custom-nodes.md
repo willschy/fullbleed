@@ -3,7 +3,8 @@ title: Claude Code skills for building ComfyUI custom nodes
 date: 2026-03-05
 sourceDate: 2026-03-05
 category: plugins-skills
-thumbnail: /thumbs/claude-code-skills-for-building-comfyui-custom-nodes.png
+thumbnail: /thumbs/claude-code-skills-for-building-comfyui-custom-nodes-cover.jpg
+credit: "Олександр К / Unsplash"
 tools:
   - ComfyUI
   - Claude

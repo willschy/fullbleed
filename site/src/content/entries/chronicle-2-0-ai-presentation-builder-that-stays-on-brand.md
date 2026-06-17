@@ -6,7 +6,8 @@ category: tools
 tools:
   - WAN
 disciplines: []
-thumbnail: /thumbs/chronicle-2-0-ai-presentation-builder-that-stays-on-brand.png
+thumbnail: /thumbs/chronicle-2-0-ai-presentation-builder-that-stays-on-brand-cover.jpg
+credit: "Chandler Cruttenden / Unsplash"
 score: 7
 hoverWhat: Chronicle takes your notes or rough prompts and builds a full slide
   deck, then lets you refine it through conversation rather than endless manual

@@ -109,6 +109,15 @@ const related = allEntries
           )}
         </div>
 
+        {d.credit && (
+          <div class="info-section">
+            <p class="info-label">Cover</p>
+            <a class="info-link" href="https://unsplash.com/?utm_source=full_bleed&utm_medium=referral" rel="noopener">
+              Photo: {d.credit}
+            </a>
+          </div>
+        )}
+
         <p class="info-credit">Their work. We just pointed at it.</p>
       </aside>
     </div>

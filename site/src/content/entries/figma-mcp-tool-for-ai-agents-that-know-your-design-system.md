@@ -7,7 +7,8 @@ tools:
   - Figma
   - MCP
 disciplines: []
-thumbnail: /thumbs/figma-mcp-tool-for-ai-agents-that-know-your-design-system.png
+thumbnail: /thumbs/figma-mcp-tool-for-ai-agents-that-know-your-design-system-cover.jpg
+credit: "Fleur / Unsplash"
 score: 8
 hoverWhat: A Figma-built MCP tool that gives AI coding agents direct access to
   your design system, so what they generate actually matches your components and

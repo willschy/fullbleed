@@ -7,7 +7,8 @@ tools:
   - ComfyUI
   - LoRA
 disciplines: []
-thumbnail: /thumbs/comfyui-node-for-multi-subject-reference-with-ltx-2-3.png
+thumbnail: /thumbs/comfyui-node-for-multi-subject-reference-with-ltx-2-3-cover.jpg
+credit: "Fernando Rodrigues / Unsplash"
 score: 7
 hoverWhat: A custom ComfyUI node that wires LTX 2.3's multi-subject LoRA system
   into your existing workflow, so you can anchor a video generation to several

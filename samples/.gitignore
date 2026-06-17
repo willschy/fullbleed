@@ -1,0 +1,5 @@
+# generated / downloaded lab artifacts — not source
+cache/
+out/
+out_thermal/
+final/

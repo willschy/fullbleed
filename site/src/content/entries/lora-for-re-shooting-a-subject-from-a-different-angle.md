@@ -3,7 +3,8 @@ title: LoRA for re-shooting a subject from a different angle
 date: 2026-01-07
 sourceDate: 2026-01-07
 category: models
-thumbnail: /thumbs/lora-for-re-shooting-a-subject-from-a-different-angle.png
+thumbnail: /thumbs/lora-for-re-shooting-a-subject-from-a-different-angle-cover.jpg
+credit: "David Clode / Unsplash"
 tools:
   - Qwen
   - LoRA

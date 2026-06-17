@@ -3,7 +3,8 @@ title: Qwen3-TTS in ComfyUI, with voice cloning
 date: 2026-01-22
 sourceDate: 2026-01-22
 category: plugins-skills
-thumbnail: /thumbs/qwen3-tts-in-comfyui-with-voice-cloning.png
+thumbnail: /thumbs/qwen3-tts-in-comfyui-with-voice-cloning-cover.jpg
+credit: "Robinson Recalde / Unsplash"
 tools:
   - ComfyUI
   - Qwen

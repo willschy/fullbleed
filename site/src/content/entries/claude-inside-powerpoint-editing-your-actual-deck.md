@@ -7,7 +7,8 @@ tools:
   - Claude
   - WAN
 disciplines: []
-thumbnail: /thumbs/claude-inside-powerpoint-editing-your-actual-deck.png
+thumbnail: /thumbs/claude-inside-powerpoint-editing-your-actual-deck-cover.jpg
+credit: "Owen Michael Grech / Unsplash"
 score: 8
 hoverWhat: Anthropic's Claude now lives inside PowerPoint itself, reading your
   layouts and slide masters so it can build and edit slides without breaking

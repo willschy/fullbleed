@@ -3,7 +3,8 @@ title: "Remotion ad video skill: code-driven ads from a URL"
 date: 2026-05-19
 sourceDate: 2026-05-19
 category: plugins-skills
-thumbnail: /thumbs/remotion-ad-video-skill-code-driven-ads-from-a-url.png
+thumbnail: /thumbs/remotion-ad-video-skill-code-driven-ads-from-a-url-cover.jpg
+credit: "Amjith S / Unsplash"
 tools:
   - Claude
   - Remotion
