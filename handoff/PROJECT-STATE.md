@@ -63,13 +63,14 @@ Three things happened:
 
 ## The pipeline (commands, from repo root)
 
-Flow: **listen → judge → writeup → publish-entries → site**
+Flow: **listen → judge → writeup → publish-entries → cover → site**
 
 ```
 npm run listen           # poll enabled sources (incl. Product Hunt), filter, fill pen
 npm run judge            # Sonnet taste gate vs CURATION.md; `-- --all` for the whole pen. OVERWRITES verdicts.json.
 npm run writeup          # generate entries in VOICE.md voice. OVERWRITES writeups.json. (--ids targeting BROKEN — see gotchas)
-npm run publish-entries  # write entries into the site + harvest thumbnails for EVERY writeup in writeups.json
+npm run publish-entries  # write entries into the site (thumbnail:null — covers come next, no more harvesting)
+npm run cover            # thermal cover per entry w/o one: Sonnet art-direction → Unsplash → treat → WebP. Idempotent. (covers/cover_engine.py; needs UNSPLASH_ACCESS_KEY + numpy/Pillow)
 npm run dev / build      # run / build the Astro site (output site/dist). Launch config: .claude/launch.json ("site", port 4321)
 ```
 

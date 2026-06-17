@@ -11,6 +11,7 @@
     "judge": "npm run -w scraper judge",
     "writeup": "npm run -w scraper writeup",
     "publish-entries": "npm run -w scraper publish-entries",
+    "cover": "python3 covers/cover_engine.py",
     "score": "npm run -w scraper score",
     "review": "npm run -w scraper review",
     "backfill": "npm run -w scraper backfill",

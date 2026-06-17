@@ -10,7 +10,6 @@ import type { Candidate, PenItem } from "./types.js";
 // path is the legacy Reddit-era flow.)
 
 const ENTRIES_DIR = join(REPO_ROOT, "site", "src", "content", "entries");
-const THUMBS_DIR = join(REPO_ROOT, "site", "public", "thumbs");
 
 const CATEGORY_SLUG: Record<string, string> = {
   Models: "models",
@@ -35,80 +34,9 @@ function toolsFor(c: Candidate, w: Writeup): string[] {
   return TOOL_VOCAB.filter((t) => hay.includes(t.toLowerCase())).slice(0, 3);
 }
 
-// Skip badges, shields, CI status, and social chips — never the hero image.
-const BADGE_RE = /shields\.io|img\.shields|\bbadge\b|\/actions\/|\/workflows\/|codecov|coveralls|circleci|travis|appveyor|sonar|opencollective|ko-?fi|buymeacoffee|discord|twitter\.com|\.svg(\?|$)/i;
-
-function ghHeaders(accept: string): Record<string, string> {
-  const h: Record<string, string> = { "User-Agent": "fullbleed-scraper/0.1", Accept: accept };
-  if (process.env.GITHUB_TOKEN) h.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
-  return h;
-}
-
-// First real image in a repo's README (the maker's own hero/demo shot).
-async function githubReadmeImage(fullName: string): Promise<string | null> {
-  try {
-    const res = await fetch(`https://api.github.com/repos/${fullName}/readme`, {
-      headers: ghHeaders("application/vnd.github.raw"),
-    });
-    if (!res.ok) return null;
-    const md = await res.text();
-    const urls: string[] = [];
-    let m: RegExpExecArray | null;
-    const mdImg = /!\[[^\]]*\]\(([^)\s]+)/g;
-    const htmlImg = /<img[^>]+src=["']([^"']+)["']/gi;
-    while ((m = mdImg.exec(md))) urls.push(m[1]);
-    while ((m = htmlImg.exec(md))) urls.push(m[1]);
-    let pick = urls.find((u) => !BADGE_RE.test(u));
-    if (!pick) return null;
-    pick = pick.replace("/blob/", "/raw/");
-    if (/^https?:\/\//.test(pick)) return pick;
-    return `https://raw.githubusercontent.com/${fullName}/HEAD/${pick.replace(/^\.?\//, "")}`;
-  } catch {
-    return null;
-  }
-}
-
-// A Hugging Face model page's preview image (often a real sample of its output).
-async function hfOgImage(modelId: string): Promise<string | null> {
-  try {
-    const res = await fetch(`https://huggingface.co/${modelId}`, { headers: { "User-Agent": "Mozilla/5.0 fullbleed" } });
-    if (!res.ok) return null;
-    const html = await res.text();
-    const m = html.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i);
-    return m ? m[1] : null;
-  } catch {
-    return null;
-  }
-}
-
-// Each entry's own real artifact first; fall back to whatever the catcher had.
-async function resolveThumbUrl(c: Candidate): Promise<string | null> {
-  if (c.source === "github") return (await githubReadmeImage(c.id.replace(/^gh:/, ""))) ?? c.thumbnailUrl;
-  if (c.source === "huggingface") return (await hfOgImage(c.id.replace(/^hf:/, ""))) ?? c.thumbnailUrl;
-  return c.thumbnailUrl;
-}
-
-async function downloadThumb(url: string, slug: string): Promise<string | null> {
-  try {
-    const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 fullbleed-scraper/0.1" } });
-    if (!res.ok) return null;
-    const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.length < 1200) return null; // skip tiny placeholders / 1px gifs
-    const ct = res.headers.get("content-type") ?? "";
-    const ext = ct.includes("png") ? "png"
-      : ct.includes("gif") ? "gif"
-      : ct.includes("webp") ? "webp"
-      : /\.png(\?|$)/i.test(url) ? "png"
-      : /\.gif(\?|$)/i.test(url) ? "gif"
-      : /\.webp(\?|$)/i.test(url) ? "webp"
-      : "jpg";
-    mkdirSync(THUMBS_DIR, { recursive: true });
-    writeFileSync(join(THUMBS_DIR, `${slug}.${ext}`), buf);
-    return `/thumbs/${slug}.${ext}`;
-  } catch {
-    return null;
-  }
-}
+// Thumbnails are NOT harvested here anymore. The thermal cover step (`npm run cover`,
+// covers/cover_engine.py) generates a cover per entry after publish. We write
+// `thumbnail: null` and the cover step fills it (+ photographer credit).
 
 async function main() {
   const writeups = loadJson<Writeup[]>(join(DATA_DIR, "writeups.json"), []);
@@ -129,8 +57,7 @@ async function main() {
     if (!c) continue;
     const slug = slugify(w.cardTitle);
     const date = new Date(c.createdUtc * 1000).toISOString().slice(0, 10);
-    const imgUrl = await resolveThumbUrl(c);
-    const thumbnail = imgUrl ? await downloadThumb(imgUrl, slug) : null;
+    const thumbnail = null; // cover is generated later by `npm run cover`
 
     const frontmatter = {
       title: w.cardTitle,
@@ -157,7 +84,7 @@ async function main() {
     const md = `---\n${yamlStringify(frontmatter).trim()}\n---\n\n${w.bodyMd}\n`;
     writeFileSync(join(ENTRIES_DIR, `${slug}.md`), md);
     published++;
-    console.log(`${thumbnail ? "+img" : "    "}  ${frontmatter.category.padEnd(14)} ${w.cardTitle}`);
+    console.log(`  ${frontmatter.category.padEnd(14)} ${w.cardTitle}`);
   }
 
   console.log(`\nPublished ${published} entries to site/src/content/entries/`);
