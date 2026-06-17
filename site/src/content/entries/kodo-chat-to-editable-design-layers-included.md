@@ -6,7 +6,7 @@ category: tools
 tools:
   - Figma
   - WAN
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/kodo-chat-to-editable-design-layers-included-cover.webp
 credit: "Christa Dodoo / Unsplash"
 score: 7

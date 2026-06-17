@@ -8,7 +8,7 @@ credit: "David Clode / Unsplash"
 tools:
   - Qwen
   - LoRA
-disciplines: []
+disciplines: ["Image"]
 score: 7
 hoverWhat: A fine-tune on Qwen's image editing model that takes a photo and
   hands back a version of it from a new camera position, which saves a reshoot

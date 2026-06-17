@@ -9,7 +9,7 @@ tools:
   - ComfyUI
   - Qwen
   - WAN
-disciplines: []
+disciplines: ["Audio"]
 score: 7
 hoverWhat: A custom node suite that brings Alibaba's Qwen3-TTS models into your
   ComfyUI workflow, letting you generate, design, and clone voices without

@@ -9,7 +9,7 @@ tools:
   - ComfyUI
   - FLUX
   - Stable Diffusion
-disciplines: []
+disciplines: ["Image"]
 score: 7
 hoverWhat: Microsoft's 3.8B-parameter diffusion model punches at FLUX and SD3
   levels while costing meaningfully less to train, which matters if you care

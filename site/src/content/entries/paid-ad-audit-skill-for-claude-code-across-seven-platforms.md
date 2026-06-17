@@ -7,7 +7,7 @@ thumbnail: /thumbs/paid-ad-audit-skill-for-claude-code-across-seven-platforms-co
 credit: "Mick Haupt / Unsplash"
 tools:
   - Claude
-disciplines: []
+disciplines: ["Design"]
 score: 7
 hoverWhat: A Claude Code skill that runs 250-plus checks across your Google,
   Meta, YouTube, LinkedIn, TikTok, Microsoft, and Apple Ads accounts and hands

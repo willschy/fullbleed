@@ -8,7 +8,7 @@ credit: "Kirill Sh / Unsplash"
 tools:
   - Claude
   - WAN
-disciplines: []
+disciplines: ["Video", "Image"]
 score: 7
 hoverWhat: A set of 19 Claude Code skills that wire Claude directly into
   Higgsfield AI, so you can generate images, kick off Seedance 2.0 video jobs,

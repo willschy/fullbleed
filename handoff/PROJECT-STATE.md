@@ -63,16 +63,19 @@ Three things happened:
 
 ## The pipeline (commands, from repo root)
 
-Flow: **listen → judge → writeup → publish-entries → cover → site**
+Flow: **listen → judge → writeup → publish-entries → disciplines → cover → site**
 
 ```
 npm run listen           # poll enabled sources (incl. Product Hunt), filter, fill pen
 npm run judge            # Sonnet taste gate vs CURATION.md; `-- --all` for the whole pen. OVERWRITES verdicts.json.
 npm run writeup          # generate entries in VOICE.md voice. OVERWRITES writeups.json. (--ids targeting BROKEN — see gotchas)
 npm run publish-entries  # write entries into the site (thumbnail:null — covers come next, no more harvesting)
+npm run disciplines      # tag each entry's Discipline (Design/Image/Video/3D/Audio) via Sonnet, for the rail facet. Idempotent. (covers/tag_disciplines.py)
 npm run cover            # thermal cover per entry w/o one: Sonnet art-direction → Unsplash → treat → WebP. Idempotent. (covers/cover_engine.py; needs UNSPLASH_ACCESS_KEY + numpy/Pillow)
 npm run dev / build      # run / build the Astro site (output site/dist). Launch config: .claude/launch.json ("site", port 4321)
 ```
+
+Rail facets: **Discipline** (Design · Image · Video · 3D · Audio) + **Type** (the 5 categories). Site is dark-only; "Saved" lives top-right in the nav.
 
 - Model: `claude-sonnet-4-6`. Keep threshold 7+. Needs `ANTHROPIC_API_KEY`. ~1¢/item judge; full-pen pass ~$2–3.
 

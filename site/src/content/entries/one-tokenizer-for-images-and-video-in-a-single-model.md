@@ -6,7 +6,7 @@ category: papers
 thumbnail: /thumbs/one-tokenizer-for-images-and-video-in-a-single-model-cover.webp
 credit: "Hossein Nasr / Unsplash"
 tools: []
-disciplines: []
+disciplines: ["Image", "Video"]
 score: 7
 hoverWhat: HYDRA-X is a research model that handles images and video through a
   single shared tokenizer, which turns out to matter quite a bit for how unified

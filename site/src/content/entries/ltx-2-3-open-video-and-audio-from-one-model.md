@@ -6,7 +6,7 @@ category: models
 thumbnail: /thumbs/ltx-2-3-open-video-and-audio-from-one-model-cover.webp
 credit: "Jeremy Yap / Unsplash"
 tools: []
-disciplines: []
+disciplines: ["Video", "Audio"]
 score: 8
 hoverWhat: Lightricks' latest open model takes text, images, or existing clips
   and returns video with audio already attached, skipping the separate sound

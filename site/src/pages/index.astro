@@ -8,17 +8,22 @@ const entries = (await getCollection("entries")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const categories = [
+// "Type" facet — what kind of thing it is
+const types = [
   { id: "tools", label: "Tools" },
   { id: "automations", label: "Automations" },
   { id: "models", label: "Models" },
   { id: "plugins-skills", label: "Plugins & Skills" },
   { id: "papers", label: "Papers" },
-].map((c) => ({ ...c, count: entries.filter((e) => e.data.category === c.id).length }));
+]
+  .map((c) => ({ ...c, count: entries.filter((e) => e.data.category === c.id).length }))
+  .filter((c) => c.count > 0);
 
-const toolCounts = new Map<string, number>();
-for (const e of entries) for (const t of e.data.tools) toolCounts.set(t, (toolCounts.get(t) ?? 0) + 1);
-const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count }));
+// "Discipline" facet — what the work is for (closed set; see covers/tag_disciplines.py)
+const DISCIPLINES = ["Design", "Image", "Video", "3D", "Audio"];
+const disciplines = DISCIPLINES
+  .map((name) => ({ name, count: entries.filter((e) => e.data.disciplines.includes(name)).length }))
+  .filter((d) => d.count > 0);
 ---
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
@@ -27,37 +32,25 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   <div class="shell">
     <aside class="rail" aria-label="Filters">
       <section class="facet">
-        <button class="facet-row saved-row" id="saved-toggle" aria-pressed="false">
-          <span class="facet-name">
-            <svg class="saved-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-              <path d="M6 4.5h12a1 1 0 0 1 1 1v14l-7-4-7 4v-14a1 1 0 0 1 1-1z" />
-            </svg>
-            Saved
-          </span>
-          <span class="facet-count" data-saved-count>0</span>
-        </button>
-      </section>
-
-      <section class="facet">
-        <h2 class="facet-title">Category</h2>
-        <button class="facet-row is-active" data-facet="category" data-value="all">
+        <h2 class="facet-title">Discipline</h2>
+        <button class="facet-row is-active" data-facet="discipline" data-value="all">
           <span class="facet-name">All</span><span class="facet-count">{entries.length}</span>
         </button>
-        {categories.map((c) => (
-          <button class="facet-row" data-facet="category" data-value={c.id}>
-            <span class="facet-name">{c.label}</span><span class="facet-count">{c.count}</span>
+        {disciplines.map((d) => (
+          <button class="facet-row" data-facet="discipline" data-value={d.name}>
+            <span class="facet-name">{d.name}</span><span class="facet-count">{d.count}</span>
           </button>
         ))}
       </section>
 
       <section class="facet">
-        <h2 class="facet-title">Tool</h2>
-        <button class="facet-row is-active" data-facet="tool" data-value="all">
+        <h2 class="facet-title">Type</h2>
+        <button class="facet-row is-active" data-facet="category" data-value="all">
           <span class="facet-name">All</span><span class="facet-count">{entries.length}</span>
         </button>
-        {tools.map((t) => (
-          <button class="facet-row" data-facet="tool" data-value={t.name}>
-            <span class="facet-name">{t.name}</span><span class="facet-count">{t.count}</span>
+        {types.map((c) => (
+          <button class="facet-row" data-facet="category" data-value={c.id}>
+            <span class="facet-name">{c.label}</span><span class="facet-count">{c.count}</span>
           </button>
         ))}
       </section>
@@ -377,17 +370,17 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 
 <script>
   /* delegated so handlers survive ClientRouter swaps; state resets per page-load */
-  const state = { category: "all", tool: "all", query: "", savedOnly: false };
+  const state = { category: "all", discipline: "all", query: "", savedOnly: false };
   const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
   function matches(card: HTMLElement): boolean {
     const currentOnly = document.getElementById("current-only") as HTMLInputElement | null;
-    const catOk = state.category === "all" || card.dataset.category === state.category;
-    const toolOk = state.tool === "all" || (card.dataset.tools ?? "").split("|").includes(state.tool);
+    const typeOk = state.category === "all" || card.dataset.category === state.category;
+    const discOk = state.discipline === "all" || (card.dataset.disciplines ?? "").split("|").includes(state.discipline);
     const freshOk = !currentOnly?.checked || card.dataset.superseded !== "true";
     const queryOk = state.query === "" || (card.textContent ?? "").toLowerCase().includes(state.query);
     const savedOk = !state.savedOnly || (window as any).fbSaved?.has(card.dataset.id);
-    return catOk && toolOk && freshOk && queryOk && savedOk;
+    return typeOk && discOk && freshOk && queryOk && savedOk;
   }
 
   function resetFloating(card: HTMLElement): void {
@@ -498,9 +491,11 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
 
-    // "Saved" filter toggle
-    const savedBtn = target.closest<HTMLButtonElement>("#saved-toggle");
+    // "Saved" toggle — lives in the top-right nav now; on the catalog it filters in place
+    // (the href="/?saved=1" is only used when arriving from another page).
+    const savedBtn = target.closest<HTMLElement>("#saved-toggle");
     if (savedBtn) {
+      e.preventDefault();
       state.savedOnly = !state.savedOnly;
       savedBtn.classList.toggle("is-active", state.savedOnly);
       savedBtn.setAttribute("aria-pressed", String(state.savedOnly));
@@ -510,7 +505,7 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 
     const row = target.closest<HTMLButtonElement>("[data-facet]");
     if (row) {
-      const facet = row.dataset.facet as "category" | "tool";
+      const facet = row.dataset.facet as "category" | "discipline";
       state[facet] = row.dataset.value ?? "all";
       document
         .querySelectorAll<HTMLButtonElement>(`[data-facet="${facet}"]`)
@@ -553,12 +548,20 @@ const tools = [...toolCounts.entries()].sort((a, b) => b[1] - a[1]).map(([name, 
 
   document.addEventListener("astro:page-load", () => {
     state.category = "all";
-    state.tool = "all";
+    state.discipline = "all";
+    const params = new URLSearchParams(window.location.search);
     // honor a search arriving from another page (?q=…)
-    const q = new URLSearchParams(window.location.search).get("q") ?? "";
+    const q = params.get("q") ?? "";
     state.query = q.trim().toLowerCase();
     const searchInput = document.getElementById("search-input") as HTMLInputElement | null;
     if (searchInput && q) searchInput.value = q;
+    // honor a "Saved" arriving from another page (?saved=1)
+    state.savedOnly = params.get("saved") === "1";
+    const savedBtn = document.getElementById("saved-toggle");
+    if (savedBtn) {
+      savedBtn.classList.toggle("is-active", state.savedOnly);
+      savedBtn.setAttribute("aria-pressed", String(state.savedOnly));
+    }
     apply(false);
   });
 </script>

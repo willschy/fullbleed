@@ -6,7 +6,7 @@ category: plugins-skills
 thumbnail: /thumbs/agent-skills-that-keep-ai-coding-tools-on-a-design-process-cover.webp
 credit: "Daniel McCullough / Unsplash"
 tools: []
-disciplines: []
+disciplines: ["Design"]
 score: 7
 hoverWhat: A set of structured skills for tools like Cursor or Copilot that
   steer the AI through a real design process instead of letting it freestyle.

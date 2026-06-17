@@ -9,7 +9,7 @@ tools:
   - Claude
   - Photoshop
   - MCP
-disciplines: []
+disciplines: ["Image"]
 score: 7
 hoverWhat: An open-source MCP server that lets Claude and other AI assistants
   drive Photoshop directly, so you can describe what you want and watch the

@@ -5,7 +5,7 @@ sourceDate: 2026-02-06
 category: models
 tools:
   - Claude
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/claude-opus-4-6-anthropic-s-agentic-reasoning-model-cover.webp
 credit: "Vitaliy Shevchenko / Unsplash"
 score: 8

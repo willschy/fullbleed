@@ -19,15 +19,13 @@
     <nav class="topnav-links" aria-label="Site">
       <a href="/about/" class="topnav-link">About</a>
       <a href="#newsletter" class="topnav-link">Newsletter</a>
-      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.5" />
-          <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5m14 0h2.5M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19" />
+      <a class="topnav-saved" id="saved-toggle" href="/?saved=1" aria-pressed="false" aria-label="Saved items">
+        <svg class="saved-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+          <path d="M6 4.5h12a1 1 0 0 1 1 1v14l-7-4-7 4v-14a1 1 0 0 1 1-1z" />
         </svg>
-        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z" />
-        </svg>
-      </button>
+        <span>Saved</span>
+        <span class="saved-badge" data-saved-count hidden>0</span>
+      </a>
     </nav>
   </div>
 </header>
@@ -139,37 +137,57 @@
     background: var(--fill-1);
   }
 
-  .theme-btn {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border: none;
-    background: none;
-    border-radius: var(--r-pill);
+  /* Saved — utility nav, far top-right (convention for a personal saved view) */
+  .topnav-saved {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
     color: var(--ink-50);
-    transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-spring);
+    padding: var(--s2) var(--s3);
+    border-radius: var(--r-pill);
+    transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
   }
 
-  .theme-btn:hover {
+  .topnav-saved .saved-ico {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linejoin: round;
+    transition: fill var(--dur-fast) var(--ease-out);
+  }
+
+  .topnav-saved:hover {
     color: var(--ink);
     background: var(--fill-1);
   }
 
-  .theme-btn:active {
-    transform: scale(0.9);
+  .topnav-saved.is-active {
+    color: var(--accent);
   }
 
-  .icon-sun {
-    display: none;
+  .topnav-saved.is-active .saved-ico {
+    fill: var(--accent);
+    stroke: var(--accent);
   }
 
-  :global(html[data-theme="dark"]) .icon-sun {
-    display: block;
+  .saved-badge {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    line-height: 1;
+    padding: 2px 5px;
+    min-width: 15px;
+    text-align: center;
+    border-radius: var(--r-pill);
+    background: var(--fill-2);
+    color: var(--ink-70);
   }
 
-  :global(html[data-theme="dark"]) .icon-moon {
-    display: none;
+  .topnav-saved.is-active .saved-badge {
+    background: var(--accent);
+    color: #fff;
   }
 
   .search-kbd {
@@ -218,15 +236,6 @@
 </style>
 
 <script>
-  // theme toggle — persisted, survives client-side routing
-  document.addEventListener("click", (e) => {
-    if (!(e.target as HTMLElement).closest("#theme-toggle")) return;
-    const html = document.documentElement;
-    const next = html.dataset.theme === "dark" ? "light" : "dark";
-    html.dataset.theme = next;
-    localStorage.setItem("fb-theme", next);
-  });
-
   // search submit: on the catalog, filtering is live (don't reload);
   // from any other page, let it navigate to /?q=… and filter on arrival
   document.addEventListener("submit", (e) => {

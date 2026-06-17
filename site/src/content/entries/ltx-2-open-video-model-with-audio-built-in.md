@@ -8,7 +8,7 @@ credit: "Susan Wilkinson / Unsplash"
 tools:
   - ComfyUI
   - WAN
-disciplines: []
+disciplines: ["Video", "Audio"]
 score: 8
 hoverWhat: Lightricks' open video model that generates picture and sound
   together in one pass, saving you the separate audio step that most open models

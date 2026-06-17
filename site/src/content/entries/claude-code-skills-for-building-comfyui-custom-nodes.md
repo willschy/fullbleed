@@ -9,7 +9,7 @@ tools:
   - ComfyUI
   - Claude
   - WAN
-disciplines: []
+disciplines: ["Image"]
 score: 8
 hoverWhat: A set of skills that loads Claude Code with working knowledge of
   ComfyUI's node APIs, so you can describe the node you want and get code that

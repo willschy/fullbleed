@@ -6,7 +6,7 @@ category: tools
 tools:
   - Figma
   - WAN
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/stitch-3-0-ai-ui-generation-with-direct-figma-export-cover.webp
 credit: "J Williams / Unsplash"
 score: 8

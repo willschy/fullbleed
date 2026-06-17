@@ -6,7 +6,7 @@ category: plugins-skills
 tools:
   - Figma
   - MCP
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/figma-mcp-tool-for-ai-agents-that-know-your-design-system-cover.webp
 credit: "Fleur / Unsplash"
 score: 8

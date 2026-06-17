@@ -28,22 +28,11 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
     />
     <ClientRouter />
     <script is:inline>
-      // theme init before first paint — no flash; reapplied after client-side swaps
-      (function () {
-        const apply = () => {
-          const theme =
-            localStorage.getItem("fb-theme") ??
-            (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-          document.documentElement.dataset.theme = theme;
-        };
-        apply();
-        document.addEventListener("astro:after-swap", apply);
-        // mark the document once we navigate client-side, so entrance
-        // animations only run on the very first load, not every route change
-        document.addEventListener("astro:after-swap", () => {
-          document.documentElement.classList.add("vt-nav");
-        });
-      })();
+      // Full Bleed is dark-only. Mark the document after the first client-side swap so
+      // entrance animations run only on the very first load, not on every route change.
+      document.addEventListener("astro:after-swap", () => {
+        document.documentElement.classList.add("vt-nav");
+      });
     </script>
 
     <script is:inline>
@@ -74,6 +63,7 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
           });
           document.querySelectorAll("[data-saved-count]").forEach((el) => {
             el.textContent = String(saved.size);
+            el.toggleAttribute("hidden", saved.size === 0); // badge only shows when > 0
           });
         }
 

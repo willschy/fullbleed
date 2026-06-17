@@ -7,7 +7,7 @@ thumbnail: /thumbs/a-curated-library-of-design-skill-files-for-ai-agents-cover.w
 credit: "Judy Beth Morris / Unsplash"
 tools:
   - Claude
-disciplines: []
+disciplines: ["Design"]
 score: 7
 hoverWhat: 67 ready-to-drop DESIGN.md and SKILL.md files that teach agentic
   tools your taste before they touch a pixel.

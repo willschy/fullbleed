@@ -6,7 +6,7 @@ category: models
 thumbnail: /thumbs/keye-vl-2-0-open-multimodal-model-built-for-long-video-cover.webp
 credit: "Markus Spiske / Unsplash"
 tools: []
-disciplines: []
+disciplines: ["Video"]
 score: 7
 hoverWhat: Kwai's open 30B MoE model can reason over hour-long videos in a
   single pass, which puts it in rare company among openly released multimodal

@@ -6,7 +6,7 @@ category: plugins-skills
 tools:
   - ComfyUI
   - LoRA
-disciplines: []
+disciplines: ["Video"]
 thumbnail: /thumbs/comfyui-node-for-multi-subject-reference-with-ltx-2-3-cover.webp
 credit: "Fernando Rodrigues / Unsplash"
 score: 7

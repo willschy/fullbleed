@@ -7,7 +7,7 @@ thumbnail: /thumbs/davinci-magihuman-human-focused-video-with-audio-from-one-mo-
 credit: "Wesley Pribadi / Unsplash"
 tools:
   - WAN
-disciplines: []
+disciplines: ["Video", "Audio"]
 score: 7
 hoverWhat: A multimodal open model from GAIR that turns text or images into
   video with synced audio, tuned specifically for human subjects.

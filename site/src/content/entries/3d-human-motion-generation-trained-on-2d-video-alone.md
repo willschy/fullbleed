@@ -6,7 +6,7 @@ category: papers
 thumbnail: /thumbs/3d-human-motion-generation-trained-on-2d-video-alone-cover.webp
 credit: "Ahmad Odeh / Unsplash"
 tools: []
-disciplines: []
+disciplines: ["3D", "Video"]
 score: 7
 hoverWhat: VideoMDM learns to generate 3D body motion without ever seeing 3D
   training data, which could open motion generation to the vastly larger world

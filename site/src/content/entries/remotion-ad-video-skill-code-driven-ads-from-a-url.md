@@ -8,7 +8,7 @@ credit: "Amjith S / Unsplash"
 tools:
   - Claude
   - Remotion
-disciplines: []
+disciplines: ["Video"]
 score: 7
 hoverWhat: Point an AI coding agent at a product URL and get a working Remotion
   project back, no video-generation model in the loop.

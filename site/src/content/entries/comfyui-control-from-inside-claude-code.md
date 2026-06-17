@@ -9,7 +9,7 @@ tools:
   - ComfyUI
   - Claude
   - FLUX
-disciplines: []
+disciplines: ["Image"]
 score: 8
 hoverWhat: An MCP server that connects Claude Code directly to ComfyUI, so you
   can generate images and video, edit your graph, and manage models without

@@ -6,7 +6,7 @@ category: tools
 tools:
   - Figma
   - WAN
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/pitch-agent-ai-slide-generation-that-works-from-your-actual--cover.webp
 credit: "Roman Budnikov / Unsplash"
 score: 7

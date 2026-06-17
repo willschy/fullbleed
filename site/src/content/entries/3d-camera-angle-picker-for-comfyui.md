@@ -9,7 +9,7 @@ tools:
   - ComfyUI
   - Qwen
   - Three.js
-disciplines: []
+disciplines: ["3D", "Image"]
 score: 7
 hoverWhat: A custom node that gives you an interactive 3D viewport inside
   ComfyUI so you can set exact camera angles and pipe them straight into your

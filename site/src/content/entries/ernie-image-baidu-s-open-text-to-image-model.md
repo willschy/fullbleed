@@ -8,7 +8,7 @@ credit: "Colin Lloyd / Unsplash"
 tools:
   - Stable Diffusion
   - WAN
-disciplines: []
+disciplines: ["Image"]
 score: 7
 hoverWhat: An 8B-parameter open-weight image model from Baidu that claims
   top-of-class quality among open generators, worth a look if you're weighing

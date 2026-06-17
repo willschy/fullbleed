@@ -8,7 +8,7 @@ credit: "Anita Jankovic / Unsplash"
 tools:
   - ComfyUI
   - LoRA
-disciplines: []
+disciplines: ["Video", "Audio"]
 score: 7
 hoverWhat: A custom ComfyUI node that takes a reference image and a reference
   voice and keeps both consistent through a generated clip, so you can build

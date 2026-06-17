@@ -5,7 +5,7 @@ sourceDate: 2026-04-30
 category: tools
 tools:
   - WAN
-disciplines: []
+disciplines: ["Video"]
 thumbnail: /thumbs/hera-launch-ai-generated-product-launch-videos-cover.webp
 credit: "SpaceX / Unsplash"
 score: 7

@@ -4,7 +4,7 @@ date: 2026-04-23
 sourceDate: 2026-04-23
 category: tools
 tools: []
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/magic-patterns-agent-2-0-ai-prototyping-that-pulls-from-your-cover.webp
 credit: "Susan Wilkinson / Unsplash"
 score: 7

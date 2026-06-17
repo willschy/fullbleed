@@ -42,6 +42,7 @@ const stamp = d.date
   data-id={entry.id}
   data-category={d.category}
   data-tools={d.tools.join("|")}
+  data-disciplines={d.disciplines.join("|")}
   data-superseded={d.supersededBy ? "true" : "false"}
 >
   <a class="card-link" href={`/entry/${entry.id}/`} aria-label={d.title}>

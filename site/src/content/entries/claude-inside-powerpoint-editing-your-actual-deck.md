@@ -6,7 +6,7 @@ category: plugins-skills
 tools:
   - Claude
   - WAN
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/claude-inside-powerpoint-editing-your-actual-deck-cover.webp
 credit: "Owen Michael Grech / Unsplash"
 score: 8

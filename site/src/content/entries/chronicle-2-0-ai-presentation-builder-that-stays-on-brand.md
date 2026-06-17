@@ -5,7 +5,7 @@ sourceDate: 2026-03-10
 category: tools
 tools:
   - WAN
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/chronicle-2-0-ai-presentation-builder-that-stays-on-brand-cover.webp
 credit: "Chandler Cruttenden / Unsplash"
 score: 7

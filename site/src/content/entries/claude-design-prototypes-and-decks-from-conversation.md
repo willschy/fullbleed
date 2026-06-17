@@ -7,7 +7,7 @@ tools:
   - Claude
   - Figma
   - WAN
-disciplines: []
+disciplines: ["Design"]
 thumbnail: /thumbs/claude-design-prototypes-and-decks-from-conversation-cover.webp
 credit: "Nsey Benajah / Unsplash"
 score: 8
