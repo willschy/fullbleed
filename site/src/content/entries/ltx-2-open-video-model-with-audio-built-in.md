@@ -3,7 +3,7 @@ title: "LTX-2: open video model with audio built in"
 date: 2026-01-03
 sourceDate: 2026-01-03
 category: models
-thumbnail: /thumbs/ltx-2-open-video-model-with-audio-built-in-cover.jpg
+thumbnail: /thumbs/ltx-2-open-video-model-with-audio-built-in-cover.webp
 credit: "Susan Wilkinson / Unsplash"
 tools:
   - ComfyUI

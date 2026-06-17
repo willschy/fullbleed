@@ -3,7 +3,7 @@ title: "LTX-2.3: open video and audio from one model"
 date: 2026-03-04
 sourceDate: 2026-03-04
 category: models
-thumbnail: /thumbs/ltx-2-3-open-video-and-audio-from-one-model-cover.jpg
+thumbnail: /thumbs/ltx-2-3-open-video-and-audio-from-one-model-cover.webp
 credit: "Jeremy Yap / Unsplash"
 tools: []
 disciplines: []

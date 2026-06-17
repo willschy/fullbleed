@@ -3,7 +3,7 @@ title: "Keye-VL-2.0: open multimodal model built for long video"
 date: 2026-06-09
 sourceDate: 2026-06-09
 category: models
-thumbnail: /thumbs/keye-vl-2-0-open-multimodal-model-built-for-long-video-cover.jpg
+thumbnail: /thumbs/keye-vl-2-0-open-multimodal-model-built-for-long-video-cover.webp
 credit: "Markus Spiske / Unsplash"
 tools: []
 disciplines: []

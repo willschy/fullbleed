@@ -7,7 +7,7 @@ tools:
   - ComfyUI
   - LoRA
 disciplines: []
-thumbnail: /thumbs/comfyui-node-for-multi-subject-reference-with-ltx-2-3-cover.jpg
+thumbnail: /thumbs/comfyui-node-for-multi-subject-reference-with-ltx-2-3-cover.webp
 credit: "Fernando Rodrigues / Unsplash"
 score: 7
 hoverWhat: A custom ComfyUI node that wires LTX 2.3's multi-subject LoRA system

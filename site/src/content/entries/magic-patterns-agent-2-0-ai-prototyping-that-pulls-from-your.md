@@ -5,7 +5,7 @@ sourceDate: 2026-04-23
 category: tools
 tools: []
 disciplines: []
-thumbnail: /thumbs/magic-patterns-agent-2-0-ai-prototyping-that-pulls-from-your-cover.jpg
+thumbnail: /thumbs/magic-patterns-agent-2-0-ai-prototyping-that-pulls-from-your-cover.webp
 credit: "Susan Wilkinson / Unsplash"
 score: 7
 hoverWhat: A design agent that takes a prompt and produces a working prototype

@@ -7,7 +7,7 @@ tools:
   - Claude
   - WAN
 disciplines: []
-thumbnail: /thumbs/claude-inside-powerpoint-editing-your-actual-deck-cover.jpg
+thumbnail: /thumbs/claude-inside-powerpoint-editing-your-actual-deck-cover.webp
 credit: "Owen Michael Grech / Unsplash"
 score: 8
 hoverWhat: Anthropic's Claude now lives inside PowerPoint itself, reading your

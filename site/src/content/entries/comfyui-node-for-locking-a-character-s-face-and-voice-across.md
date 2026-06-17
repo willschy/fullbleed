@@ -3,7 +3,7 @@ title: ComfyUI node for locking a character's face and voice across generated vi
 date: 2026-03-21
 sourceDate: 2026-03-21
 category: plugins-skills
-thumbnail: /thumbs/comfyui-node-for-locking-a-character-s-face-and-voice-across-cover.jpg
+thumbnail: /thumbs/comfyui-node-for-locking-a-character-s-face-and-voice-across-cover.webp
 credit: "Anita Jankovic / Unsplash"
 tools:
   - ComfyUI

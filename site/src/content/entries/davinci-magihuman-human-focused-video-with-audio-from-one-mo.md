@@ -3,7 +3,7 @@ title: "daVinci-MagiHuman: human-focused video with audio from one model"
 date: 2026-03-21
 sourceDate: 2026-03-21
 category: models
-thumbnail: /thumbs/davinci-magihuman-human-focused-video-with-audio-from-one-mo-cover.jpg
+thumbnail: /thumbs/davinci-magihuman-human-focused-video-with-audio-from-one-mo-cover.webp
 credit: "Wesley Pribadi / Unsplash"
 tools:
   - WAN

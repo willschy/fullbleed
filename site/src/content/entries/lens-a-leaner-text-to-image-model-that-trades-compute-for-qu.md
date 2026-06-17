@@ -3,7 +3,7 @@ title: "Lens: a leaner text-to-image model that trades compute for quality"
 date: 2026-05-08
 sourceDate: 2026-05-08
 category: models
-thumbnail: /thumbs/lens-a-leaner-text-to-image-model-that-trades-compute-for-qu-cover.jpg
+thumbnail: /thumbs/lens-a-leaner-text-to-image-model-that-trades-compute-for-qu-cover.webp
 credit: "ShareGrid / Unsplash"
 tools:
   - ComfyUI

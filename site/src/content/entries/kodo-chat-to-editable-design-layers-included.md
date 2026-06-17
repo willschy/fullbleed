@@ -7,7 +7,7 @@ tools:
   - Figma
   - WAN
 disciplines: []
-thumbnail: /thumbs/kodo-chat-to-editable-design-layers-included-cover.jpg
+thumbnail: /thumbs/kodo-chat-to-editable-design-layers-included-cover.webp
 credit: "Christa Dodoo / Unsplash"
 score: 7
 hoverWhat: Kodo turns a text prompt into a structured, editable design — poster,

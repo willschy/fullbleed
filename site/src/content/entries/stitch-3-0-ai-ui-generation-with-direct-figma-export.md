@@ -7,7 +7,7 @@ tools:
   - Figma
   - WAN
 disciplines: []
-thumbnail: /thumbs/stitch-3-0-ai-ui-generation-with-direct-figma-export-cover.jpg
+thumbnail: /thumbs/stitch-3-0-ai-ui-generation-with-direct-figma-export-cover.webp
 credit: "J Williams / Unsplash"
 score: 8
 hoverWhat: Google's Stitch turns text prompts into editable UI screens on a live

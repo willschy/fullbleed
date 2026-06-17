@@ -3,7 +3,7 @@ title: Paid ad audit skill for Claude Code, across seven platforms
 date: 2026-02-11
 sourceDate: 2026-02-11
 category: plugins-skills
-thumbnail: /thumbs/paid-ad-audit-skill-for-claude-code-across-seven-platforms-cover.jpg
+thumbnail: /thumbs/paid-ad-audit-skill-for-claude-code-across-seven-platforms-cover.webp
 credit: "Mick Haupt / Unsplash"
 tools:
   - Claude

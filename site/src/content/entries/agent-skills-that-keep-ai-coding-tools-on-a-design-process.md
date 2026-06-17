@@ -3,7 +3,7 @@ title: Agent skills that keep AI coding tools on a design process
 date: 2026-03-28
 sourceDate: 2026-03-28
 category: plugins-skills
-thumbnail: /thumbs/agent-skills-that-keep-ai-coding-tools-on-a-design-process-cover.jpg
+thumbnail: /thumbs/agent-skills-that-keep-ai-coding-tools-on-a-design-process-cover.webp
 credit: "Daniel McCullough / Unsplash"
 tools: []
 disciplines: []

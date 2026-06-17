@@ -10,6 +10,17 @@ interface Props {
 const { entry, index = 0, feature = false } = Astro.props;
 const d = entry.data;
 
+// responsive cover: 480 / 960 / 1333 WebP — grid grabs the small ones, hero pulls full
+const hasCover = d.thumbnail?.endsWith("-cover.webp");
+const smThumb = hasCover ? d.thumbnail!.replace("-cover.webp", "-cover-sm.webp") : null;
+const mdThumb = hasCover ? d.thumbnail!.replace("-cover.webp", "-cover-md.webp") : null;
+const coverSrcset = hasCover
+  ? `${smThumb} 480w, ${mdThumb} 960w, ${d.thumbnail} 1333w`
+  : undefined;
+const imgSizes = feature
+  ? "(max-width: 859px) 92vw, 64vw"
+  : "(max-width: 640px) 92vw, (max-width: 1100px) 45vw, 30vw";
+
 const CATEGORY_LABELS: Record<string, string> = {
   "tools": "Tools",
   "automations": "Automations",
@@ -37,7 +48,9 @@ const stamp = d.date
     {d.thumbnail && (
       <img
         class="card-img"
-        src={d.thumbnail}
+        src={smThumb ?? d.thumbnail}
+        srcset={coverSrcset}
+        sizes={coverSrcset ? imgSizes : undefined}
         alt=""
         loading={feature ? "eager" : "lazy"}
         width="800"

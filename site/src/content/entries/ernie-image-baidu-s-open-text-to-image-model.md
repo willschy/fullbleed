@@ -3,7 +3,7 @@ title: "ERNIE-Image: Baidu's open text-to-image model"
 date: 2026-04-14
 sourceDate: 2026-04-14
 category: models
-thumbnail: /thumbs/ernie-image-baidu-s-open-text-to-image-model-cover.jpg
+thumbnail: /thumbs/ernie-image-baidu-s-open-text-to-image-model-cover.webp
 credit: "Colin Lloyd / Unsplash"
 tools:
   - Stable Diffusion
