@@ -1390,5 +1390,461 @@
     "category": "Models",
     "killReason": null,
     "summary": "Kwai Keye-VL-2.0-30B-A3B is an open-source MoE multimodal model that processes up to 256K context for long-video understanding and agentic tasks, achieving state-of-the-art results on long-video benchmarks at its parameter scale."
+  },
+  {
+    "id": "ph:1074937",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic wrapper — browser-based Claude Code GUI with no demonstrated creative-specific use, no real artifact or demo, and 'for everyone/creators/builders/fun' framing is pure launch copy with no differentiated creative value shown",
+    "summary": "Happycapy is a browser-based GUI that wraps Claude Code as an agent-native computing environment requiring no setup, now also available on mobile."
+  },
+  {
+    "id": "ph:1094681",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — generic website-builder wrapper, not differentiated enough for a creative audience, no creative discipline served",
+    "summary": "Brila generates one-page websites by analyzing a business's Google Maps reviews using Jobs to Be Done framing to extract real customer language and photos."
+  },
+  {
+    "id": "ph:1157940",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "money/monetization framing, not relevant to creative workflows",
+    "summary": "An AI agent that analyzes investor databases and automates outreach to book founder-investor meetings."
+  },
+  {
+    "id": "ph:1062017",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic wrapper — 'give Claude a folder and assign tasks' describes a thin Anthropic-native feature repackaged, not a differentiated standalone tool for creative work",
+    "summary": "Cowork is a desktop app that gives Claude access to a local folder so it can read, edit, and create files autonomously on assigned tasks."
+  },
+  {
+    "id": "ph:1149886",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic AI email builder — not differentiated enough for a creative-tools catalog, and email marketing automation is outside the core disciplines (design, photography, motion, etc.)",
+    "summary": "Brew is an AI-powered email marketing tool that generates copy, design, audience targeting, and automation logic from a plain-English description."
+  },
+  {
+    "id": "ph:1068248",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic wrapper, not differentiated, no creative-discipline use case",
+    "summary": "SuperX is an all-in-one X (Twitter) growth toolkit offering AI-assisted post inspiration, scheduling, engagement suggestions, and analytics for creators."
+  },
+  {
+    "id": "ph:1144771",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "money/monetization framing — e-commerce profit/sales tool with no creative relevance",
+    "summary": "StoreClaw is an AI agent platform for e-commerce stores that analyzes sales data and executes growth suggestions on the merchant's behalf."
+  },
+  {
+    "id": "ph:1101888",
+    "score": 8,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Stitch 2.0 is a Google AI design tool that generates production-ready UI from natural language, voice, and image input, with built-in design system consistency and prototype export."
+  },
+  {
+    "id": "ph:1068372",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic, not differentiated — a generic AI agent/automation tool with no creative-specific use case, no real demo or artifact, and nothing that speaks to working creatives' actual work",
+    "summary": "OpenClaw is a local AI agent that lets users control their computer, browser, and files via WhatsApp or Telegram, with persistent memory and 50+ integrations."
+  },
+  {
+    "id": "ph:1135604",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "novelty/entertainment, no use — personal AI phone assistant for booking tables and screening calls is not creative work or anything a designer/art director/photographer ships",
+    "summary": "PollyReach is an AI phone agent that makes and receives calls on your behalf, handling tasks like restaurant reservations and spam screening with a summary and transcript returned after each call."
+  },
+  {
+    "id": "ph:1090041",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — this is a sales CRM tool with no relevance to design, photography, motion, or any creative discipline in scope",
+    "summary": "An AI-native CRM that auto-populates contact and deal data from emails, meetings, and calls, and answers sales pipeline questions in plain English."
+  },
+  {
+    "id": "ph:1076729",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "novelty/entertainment, no use — AI therapy chatbot has zero relevance to working creatives or their output",
+    "summary": "A voice-based AI therapy app that lets users speak naturally and receive emotional support on demand."
+  },
+  {
+    "id": "ph:1123888",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic, not differentiated — AI meeting notes is a saturated commodity with no creative-specific angle",
+    "summary": "Fathom 3.0 is an AI meeting notetaker with bot-free capture, ChatGPT/Claude integrations, and account-wide search."
+  },
+  {
+    "id": "ph:1104980",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — AI agent eval/guardrails tooling for developers, no creative application",
+    "summary": "Plurai is a developer-facing platform that generates training data and deploys custom evaluation and guardrail models for AI agents from plain-language descriptions."
+  },
+  {
+    "id": "ph:1033864",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic social media scheduler with AI features bolted on — not differentiated from dozens of identical tools",
+    "summary": "PostSyncer is a social media management platform that lets users schedule posts, manage multiple accounts, and generate content using AI across 10+ platforms."
+  },
+  {
+    "id": "ph:1074139",
+    "score": 8,
+    "keep": true,
+    "category": "Models",
+    "killReason": null,
+    "summary": "Claude Opus 4.6 is Anthropic's latest flagship model featuring a 1M token context window, adaptive thinking, and enhanced agentic capabilities for coding, analysis, and long-running tasks."
+  },
+  {
+    "id": "ph:1140898",
+    "score": 4,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "killReason": "generic, not differentiated — a personal context/memory layer for AI tools is a crowded space with no demonstrated creative-specific use case or real artifact shown",
+    "summary": "Unabyss is an MCP-native service that automatically extracts and structures personal context from connected apps and shares it with AI tools via MCP, so users don't have to re-explain themselves across sessions."
+  },
+  {
+    "id": "ph:1089427",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Chronicle 2.0 is an AI-powered presentation tool that converts notes, prompts, or existing decks into branded slide decks through a conversational refinement interface."
+  },
+  {
+    "id": "ph:1050863",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic, not differentiated — AI website builder is an overcrowded category with no demonstrated standout capability or artifact",
+    "summary": "Loki.Build is an AI-native landing page builder that generates pages from prompts and includes editing, SEO, and hosting."
+  },
+  {
+    "id": "ph:1100794",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives; B2B agent-networking product with no design, visual, or creative application",
+    "summary": "Tobira.ai is a network where AI agents negotiate deals and discover business contacts on behalf of their human users."
+  },
+  {
+    "id": "ph:1128324",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — generic AI content/SEO wrapper with no relevance to working creatives or their craft",
+    "summary": "RankSpot is an automated AI agent that researches, writes, and publishes SEO blog articles daily based on competitor intelligence."
+  },
+  {
+    "id": "ph:1089888",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — B2B sales automation with no design, image, video, or creative production relevance",
+    "summary": "Naoma is a video AI demo agent that delivers live, personalized product demos in-browser for B2B SaaS companies, routing prospects to CRM or sales calendars."
+  },
+  {
+    "id": "ph:1080997",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Stitch is a Google tool that converts text descriptions or rough sketches into editable UI designs and production-ready code, with an integrated agent (Hatter) for multi-step design tasks and MCP export support."
+  },
+  {
+    "id": "ph:1122928",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "money/monetization framing — SEO/traffic tool for driving buyers and visitors, not a creative production tool; outside the brief's audience and discipline scope",
+    "summary": "RankAI is an autonomous SEO and AI-search optimization agent that generates and iterates on web pages to drive search traffic from Google and ChatGPT."
+  },
+  {
+    "id": "ph:1149728",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "B2B GTM/marketing ops tool with no relevance to creative disciplines; money/monetization framing at its core",
+    "summary": "Elentaria is an AI-powered B2B go-to-market platform that analyzes a business, scores marketing channels, and generates weekly execution plans."
+  },
+  {
+    "id": "ph:1075416",
+    "score": 4,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "killReason": "not differentiated for creative audience — dev tooling for AI coding agents, not a creative/design workflow tool",
+    "summary": "Inspector is a visual editor that connects to AI coding agents (Claude Code, Codex, Cursor) so you can click UI elements, make visual tweaks, and have changes written directly to your codebase."
+  },
+  {
+    "id": "ph:1106192",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "killReason": null,
+    "summary": "Figma's use_figma MCP server lets AI coding agents access your design system directly, so agent-generated designs can stay on-brand and consistent with existing components."
+  },
+  {
+    "id": "ph:1082371",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "killReason": null,
+    "summary": "Claude is now available as a native add-in inside Microsoft PowerPoint, letting users build, edit, and iterate on slides while respecting existing layouts, fonts, and slide masters, with live data connectors pulling in context from external tools."
+  },
+  {
+    "id": "ph:1124409",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not AI / no creative relevance — lead scraping tool with no connection to creative AI workflows",
+    "summary": "SocLeads 3.0 is a no-code email scraping tool that extracts contact data from social platforms and Google Maps by geographic location."
+  },
+  {
+    "id": "ph:1074121",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — B2B sales outreach/prospecting tool with no relevance to design, photography, motion, or any creative discipline in scope",
+    "summary": "Starnus is a B2B outbound sales platform that lets founders and sales teams define an ideal customer profile, find lookalike prospects, enrich contact data, and generate personalized outreach from a single interface."
+  },
+  {
+    "id": "ph:1152148",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "novelty/entertainment, no use — AI agent 'company simulator' framing is a toy, not a tool working creatives are judged on; zero relevance to design, photography, motion, or creative work",
+    "summary": "Tycoon AI is a platform that lets users run a simulated one-person company using a suite of pre-built AI agents assigned roles like CEO, CMO, and CTO to execute business tasks autonomously."
+  },
+  {
+    "id": "ph:1126180",
+    "score": 8,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Claude Design is Anthropic's conversational design tool that generates prototypes, slides, and one-pagers from text prompts and refines them through dialogue, with export support."
+  },
+  {
+    "id": "ph:1083354",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — market research SaaS for brand managers, not a tool designers/art directors/photographers use in their creative work",
+    "summary": "Timelaps is a consumer research platform that surveys 4,000+ real people to measure whether brand marketing is working, positioning itself as a cheaper alternative to traditional brand trackers."
+  },
+  {
+    "id": "ph:1151377",
+    "score": 8,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Stitch 3.0 is Google's AI-powered UI design tool that generates and iterates mobile and web screens from text prompts on a live canvas, with one-click export to Figma, Netlify, Lovable, and Bolt."
+  },
+  {
+    "id": "ph:1094627",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Cardboard is an agentic AI video editor that analyzes raw footage and assembles a final cut autonomously, positioned as an AI-driven alternative to traditional timeline editing."
+  },
+  {
+    "id": "ph:1146113",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — vague marketing copy with no real demo artifact, no shown output, and 'swarm of AI directors' framing reads as generic wrapper with no demonstrated differentiation from dozens of similar video-generation tools",
+    "summary": ""
+  },
+  {
+    "id": "ph:1056605",
+    "score": 4,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "killReason": "no AI — this is a browser inspection/scraping tool with zero AI component",
+    "summary": "MiroMiro is a Chrome extension that lets designers and developers inspect and extract CSS, colors, fonts, images, and Lottie animations from any website without opening DevTools."
+  },
+  {
+    "id": "ph:1072464",
+    "score": 5,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic AI video wrapper — not differentiated enough from the crowded text-to-marketing-video space (Synthesia, HeyGen, Runway, etc.) to clear the bar",
+    "summary": "Lunair is a text-to-video tool that generates explainer and marketing videos with consistent characters, voiceover, music, and motion from a product description."
+  },
+  {
+    "id": "ph:1131691",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "sales/GTM automation has no relevance to working creatives or their craft work",
+    "summary": "Orange Slice is an AI-powered sales and go-to-market workflow tool for prospecting, enriching, and qualifying leads."
+  },
+  {
+    "id": "ph:1068370",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "Not AI — startup revenue tracker with no creative or AI relevance",
+    "summary": "Unicorne is a real-time leaderboard ranking the 20 fastest-growing tech startups by verified MRR data pulled from Stripe, Paddle, and RevenueCat."
+  },
+  {
+    "id": "ph:1133288",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Hera Launch is an AI tool that generates studio-style product launch videos from a single prompt, handling pacing, typography, and motion automatically."
+  },
+  {
+    "id": "ph:1115579",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — influencer campaign management is a marketing ops/brand spend tool, not something designers, photographers, or CDs use in their craft",
+    "summary": "Influcio is an AI-powered influencer marketing platform that automates influencer discovery, campaign management, and performance optimization."
+  },
+  {
+    "id": "ph:1093404",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic, not differentiated",
+    "summary": "Lokuma Design Agent is a design layer that AI coding agents (Claude Code, Codex, etc.) can call to apply layout, typography, and visual structure to generated outputs like landing pages."
+  },
+  {
+    "id": "ph:1104830",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — generic social content automation wrapper with no differentiation, not serving working creatives judged on craft",
+    "summary": "Fastlane is an AI short-form video content generator that remixes viral videos into ready-to-post TikTok, Instagram Reels, and YouTube Shorts content for businesses."
+  },
+  {
+    "id": "ph:1050396",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "not for working creatives — physical product manufacturing pipeline is outside the design/creative workflow this catalog serves",
+    "summary": "Genpire is an agentic platform that converts prompts and sketches into factory-ready product specs and connects users with manufacturers for sampling and bulk production."
+  },
+  {
+    "id": "ph:1143406",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic AI video wrapper — not differentiated from dozens of similar text-to-video tools, no real artifact or demo shown, 'cinematic/scroll-stopping' framing is pure slop marketing",
+    "summary": ""
+  },
+  {
+    "id": "ph:1100364",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic, not differentiated",
+    "summary": "VideoOS is an all-in-one video marketing platform that combines topic research, AI script writing, teleprompter recording, auto-editing with subtitles and B-roll, and direct social publishing into a single app."
+  },
+  {
+    "id": "ph:1128236",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — generic AI tweet/content writer wrapper with no differentiated capability for working creatives",
+    "summary": "Stanley is an AI-powered Twitter content assistant that claims to help users plan and write posts, built on a ghostwriter's growth playbook."
+  },
+  {
+    "id": "ph:1062085",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "No AI component — this is a bookmark/mood board manager with no meaningful AI features described",
+    "summary": "Bookmarkify is a visual bookmark manager for designers that lets users collect websites, images, and videos into boards with live site previews, font/color analysis, and team collaboration."
+  },
+  {
+    "id": "ph:1129236",
+    "score": 3,
+    "keep": false,
+    "category": "Models",
+    "killReason": "AI slop — this is a Product Hunt wrapper post for ChatGPT's existing image generation, not a notable new model release; no real artifact, demo, or differentiated content beyond marketing copy rephrasing an existing OpenAI feature.",
+    "summary": ""
+  },
+  {
+    "id": "ph:1088840",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Kodo is an AI design tool that generates fully editable, layered posters, slides, menus, and social graphics from a text prompt — outputting structured files rather than flat images."
+  },
+  {
+    "id": "ph:1061940",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — generic avatar generator, no differentiated use for working creatives, novelty with no professional workflow value",
+    "summary": "A no-login web tool that generates minimalist caricature avatars from uploaded photos with no watermarks or tracking."
+  },
+  {
+    "id": "ph:1170971",
+    "score": 6,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic wrapper — scrapes and summarizes design tokens from a URL, no differentiated artifact or demonstrated depth beyond what a dev-tools inspect + GPT pass already does",
+    "summary": "Taste Lab is a web tool that analyzes any website and returns a structured breakdown of its colors, typography, spacing, and design rationale."
+  },
+  {
+    "id": "ph:1059463",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "AI slop — a prompt library is exactly the 'this prompt just dropped' generic wrapper content the brief kills on sight",
+    "summary": "A community-driven library of design prompts for styles, animations, and UI components, usable with any coding agent."
+  },
+  {
+    "id": "ph:1155361",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Pitch Agent is an AI feature built into the Pitch presentation app that generates and refines slides from prompts and file attachments while working from your existing templates and design language rather than generic layouts."
+  },
+  {
+    "id": "ph:1137273",
+    "score": 4,
+    "keep": false,
+    "category": "Tools",
+    "killReason": "generic, not differentiated — a React/Tailwind component library is not AI-native; the MCP server mention is incidental to a standard UI kit launch",
+    "summary": "TailGrids 3.0 is an open-source React UI library with 600+ components built on Tailwind CSS, with a Figma design system and an included MCP server for AI-assisted workflows."
+  },
+  {
+    "id": "ph:1127525",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "killReason": null,
+    "summary": "Magic Patterns Agent 2.0 is an AI design tool that generates UI prototypes from a prompt using your existing design system, then hands off production-ready components to engineering."
   }
 ]

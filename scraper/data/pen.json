@@ -5885,5 +5885,3924 @@
       }
     },
     "firstSeen": 1781391550640
+  },
+  "hn:48550569": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48550569",
+      "sourceLabel": "Show HN",
+      "title": "Garden of Flowers – an archive of pictorial typography before ASCII art",
+      "author": "california-og",
+      "createdUtc": 1781583957,
+      "url": "https://news.ycombinator.com/item?id=48550569",
+      "outboundUrl": "https://garden-of-flowers.heikkilotvonen.com/",
+      "body": "Hey all, I made this. The archive started with my 2015 BA thesis on Amiga ASCII art when I was curious about the history of ASCII art but found very little on text art that came before it. The historical precursors are often attributed to typewriter art and shaped&#x2F;visual poetry, but I think letterpress is overlooked. So, I got slightly obsessed and started a personal database of pictures built entirely from metal type, ornaments, and rule, some going back to the 1600s. After eight years, I&#x27;ve managed to find ~2500 images. My friend Adel Faure built the website so it&#x27;s now browseable by anyone!<p>I would like to note that most images are from public digital collections (Internet Archive, national libraries, etc.) and displayed without permission (for educational purposes). I&#x27;ve tried to source every image, but check the original source and its license before reusing anything. I&#x27;d be happy to take down or correct anything.<p>It&#x27;s also incomplete and surely has errors and misattributions. Corrections to anything are very welcome.<p>If anyone has leads on works I haven&#x27;t catalogued, I&#x27;d love to hear them! The practice and pictures are scattered across languages and keywords (type picture, typosignet, typotectur, Bildsatz, stigmatypie, stunt typography...), so things hide in odd corners of archives. If you&#x27;ve seen something like this, please point me at it.<p>There&#x27;s also a longer essay on how it began:\n<a href=\"https:&#x2F;&#x2F;garden-of-flowers.heikkilotvonen.com&#x2F;?essay\" rel=\"nofollow\">https:&#x2F;&#x2F;garden-of-flowers.heikkilotvonen.com&#x2F;?essay</a>",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 106,
+        "comments": 15,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_california-og",
+          "story_48550569",
+          "show_hn",
+          "front_page"
+        ]
+      }
+    },
+    "firstSeen": 1781619110653
+  },
+  "hn:48543245": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48543245",
+      "sourceLabel": "Show HN",
+      "title": "machine0 – Persistent NixOS VMs You Control from the CLI",
+      "author": "bwm",
+      "createdUtc": 1781539303,
+      "url": "https://news.ycombinator.com/item?id=48543245",
+      "outboundUrl": "https://machine0.io",
+      "body": "Hi HN! Excited to launch machine0, a CLI that makes it easy to create, provision and snapshot persistent NixOS (&amp; Ubuntu) VMs.<p>You can think of machine0 as a modern VPS provider. VMs stay on unless switched-off (with 99.99% uptime), they have static IPs and HTTPS endpoints, 1-60 vCPU, up to 240GB RAM and optionally GPUs. The CLI provides commands to manage lifecycle, snapshots and also provision the VMs using Nix flakes or Ansible playbooks. VMs are priced by the minute of usage.<p>What makes machine0 unique is that it has first class support for NixOS! In a nutshell, NixOS lets you define your entire OS as code (think Terraform but for your Linux). A flake declares your system state (packages, services, firewall rules, users...) and pins all dependencies via a lockfile. Given the same flake.nix and flake.lock, `nixos-rebuild switch` always produces the exact same system.<p>The NixOS ecosystem is mature, and flakes are expressive: at the system level you can define packages, what&#x27;s in &#x2F;etc, firewall rules, users &amp; groups etc. At the user level, you can define your shell, aliases, tmux and vim config. Having your entire environment defined as code makes it easy to audit what&#x27;s installed and how things are set up. You can rollback by reverting the last commit. And agents can write the code for you and test it against disposable machine0 VMs.<p>If you&#x27;d like to dive right in, these commands will get you started:<p><pre><code>  npm install -g @machine0&#x2F;cli\n  machine0 new my-vm --image nixos-25-11        # create a new nixos VM\n  machine0 provision my-vm .&#x2F;flake#my-profile   # provision it using a nix flake\n  machine0 ssh my-vm                            # ssh in\n  machine0 stop my-vm                           # stop the VM\n  machine0 images new my-vm my-snapshot         # create a snapshot\n  machine0 new my-clone --image my-snapshot     # create a new VM from the snapshot\n</code></pre>\n- Demo of installation + NixOS provisioning via Claude Code: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RT8N0_e3Vfg\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RT8N0_e3Vfg</a><p>- Documentation: <a href=\"https:&#x2F;&#x2F;docs.machine0.io&#x2F;introduction&#x2F;overview\">https:&#x2F;&#x2F;docs.machine0.io&#x2F;introduction&#x2F;overview</a><p>- machine0 NixOS flakes: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;fdmtl&#x2F;machine0-nixos\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;fdmtl&#x2F;machine0-nixos</a><p>If you&#x27;re in the habit of using VMs, or want to know what the NixOS fuss is about, would love for you to give machine0 a try!",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 89,
+        "comments": 34,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_bwm",
+          "story_48543245",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48543105": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48543105",
+      "sourceLabel": "Show HN",
+      "title": "We put voice agent on our website, learned retrieval isn't bottleneck",
+      "author": "srimalireddi",
+      "createdUtc": 1781538755,
+      "url": "https://news.ycombinator.com/item?id=48543105",
+      "outboundUrl": "https://www.moss.dev/blog/founding-agent",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 22,
+        "comments": 8,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_srimalireddi",
+          "story_48543105",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48542970": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48542970",
+      "sourceLabel": "Show HN",
+      "title": "Exploiting Slack's video embeds to achieve E2EE communication",
+      "author": "victorio",
+      "createdUtc": 1781538197,
+      "url": "https://news.ycombinator.com/item?id=48542970",
+      "outboundUrl": "https://v1c.rocks/log/exploiting-slack-video/",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 31,
+        "comments": 3,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_victorio",
+          "story_48542970",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48538833": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48538833",
+      "sourceLabel": "Show HN",
+      "title": "I wrote a C++ ray tracer from scratch without AI",
+      "author": "martiano",
+      "createdUtc": 1781516050,
+      "url": "https://news.ycombinator.com/item?id=48538833",
+      "outboundUrl": "https://github.com/themartiano/luz",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 148,
+        "comments": 64,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_martiano",
+          "story_48538833",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48532845": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48532845",
+      "sourceLabel": "Show HN",
+      "title": "Replicant Detector with Datastar, Common Lisp, BKNR Datastore",
+      "author": "fsmunoz",
+      "createdUtc": 1781471900,
+      "url": "https://news.ycombinator.com/item?id=48532845",
+      "outboundUrl": "https://rep-detect.lambda-combine.net/",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 34,
+        "comments": 1,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_fsmunoz",
+          "story_48532845",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48530382": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48530382",
+      "sourceLabel": "Show HN",
+      "title": "Discover Wikipedia articles popular on Hacker News",
+      "author": "octopus143",
+      "createdUtc": 1781459657,
+      "url": "https://news.ycombinator.com/item?id=48530382",
+      "outboundUrl": "https://www.orangecrumbs.com/",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 133,
+        "comments": 33,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_octopus143",
+          "story_48530382",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48529990": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48529990",
+      "sourceLabel": "Show HN",
+      "title": "Kage – Shadow any website to a single binary for offline viewing",
+      "author": "tamnd",
+      "createdUtc": 1781457938,
+      "url": "https://news.ycombinator.com/item?id=48529990",
+      "outboundUrl": "https://github.com/tamnd/kage",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 688,
+        "comments": 137,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_tamnd",
+          "story_48529990",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48527623": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48527623",
+      "sourceLabel": "Show HN",
+      "title": "Dual YOLOv8n UAV Detection on RK3588S at 42 FPS Using NPU",
+      "author": "alebal123bal",
+      "createdUtc": 1781447871,
+      "url": "https://news.ycombinator.com/item?id=48527623",
+      "outboundUrl": "https://github.com/alebal123bal/khadas_yolov8n_multithread",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 71,
+        "comments": 9,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_alebal123bal",
+          "story_48527623",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48523664": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48523664",
+      "sourceLabel": "Show HN",
+      "title": "Bastion – isolated Linux VMs for background coding agents",
+      "author": "almostlit",
+      "createdUtc": 1781404718,
+      "url": "https://news.ycombinator.com/item?id=48523664",
+      "outboundUrl": "https://bastion.computer/",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 31,
+        "comments": 2,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_almostlit",
+          "story_48523664",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110654
+  },
+  "hn:48522555": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48522555",
+      "sourceLabel": "Show HN",
+      "title": "I built 80 mini-games using Fable before it was shut down",
+      "author": "legocoder",
+      "createdUtc": 1781393740,
+      "url": "https://news.ycombinator.com/item?id=48522555",
+      "outboundUrl": "https://minigames.world/en",
+      "body": "Dear Hacker News,<p>I&#x27;m kindly asking for your participation in the open beta for my AI-managed mini-games website. Thank you in advance!<p>For a limited time window, I&#x27;m setting the all-free feature flag to true. I hope you have a lot of fun exploring the AI&#x27;s sense for games! Here and there, I tweaked it to help with visual consistency.<p>I would be deeply grateful if you opted into analytics.<p>$2,300 in API tokens...<p>Cheers!",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 53,
+        "comments": 74,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_legocoder",
+          "story_48522555",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110655
+  },
+  "hn:48522417": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48522417",
+      "sourceLabel": "Show HN",
+      "title": "I run a vision model on every screenshot, locally, on a 4GB GPU",
+      "author": "skye0110",
+      "createdUtc": 1781392374,
+      "url": "https://news.ycombinator.com/item?id=48522417",
+      "outboundUrl": "https://github.com/ayushh0110/ScreenMind",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 35,
+        "comments": 7,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_skye0110",
+          "story_48522417",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110655
+  },
+  "hn:48521236": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48521236",
+      "sourceLabel": "Show HN",
+      "title": "Trace – Offline Mac meeting transcripts you can flag mid-call",
+      "author": "AG342",
+      "createdUtc": 1781383318,
+      "url": "https://news.ycombinator.com/item?id=48521236",
+      "outboundUrl": "https://traceapp.info",
+      "body": "I&#x27;m the developer of Trace, a non-intrusive, shortcut-driven Mac app that records and transcribes your meetings on-device. I know, another meeting transcription app. Please bear with me though, I&#x27;m confident that this is at least a little novel.<p>I primarily built Trace for myself. I&#x27;d been using MacWhisper, but there was enough fiddling before each call that I&#x27;d forget to start it and walk out of an hour-long meeting with nothing written down. So the things I cared about most were that it&#x27;s quick to activate and stays out of the way. You activate Trace by pressing a global shortcut (configurable), which reveals a small bar at the bottom of your screen (there&#x27;s also a keystroke and&#x2F;or option to hide it entirely if you&#x27;d rather not see it at all).<p>As I was building it I wanted to bake in a couple of workflows I&#x27;d wished for in other transcription apps.<p>1. Mid-meeting you can press another global shortcut to mark a &quot;key moment&quot; and type a note. The note shows up in the resulting transcript inline at that timestamp. I wanted to add this because I kept catching myself thinking &quot;wait, that bit matters&quot; in meetings and reaching to jot it down in a separate app like Obsidian, which I then needed to add context to, which took me out of the meeting. I use it all the time. If I paste the transcript into an LLM afterwards (which I find myself doing more and more these days) the important moments are flagged so it doesn&#x27;t gloss over them. This is more noticeable in longer meetings with lots of topics.\n2. With another keyboard shortcut you can summon a rough live recap (subtitles, basically) to quickly recap what&#x27;s just been said.<p>Trace uses standard macOS microphone and system recording APIs to capture both sides of the conversation as two separate tracks and then runs the system side through on-device diarization to identify speakers. Right now we only label them as &quot;Speaker 1&quot;, &quot;Speaker 2&quot;, etc but there are plans for speaker labelling in the future. You can also show a &quot;live recap&quot; as the call is happening to review what someone just said.<p>All transcription models run on your machine. To be clear though, Trace doesn&#x27;t do any of the summarising itself, it just produces a markdown transcript, so if you want summaries then you need to pass the output to an AI.<p>The app is sandboxed and your audio&#x2F;transcripts are never uploaded anywhere - they just exist as audio files and markdown on disk. The only network call Trace is required to make is on the first run to download the speech and speaker models (around 500MB) from Hugging Face, and after that it can be used fully offline. If enabled, a Google Calendar integration can auto-name sessions but that needs a network connection.<p>The app is £9.99 on the macOS App Store. I&#x27;ve been using it every day for months now and I&#x27;m super happy with how it&#x27;s improved my workflow. Feedback very welcome.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 202,
+        "comments": 82,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_AG342",
+          "story_48521236",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110655
+  },
+  "hn:48516202": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48516202",
+      "sourceLabel": "Show HN",
+      "title": "Quant Picker – which GGUF file fits your model and machine",
+      "author": "ermantrout",
+      "createdUtc": 1781350469,
+      "url": "https://news.ycombinator.com/item?id=48516202",
+      "outboundUrl": "https://vettedconsumer.com/quant-picker/",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 20,
+        "comments": 0,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_ermantrout",
+          "story_48516202",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110655
+  },
+  "hn:48514124": {
+    "post": {
+      "source": "hackernews",
+      "id": "hn:48514124",
+      "sourceLabel": "Show HN",
+      "title": "Skill for your agent to visualize your gbrain and Obsidian",
+      "author": "v_ignatyev",
+      "createdUtc": 1781333022,
+      "url": "https://news.ycombinator.com/item?id=48514124",
+      "outboundUrl": "https://github.com/vladignatyev/brain-map-skill",
+      "body": "",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 21,
+        "comments": 16,
+        "label": "points"
+      },
+      "meta": {
+        "tags": [
+          "story",
+          "author_v_ignatyev",
+          "story_48514124",
+          "show_hn"
+        ]
+      }
+    },
+    "firstSeen": 1781619110655
+  },
+  "gh:cobusgreyling/loop-engineering": {
+    "post": {
+      "source": "github",
+      "id": "gh:cobusgreyling/loop-engineering",
+      "sourceLabel": "GitHub",
+      "title": "cobusgreyling/loop-engineering — Practical patterns, starters & CLI tools for loop engineering with AI coding agents. Design systems that prompt and orchestrate agents (inspired by Addy Osmani and Boris Cherny). Includes loop-audit, loop-init, loop-cost.",
+      "author": "cobusgreyling",
+      "createdUtc": 1780986500,
+      "url": "https://github.com/cobusgreyling/loop-engineering",
+      "outboundUrl": "https://cobusgreyling.github.io/loop-engineering/",
+      "body": "Practical patterns, starters & CLI tools for loop engineering with AI coding agents. Design systems that prompt and orchestrate agents (inspired by Addy Osmani and Boris Cherny). Includes loop-audit, loop-init, loop-cost.",
+      "thumbnailUrl": "https://opengraph.githubassets.com/1/cobusgreyling/loop-engineering",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 304,
+        "comments": 39,
+        "label": "stars"
+      },
+      "meta": {
+        "topics": [
+          "agentic-ai",
+          "ai-agents",
+          "ai-coding",
+          "anthropic",
+          "automation",
+          "claude",
+          "claude-code",
+          "codex",
+          "coding-agents",
+          "devops-automation",
+          "devtools",
+          "github-actions",
+          "grok",
+          "llm",
+          "loop-engineering",
+          "mcp",
+          "prompt-engineering"
+        ],
+        "pushedAt": "2026-06-16T12:43:27Z",
+        "homepage": "https://cobusgreyling.github.io/loop-engineering/"
+      }
+    },
+    "firstSeen": 1781619125569
+  },
+  "hf:Alissonerdx/BFS-Best-Face-Swap-Video": {
+    "post": {
+      "source": "huggingface",
+      "id": "hf:Alissonerdx/BFS-Best-Face-Swap-Video",
+      "sourceLabel": "Hugging Face",
+      "title": "Alissonerdx/BFS-Best-Face-Swap-Video",
+      "author": "Alissonerdx",
+      "createdUtc": 1769274806,
+      "url": "https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap-Video",
+      "outboundUrl": "https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap-Video",
+      "body": "image-to-video, diffusers, ltx-2, ic-lora, head-swap, video-to-video, image-to-video, bfs, lora, base_model:Lightricks/LTX-2.3, base_model:adapter:Lightricks/LTX-2.3, license:other, region:us",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 330,
+        "comments": 173,
+        "label": "likes"
+      },
+      "meta": {
+        "pipeline": "image-to-video",
+        "downloads": 173
+      }
+    },
+    "firstSeen": 1781619131899
+  },
+  "hf:realrebelai/SCAIL-2_GGUF": {
+    "post": {
+      "source": "huggingface",
+      "id": "hf:realrebelai/SCAIL-2_GGUF",
+      "sourceLabel": "Hugging Face",
+      "title": "realrebelai/SCAIL-2_GGUF",
+      "author": "realrebelai",
+      "createdUtc": 1781388910,
+      "url": "https://huggingface.co/realrebelai/SCAIL-2_GGUF",
+      "outboundUrl": "https://huggingface.co/realrebelai/SCAIL-2_GGUF",
+      "body": "image-to-video, gguf, quantization, comfyui, image-to-video, character-animation, wan2.1, base_model:zai-org/SCAIL-2, base_model:quantized:zai-org/SCAIL-2, license:mit, region:us",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 22,
+        "comments": 5171,
+        "label": "likes"
+      },
+      "meta": {
+        "pipeline": "image-to-video",
+        "downloads": 5171
+      }
+    },
+    "firstSeen": 1781619131899
+  },
+  "hf:vantagewithai/SCAIL-2-GGUF-ComfyUI": {
+    "post": {
+      "source": "huggingface",
+      "id": "hf:vantagewithai/SCAIL-2-GGUF-ComfyUI",
+      "sourceLabel": "Hugging Face",
+      "title": "vantagewithai/SCAIL-2-GGUF-ComfyUI",
+      "author": "vantagewithai",
+      "createdUtc": 1781171945,
+      "url": "https://huggingface.co/vantagewithai/SCAIL-2-GGUF-ComfyUI",
+      "outboundUrl": "https://huggingface.co/vantagewithai/SCAIL-2-GGUF-ComfyUI",
+      "body": "image-to-video, diffusers, gguf, character-animation, video-generation, pose-driven, diffusion, image-to-video, arxiv:2512.05905, base_model:zai-org/SCAIL-2, base_model:quantized:zai-org/SCAIL-2, license:mit, region:us",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 11,
+        "comments": 4457,
+        "label": "likes"
+      },
+      "meta": {
+        "pipeline": "image-to-video",
+        "downloads": 4457
+      }
+    },
+    "firstSeen": 1781619131899
+  },
+  "hfpaper:2606.16993": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.16993",
+      "sourceLabel": "HF Papers",
+      "title": "DreamX-World 1.0: A General-Purpose Interactive World Model",
+      "author": "DreamX Team et al.",
+      "createdUtc": 1781481600,
+      "url": "https://huggingface.co/papers/2606.16993",
+      "outboundUrl": "https://arxiv.org/abs/2606.16993",
+      "body": "DreamX-World 1.0 is a general-purpose interactive text/image-to-video world model for controllable long-horizon generation. It supports camera navigation, revisits to previously observed regions, and promptable events across photorealistic, game-style, and stylized domains. Our data engine combines camera-accurate Unreal Engine rendering, action-rich gameplay recordings, and real-world videos with recovered camera geometry. For camera control, we introduce E-PRoPE, a lightweight variant of projective positional encoding that retains PRoPE's projective camera geometry while applying camera-aware attention to spatially reduced tokens. We convert a bidirectional video generator into a few-step autoregressive world model using causal forcing, DMD-style distillation, and long-rollout training. Training on self-generated long-horizon contexts exposes the model to its own generated history and reduces the style and color drift that accumulates across autoregressive chunks. Memory-Conditioned Scene Persistence retrieves earlier views through camera-geometry-based retrieval, while residual recycling makes the conditioning path less sensitive to imperfect memory latents. Event Instruction Tuning adds composable event control, and reinforcement learning alignment recovers camera control and visual quality after distillation. With mixed-precision DiT execution, residual reuse, 75\\%-pruned VAE decoding, and asynchronous pipeline parallelism, DreamX-World 1.0 reaches up to 16\\,FPS on eight RTX\\,5090 GPUs. On our 5-second basic evaluation, DreamX-World 1.0 achieves a camera-control score of 73.75 and an overall score of 84.76, outperforming HY-WorldPlay 1.5 and LingBot-World in overall score, which achieve 80.79 and 80.45, respectively.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.16993.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 64,
+        "comments": 5,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.16993",
+        "keywords": [
+          "E-PRoPE",
+          "projective positional encoding",
+          "PRoPE",
+          "camera-aware attention",
+          "bidirectional video generator",
+          "autoregressive world model",
+          "causal forcing",
+          "DMD-style distillation",
+          "long-rollout training",
+          "memory-Conditioned Scene Persistence",
+          "residual recycling",
+          "Event Instruction Tuning",
+          "reinforcement learning alignment",
+          "mixed-precision DiT execution",
+          "asynchronous pipeline parallelism"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.17046": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.17046",
+      "sourceLabel": "HF Papers",
+      "title": "Geometric Action Model for Robot Policy Learning",
+      "author": "Jisang Han et al.",
+      "createdUtc": 1781481600,
+      "url": "https://huggingface.co/papers/2606.17046",
+      "outboundUrl": "https://arxiv.org/abs/2606.17046",
+      "body": "Generalist robot policies must follow user instructions while reasoning about how objects, cameras, and robot actions interact in the 3D physical world. Recent vision-language-action models (VLAs) and video world-action models (WAMs) inherit strong semantic or temporal priors from large-scale foundation models, but they still operate primarily on 2D image frames or 2D-derived latent spaces, leaving implicit the 3D geometry required for contact-rich manipulation. We propose the Geometric Action Model (GAM), a language-conditioned manipulation policy that directly repurposes a pretrained geometric foundation model (GFM) as a shared substrate for perception, temporal prediction, and action decoding. GAM splits the GFM at an intermediate layer: the shallow layers serve as an observation encoder, and a causal future predictor inserted at the split layer forecasts future latent tokens conditioned on language, proprioception, and action history. The predicted future tokens are then routed through the remaining GFM blocks for feature propagation and decoding, allowing a single backbone to produce both future geometry and actions. This design equips the GFM with language-conditioned temporal world modeling through minimal architectural modification while preserving its rich geometric priors. Across a broad suite of simulation and real-robot manipulation benchmarks, GAM is more accurate, more robust, faster, and lighter than current foundation-model-scale baselines.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.17046.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 79,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.17046",
+        "keywords": [
+          "vision-language-action models",
+          "video world-action models",
+          "geometric foundation models",
+          "language-conditioned manipulation policy",
+          "causal future predictor",
+          "latent tokens",
+          "action decoding",
+          "temporal world modeling",
+          "3D physical world",
+          "contact-rich manipulation"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.14777": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.14777",
+      "sourceLabel": "HF Papers",
+      "title": "JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence",
+      "author": "Dingyu Yao et al.",
+      "createdUtc": 1781049600,
+      "url": "https://huggingface.co/papers/2606.14777",
+      "outboundUrl": "https://arxiv.org/abs/2606.14777",
+      "body": "Many moments in the real world do not wait for a user to ask. A fire starts on a security monitor, an expression flickers across a video call, or a product a viewer wants flashes by in a livestream. Yet today's large models remain mostly turn-based by design: they answer only when addressed, and even video-call apps that appear interactive still operate as question-answer systems, reacting only when polled or prompted. We argue for a different paradigm: a model that is present in the world like a person. It continuously watches what is happening now, decides on its own whether to speak or stay silent, interacts in real time, and delegates to a background model when the problem is hard. To advance interaction models and their adoption across domains, we make two fully open-sourced contributions. First, we release JoyAI-VL-Interaction, an 8B-scale, vision-first VL-interaction model. The model makes the response decision internally, choosing each second to stay silent, respond, or delegate to a background model, and it excels at vision-triggered responsiveness and time awareness. We pair it with a transferable training recipe, from which capabilities we never trained for emerge, such as guiding a shopper through changing app screens or improvising a lecture from a slide deck. Second, we release a complete, deployable system built around that model. The system streams any ongoing video into the model, making it genuinely present in the world. All other components are pluggable, including ASR/TTS modules, memory, visualization UI, and a background brain that can connect to any API or agent. Across six real-world scenarios, human raters prefer JoyAI-VL-Interaction over the in-app video-call assistants of Doubao and Gemini by a wide margin. To our knowledge, this is the first open, vision-driven interaction model released together with its training recipe, data, and complete deployable system.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.14777.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 153,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.14777",
+        "keywords": [
+          "vision-language model",
+          "real-time interaction",
+          "autonomous decision-making",
+          "vision-triggered responsiveness",
+          "time awareness",
+          "background model",
+          "deployable system",
+          "video streaming",
+          "interactive AI",
+          "continuous perception"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.11176": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.11176",
+      "sourceLabel": "HF Papers",
+      "title": "Data Journalist Agent: Transforming Data into Verifiable Multimodal Stories",
+      "author": "Kevin Qinghong Lin et al.",
+      "createdUtc": 1780963200,
+      "url": "https://huggingface.co/papers/2606.11176",
+      "outboundUrl": "https://arxiv.org/abs/2606.11176",
+      "body": "Data tells stories that shape society; the data journalist's job is to turn raw information into stories non-experts can trust. A high-quality news feature takes a newsroom team weeks: hunting for context, running statistics, choosing an angle, and designing visuals. Recent agents handle individual steps well: data-science agents close the analysis loop, while design agents synthesize beautiful websites. But can an agent serve as a data journalist end to end? We introduce Data Journalist Agent (Data2Story), a multi-agent framework that orchestrates specialized roles into a single virtual newsroom. Data2Story contributes two innovations. (i) Claims are evidence-grounded: an Inspector links every number, angle, and asset back to data, code, or an external reference. (ii) Articles are multimodally generative: rather than defaulting to plain text and static charts, Data2Story reasons about what readers will want to see, then deploys multimodal tools, such as interactive maps for geography and audio for music. We evaluate Data2Story on 18 articles, each paired with the originally published expert piece, along four axes: (a) human-agent angle coverage; (b) rubric evaluation with 53 participants across five dimensions; (c) computer-use agents as judges, a cost-saving proxy for how readers navigate interactive articles; and (d) verifiability, where a coding verifier re-executes statements against the data and checks claims against references. Data2Story produces competitive, evidence-traceable multimedia stories, with particular strength in transparency and auditability. Human articles retain an edge in editorial angle, creative design, and presentation. We position Data2Story as a collaborator for journalists, enabling more evidence-based, transparent, and verifiable reporting. Code and demos are available at https://data2story.github.io.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.11176.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 91,
+        "comments": 3,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.11176",
+        "keywords": [
+          "multi-agent framework",
+          "data journalism",
+          "evidence-grounded",
+          "multimodal generation",
+          "verifiability",
+          "article generation",
+          "data storytelling"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.16140": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.16140",
+      "sourceLabel": "HF Papers",
+      "title": "VibeThinker-3B: Exploring the Frontier of Verifiable Reasoning in Small Language Models",
+      "author": "Sen Xu et al.",
+      "createdUtc": 1781481600,
+      "url": "https://huggingface.co/papers/2606.16140",
+      "outboundUrl": "https://arxiv.org/abs/2606.16140",
+      "body": "This technical report introduces VibeThinker-3B, a compact dense model with 3B parameters developed to investigate how far verifiable reasoning can be pushed within a strictly small-model regime. Building upon the Spectrum-to-Signal post-training paradigm, we systematically enhance the model through an optimized pipeline that includes curriculum-based supervised fine-tuning, multi-domain reinforcement learning, and offline self-distillation. Experimental evaluations demonstrate that VibeThinker-3B achieves frontier-level performance on highly demanding verifiable tasks. Specifically, it attains a score of 94.3 on AIME26 (improving to 97.1 with claim-level test-time scaling), an 80.2 Pass@1 on LiveCodeBench v6, and exhibits strong out-of-distribution generalization with a 96.1\\% acceptance rate on recent unseen LeetCode contests. This effectively places it in the performance band of first-tier reasoning systems, matching or exceeding flagship models that are orders of magnitude larger, such as DeepSeek V3.2, GLM-5, and Gemini 3 Pro. Furthermore, a score of 93.4 on IFEval confirms that this extreme reasoning enhancement does not compromise strict instruction controllability. Extending our previous 1.5B work, these findings motivate the Parametric Compression-Coverage Hypothesis, which views verifiable reasoning as compressible into compact reasoning cores, while open-domain knowledge and general-purpose competence require broad parameter coverage over facts, concepts, and long-tail scenarios. This perspective suggests that compact models are not merely deployment-efficient substitutes, but a complementary path toward frontier-level performance in parameter-dense capability regimes.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.16140.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 50,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.16140",
+        "keywords": [
+          "verifiable reasoning",
+          "post-training paradigm",
+          "curriculum-based supervised fine-tuning",
+          "multi-domain reinforcement learning",
+          "self-distillation",
+          "Pass@1",
+          "instruction controllability",
+          "parameter-efficient fine-tuning",
+          "compression-coverages hypothesis"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.16295": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.16295",
+      "sourceLabel": "HF Papers",
+      "title": "VisualClaw: A Real-Time, Personalized Agent for the Physical World",
+      "author": "Haoqin Tu et al.",
+      "createdUtc": 1781481600,
+      "url": "https://huggingface.co/papers/2606.16295",
+      "outboundUrl": "https://arxiv.org/abs/2606.16295",
+      "body": "Vision language models are serving as general-purpose interfaces for complex multimodal tasks. However, deployment still faces three gaps: VLMs typically incur high latency and cost when processing dense video frames and long prompts, the agent scaffold remains static after deployment, and standard video-QA benchmarks do not test whether agents can use visual evidence inside tool-using workspaces. We present VisualClaw, a self-evolving multimodal agent built around two principles. First, hybrid encoding reduces deployment cost by filtering less informative streaming frames with a cascaded gate and compressing the text skill bank through hot/cold top-k injection. Second, skill evolution lets the agent learn from failures: retrieved memories condition an evolver as direct concatenated context or as guided evidence, producing skill-bank updates that help future questions. Across 4 video-QA benchmarks with 2 VLMs, VisualClaw cuts per-question API cost by an average -98% versus full-frame upload and by -25.9% over the offline uniform 8 frame baseline, while boosting accuracy in most settings, e.g., an average +3.85% and a peak +15.80% on EgoSchema with Gemini 3 Flash. To address the gap, we curate VisualClawArena, a 200-scenario multimodal agentic benchmark built through a strict five-stage pipeline; models must use video evidence, documents, dynamic updates, and executable checks inside a workspace. On VisualClawArena, the same framework with computer-use agent backends improves macro accuracy by +2.9% for Codex (GPT-5.5) and +3.2% for Claude Code (Sonnet 4.6) over no-evolution baselines, with a -9.5% cost reduction compared to the uniform-sampled baseline. These properties make VisualClaw a natural fit for edge applications, where the cascade reduces a 1-hour streaming session from ~3,600 API uploads down to only 5-20 calls and the self-evolution makes it a perfect personalized assistant.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.16295.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 21,
+        "comments": 0,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.16295",
+        "keywords": [
+          "vision language models",
+          "multimodal agent",
+          "hybrid encoding",
+          "cascaded gate",
+          "hot/cold top-k injection",
+          "skill evolution",
+          "retrieved memories",
+          "evolver",
+          "video-QA benchmarks",
+          "VisualClawArena",
+          "computer-use agent",
+          "edge applications"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.17049": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.17049",
+      "sourceLabel": "HF Papers",
+      "title": "BRDFusion: Physics Meets Generation for Urban Scene Inverse Rendering",
+      "author": "Yi-Ruei Liu et al.",
+      "createdUtc": 1781481600,
+      "url": "https://huggingface.co/papers/2606.17049",
+      "outboundUrl": "https://arxiv.org/abs/2606.17049",
+      "body": "Inverse rendering of urban scenes from captured videos enables numerous applications, including content creation and autonomous driving simulation. Physically-based rendering methods follow and control lighting physics, but suffer from reconstruction and rendering artifacts. While generative models produce realistic videos, they offer limited consistency and controllability. We present BRDFusion, a unified framework that combines two complementary models for inverse and forward rendering. Specifically, BRDFusion recovers explicit, consistent scene properties with physical modeling and alleviates optimization ambiguity with generative priors. During forward rendering, the physical model provides controllable rendering from the scene configuration, and the generative model denoises and fixes artifacts. Therefore, our method produces high-quality videos while allowing precise control, outperforming baselines in real and synthetic scenes. Moreover, BRDFusion supports novel-view relighting, night simulation, and dynamic object insertion/editing. Project page: https://shigon255.github.io/brdfusion-page/",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.17049.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 22,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.17049",
+        "keywords": [
+          "inverse rendering",
+          "forward rendering",
+          "BRDFusion",
+          "physical modeling",
+          "generative models",
+          "scene properties",
+          "optimization ambiguity",
+          "controllable rendering",
+          "artifact reduction",
+          "novel-view relighting",
+          "night simulation",
+          "dynamic object insertion"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.16281": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.16281",
+      "sourceLabel": "HF Papers",
+      "title": "Who Should Lead Decoding Now? Tracking Reliable Trajectories for Ensembling Masked Diffusion Language Models",
+      "author": "Heecheol Yun et al.",
+      "createdUtc": 1781481600,
+      "url": "https://huggingface.co/papers/2606.16281",
+      "outboundUrl": "https://arxiv.org/abs/2606.16281",
+      "body": "Masked Diffusion Language Models (MDLMs) have emerged as a distinct paradigm for sequence generation. As MDLMs become diverse in capabilities and knowledge coverage, an important question is how to combine their knowledge. Toward this, we first investigate the unique decoding dynamics of MDLMs. We find that successful generations exhibit stable confidence dynamics over answer-relevant positions, while unreliable trajectories can often be corrected by injecting promising intermediate states from other models. Guided by this observation, we propose TIE (Trajectory-based Iterative Ensembling), a knowledge fusion framework in which MDLMs iteratively identify reliable decoding trajectories and relay them across models. TIE tracks confidence dynamics over answer-relevant positions to determine which model currently follows a more reliable trajectory and selectively transfers partially denoised sequences across models. As the model on the more promising trajectory often changes across denoising steps, TIE allows different models to contribute complementary strengths at different stages of generation. Strong performance across diverse reasoning tasks, along with our analyses, suggests that TIE offers a practical approach to the underexplored problem of MDLM ensembling.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.16281.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 23,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.16281",
+        "keywords": [
+          "masked diffusion language models",
+          "decoding dynamics",
+          "confidence dynamics",
+          "trajectory-based iterative ensembling",
+          "denoising steps",
+          "partially denoised sequences",
+          "ensemble methods"
+        ]
+      }
+    },
+    "firstSeen": 1781619132185
+  },
+  "hfpaper:2606.14066": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.14066",
+      "sourceLabel": "HF Papers",
+      "title": "FastContext: Training Efficient Repository Explorer for Coding Agents",
+      "author": "Shaoqiu Zhang et al.",
+      "createdUtc": 1781222400,
+      "url": "https://huggingface.co/papers/2606.14066",
+      "outboundUrl": "https://arxiv.org/abs/2606.14066",
+      "body": "Large Language Model (LLM) coding agents have achieved strong results on software engineering tasks, yet repository exploration remains a major bottleneck: locating relevant code consumes substantial token budget and pollutes the agent's context with irrelevant snippets. In most agents, the same model explores the repository and solves the task, leaving exploratory reads and searches in the solver's history. We present FastContext, a dedicated exploration subagent that separates repository exploration from solving. Invoked on demand, FastContext issues parallel tool calls and returns concise file paths and line ranges as focused context. FastContext is powered by specialized exploration models spanning 4B--30B parameters. We bootstrap them from strong reference-model trajectories and refine them with task-grounded rewards for broad first-turn search, multi-turn evidence gathering, and precise citation generation. Across SWE-bench Multilingual, SWE-bench Pro, and SWE-QA, integrating FastContext into Mini-SWE-Agent improves end-to-end resolution rates up to 5.5\\% while reducing coding-agent token consumption up to 60\\%, with marginal overhead. These results show that repository exploration can be separated from solving and handled effectively by specialized models. Code and data: https://github.com/microsoft/fastcontext",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.14066.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 47,
+        "comments": 2,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.14066",
+        "keywords": [
+          "large language model",
+          "coding agents",
+          "repository exploration",
+          "context management",
+          "exploration subagent",
+          "tool calls",
+          "specialized exploration models",
+          "reference-model trajectories",
+          "task-grounded rewards",
+          "first-turn search",
+          "multi-turn evidence gathering",
+          "precise citation generation",
+          "SWE-bench Multilingual",
+          "SWE-bench Pro",
+          "SWE-QA",
+          "Mini-SWE-Agent"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.12291": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.12291",
+      "sourceLabel": "HF Papers",
+      "title": "Measuring Epistemic Resilience of LLMs Under Misleading Medical Context",
+      "author": "Hongjian Zhou et al.",
+      "createdUtc": 1781049600,
+      "url": "https://huggingface.co/papers/2606.12291",
+      "outboundUrl": "https://arxiv.org/abs/2606.12291",
+      "body": "Large language models (LLMs) now reach expert-level scores on medical licensing exams, encouraging the assumption that high scores imply safe medical judgment while patients increasingly use them for health advice. We show this assumption is fragile: when misleading context is injected into questions that LLMs originally answer correctly, they abandon the correct answer. We call the ability to maintain correct judgment under adversarial context epistemic resilience, and introduce MedMisBench to measure it. MedMisBench contains 10,932 medical question items and 48,889 misleading context-option pairs spanning medical reasoning, agentic capability, and patient-journey evaluation. Across 11 model configurations, mean accuracy falls from 71.1% on original questions to 38.0% under focused misleading context, with 51.5% attack success. The most damaging injections are formal, rule-like fabrications: authority-framed falsehoods reach 69.5% attack success and exception-poisoning claims reach 64.1%. A 14-member clinical panel from 7 countries identified serious potential harm in 38.2% of reviewed cases. MedMisBench exposes a structural blind spot in LLM evaluation in medical settings: existing benchmarks measure what models know, but not whether they preserve correct medical judgment under misleading context.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.12291.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 40,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.12291",
+        "keywords": [
+          "medical licensing exams",
+          "epistemic resilience",
+          "MedMisBench",
+          "misleading context",
+          "attack success",
+          "authority-framed falsehoods",
+          "exception-poisoning claims"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.13141": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.13141",
+      "sourceLabel": "HF Papers",
+      "title": "Rethinking RAG in Long Videos: What to Retrieve and How to Use It?",
+      "author": "Yuho Lee et al.",
+      "createdUtc": 1781136000,
+      "url": "https://huggingface.co/papers/2606.13141",
+      "outboundUrl": "https://arxiv.org/abs/2606.13141",
+      "body": "Retrieval-augmented generation is moving beyond text into long, egocentric video, where systems must select query-relevant chunks across multiple modalities and temporal granularities. Yet progress in VideoRAG is limited by two gaps: existing benchmarks allow queries to be answered without the video, obscuring retrieval errors, and prior methods apply a single modality-granularity configuration per query, ignoring chunk-level variability. We address both by introducing V-RAGBench, a benchmark of langlequery, evidence chunk, answerrangle triplets that enables faithful, decoupled evaluation of retrieval and generation, and CARVE, a simple method that runs parallel retrievers across configurations and employs chunk-adaptive reranking to identify the winning configuration for each chunk. Each chunk then enters the generator under its winning configuration selected during retrieval, yielding an interleaved evidence form where the chunk-level decision propagates across both stages. CARVE outperforms eight recent VideoRAG baselines, with the chunks supplied to the generator interleaving multiple configurations rather than sharing a single one, a behavior unattainable by query-level methods.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.13141.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 32,
+        "comments": 2,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.13141",
+        "keywords": [
+          "retrieval-augmented generation",
+          "VideoRAG",
+          "egocentric video",
+          "multi-modal retrieval",
+          "temporal granularities",
+          "V-RAGBench",
+          "chunk-adaptive reranking",
+          "interleaved evidence form"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2605.30789": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2605.30789",
+      "sourceLabel": "HF Papers",
+      "title": "Smaller Models are Natural Explorers for Policy-Level Diversity in GRPO",
+      "author": "Yiming Ren et al.",
+      "createdUtc": 1780358400,
+      "url": "https://huggingface.co/papers/2605.30789",
+      "outboundUrl": "https://arxiv.org/abs/2605.30789",
+      "body": "We identify a new dimension for enhancing rollout diversity in Group Relative Policy Optimization (GRPO) for LLMs. While GRPO relies on diverse rollouts, prevailing strategies primarily increase diversity by injecting more token-level randomness, which may introduce step-wise noise and lead to incoherent trajectories. We uncover that smaller models within the same model family inherently exhibit higher policy-level diversity, indicated by their superior pass@k relative to larger counterparts as sample counts increase. Unlike token-level noise, this diversity is temporally correlated, preserves logical consistency, and provides structured exploration signals for gradient estimation. We thus propose S2L-PO (Small-to-Large Policy Optimization), a framework that leverages fixed small models as natural explorers to train larger models. To balance exploration and exploitation, we design a progressive annealing strategy that transitions from offline small-model rollouts to the large learner's own sampling. This shift elegantly avoids mid-training performance drops caused by the small model's capacity limits, achieving faster convergence and unlocking a higher performance ceiling. S2L-PO improves accuracy on diverse mathematical reasoning benchmarks (e.g., +8.8% on AIME 24 using a 1.7B explorer to guide the 8B model) while reducing rollout compute.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2605.30789.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 22,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2605.30789",
+        "keywords": [
+          "Group Relative Policy Optimization",
+          "rollout diversity",
+          "token-level randomness",
+          "policy-level diversity",
+          "pass@k",
+          "temporal correlation",
+          "gradient estimation",
+          "small-to-large policy optimization",
+          "progressive annealing",
+          "mathematical reasoning benchmarks"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.12384": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.12384",
+      "sourceLabel": "HF Papers",
+      "title": "APPO: Agentic Procedural Policy Optimization",
+      "author": "Xucong Wang et al.",
+      "createdUtc": 1781113627,
+      "url": "https://huggingface.co/papers/2606.12384",
+      "outboundUrl": "https://arxiv.org/abs/2606.12384",
+      "body": "Recent advances in agentic Reinforcement Learning (RL) have substantially improved the multi-turn tool-use capabilities of large language model agents. However, most existing methods assign credit over coarse heuristic units, such as tool-call boundaries or fixed workflows, making it difficult to identify which intermediate decisions influence downstream outcomes. In this work, we study agentic RL from two perspectives: where to branch and how to assign credit after branching. Our pilot analysis shows that influential decision points are broadly distributed throughout the generated sequence rather than concentrated at tool calls, while token entropy alone does not reliably reflect their impact on final outcomes. Motivated by these observations, we propose Agentic Procedural Policy Optimization (APPO), which shifts branching and credit assignment from coarse interaction units to fine-grained decision points in the sequence. APPO selects branching locations using a Branching Score that combines token uncertainty with policy-induced likelihood gains of subsequent continuations, enabling more targeted exploration while filtering out spurious high-entropy positions. It further introduces procedure-level advantage scaling to better distribute credit across branched rollouts. Experiments on 13 benchmarks show that APPO consistently improves strong agentic RL baselines by nearly 4 points, while keeping efficient tool-calls and maintaining behavior interpretability.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.12384.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 69,
+        "comments": 2,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.12384",
+        "keywords": [
+          "agentic Reinforcement Learning",
+          "tool-use capabilities",
+          "credit assignment",
+          "branching locations",
+          "Branching Score",
+          "token uncertainty",
+          "policy-induced likelihood gains",
+          "procedure-level advantage scaling",
+          "multi-turn interactions",
+          "behavioral interpretability"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.10813": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.10813",
+      "sourceLabel": "HF Papers",
+      "title": "RedAct: Redacting Agent Capability Traces for Procedural Skill Protection",
+      "author": "Shuwen Xu et al.",
+      "createdUtc": 1781049600,
+      "url": "https://huggingface.co/papers/2606.10813",
+      "outboundUrl": "https://arxiv.org/abs/2606.10813",
+      "body": "Users rely on execution traces to observe agent behavior, diagnose failures, and ensure accountability. These traces contain rich procedural detail, including tool invocations, intermediate decisions, and error-recovery logic. Yet this detail can expose private procedural skills, allowing downstream methods to recover key formulas, thresholds, and strategies without access to model weights or skill files. To quantify this risk and evaluate protection, we construct CapTraceBench, a benchmark of 75 specialized long-horizon tasks and 154 curated skills across seven domains. We also introduce RedAct https://github.com/XuShuwenn/RedAct, a protected trace release framework that localizes protected key information, rewrites traces while preserving verifier-critical evidence, and embeds behavioral watermarks for downstream provenance analysis. Across representative trace reuse methods, RedAct reduces normalized skill transfer (NST) from 44.7--67.1\\% on raw traces to below the no-skill baseline, while preserving audit evidence. Its standalone behavioral watermarks reach 93.6--100.0\\% true detection with a false alarm rate of at most 1.9\\%. These results frame public agent traces as security interfaces and show that selective redaction can reduce procedural capability leakage without removing audit evidence.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.10813.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 18,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.10813",
+        "keywords": []
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.13432": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.13432",
+      "sourceLabel": "HF Papers",
+      "title": "OmniDirector: General Multi-Shot Camera Cloning without Cross-Paired Data",
+      "author": "Jiwen Liu et al.",
+      "createdUtc": 1781136000,
+      "url": "https://huggingface.co/papers/2606.13432",
+      "outboundUrl": "https://arxiv.org/abs/2606.13432",
+      "body": "Cloning camera motion from reference videos is an important task in video generation, as videos provide intuitive and precise control. Existing methods either directly use parametric representations that fail to handle multi-shot generation or synthesize cross-paired data, which suffer from data scarcity, resulting in poor performance in complicated camera motion cloning. To address these issues, we introduce a general camera motion representation that encodes cameras as grid motion videos. This camera grid represents the camera parameters visually and supports the integration of diverse trajectories for multi-shot video generation. Building upon this, we propose OmniDirector, a unified framework trained on a million-scale camera grid-video pairs that coordinates characters, actions, and cameras to provide director-level control for multimodal diffusion transformers. Furthermore, we design a novel hierarchical prompt expansion agent that harmoniously integrates different control signals by systematically describing camera motion and visual content through understanding signal relationships. Extensive experiments demonstrate the superior performance and outstanding controllability of our framework. Project page: https://ymlinfeng.github.io/OmniDirector.github.io/",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.13432.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 96,
+        "comments": 3,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.13432",
+        "keywords": [
+          "camera motion cloning",
+          "camera grid",
+          "multimodal diffusion transformers",
+          "hierarchical prompt expansion agent",
+          "video generation",
+          "parametric representations",
+          "cross-paired data",
+          "camera parameters",
+          "grid motion videos",
+          "director-level control"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.13707": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.13707",
+      "sourceLabel": "HF Papers",
+      "title": "Orchestra-o1: Omnimodal Agent Orchestration",
+      "author": "Fan Zhang et al.",
+      "createdUtc": 1781049600,
+      "url": "https://huggingface.co/papers/2606.13707",
+      "outboundUrl": "https://arxiv.org/abs/2606.13707",
+      "body": "The recent success of agent swarms has shifted the paradigm of large language model (LLM)-based agents from single-agent workflows to multi-agent systems, highlighting the importance of agent orchestration for task decomposition and collaboration. However, existing orchestration frameworks are limited to a narrow set of modalities and struggle to generalize to more complex settings where heterogeneous modalities coexist and interact. This limitation becomes particularly pronounced in omnimodal scenarios, where tasks require the unified understanding and coordination of diverse inputs such as text, image, audio, and video. In this work, we propose Orchestra-o1, an omnimodal agent orchestration framework designed to support efficient agent collaboration across multiple modalities. Orchestra-o1 introduces a unified orchestration mechanism that enables modality-aware task decomposition, online sub-agent specialization, and parallel sub-task execution. This scalable design allows agent systems to effectively tackle complex real-world tasks involving heterogeneous information sources, surpassing the second-best approach by 10.3% accuracy on the OmniGAIA benchmark. Furthermore, we introduce decision-aligned group relative policy optimization (DA-GRPO), an efficient agentic reinforcement learning approach for training Orchestra-o1-8B, which also achieves state-of-the-art performance against all existing open-source omnimodal agents.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.13707.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 40,
+        "comments": 7,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.13707",
+        "keywords": [
+          "agent swarms",
+          "large language model",
+          "multi-agent systems",
+          "agent orchestration",
+          "omnimodal scenarios",
+          "modality-aware task decomposition",
+          "online sub-agent specialization",
+          "parallel sub-task execution",
+          "OmniGAIA benchmark",
+          "decision-aligned group relative policy optimization",
+          "agentic reinforcement learning",
+          "Orchestra-o1-8B"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.14249": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.14249",
+      "sourceLabel": "HF Papers",
+      "title": "HarnessX: A Composable, Adaptive, and Evolvable Agent Harness Foundry",
+      "author": "Tingyang Chen et al.",
+      "createdUtc": 1781222400,
+      "url": "https://huggingface.co/papers/2606.14249",
+      "outboundUrl": "https://arxiv.org/abs/2606.14249",
+      "body": "AI agent performance depends critically on the runtime harness, comprising the prompts, tools, memory, and control flow that mediate how a model observes, reasons, and acts. Yet today's harnesses remain largely hand-crafted and static: each new model or task still demands bespoke scaffolding, and the rich traces produced during execution are rarely distilled back into systematic improvement. We introduce HarnessX, a foundry for composable, adaptive, and evolvable agent harnesses. HarnessX assembles typed harness primitives via a substitution algebra, adapts them through AEGIS, a trace-driven multi-agent evolution engine grounded in an operational mirror between symbolic adaptation and reinforcement learning, and closes the harness-model loop by turning trajectories into both harness updates and model training signal. Across five benchmarks (ALFWorld, GAIA, WebShop, tau^3-Bench, and SWE-bench Verified), HarnessX yields an average gain of +14.5% (up to +44.0%), with gains largest where baselines are lowest. These results suggest that agent progress need not come from model scaling alone: composing and evolving runtime interfaces from execution feedback is an actionable and complementary lever. The complete codebase will be open-sourced in a future release.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.14249.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 37,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.14249",
+        "keywords": [
+          "runtime harness",
+          "prompts",
+          "tools",
+          "memory",
+          "control flow",
+          "composable harness primitives",
+          "substitution algebra",
+          "AEGIS",
+          "multi-agent evolution engine",
+          "operational mirror",
+          "symbolic adaptation",
+          "reinforcement learning",
+          "harness-model loop",
+          "execution feedback",
+          "agent performance"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.06036": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.06036",
+      "sourceLabel": "HF Papers",
+      "title": "Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents",
+      "author": "Shuo Ji et al.",
+      "createdUtc": 1780531200,
+      "url": "https://huggingface.co/papers/2606.06036",
+      "outboundUrl": "https://arxiv.org/abs/2606.06036",
+      "body": "Despite recent progress, LLM agents still struggle with reasoning over long interaction histories. While current memory-augmented agents rely on a static retrieve-then-reason paradigm, this rigid pipeline design prevents them from dynamically adapting memory access to intermediate evidence discovered during inference. To bridge this gap, we propose MRAgent, a framework that combines an associative memory graph with an active reconstruction mechanism. We represent memory as a Cue-Tag-Content graph, where associative tags serve as semantic bridges connecting fine-grained cues to memory contents. Operating on this structure, our active reconstruction mechanism integrates LLM reasoning directly into memory access, allowing the agent to iteratively explore and prune retrieval paths based on accumulated evidence. This ensures that memory retrieval is dynamically adapted to the reasoning context while avoiding combinatorial explosion caused by unconstrained expansion. Experiments on the LoCoMo benchmark and LongMemEval benchmark demonstrate significant improvements over strong baselines (up to 23%), while substantially reducing token and runtime cost, highlighting the effectiveness of active and associative reconstruction for long-horizon memory reasoning.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.06036.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 62,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.06036",
+        "keywords": [
+          "LLM agents",
+          "memory-augmented agents",
+          "retrieve-then-reason paradigm",
+          "associative memory graph",
+          "active reconstruction mechanism",
+          "Cue-Tag-Content graph",
+          "semantic bridges",
+          "combinatorial explosion",
+          "LoCoMo benchmark",
+          "LongMemEval benchmark"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.06574": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.06574",
+      "sourceLabel": "HF Papers",
+      "title": "Skip a Layer or Loop It? Learning Program-of-Layers in LLMs",
+      "author": "Ziyue Li et al.",
+      "createdUtc": 1780531200,
+      "url": "https://huggingface.co/papers/2606.06574",
+      "outboundUrl": "https://arxiv.org/abs/2606.06574",
+      "body": "Large language models (LLMs) perform inference by following a fixed depth and order, non-recurrent execution of all layers. We reveal the wide existence of training-free, flexible, dynamic program-of-layers (PoLar), where pretrained layers can be packed as modules and then skipped or looped to form a customized program for each input. For most inputs, substantially shorter program executions can achieve the same or better accuracy, while incorrect predictions of the original LLM can be corrected by alternative programs with fewer layers. These observations indicate that inference admits multiple valid latent computations beyond the standard forward pass. To efficiently achieve PoLar in practice, we propose a lightweight PoLar prediction network, which learns to generate execution programs that dynamically skip or repeat pretrained layers for each input. Experiments on mathematical reasoning benchmarks demonstrate that PoLar consistently improves accuracy over standard inference and prior dynamic-depth methods, often while executing fewer layers, and that these gains persist under out-of-distribution evaluation. Our results suggest that fixed-depth execution captures only a narrow subset of an LLM's latent reasoning capacity.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.06574.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 18,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.06574",
+        "keywords": [
+          "large language models",
+          "program-of-layers",
+          "dynamic program-of-layers",
+          "PoLar",
+          "pretrained layers",
+          "layer skipping",
+          "layer looping",
+          "execution programs",
+          "dynamic depth",
+          "latent reasoning capacity"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.12683": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.12683",
+      "sourceLabel": "HF Papers",
+      "title": "From AGI to ASI",
+      "author": "Tim Genewein et al.",
+      "createdUtc": 1781049600,
+      "url": "https://huggingface.co/papers/2606.12683",
+      "outboundUrl": "https://arxiv.org/abs/2606.12683",
+      "body": "Over the last decade, building human-level artificial general intelligence has moved from far-fetched speculation to being a concrete next-decade target for many of the largest AI organisations. Achieving this goal would have profound and far-reaching impacts on human society, which raises many complex questions for the decade ahead. This report investigates how AI itself might continue to develop in a post-AGI world along the continuum of machine intelligence. The endpoint of this continuum, Universal AI, is theoretically well understood, which provides some formal grounding for the main focus of this report: the transition from human-level AGI to artificial general superintelligence, which, intuitively, can be understood as a system that is more intelligent and cognitively capable than large organisations of humans. After characterizing ASI, the report discusses four potential pathways from AGI to ASI: scaling AGI, AI paradigm shifts, recursive improvement, and ASI emerging from large-scale multi-agent collectives. The report then discusses possible frictions and bottlenecks along these pathways. Determining whether the impact of these frictions will be negligible or substantial raises a number of concrete open research questions. Due to large uncertainties for predicting ASI progress, it cannot be ruled out that AI progress might continue to accelerate over the next years. This could imply that the image of a single transformative step change, caused by the introduction of human-level AGI into our society, could be inaccurate. More apt might be the prospect of a series of transformative societal changes caused by AI-enabled progress and breakthroughs across many areas of science and technology. Preparing for this prospect requires a massively interdisciplinary endeavour of global scope and interest.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.12683.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 28,
+        "comments": 4,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.12683",
+        "keywords": [
+          "artificial general intelligence",
+          "artificial general superintelligence",
+          "universal AI",
+          "recursive improvement",
+          "multi-agent collectives"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.14502": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.14502",
+      "sourceLabel": "HF Papers",
+      "title": "From Chatbot to Digital Colleague: The Paradigm Shift Toward Persistent Autonomous AI",
+      "author": "Yongheng Zhang et al.",
+      "createdUtc": 1781222400,
+      "url": "https://huggingface.co/papers/2606.14502",
+      "outboundUrl": "https://arxiv.org/abs/2606.14502",
+      "body": "Large Language Models (LLMs) are undergoing a fundamental transformation from conversational generators into integrated AI systems capable of reasoning, action, memory, and self-improvement. We conceptualize this transition as a shift from Chatbot to Digital Colleague: from conversational answers to persistent work. We organize this transition along two tightly coupled dimensions. First, at the cognitive core level, LLMs are advancing from Chatbot-era \"fast thinking\" systems driven by next-token prediction toward Thinking LLMs that leverage inference-time computation, Chain-of-Thought reasoning, reflection, process supervision, and reinforcement learning to support more deliberate and reliable cognition. Second, at the tool-augmented task execution level, LLMs are progressing from tool-calling Agents that invoke external resources in an ad hoc manner toward OpenClaw-style workstation systems (OpenClaw) equipped with persistent Workspaces, skills, verification loops, and governance. The \"Workspace + Skill\" paradigm makes episodic tool use colleague-like via state persistence, reusable procedures, task closure, and experience reuse. We examine data construction shifts from instruction-response pairs to State-Action-Observation trajectories and evaluation from static benchmarks to sandboxed, auditable, self-evolving AI ecosystems.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.14502.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 45,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.14502",
+        "keywords": [
+          "Large Language Models",
+          "Chatbot",
+          "Digital Colleague",
+          "Thinking LLMs",
+          "inference-time computation",
+          "Chain-of-Thought reasoning",
+          "reflection",
+          "process supervision",
+          "reinforcement learning",
+          "tool-calling Agents",
+          "OpenClaw",
+          "Workspaces",
+          "skills",
+          "State-Action-Observation trajectories",
+          "sandboxed evaluation",
+          "self-evolving AI ecosystems"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.14702": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.14702",
+      "sourceLabel": "HF Papers",
+      "title": "OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains",
+      "author": "Xinyue Cai et al.",
+      "createdUtc": 1781222400,
+      "url": "https://huggingface.co/papers/2606.14702",
+      "outboundUrl": "https://arxiv.org/abs/2606.14702",
+      "body": "Current automated pipelines for audio-visual Question Answering (QA) generally adopt a ``video-caption-QA'' paradigm. However, these methods typically segment videos into short clips and generate separate descriptions for audio and visual modalities. This decoupled processing severs inherent associations between sounds and their visual sources, while independent clip processing often causes inconsistent descriptions of the same entity across segments. Furthermore, coupling long-text comprehension and QA synthesis into a single step often restricts models to localized events, yielding questions lacking long-term temporal connections and deep cross-modal reasoning. To address these issues, we propose an automated data engine featuring two mechanisms: (1) Entity-Anchored Video Scripting transforms videos into structured scripts, comprising summaries, main entity lists, and segment-wise audio-visual descriptions. The entity list serves as a global prior to ensure cross-segment referential consistency and reconstruct audio-visual associations. (2) Clue-Guided QA Generation prompts models to first mine cross-segment, multimodal clues from the script, and subsequently generate QA pairs based on these high-value clues. Leveraging this pipeline, we construct the instruction-tuning dataset OmniVideo-100K and a human-verified test set, OmniVideo-Test. Fine-tuning VITA-1.5, Qwen2.5-Omni-7B and Qwen3-Omni-30B on OmniVideo-100K yields performance gains of up to 20.59% on OmniVideo-Test, demonstrating strong generalization (up to 12.64% improvements) across established benchmarks like Daily-Omni and JointAVBench.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.14702.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 25,
+        "comments": 1,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.14702",
+        "keywords": [
+          "audio-visual Question Answering",
+          "video-caption-QA paradigm",
+          "video segmentation",
+          "multimodal clues",
+          "instruction-tuning dataset",
+          "VITA-1.5",
+          "Qwen2.5-Omni-7B",
+          "Qwen3-Omni-30B",
+          "OmniVideo-100K",
+          "OmniVideo-Test",
+          "Daily-Omni",
+          "JointAVBench"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.06113": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.06113",
+      "sourceLabel": "HF Papers",
+      "title": "Where, What, Why, and Importance: Structured Defect Grounding for Text-to-Image Feedback",
+      "author": "Huaisong Zhang et al.",
+      "createdUtc": 1780531200,
+      "url": "https://huggingface.co/papers/2606.06113",
+      "outboundUrl": "https://arxiv.org/abs/2606.06113",
+      "body": "Despite generating increasingly photorealistic images, text-to-image (T2I) models still exhibit localized, subtle, and structurally complex failures. Diagnosing these failures requires instance-level feedback that answers where a defect occurs, what type it is, why it is defective, and its importance to overall image quality. While recent dense-feedback methods move beyond scalar supervision, their heatmap-centric representations still formulate diagnosis as pixel-field regression, making it difficult to localize variable-cardinality defects and bind semantic reasons to individual failures. To address this representation bottleneck, we propose Structured Defect Grounding (SDG), which casts T2I diagnosis as structured set prediction by modeling each defect as a (location, type, reason, importance) tuple. To make this formulation trainable and measurable, we introduce SDG-30K, a 30K-image dataset with box-grounded annotations across four modern T2I generators, together with a dedicated evaluation protocol, SDG-Eval. Building on this structured representation, we further present a diagnosis-to-alignment framework in which a Vision-Language Model (VLM) serves as the SDG detector, and BoxFlow-GRPO converts predicted defect sets into box-derived, importance-weighted spatial rewards for diffusion model alignment. Extensive experiments show that our SDG detector outperforms leading proprietary VLMs on structured defect grounding, while SDG-guided rewards consistently improve T2I alignment and support localized image refinement. These results establish SDG as a unified, instance-level interface for diagnosing, evaluating, and enhancing modern generative models.",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.06113.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 15,
+        "comments": 2,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.06113",
+        "keywords": [
+          "text-to-image models",
+          "structured set prediction",
+          "defect grounding",
+          "Vision-Language Model",
+          "diffusion model alignment",
+          "box-derived rewards",
+          "spatial rewards",
+          "instance-level feedback",
+          "dense-feedback methods",
+          "pixel-field regression",
+          "variable-cardinality defects"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "hfpaper:2606.12303": {
+    "post": {
+      "source": "hfpapers",
+      "id": "hfpaper:2606.12303",
+      "sourceLabel": "HF Papers",
+      "title": "From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion",
+      "author": "Yuchen Xian et al.",
+      "createdUtc": 1781049600,
+      "url": "https://huggingface.co/papers/2606.12303",
+      "outboundUrl": "https://arxiv.org/abs/2606.12303",
+      "body": "Multimodal image fusion aims to integrate complementary information from different modalities into a fused image that preserves rich local details while maintaining globally consistent appearance. Existing approaches build shared representations on 2D feature grids, which excel at modeling local structures but offer limited leverage over image-level global appearance factors. To balance these objectives, we introduce a compact 1D token interface based on a frozen pretrained image tokenizer for modeling non-local appearance/base factors. Rather than using the tokenizer as a reconstruction backbone, our design uses the 1D token space as a global carrier while retaining the 2D spatial pathway for local structure restoration. Specifically, we introduce Selective Token Editing (STE), which sparsely updates/replaces a small set of critical tokens, providing a lightweight mechanism to steer global appearance coherence while keeping the fusion backbone unchanged and avoiding extra losses. Experiments on four commonly used benchmarks show that our method achieves the best overall performance, with consistent, multi-metric improvements in both global coherence and local fidelity. Project page: https://zju-xyc.github.io/1D-Fusion-Project-Page/",
+      "thumbnailUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2606.12303.png",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 31,
+        "comments": 3,
+        "label": "upvotes"
+      },
+      "meta": {
+        "arxivId": "2606.12303",
+        "keywords": [
+          "multimodal image fusion",
+          "2D feature grids",
+          "1D token interface",
+          "pretrained image tokenizer",
+          "selective token editing",
+          "global appearance coherence",
+          "local structure restoration"
+        ]
+      }
+    },
+    "firstSeen": 1781619132186
+  },
+  "ph:1163192": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1163192",
+      "sourceLabel": "Product Hunt",
+      "title": "Zoona AI",
+      "author": "Kevin William David",
+      "createdUtc": 1780564568,
+      "url": "https://www.producthunt.com/products/sparrowdesk",
+      "outboundUrl": "https://www.producthunt.com/r/p/1163192?app_id=339",
+      "body": "Automated support that learns from docs + past conversations",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1163192"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1171940": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1171940",
+      "sourceLabel": "Product Hunt",
+      "title": "LLM Gateway Chat",
+      "author": "Ismail Ghallou",
+      "createdUtc": 1781491396,
+      "url": "https://www.producthunt.com/products/llm-gateway",
+      "outboundUrl": "https://www.producthunt.com/r/p/1171940?app_id=339",
+      "body": "One balance. Every model. Chat, image, video & audio.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1171940"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1161568": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1161568",
+      "sourceLabel": "Product Hunt",
+      "title": "MakersClaw",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1780407102,
+      "url": "https://www.producthunt.com/products/makersclaw",
+      "outboundUrl": "https://www.producthunt.com/r/p/1161568?app_id=339",
+      "body": "Hire AI employees that live in your Slack, Teams, Telegram",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1161568"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1167590": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1167590",
+      "sourceLabel": "Product Hunt",
+      "title": "GitHits beta 0.9",
+      "author": "Olli-Pekka Heinisuo",
+      "createdUtc": 1781013682,
+      "url": "https://www.producthunt.com/products/githits",
+      "outboundUrl": "https://www.producthunt.com/r/p/1167590?app_id=339",
+      "body": "Give your AI coding agent access to open-source code",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1167590"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1169578": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1169578",
+      "sourceLabel": "Product Hunt",
+      "title": "DevCleaner",
+      "author": "David Tereba",
+      "createdUtc": 1781205905,
+      "url": "https://www.producthunt.com/products/devcleaner-reclaim-gbs-from-dev-tools",
+      "outboundUrl": "https://www.producthunt.com/r/p/1169578?app_id=339",
+      "body": "Free the gigabytes your dev tools and AI apps hoard",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1169578"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1164356": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1164356",
+      "sourceLabel": "Product Hunt",
+      "title": "Agata",
+      "author": "Basile",
+      "createdUtc": 1780670149,
+      "url": "https://www.producthunt.com/products/agata",
+      "outboundUrl": "https://www.producthunt.com/r/p/1164356?app_id=339",
+      "body": "AI text correction & translation via keyboard shortcuts.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1164356"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1170244": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1170244",
+      "sourceLabel": "Product Hunt",
+      "title": "Vidrunner",
+      "author": "Gene Schleeter",
+      "createdUtc": 1781279658,
+      "url": "https://www.producthunt.com/products/lasso-5",
+      "outboundUrl": "https://www.producthunt.com/r/p/1170244?app_id=339",
+      "body": "Publish YouTube videos faster with AI",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1170244"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172360": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172360",
+      "sourceLabel": "Product Hunt",
+      "title": "ResumeWriting.com",
+      "author": "Chris Messina",
+      "createdUtc": 1781526685,
+      "url": "https://www.producthunt.com/products/resumewriting-com",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172360?app_id=339",
+      "body": "The only AI tool designed specifically for resume writing",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172360"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172620": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172620",
+      "sourceLabel": "Product Hunt",
+      "title": "Tychi AI",
+      "author": "Yash Singh",
+      "createdUtc": 1781546700,
+      "url": "https://www.producthunt.com/products/tychi-ai",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172620?app_id=339",
+      "body": "The economic layer for autonomous capital.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172620"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172664": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172664",
+      "sourceLabel": "Product Hunt",
+      "title": "Avocado",
+      "author": "Yury H.",
+      "createdUtc": 1781550809,
+      "url": "https://www.producthunt.com/products/avocado-studio",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172664?app_id=339",
+      "body": "AI-native content operations for any Next.js website",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172664"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1164965": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1164965",
+      "sourceLabel": "Product Hunt",
+      "title": "Stride",
+      "author": "Kunal Sharda",
+      "createdUtc": 1780744450,
+      "url": "https://www.producthunt.com/products/stride-10",
+      "outboundUrl": "https://www.producthunt.com/r/p/1164965?app_id=339",
+      "body": "The AI workspace that plans, designs and ships with you.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1164965"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172386": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172386",
+      "sourceLabel": "Product Hunt",
+      "title": "agentbrowse",
+      "author": "Mandar Wagh",
+      "createdUtc": 1781528390,
+      "url": "https://www.producthunt.com/products/agentbrowse",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172386?app_id=339",
+      "body": "Give your AI coding agent the web as a command line",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172386"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1167329": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1167329",
+      "sourceLabel": "Product Hunt",
+      "title": "Dirac",
+      "author": "Zac Zuo",
+      "createdUtc": 1780996457,
+      "url": "https://www.producthunt.com/products/dirac-3",
+      "outboundUrl": "https://www.producthunt.com/r/p/1167329?app_id=339",
+      "body": "The AI inbox that briefs founders every morning",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1167329"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172701": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172701",
+      "sourceLabel": "Product Hunt",
+      "title": "YoAmigo Studio",
+      "author": "Dominic",
+      "createdUtc": 1781553621,
+      "url": "https://www.producthunt.com/products/yoamigo-studio",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172701?app_id=339",
+      "body": "Ship real apps on the AI you already pay for.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172701"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1169568": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1169568",
+      "sourceLabel": "Product Hunt",
+      "title": "Eidentic",
+      "author": "Baran Özdemir",
+      "createdUtc": 1781205323,
+      "url": "https://www.producthunt.com/products/eidentic",
+      "outboundUrl": "https://www.producthunt.com/r/p/1169568?app_id=339",
+      "body": "The TypeScript SDK for AI agents with self-improving memory",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1169568"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1169323": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1169323",
+      "sourceLabel": "Product Hunt",
+      "title": "Bodhiorchard",
+      "author": "Arun Rajkumar",
+      "createdUtc": 1781181235,
+      "url": "https://www.producthunt.com/products/bodhiorchard",
+      "outboundUrl": "https://www.producthunt.com/r/p/1169323?app_id=339",
+      "body": "Vibe-code your whole project with 12 autonomous AI agents",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1169323"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172573": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172573",
+      "sourceLabel": "Product Hunt",
+      "title": "Amaroad",
+      "author": "Masato Okuwaki",
+      "createdUtc": 1781543004,
+      "url": "https://www.producthunt.com/products/amaroad",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172573?app_id=339",
+      "body": "Build AI slide decks without leaving your terminal",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172573"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172305": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172305",
+      "sourceLabel": "Product Hunt",
+      "title": "PicOne",
+      "author": "Chenyang Li",
+      "createdUtc": 1781522093,
+      "url": "https://www.producthunt.com/products/picone-2",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172305?app_id=339",
+      "body": "macOS menu bar image uploader, multi-provider, sandbox-safe",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172305"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1170066": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1170066",
+      "sourceLabel": "Product Hunt",
+      "title": "Tadka",
+      "author": "Nawneet",
+      "createdUtc": 1781262531,
+      "url": "https://www.producthunt.com/products/tadka",
+      "outboundUrl": "https://www.producthunt.com/r/p/1170066?app_id=339",
+      "body": "Ship 10x more ad creative, without hiring a design team.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1170066"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172049": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172049",
+      "sourceLabel": "Product Hunt",
+      "title": "Publia",
+      "author": "AW",
+      "createdUtc": 1781504836,
+      "url": "https://www.producthunt.com/products/publia",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172049?app_id=339",
+      "body": "What AI makes, Publia ships.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172049"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1168600": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1168600",
+      "sourceLabel": "Product Hunt",
+      "title": "Keyboard Copilot",
+      "author": "Joroh",
+      "createdUtc": 1781104011,
+      "url": "https://www.producthunt.com/products/keyboard-copilot-ios-ai-keyboard",
+      "outboundUrl": "https://www.producthunt.com/r/p/1168600?app_id=339",
+      "body": "AI keyboard that rephrases, translates, and more in any app",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1168600"
+      }
+    },
+    "firstSeen": 1781619132490
+  },
+  "ph:1172735": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172735",
+      "sourceLabel": "Product Hunt",
+      "title": "Athena Desktop",
+      "author": "Luckey Faraday",
+      "createdUtc": 1781556411,
+      "url": "https://www.producthunt.com/products/athena-desktop",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172735?app_id=339",
+      "body": "A local command room for AI coding agents.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172735"
+      }
+    },
+    "firstSeen": 1781620332901
+  },
+  "ph:1169512": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1169512",
+      "sourceLabel": "Product Hunt",
+      "title": "GamerForge",
+      "author": "Alexander Friedrich Borschel",
+      "createdUtc": 1781199528,
+      "url": "https://www.producthunt.com/products/gamerforge",
+      "outboundUrl": "https://www.producthunt.com/r/p/1169512?app_id=339",
+      "body": "Transform game, CGI, and VFX assets with AI",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1169512"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1167527": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1167527",
+      "sourceLabel": "Product Hunt",
+      "title": "PrompTessor",
+      "author": "Rizki Murtadha",
+      "createdUtc": 1781009227,
+      "url": "https://www.producthunt.com/products/promptessor",
+      "outboundUrl": "https://www.producthunt.com/r/p/1167527?app_id=339",
+      "body": "AI Prompt Generator, Optimizer & Library",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1167527"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1172649": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172649",
+      "sourceLabel": "Product Hunt",
+      "title": "Fluxmail",
+      "author": "Richard Chu",
+      "createdUtc": 1781549376,
+      "url": "https://www.producthunt.com/products/fluxmail",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172649?app_id=339",
+      "body": "AI inbox that prioritizes your email",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172649"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1172208": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172208",
+      "sourceLabel": "Product Hunt",
+      "title": "Sklm",
+      "author": "Victor BEYSSERIAT",
+      "createdUtc": 1781516644,
+      "url": "https://www.producthunt.com/products/sklm",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172208?app_id=339",
+      "body": "Centralize, scope, and sync skills for every AI agent",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172208"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1169724": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1169724",
+      "sourceLabel": "Product Hunt",
+      "title": "Revi",
+      "author": "Alexandru Gabriel Ouatu",
+      "createdUtc": 1781227207,
+      "url": "https://www.producthunt.com/products/revi-2",
+      "outboundUrl": "https://www.producthunt.com/r/p/1169724?app_id=339",
+      "body": "On-device voice dictation. No cloud, no account.",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1169724"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1172438": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172438",
+      "sourceLabel": "Product Hunt",
+      "title": "Botme",
+      "author": "Akos Szabo",
+      "createdUtc": 1781532554,
+      "url": "https://www.producthunt.com/products/botme-io",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172438?app_id=339",
+      "body": "AI customer support agent, live on your website in 5 minutes",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172438"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1172613": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172613",
+      "sourceLabel": "Product Hunt",
+      "title": "ClientJam",
+      "author": "Kevin Coy",
+      "createdUtc": 1781546097,
+      "url": "https://www.producthunt.com/products/clientjam",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172613?app_id=339",
+      "body": "AI-powered lead generation for designers and agencies",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172613"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1172904": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1172904",
+      "sourceLabel": "Product Hunt",
+      "title": "Voice Calls in Chatwoot",
+      "author": "Pranav Raj S",
+      "createdUtc": 1781578313,
+      "url": "https://www.producthunt.com/products/chatwoot",
+      "outboundUrl": "https://www.producthunt.com/r/p/1172904?app_id=339",
+      "body": "Calls, chats, and emails all in one support inbox",
+      "thumbnailUrl": null,
+      "hasImage": false,
+      "hasVideo": false,
+      "signal": {
+        "score": 0,
+        "comments": 0,
+        "label": "launch"
+      },
+      "meta": {
+        "phId": "1172904"
+      }
+    },
+    "firstSeen": 1781620332902
+  },
+  "ph:1074937": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1074937",
+      "sourceLabel": "Product Hunt",
+      "title": "happycapy",
+      "author": "Rajiv Ayyangar",
+      "createdUtc": 1770796860,
+      "url": "https://www.producthunt.com/products/happycapy/launches/happycapy?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/MTX6DXFN5O5UPO?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The agent-native computer, for the rest of us — OpenClaw alternative, in your browser. And now on your phone. No setup. No learning curve. No security risks. Just open it and go. Happycapy turns browser into an agent-native computer powered by Claude Code. With a GUI friendly for everyday user, it lets anyone get real work done in one single place from coding and design to everyday tasks. This is computing for everyone. For creators. For builders. For people who just want things done. For productivity. And for fun.",
+      "thumbnailUrl": "https://ph-files.imgix.net/b84c1f39-0930-457d-9c8a-cfeb7dd276b8.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 1402,
+        "comments": 591,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "happycapy",
+        "topics": [
+          "productivity",
+          "artificial-intelligence",
+          "computers"
+        ]
+      }
+    },
+    "firstSeen": 1781638369196
+  },
+  "ph:1094681": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1094681",
+      "sourceLabel": "Product Hunt",
+      "title": "Brila",
+      "author": "Ivan Braun",
+      "createdUtc": 1775718060,
+      "url": "https://www.producthunt.com/products/brila-2/launches/brila-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/2ENSJE4L7JILGP?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "One-page websites from real Google Maps reviews — Website generators give you a template with made-up copy. You rewrite it for hours – still sounds generic. Brila does content first. It reads your Google Maps reviews, finds why customers actually choose you using Jobs to Be Done, and builds a one-page site from real patterns, real wording, real photos. When a business has enough reviews, the results often surprise even the owners. Not a single prompt – a serious AI system behind every website. Free plan gives you a fully generated site.",
+      "thumbnailUrl": "https://ph-files.imgix.net/6e8a39c7-ec23-46e5-9962-0ad93d097fc0.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 1395,
+        "comments": 245,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "brila-2",
+        "topics": [
+          "website-builder",
+          "artificial-intelligence",
+          "alpha"
+        ]
+      }
+    },
+    "firstSeen": 1781638369196
+  },
+  "ph:1157940": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1157940",
+      "sourceLabel": "Product Hunt",
+      "title": "Fundraisly",
+      "author": "Zac Zuo",
+      "createdUtc": 1780383660,
+      "url": "https://www.producthunt.com/products/fundraisly/launches/fundraisly-4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/SH5BHT7UOKB2F5?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI fundraising agent that finds investors and books meetings — Fundraisly: ultimate AI agent for fundraising. It analyzes 300K+ investors and millions of deals, identifies the relevant ones actively investing in your space, maps warm paths to them from your own network, then covers the rest with targeted cold outreach. The result: 20-40 qualified investor meetings. Built by founders who raised over $1B.",
+      "thumbnailUrl": "https://ph-files.imgix.net/50c29b3a-45e5-4eb3-82a6-247714b5e6d9.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 1366,
+        "comments": 393,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "fundraisly-4",
+        "topics": [
+          "venture-capital",
+          "artificial-intelligence",
+          "fundraising"
+        ]
+      }
+    },
+    "firstSeen": 1781638369196
+  },
+  "ph:1062017": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1062017",
+      "sourceLabel": "Product Hunt",
+      "title": "Cowork",
+      "author": "Aleksandar Blazhev",
+      "createdUtc": 1768291260,
+      "url": "https://www.producthunt.com/products/claude/launches/cowork?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/N6NGJCGOTQURKX?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Turn Claude into your digital coworker — Cowork turns Claude into a real coworker. Give it access to a folder on your computer and assign tasks instead of chatting. Claude can read, edit, and create files, plan its work, and execute tasks end-to-end while keeping you in control. Less back-and-forth, more work done.",
+      "thumbnailUrl": "https://ph-files.imgix.net/a56a42f9-2ef1-4f7d-bbc1-421c24f2c0da.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 1101,
+        "comments": 40,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "cowork",
+        "topics": [
+          "productivity",
+          "task-management",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1149886": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1149886",
+      "sourceLabel": "Product Hunt",
+      "title": "Brew ",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1779778860,
+      "url": "https://www.producthunt.com/products/brew-5/launches/brew-4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/3Q7DPTEXUJAFUG?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Like Claude design for email marketing — Brew is the fastest way to design and send beautiful, on-brand emails and automations that render perfectly in every inbox. Describe a campaign or a multi-step automation in plain English, and Brew builds the whole thing in seconds: copy, design, audience, and logic. Works with any AI agent: paste our docs into OpenClaw, Viktor, Claude, or Lovable. No lock-in: send from Brew or export to your ESP. Free to get started.",
+      "thumbnailUrl": "https://ph-files.imgix.net/a805620c-ee33-47e2-973d-5d6ea3f646a3.gif?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 940,
+        "comments": 150,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "brew-4",
+        "topics": [
+          "design-tools",
+          "email-marketing",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1068248": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1068248",
+      "sourceLabel": "Product Hunt",
+      "title": "SuperX",
+      "author": "Tibo",
+      "createdUtc": 1770624060,
+      "url": "https://www.producthunt.com/products/superx/launches/superx?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/LYACBIJ2QPFIA7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "All-in-one growth OS for serious 𝕏 creators — SuperX is an all-in-one growth toolkit for 𝕏. Get daily inspiration based on viral posts in your niche, trend-based research, and fast rewrites in your voice. Schedule posts at the best time, engage with the right accounts to get discovered, and track what works with built-in analytics.",
+      "thumbnailUrl": "https://ph-files.imgix.net/3745ed64-3c63-4189-b4be-1535a6cddc06.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 925,
+        "comments": 140,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "superx",
+        "topics": [
+          "social-media",
+          "saas",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1144771": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1144771",
+      "sourceLabel": "Product Hunt",
+      "title": "StoreClaw",
+      "author": "Chris Messina",
+      "createdUtc": 1779260460,
+      "url": "https://www.producthunt.com/products/storeclaw/launches/storeclaw?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/PVXOOJINEBKKUA?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Grow your store profits with agents that know how to sell — StoreClaw is the first AI commerce platform with agents that know how to sell, so you can make more money with less effort and less stress. Connect StoreClaw to your existing store and it will study your numbers, current sales figures, and growth trajectory, and then offer proactive suggestions that it can execute on your behalf — once you give it your approval. Ask StoreClaw how your business is doing any time, anywhere. Sell more with less stress: StoreClaw.",
+      "thumbnailUrl": "https://ph-files.imgix.net/407049a2-0be3-4b8d-a7c0-4fc5b9754db2.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 898,
+        "comments": 280,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "storeclaw",
+        "topics": [
+          "artificial-intelligence",
+          "e-commerce",
+          "marketing-automation"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1101888": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1101888",
+      "sourceLabel": "Product Hunt",
+      "title": "Stitch 2.0 by Google",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1773903660,
+      "url": "https://www.producthunt.com/products/stitch-2-0-by-google-2/launches/stitch-2-0-by-google-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/FCKF6O6HKHV32R?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Vibe design beautiful production-ready UI in seconds — Meet Stitch, your AI-native vibe design partner. Create, iterate, and collaborate on high-fidelity UI using natural language, voice, and context-aware agents. Design across images, code, and text in one canvas, generate instant prototypes, and maintain consistency with built-in design systems and DESIGN.md. From idea to interface in seconds — faster, smarter, and more intuitive than ever.",
+      "thumbnailUrl": "https://ph-files.imgix.net/c6fac898-ea13-44f9-bdb6-c55dc0a8ed6c.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 883,
+        "comments": 34,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "stitch-2-0-by-google-2",
+        "topics": [
+          "design-tools",
+          "prototyping",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1068372": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1068372",
+      "sourceLabel": "Product Hunt",
+      "title": "OpenClaw",
+      "author": "Cruise Chen",
+      "createdUtc": 1769500860,
+      "url": "https://www.producthunt.com/products/clawdbot-2/launches/openclaw?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/L54FGYTAA3FXZT?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The AI that actually does things — Formerly Moltbot and Clawbot, OpenClaw turns your computer into a 24/7 personal agent accessible from any chat app. Control your browser, execute shell commands, manage files, and automate workflows via WhatsApp or Telegram. Features persistent memory, full system access, local privacy, and 50+ integrations.",
+      "thumbnailUrl": "https://ph-files.imgix.net/a15ae988-f9b3-403f-b470-a5ef1d15162c.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 851,
+        "comments": 53,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "openclaw",
+        "topics": [
+          "open-source",
+          "developer-tools",
+          "artificial-intelligence",
+          "github"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1135604": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1135604",
+      "sourceLabel": "Product Hunt",
+      "title": "PollyReach",
+      "author": "Justin Jincaid",
+      "createdUtc": 1779174060,
+      "url": "https://www.producthunt.com/products/pollyreach/launches/pollyreach?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/YNJ3R3XJ5FEEBJ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Give your agent a real number and voice to make calls. — Most AI phone tools are built for enterprises — APIs, workflows, sales automation. PollyReach is built for you. Give your AI a real phone number. Say \"book me a table for 7pm\" — it finds the number, makes the call, handles the conversation, and reports back with a summary, recording & transcript. It also answers your phone 24/7 and screens spam. Works in 50+ languages.",
+      "thumbnailUrl": "https://ph-files.imgix.net/a4ef6a7a-4563-402b-8578-1681fbdc19d8.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 836,
+        "comments": 218,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "pollyreach",
+        "topics": [
+          "productivity",
+          "artificial-intelligence",
+          "virtual-assistants"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1090041": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1090041",
+      "sourceLabel": "Product Hunt",
+      "title": "Lightfield",
+      "author": "Chris Messina",
+      "createdUtc": 1773817260,
+      "url": "https://www.producthunt.com/products/lightfield/launches/lightfield?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/5XYMLXOKBCUN76?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI-native CRM that builds itself and does work for you — Lightfield reads your emails, meetings, and calls to build your CRM automatically. No manual data entry — ever. Connect your inbox, upload a spreadsheet or CSV from your old CRM, and everything is recreated in less than five minutes. Ask it anything in plain English: who needs follow-up, what objections keep coming up, how has our ICP shifted — answered from your actual conversations. Then put it to work to draft follow-ups, create board decks, build proposals, and more.",
+      "thumbnailUrl": "https://ph-files.imgix.net/e31fc558-30e0-48e2-921a-0199328f3f02.x-icon?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 823,
+        "comments": 110,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "lightfield",
+        "topics": [
+          "sales",
+          "artificial-intelligence",
+          "crm"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1076729": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1076729",
+      "sourceLabel": "Product Hunt",
+      "title": "Lovon AI Therapy",
+      "author": "Anton Ponikarovskii",
+      "createdUtc": 1770969660,
+      "url": "https://www.producthunt.com/products/lovon/launches/lovon-ai-therapy?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/FDD2MZA3SHTP2Q?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Talk it out and feel better — AI therapy you can actually talk to. Just speak naturally and get support anytime you need it.",
+      "thumbnailUrl": "https://ph-files.imgix.net/a305efcb-9472-45be-a0c8-67a3fa16b54b.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 820,
+        "comments": 269,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "lovon-ai-therapy",
+        "topics": [
+          "artificial-intelligence",
+          "health"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1123888": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1123888",
+      "sourceLabel": "Product Hunt",
+      "title": "Fathom 3.0",
+      "author": "Chris Messina",
+      "createdUtc": 1776236460,
+      "url": "https://www.producthunt.com/products/fathom/launches/fathom-3-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/CS4BN7LVLISWRQ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI meeting notes: now bot-free, in ChatGPT & Claude + more — The Fathom you know, leveled up. The best AI notetaking, now with bot-free capture, account-wide AI search & insights, Claude + ChatGPT integrations, live summaries & in-meeting scratchpads, and a redesigned desktop experience. And we’re not stopping there. It’s the most flexible meeting AI ever built.",
+      "thumbnailUrl": "https://ph-files.imgix.net/fac29de4-dc17-44af-8996-a93a8180305d.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 816,
+        "comments": 235,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "fathom-3-0",
+        "topics": [
+          "productivity",
+          "meetings",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1104980": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1104980",
+      "sourceLabel": "Product Hunt",
+      "title": "Plurai",
+      "author": "fmerian",
+      "createdUtc": 1777446060,
+      "url": "https://www.producthunt.com/products/plurai/launches/plurai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/2SG5VACZQUBMO7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Vibe-train evals and guardrails tailored to your use case — Vibe training for AI agent reliability. Describe what your agent should and should not do — Plurai generates training data, validates it, and deploys a custom model in minutes. It feels like vibe coding, but for evaluation and guardrails. No labeled data. No annotation pipeline. No prompt engineering. Under the hood, small language models deliver sub 100ms latency, 8x lower cost than GPT as judge, and over 43% fewer failures. Always on, not sampled. Built on published research (BARRED).",
+      "thumbnailUrl": "https://ph-files.imgix.net/e87131be-1490-4ed2-a291-5f91da603996.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 815,
+        "comments": 228,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "plurai",
+        "topics": [
+          "api-1",
+          "developer-tools",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369197
+  },
+  "ph:1033864": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1033864",
+      "sourceLabel": "Product Hunt",
+      "title": "PostSyncer",
+      "author": "Tibo",
+      "createdUtc": 1767600060,
+      "url": "https://www.producthunt.com/products/postsyncer-2/launches/postsyncer-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/FNMGXE5SRJIZLT?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI Content Maker, for Social Media Publishing — The most powerful tool to manage all your social accounts at scale. Create, schedule, and reply across 10+ platforms. Get inspiration from the viral content library, generate media with AI (Sora, Veo & more), connect unlimited accounts and manage clients in dedicated workspaces.",
+      "thumbnailUrl": "https://ph-files.imgix.net/e41ddbc8-0554-48b6-ad19-4c000f611f97.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 794,
+        "comments": 102,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "postsyncer-3",
+        "topics": [
+          "social-media",
+          "marketing",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1074139": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1074139",
+      "sourceLabel": "Product Hunt",
+      "title": "Claude Opus 4.6",
+      "author": "Aleksandar Blazhev",
+      "createdUtc": 1770364860,
+      "url": "https://www.producthunt.com/products/claude/launches/claude-opus-4-6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/S43XIOYZUO4TJS?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Claude’s most advanced model for agentic tasks — Claude Opus 4.6 is Claude’s most capable model yet, built for deep reasoning, long-running agentic tasks, and large codebases. With a 1M token context window, adaptive thinking, and improved planning, it delivers state-of-the-art performance across coding, analysis, research, and real-world work.",
+      "thumbnailUrl": "https://ph-files.imgix.net/00b39dff-fb57-4e3d-97eb-f747b25b4497.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 784,
+        "comments": 35,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "claude-opus-4-6",
+        "topics": [
+          "productivity",
+          "developer-tools",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1140898": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1140898",
+      "sourceLabel": "Product Hunt",
+      "title": "Unabyss",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1779692460,
+      "url": "https://www.producthunt.com/products/unabyss/launches/unabyss?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/3EY2VAEXSWTXAR?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "MCP-native self-updating context layer for your AI — Set it up once and never re-explain yourself to AI again. Connect the apps you use daily - Unabyss will extract, structure, and update your context automatically. Share it with any AI tool via MCP, with granular control over what each tool can see.",
+      "thumbnailUrl": "https://ph-files.imgix.net/c35d380b-1508-44ae-a273-b0bea7db4969.gif?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 776,
+        "comments": 145,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "unabyss",
+        "topics": [
+          "productivity",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1089427": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1089427",
+      "sourceLabel": "Product Hunt",
+      "title": "Chronicle 2.0",
+      "author": "Ben Lang",
+      "createdUtc": 1773126060,
+      "url": "https://www.producthunt.com/products/chronicle-6/launches/chronicle-2-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/CNILDWDEB2RJOP?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI presentations without the AI slop — Chronicle is your AI-powered design partner for presentations. Turn notes, prompts, or existing decks into beautiful, on-brand slides in minutes. It asks a few questions, builds an impressive first draft, and lets you refine slides through conversation.",
+      "thumbnailUrl": "https://ph-files.imgix.net/32f798e8-593b-4453-9806-6bbd9a04a244.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 769,
+        "comments": 204,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "chronicle-2-0",
+        "topics": [
+          "productivity",
+          "artificial-intelligence",
+          "design"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1050863": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1050863",
+      "sourceLabel": "Product Hunt",
+      "title": "Loki.Build",
+      "author": "Nikita Sorokin",
+      "createdUtc": 1766131260,
+      "url": "https://www.producthunt.com/products/loki-build-2/launches/loki-build-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/BCMWWBYEIQCDJZ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Design and ship studio-grade landing pages with AI — Loki.Build is an AI-native website builder that generates studio-grade landing pages and gives you full control in a real, live editor. Built-in SEO, hosting & complete control. No more agencies. No more rigid templates. No more waiting to ship.",
+      "thumbnailUrl": "https://ph-files.imgix.net/31190e29-2efa-4b81-aea0-dd95b5087344.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 763,
+        "comments": 127,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "loki-build-2",
+        "topics": [
+          "website-builder",
+          "artificial-intelligence",
+          "no-code"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1100794": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1100794",
+      "sourceLabel": "Product Hunt",
+      "title": "Tobira.ai",
+      "author": "fmerian",
+      "createdUtc": 1774249260,
+      "url": "https://www.producthunt.com/products/tobira-ai/launches/tobira-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/G5JOBDQ3XBHBER?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "A network where AI agents find deals for their humans — 🤖 Your AI agent gets a free public address in a network of other agents. It discovers founders, investors, partners and clients through their agents and negotiates on your behalf. 🔒You control what's shared: anonymous or public, your choice. No contact details are shared until both sides approve. ⚡ Works best with 🦞 OpenClaw and Claude Cowork. 🆓 Claim your @handle at tobira.ai before they're gone.",
+      "thumbnailUrl": "https://ph-files.imgix.net/c25c764d-4b7e-4964-bc05-1d2773a416c8.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 757,
+        "comments": 191,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "tobira-ai",
+        "topics": [
+          "productivity",
+          "developer-tools",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1080997": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1080997",
+      "sourceLabel": "Product Hunt",
+      "title": "Stitch by Google",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1771920060,
+      "url": "https://www.producthunt.com/products/stitch-by-google/launches/stitch-by-google?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/JEM76QOQHZLFO7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Turn napkin sketches into production-ready UI in seconds. — For founders and PMs who can't afford to waste a week on mockups. Describe your UI, get editable design + real code. Free. By Google. It introduces Hatter, a new agent aiming to handle multi-step design tasks, plus new App Store asset generation and native MCP export.",
+      "thumbnailUrl": "https://ph-files.imgix.net/2704ac79-abf6-42dc-a56f-b8ae1cb13896.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 661,
+        "comments": 22,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "stitch-by-google",
+        "topics": [
+          "design-tools",
+          "developer-tools",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1075416": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1075416",
+      "sourceLabel": "Product Hunt",
+      "title": "Inspector",
+      "author": "Michael Klikushin",
+      "createdUtc": 1770537660,
+      "url": "https://www.producthunt.com/products/inspector-3/launches/inspector-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/NGGCIBG5JC5YUI?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Figma for Claude Code — Inspector is a visual editor that connects to your favorite AI agent (Claude Code, Codex, Cursor). Click on an element in your UI, tweak it visually, and Inspector writes the change to your codebase. No more design handoff, just push to the repo.",
+      "thumbnailUrl": "https://ph-files.imgix.net/77a28389-b670-4d62-be9a-7d08cfcefbed.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 617,
+        "comments": 63,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "inspector-3",
+        "topics": [
+          "design-tools",
+          "productivity",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1106192": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1106192",
+      "sourceLabel": "Product Hunt",
+      "title": "Figma for Agents",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1776150060,
+      "url": "https://www.producthunt.com/products/figma-for-agents/launches/figma-for-agents?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/2Q5KSKQ7UYEPQA?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Design with AI agents, connected to your design system — AI-generated designs break brand standards because agents can't see your design system. Figma's use_figma MCP tool changes that. For product teams bridging design and code with AI agents.",
+      "thumbnailUrl": "https://ph-files.imgix.net/83173f69-96c2-42be-bc07-193504c2b761.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 611,
+        "comments": 24,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "figma-for-agents",
+        "topics": [
+          "design-tools",
+          "developer-tools",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1126180": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1126180",
+      "sourceLabel": "Product Hunt",
+      "title": "Claude Design by Anthropic Labs",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1776495660,
+      "url": "https://www.producthunt.com/products/claude/launches/claude-design-by-anthropic-labs-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/SZZJSUNKYCUDEH?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Make prototypes, slides & one-pagers by talking to Claude — Claude Design by Anthropic is an AI-powered design tool that turns ideas into polished visuals through simple prompts. Create prototypes, decks, and marketing assets, refine them via conversation, and export anywhere. It speeds up design workflows, ensures brand consistency, and enables designers, founders, and marketers to go from concept to execution faster.",
+      "thumbnailUrl": "https://ph-files.imgix.net/ae49ce7d-30a4-457b-823a-2e1ee8d44dbb.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 563,
+        "comments": 21,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "claude-design-by-anthropic-labs-2",
+        "topics": [
+          "design-tools",
+          "artificial-intelligence",
+          "design"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1151377": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1151377",
+      "sourceLabel": "Product Hunt",
+      "title": "Stitch 3.0 by Google",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1779606060,
+      "url": "https://www.producthunt.com/products/stitch-by-google/launches/stitch-3-0-by-google?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/2WIQLRJ4DNSJF5?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Generate and iterate UI screens with AI on a live canvas — Stitch generates UI screens for mobile and web from text prompts, with streaming edits, in-place AI changes, and one-click export to Figma, Netlify, Lovable, and Bolt. For product designers and developers prototyping fast.",
+      "thumbnailUrl": "https://ph-files.imgix.net/2704ac79-abf6-42dc-a56f-b8ae1cb13896.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 552,
+        "comments": 19,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "stitch-3-0-by-google",
+        "topics": [
+          "design-tools",
+          "user-experience",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1056605": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1056605",
+      "sourceLabel": "Product Hunt",
+      "title": "MiroMiro",
+      "author": "Soraia",
+      "createdUtc": 1767600060,
+      "url": "https://www.producthunt.com/products/miromiro/launches/miromiro?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/S45WVDTK7ZAU2F?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Copy any website's design & assets in one click — The fastest way to copy any website's design. MiroMiro is a Chrome extension that lets you inspect and extract design assets from any website without opening DevTools. Hover over any element to instantly copy its CSS, colors, fonts, and spacing. Download images, SVGs, and even Lottie animations with one click. Extract design tokens and export them as Tailwind config or CSS variables. Built for designers and developers who want to stop rebuilding from scratch and start shipping faster.",
+      "thumbnailUrl": "https://ph-files.imgix.net/c80da3a1-3333-44ac-8d89-0ec2aea7ed00.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 528,
+        "comments": 51,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "miromiro",
+        "topics": [
+          "design-tools",
+          "productivity",
+          "developer-tools"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1133288": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1133288",
+      "sourceLabel": "Product Hunt",
+      "title": "Hera Launch",
+      "author": "Garry Tan",
+      "createdUtc": 1777532460,
+      "url": "https://www.producthunt.com/products/hera-6/launches/hera-launch-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/QG2MGKMYCHQGUQ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Create studio-quality launch videos with AI — Product launch videos used to take weeks. Hera Launch makes them in seconds, from a single prompt. This works because Hera is opinionated. It works like a motion design studio and decides pacing, typography, motion curves, and easing for you. We built it for product teams that want to launch fast and often: 10 minutes from idea to finished video, on a monthly subscription.",
+      "thumbnailUrl": "https://ph-files.imgix.net/3755c965-4852-47ba-8523-671f0b3c5057.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 498,
+        "comments": 53,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "hera-launch-2",
+        "topics": [
+          "design-tools",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1093404": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1093404",
+      "sourceLabel": "Product Hunt",
+      "title": "Design Agent by Lokuma",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1774076460,
+      "url": "https://www.producthunt.com/products/lokuma-ai/launches/design-agent-by-lokuma?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/DW6P33NOZTQ6LJ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The designer for your AI agents (Openclaw, CC, Codex) — Lokuma Design Agent, is an AI designer your agents can call, a design intelligence layer for agents like OpenClaw, Claude Code, or Codex. AI can generate almost anything. But generation isn’t design. Turning raw outputs into something clear, structured, and visually refined still requires design thinking. Built by design tool makers, Lokuma helps AI reason about layout, typography, and visual balance — transforming outputs into landing pages, websites, and campaign pages that feel designed.",
+      "thumbnailUrl": "https://ph-files.imgix.net/fda99ccb-aa6a-462c-b957-8c9362fae971.x-icon?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 451,
+        "comments": 85,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "design-agent-by-lokuma",
+        "topics": [
+          "design-tools",
+          "artificial-intelligence",
+          "tech"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1050396": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1050396",
+      "sourceLabel": "Product Hunt",
+      "title": "Genpire",
+      "author": "Daniel Shoshani",
+      "createdUtc": 1778482860,
+      "url": "https://www.producthunt.com/products/genpire-ai/launches/genpire-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/SBMCMSDZBENDWN?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Make Real Products with AI, literally. — Most AI stops at the idea. Genpire takes it to the factory. Think Lovable, but for consumer goods manufacturing - an agentic platform that turns prompts and sketches into products, collections, and factory-ready specs, then lets you work with your own factory or tap into a vetted network for instant quotation, sampling, and bulk production. One workflow, all the way from an idea to the factory floor. Genpire makes building physical products faster, simpler, and finally accessible to anyone.",
+      "thumbnailUrl": "https://ph-files.imgix.net/1970372c-97bb-47b6-bebc-098b71c1e4cc.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 428,
+        "comments": 41,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "genpire-2",
+        "topics": [
+          "design-tools",
+          "artificial-intelligence",
+          "maker-tools"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1062085": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1062085",
+      "sourceLabel": "Product Hunt",
+      "title": "Bookmarkify",
+      "author": "Ivan Salim",
+      "createdUtc": 1768291260,
+      "url": "https://www.producthunt.com/products/bookmarkify-2/launches/bookmarkify-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/RWUGNI3LBPVSLF?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Collect websites, images, and videos into visual boards — Bookmarkify stands out by letting designers view live websites directly inside the tool, no tab switching needed, while organizing inspiration in flexible view modes. Teams can collaborate in shared spaces, keep context intact, and instantly analyze fonts and colors from any site. It replaces scattered bookmarks, screenshots, and boards with one focused, design-first workflow. Bookmarkify, the all-in-one bookmark manager for designers.",
+      "thumbnailUrl": "https://ph-files.imgix.net/0ebfaa47-3745-44c5-9514-da0f349b53d1.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 412,
+        "comments": 61,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "bookmarkify-3",
+        "topics": [
+          "design-tools",
+          "productivity",
+          "design-resources"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1129236": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1129236",
+      "sourceLabel": "Product Hunt",
+      "title": "ChatGPT Images 2.0",
+      "author": "Aleksandar Blazhev",
+      "createdUtc": 1776841260,
+      "url": "https://www.producthunt.com/products/chatgpt-images-2-0/launches/chatgpt-images-2-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/TUNK3IAU2E6MV6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "First image model with thinking capabilities — AI image generation with a thinking layer. Create, refine, and validate visuals in one flow. Supports flexible aspect ratios and multiple outputs per prompt, making it easier to go from idea to production-ready assets fast.",
+      "thumbnailUrl": "https://ph-files.imgix.net/7d52d4bf-420a-4909-be33-55da366cd688.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 399,
+        "comments": 14,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "chatgpt-images-2-0",
+        "topics": [
+          "design-tools",
+          "social-media",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369198
+  },
+  "ph:1088840": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1088840",
+      "sourceLabel": "Product Hunt",
+      "title": "Kodo",
+      "author": "Michael Goldstein",
+      "createdUtc": 1772611260,
+      "url": "https://www.producthunt.com/products/kodo-3/launches/kodo-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/EWHRT3ACB66Z6J?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Create fully editable designs by chatting with AI — Kodo is an AI design tool that generates fully editable posters, slides, menus and social graphics from a simple prompt. Unlike other AI design tools that output flat images, Kodo creates structured, layered designs you can edit instantly - text, colors, layouts, spacing, everything. You can generate, refine, and export in minutes - no templates, no locked layouts.",
+      "thumbnailUrl": "https://ph-files.imgix.net/d75e31e6-ed25-4883-aa25-15d892d1a27d.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 382,
+        "comments": 36,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "kodo-3",
+        "topics": [
+          "design-tools",
+          "artificial-intelligence",
+          "tech"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1061940": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1061940",
+      "sourceLabel": "Product Hunt",
+      "title": "caricature.life",
+      "author": "Pathange Balaji Rao",
+      "createdUtc": 1768723260,
+      "url": "https://www.producthunt.com/products/caricature-life/launches/caricature-life?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/XE56TE5SWDW7ID?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Create a minimalist caricature. No login. No tracking. — caricature.life started from a simple frustration. Every time I wanted a clean, minimalist caricature, I hit gated websites asking for logins, emails, and unclear privacy trade-offs. I built caricature.life to be the opposite. 🔐 No logins or signups 👀 No tracking or stored photos ✨ No watermarks Upload a photo, generate your avatar, download it, and leave. Your face stays yours. Lifetime free and community supported ☕",
+      "thumbnailUrl": "https://ph-files.imgix.net/f87c5915-02cb-4963-98b6-1c9c554ea9a8.gif?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 381,
+        "comments": 53,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "caricature-life",
+        "topics": [
+          "design-tools",
+          "privacy",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1170971": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1170971",
+      "sourceLabel": "Product Hunt",
+      "title": "Taste Lab",
+      "author": "Sen Lin",
+      "createdUtc": 1781420460,
+      "url": "https://www.producthunt.com/products/taste-lab?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/KOJGXLNJOQGWQI?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Extract any website's design DNA — Point your AI agent at any website. Get back a complete design breakdown — colors, type, spacing, and the reasoning behind every decision — ready to use in your next build.",
+      "thumbnailUrl": "https://ph-files.imgix.net/9993bd80-1673-4915-baf9-40e87d20df11.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 378,
+        "comments": 27,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "taste-lab",
+        "topics": [
+          "design-tools",
+          "artificial-intelligence",
+          "vibe-coding"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1059463": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1059463",
+      "sourceLabel": "Product Hunt",
+      "title": "Superdesign Prompt Library",
+      "author": "Chris Messina",
+      "createdUtc": 1768204860,
+      "url": "https://www.producthunt.com/products/superdesign/launches/superdesign-prompt-library?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/LK4D7WZTVYNC66?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Design prompts for style, animation, components — Biggest community driven design prompt library, covering styles, animations, UI components, etc. You can build & share design prompts with your team privately or contribute publicly; It works with any coding agent",
+      "thumbnailUrl": "https://ph-files.imgix.net/97c812bb-c116-448a-9722-362002cd9f63.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 374,
+        "comments": 37,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "superdesign-prompt-library",
+        "topics": [
+          "chrome-extensions",
+          "design-tools",
+          "developer-tools",
+          "web-design"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1155361": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1155361",
+      "sourceLabel": "Product Hunt",
+      "title": "Pitch Agent",
+      "author": "fmerian",
+      "createdUtc": 1779951660,
+      "url": "https://www.producthunt.com/products/pitch/launches/pitch-agent?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/KZA5WLLQAI4WGZ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "On-brand presentations, generated in seconds — Most AI tools apply your colors to generic layouts and call it “on brand.” Pitch Agent builds from your template, design language, and image style. Generate slides from a prompt and file attachments, then refine them via chat. Agent lives inside Pitch, the workspace where teams collaborate on and deliver presentations.",
+      "thumbnailUrl": "https://ph-files.imgix.net/414fc13b-c9e8-4b04-96a8-acc7dd458d0e.gif?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 359,
+        "comments": 68,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "pitch-agent",
+        "topics": [
+          "design-tools",
+          "saas",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1137273": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1137273",
+      "sourceLabel": "Product Hunt",
+      "title": "Tailgrids 3.0",
+      "author": "Musharof Chowdhury",
+      "createdUtc": 1778396460,
+      "url": "https://www.producthunt.com/products/tailgrids/launches/tailgrids-3-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/SRA36BX2QALQPN?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Open-source React UI library for Tailwind and AI Workflow — TailGrids 3.0 is a complete rebuild - a modern open-source React UI library and design system that unifies React, Tailwind and Figma. Ship real-world web projects with 600+ components, blocks, and templates for dashboards, AI, ecommerce, SaaS, and marketing sites. Includes CLI install, design tokens for theming, and an MCP server for AI-ready workflows. TypeScript-first, accessible, production-ready, with a Figma kit that mirrors the codebase 1:1",
+      "thumbnailUrl": "https://ph-files.imgix.net/7ecc20a2-9410-43c5-9121-5dc66db93b66.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 357,
+        "comments": 23,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "tailgrids-3-0",
+        "topics": [
+          "design-tools",
+          "open-source",
+          "developer-tools",
+          "github"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1127525": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1127525",
+      "sourceLabel": "Product Hunt",
+      "title": "Magic Patterns Agent 2.0",
+      "author": "Alex Danilowicz",
+      "createdUtc": 1776927660,
+      "url": "https://www.producthunt.com/products/magicpatterns/launches/magic-patterns-agent-2-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/I7BSFMORY72OEB?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The best AI design agent to go from idea to production — AI design tool to create prototypes using your existing styles and design system, handoff to engineering, and build software faster.",
+      "thumbnailUrl": "https://ph-files.imgix.net/e6157141-4247-4114-86df-9983dc775157.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 355,
+        "comments": 31,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "magic-patterns-agent-2-0",
+        "topics": [
+          "design-tools",
+          "prototyping",
+          "vibe-coding"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1128324": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1128324",
+      "sourceLabel": "Product Hunt",
+      "title": "RankSpot",
+      "author": "Yaroslav Chuykov",
+      "createdUtc": 1778223660,
+      "url": "https://www.producthunt.com/products/rankspot/launches/rankspot?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/6OTRNXDGVGQLGN?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI SEO Blog driven by deep competitor intelligence — RankSpot is your fully automated AI agent that researches, writes, and publishes SEO articles to your blog daily - getting you cited in AI answers and ranked on Google.",
+      "thumbnailUrl": "https://ph-files.imgix.net/f216213c-b209-4651-ad21-a7a60d635c46.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 673,
+        "comments": 103,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "rankspot",
+        "topics": [
+          "marketing",
+          "seo",
+          "yc-application"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1089888": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1089888",
+      "sourceLabel": "Product Hunt",
+      "title": "Naoma AI Demo Agent",
+      "author": "Zac Zuo",
+      "createdUtc": 1773298860,
+      "url": "https://www.producthunt.com/products/naoma/launches/naoma-ai-demo-agent?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/AMCWWRZH4FBFGS?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The video AI demo agent for B2B SaaS for immediate demos — Turn “Book a demo” into “Get an AI demo now.” Naoma is the first video AI demo agent for B2B SaaS that delivers live, personalized demos in-browser 24/7 in any language. It clicks through real product flows, answers questions, qualifies prospects, and routes them to CRM, sales calendar, or checkout. Choose the avatar style: human-like, branded mascot, or a more formal look to engage your prospects.",
+      "thumbnailUrl": "https://ph-files.imgix.net/9cf65627-cdeb-4434-90df-da1064018ee0.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 663,
+        "comments": 388,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "naoma-ai-demo-agent",
+        "topics": [
+          "marketing",
+          "artificial-intelligence",
+          "yc-application"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1122928": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1122928",
+      "sourceLabel": "Product Hunt",
+      "title": "RankAI",
+      "author": "Garry Tan",
+      "createdUtc": 1776754860,
+      "url": "https://www.producthunt.com/products/rankai-2/launches/rankai-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/SWCJJYGQH4XRUK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "RankAI autonomously gets you buyers from Google & AI Search — RankAI is the first SEO/GEO agent that truly works. It handles everything autonomously to drive you millions of visitors from Google & AI Search like ChatGPT. Drop in your website, and RankAI handles the rest: it finds high-intent queries your customers search on Google and ChatGPT, publishes optimized pages, tracks performance, and recreate pages iteratively until they get you visitors.",
+      "thumbnailUrl": "https://ph-files.imgix.net/fb050086-e465-4081-911e-ecfbda7d68ef.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 629,
+        "comments": 110,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "rankai-2",
+        "topics": [
+          "marketing",
+          "seo",
+          "search"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1149728": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1149728",
+      "sourceLabel": "Product Hunt",
+      "title": "Elentaria",
+      "author": "Chris Messina",
+      "createdUtc": 1780470060,
+      "url": "https://www.producthunt.com/products/elentaria?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/UJ3FSZT2ZNWJMT?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Your GTM: from diagnosis to execution — Elentaria is the AI operator for B2B: it analyzes your business, scores 22 channels, ships the plan that fits, and learns what moved revenue so it can make the next week sharper. Every week, on your stack, in your voice.",
+      "thumbnailUrl": "https://ph-files.imgix.net/48d14be3-c76f-470b-a30d-be79b45c0f5f.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 622,
+        "comments": 104,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "elentaria",
+        "topics": [
+          "sales",
+          "marketing"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1082371": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1082371",
+      "sourceLabel": "Product Hunt",
+      "title": "Claude in PowerPoint",
+      "author": "Rohan Chaubey",
+      "createdUtc": 1771747260,
+      "url": "https://www.producthunt.com/products/claude/launches/claude-in-powerpoint?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/TLPPXFP4GJKRQQ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Use Claude to build, edit & refine PowerPoint presentations. — Claude works alongside you in PowerPoint — building slides, making pinpoint edits, and iterating on your deck in real time. Claude reads your layouts, fonts, and slide masters so every change stays on-brand and on-template. Claude in PowerPoint is now available on the Pro plan. It also now supports live data connectors, bringing context from your daily tools directly into your slides.",
+      "thumbnailUrl": "https://ph-files.imgix.net/3dfe9e3f-75df-4d91-a9b2-c9ed2449241f.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 606,
+        "comments": 36,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "claude-in-powerpoint",
+        "topics": [
+          "marketing",
+          "artificial-intelligence",
+          "design-resources"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1124409": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1124409",
+      "sourceLabel": "Product Hunt",
+      "title": "SocLeads 3.0",
+      "author": "Evgenii Anikin",
+      "createdUtc": 1779087660,
+      "url": "https://www.producthunt.com/products/socleads/launches/socleads-3-0?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/ALZHOD7ZH2TWYV?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Scrape emails from socials and maps by location — SocLeads now scrapes emails from Instagram, Facebook, LinkedIn, YouTube, and Google Maps across entire countries 🌍📧 Geo-filters. More results. No code needed. 🚀",
+      "thumbnailUrl": "https://ph-files.imgix.net/9443342b-bf19-49c4-8423-5e1db1415f15.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 594,
+        "comments": 96,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "socleads-3-0",
+        "topics": [
+          "email",
+          "social-media",
+          "marketing"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1074121": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1074121",
+      "sourceLabel": "Product Hunt",
+      "title": "Starnus",
+      "author": "Chris Messina",
+      "createdUtc": 1770883260,
+      "url": "https://www.producthunt.com/products/starnus/launches/starnus?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/62DHGBY3FZFEKH?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Find and reach your next customers on autopilot — Starnus helps founders and B2B teams run outbound with simple prompts. Define your ICP, find lookalike prospects, enrich with business + contact data, generate personalized outreach, and track replies, end to end in one platform.",
+      "thumbnailUrl": "https://ph-files.imgix.net/2282e101-bca1-4dff-a333-9c01e2b6cd6c.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 584,
+        "comments": 119,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "starnus",
+        "topics": [
+          "sales",
+          "marketing",
+          "marketing-automation"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1152148": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1152148",
+      "sourceLabel": "Product Hunt",
+      "title": "Tycoon AI ",
+      "author": "Rajiv Ayyangar",
+      "createdUtc": 1779346860,
+      "url": "https://www.producthunt.com/products/tycoon-us/launches/tycoon-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/RL4GWQKCKC4Y5K?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Run one-person companies entirely with AI agents — Tycoon.us enables you to run an entire company with AI agents, powered by Astra, an AI CEO, and 10+ ready-to-use AI agents you can choose from, from CMO who manages X to CTO who codes. Astra also manages Claude Code/Hermes. Give Astra a KPI or project, like “10x traffic this month,” or “launch onboarding flows.” She creates a plan, assigns agents, tracks progress, and asks for approval when needed. Every agent is out of box, so no setup, coding, or API keys required.",
+      "thumbnailUrl": "https://ph-files.imgix.net/8148cb1b-0da3-4574-9f71-08798b552316.svg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 578,
+        "comments": 114,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "tycoon-ai",
+        "topics": [
+          "marketing",
+          "artificial-intelligence",
+          "tech"
+        ]
+      }
+    },
+    "firstSeen": 1781638369199
+  },
+  "ph:1083354": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1083354",
+      "sourceLabel": "Product Hunt",
+      "title": "Timelaps",
+      "author": "Chris Messina",
+      "createdUtc": 1773039660,
+      "url": "https://www.producthunt.com/products/timelaps/launches/timelaps?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/45H337VA2R5INK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Know if your marketing is working with real-time insights — Timelaps conducts primary research, collects responses from 4,000+ real consumers in target demographics, and tells you whether your brand marketing is working. Compared to traditional agencies or trackers, Timelaps is 5x more affordable, based on the latest science of brand growth, and continuously updated in real time.",
+      "thumbnailUrl": "https://ph-files.imgix.net/95132434-10a5-4aea-9e86-c28817573f57.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 554,
+        "comments": 140,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "timelaps",
+        "topics": [
+          "branding",
+          "marketing",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1094627": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1094627",
+      "sourceLabel": "Product Hunt",
+      "title": "Cardboard",
+      "author": "Garry Tan",
+      "createdUtc": 1773212460,
+      "url": "https://www.producthunt.com/products/cardboard-3/launches/cardboard-4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/VS4ZYJLUBV4FIX?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Cursor for video editing — Cardboard is an agentic video editor that gets you from raw footage to final cut in minutes. Think of it like an intelligent collaborator, one that understands what's in your clips, has the taste to know what a good edit looks like, and executes your vision.",
+      "thumbnailUrl": "https://ph-files.imgix.net/607a82e0-7a58-4dda-b92c-71e0f0688c52.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 542,
+        "comments": 106,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "cardboard-4",
+        "topics": [
+          "marketing",
+          "artificial-intelligence",
+          "video"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1146113": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1146113",
+      "sourceLabel": "Product Hunt",
+      "title": "Vivago Video Agent",
+      "author": "Chris Messina",
+      "createdUtc": 1779001260,
+      "url": "https://www.producthunt.com/products/viva/launches/vivago-video-agent?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/4UYKCH63ZLBZY7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Skip the prompting. Produce consistently compelling videos.  — Vivago Video Agent lets you generate consistently compelling narrative videos with natural language. No more annoying prompting! Our video agent ensures every scene stays on-brand and internally coherent by guiding you through a structured creative process. Just share your assets and describe your story — a swarm of AI directors will invent characters and write a compelling story for you. See the keyframes before rendering. Your 1-min 1080P story video will be ready in 40 mins.",
+      "thumbnailUrl": "https://ph-files.imgix.net/0c55e594-45dc-4ccc-bfe4-c29b5b45e3b6.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 532,
+        "comments": 72,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "vivago-video-agent",
+        "topics": [
+          "productivity",
+          "marketing",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1072464": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1072464",
+      "sourceLabel": "Product Hunt",
+      "title": "Lunair",
+      "author": "Chris Messina",
+      "createdUtc": 1771142460,
+      "url": "https://www.producthunt.com/products/lunair/launches/lunair?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/LPFAAEVFNPGC5A?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Generate studio-quality explainer videos. Instantly. — The fastest way to add a video to your landing page. As easy as writing, with creative control. Describe your product or idea and Lunair generates a complete video: consistent characters, custom scenes (not stock assets), voiceover, music, and motion, delivered as a ready-to-share video file. Then edit with plain language: choose a narrator, tweak the script, refine scenes to match your brand. Built for custom, on-brand explainers and marketing videos, not generic AI clips. Join 5,000+ creators.",
+      "thumbnailUrl": "https://ph-files.imgix.net/776a7fad-5c53-4889-b214-bb4542a3e3a4.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 517,
+        "comments": 158,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "lunair",
+        "topics": [
+          "marketing",
+          "artificial-intelligence",
+          "video"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1131691": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1131691",
+      "sourceLabel": "Product Hunt",
+      "title": "Orange Slice",
+      "author": "Garry Tan",
+      "createdUtc": 1777273260,
+      "url": "https://www.producthunt.com/products/orange-slice/launches/orange-slice-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/ZAMTQWNV2NKJIN?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Automate any sales task with AI — Build go-to-market workflows with AI. Prospect, enrich, qualify, and automate GTM execution in Orange Slice.",
+      "thumbnailUrl": "https://ph-files.imgix.net/cfcb3526-46fc-4484-ad17-c217e76efcc1.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 512,
+        "comments": 48,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "orange-slice-2",
+        "topics": [
+          "sales",
+          "marketing",
+          "growth-hacking"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1068370": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1068370",
+      "sourceLabel": "Product Hunt",
+      "title": "Unicorne",
+      "author": "Marc Lou",
+      "createdUtc": 1770624060,
+      "url": "https://www.producthunt.com/products/unicorne/launches/unicorne?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/77R5O34BPTZII4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The 20 fastest growing startups based on TrustMRR data — Watch the top 20 fastest growing tech startups in real-time. Rankings updated hourly with verified revenue data from Stripe, Paddle, and RevenueCat.",
+      "thumbnailUrl": "https://ph-files.imgix.net/c75e0d14-421d-42fd-bbae-6a0b7aff3a70.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 504,
+        "comments": 36,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "unicorne",
+        "topics": [
+          "marketing",
+          "saas"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1115579": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1115579",
+      "sourceLabel": "Product Hunt",
+      "title": "Influcio",
+      "author": "Chris Messina",
+      "createdUtc": 1775372460,
+      "url": "https://www.producthunt.com/products/influcio-2/launches/influcio-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/7LWNCE62V5P6IM?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "AI marketing Agent for result-driven influencer campaign — Influcio replaces one-off influencer campaigns with a self-learning AI system. It finds the best influencers, runs campaigns end-to-end, helps you manage them in an all-in-one platform, and uses performance data to optimize every next launch.",
+      "thumbnailUrl": "https://ph-files.imgix.net/2f580d68-f843-46a9-acc4-effa56ac2b4a.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 458,
+        "comments": 35,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "influcio-2",
+        "topics": [
+          "marketing",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1104830": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1104830",
+      "sourceLabel": "Product Hunt",
+      "title": "Fastlane",
+      "author": "Gaurav Thapa",
+      "createdUtc": 1774249260,
+      "url": "https://www.producthunt.com/products/fastlane-3/launches/fastlane-4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/LTQWNXYACIJQFW?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Create viral content for your product in seconds — Fastlane is your AI short-form content engine, where you can remix viral videos into content for your business in seconds. Fastlane will generate ready-to-post content for your business, then let you swipe through them like Tinder. Then, you schedule straight to TikTok, IG Reels and YT Shorts in-platform - so you can focus on building, while the content brings in users on autopilot.",
+      "thumbnailUrl": "https://ph-files.imgix.net/f1b457d4-2a3c-4fed-8a5f-bdcfc9c87b16.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 440,
+        "comments": 108,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "fastlane-4",
+        "topics": [
+          "marketing",
+          "social-media-marketing",
+          "vibe-coding"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1143406": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1143406",
+      "sourceLabel": "Product Hunt",
+      "title": "Loova Agents",
+      "author": "Ben Lang",
+      "createdUtc": 1778914860,
+      "url": "https://www.producthunt.com/products/loova-agents/launches/loova-agents-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/4GHN2XBZOGAXZS?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Your AI director for creating cinematic videos with ease — Tell Loova your idea in everyday words, and Loova agents act as your personal director to plan, direct, and generate your film. Make scroll-stopping ads, short films, and product videos fast. With an infinite canvas for boundless imagination, Loova Agents make professional video storytelling simple.",
+      "thumbnailUrl": "https://ph-files.imgix.net/058eaf05-8041-4782-a657-e567a7da18e8.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 426,
+        "comments": 78,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "loova-agents-3",
+        "topics": [
+          "marketing",
+          "artificial-intelligence",
+          "video"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1100364": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1100364",
+      "sourceLabel": "Product Hunt",
+      "title": "VideoOS by Jupitrr AI",
+      "author": "Tsz Hoi Lee",
+      "createdUtc": 1777532460,
+      "url": "https://www.producthunt.com/products/jupitrr/launches/videoos-by-jupitrr-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/3NTEC76ZWZD3U7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "Your all-in-one video workflow — VideoOS is the all-in-one video marketing platform for businesses. Find trending topics in your niche, write scripts with AI, record with our Auto Jump Cut teleprompter, auto-edit with subtitles and B-roll, and publish directly to your socials. One app instead of five. Go from idea to posted video faster.",
+      "thumbnailUrl": "https://ph-files.imgix.net/b41a7a47-2cd5-4fbb-953d-42614e481738.png?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 423,
+        "comments": 45,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "videoos-by-jupitrr-ai",
+        "topics": [
+          "social-media",
+          "marketing",
+          "video"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
+  },
+  "ph:1128236": {
+    "post": {
+      "source": "producthunt",
+      "id": "ph:1128236",
+      "sourceLabel": "Product Hunt",
+      "title": "Stanley For 𝕏",
+      "author": "Pascio",
+      "createdUtc": 1776841260,
+      "url": "https://www.producthunt.com/products/stanley-for-x/launches/stanley-for-x?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "outboundUrl": "https://www.producthunt.com/r/XH6QM2ZNCHWY5V?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+Full+Bleed+%28ID%3A+288281%29",
+      "body": "The world's first AI Head of Content — The world’s first AI Head of Content for Twitter that does more than just “write tweets”. He helps you think, plan, write and execute. Built on the systems of a real ghostwriter (with a proven track record of growing 𝕏 accounts from 0 to 10k followers)",
+      "thumbnailUrl": "https://ph-files.imgix.net/e598d7d9-dd01-47ea-ab96-af020a09ccab.jpeg?auto=format",
+      "hasImage": true,
+      "hasVideo": false,
+      "signal": {
+        "score": 421,
+        "comments": 98,
+        "label": "upvotes"
+      },
+      "meta": {
+        "slug": "stanley-for-x",
+        "topics": [
+          "twitter",
+          "marketing",
+          "artificial-intelligence"
+        ]
+      }
+    },
+    "firstSeen": 1781638369200
   }
 }

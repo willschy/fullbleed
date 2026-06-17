@@ -5,7 +5,7 @@
 // source-agnostic and only ever sees `Candidate`.
 // ──────────────────────────────────────────────────────────────────────────
 
-export type SourceId = "reddit" | "hackernews" | "github" | "arena" | "arxiv" | "huggingface" | "hfpapers";
+export type SourceId = "reddit" | "hackernews" | "github" | "arena" | "arxiv" | "huggingface" | "hfpapers" | "producthunt";
 
 export interface CandidateSignal {
   /** Primary popularity number: upvotes / points / stars. 0 for pure-curation sources. */
@@ -113,6 +113,22 @@ export interface HfPapersConfig {
   limit: number;
 }
 
+export interface ProductHuntConfig {
+  enabled?: boolean;
+  /** API path (preferred, needs PRODUCTHUNT_TOKEN): topic slugs to pull, vote-ranked. e.g. "artificial-intelligence", "design-tools". */
+  topics: string[];
+  /** API path: popularity floor — minimum upvotes to keep. This is the "popular" bar. */
+  minVotes: number;
+  /** API path: posts per topic to pull, sorted by votes. */
+  perTopic: number;
+  /** API path: recency window for the query's postedAfter (keep ≈ the global maxAgeDays). */
+  postedWithinDays: number;
+  /** Fallback only (no token): keyword gate for the keyless Atom feed (which has no votes/topics). */
+  mustMatch: string[];
+  /** Fallback only: max launches to take from the Atom feed. */
+  limit: number;
+}
+
 /** Cross-cutting catch-time gates from the curation brief. */
 export interface FiltersConfig {
   /** Hard recency ceiling — nothing older than this ever enters the pen. */
@@ -130,6 +146,7 @@ export interface SourcesConfig {
   arxiv?: ArxivConfig;
   huggingface?: HuggingFaceConfig;
   hfpapers?: HfPapersConfig;
+  producthunt?: ProductHuntConfig;
 }
 
 // ── Reddit's raw shape (used only inside the Reddit adapter + backfill) ─────

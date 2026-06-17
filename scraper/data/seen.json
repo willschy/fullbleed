@@ -131,7 +131,10 @@
     "hf:LeoXie/WorldGen": true,
     "hf:wyysf/CraftsMan": true,
     "hf:microsoft/TRELLIS-text-base": true,
-    "hf:Intel/ldm3d-sr": true
+    "hf:Intel/ldm3d-sr": true,
+    "hn:48544823": true,
+    "gh:Guifurmiga/AI-Art-Generator": true,
+    "gh:Pikselkroken/pixlstash": true
   },
   "urls": {
     "github.com/zhizhuodemao/js-reverse-mcp": "gh:zhizhuodemao/js-reverse-mcp",
@@ -265,7 +268,10 @@
     "huggingface.co/LeoXie/WorldGen": "hf:LeoXie/WorldGen",
     "huggingface.co/wyysf/CraftsMan": "hf:wyysf/CraftsMan",
     "huggingface.co/microsoft/TRELLIS-text-base": "hf:microsoft/TRELLIS-text-base",
-    "huggingface.co/Intel/ldm3d-sr": "hf:Intel/ldm3d-sr"
+    "huggingface.co/Intel/ldm3d-sr": "hf:Intel/ldm3d-sr",
+    "grassdx.com": "hn:48544823",
+    "github.com/Guifurmiga/AI-Art-Generator": "gh:Guifurmiga/AI-Art-Generator",
+    "pixlstash.dev": "gh:Pikselkroken/pixlstash"
   },
   "titles": {
     "zhizhuodemaojsreversemcp ai agent js mcp server chromedevtoolsmcp js reverse engineering mcp server with agentfirst tool design and builtin antidetection rebuilt from chromedevtoolsmcp": "gh:zhizhuodemao/js-reverse-mcp",
@@ -399,6 +405,9 @@
     "leoxieworldgen": "hf:LeoXie/WorldGen",
     "wyysfcraftsman": "hf:wyysf/CraftsMan",
     "microsofttrellistextbase": "hf:microsoft/TRELLIS-text-base",
-    "intelldm3dsr": "hf:Intel/ldm3d-sr"
+    "intelldm3dsr": "hf:Intel/ldm3d-sr",
+    "veterinarian turned founder ai lawn diagnosis": "hn:48544823",
+    "guifurmigaaiartgenerator ai art generator a project that uses generative models gans diffusion to create images from text prompts explores the intersection of ai and creativity": "gh:Guifurmiga/AI-Art-Generator",
+    "pikselkrokenpixlstash pixlstash is a pythonbased image management tagging and editing web app leveraging ai tools for tagging similarity checks grouping and quality assessment it has a restapi and a vuebased web frontend": "gh:Pikselkroken/pixlstash"
   }
 }

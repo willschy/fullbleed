@@ -6,6 +6,7 @@ import { fetchArena } from "./arena.js";
 import { fetchArxiv } from "./arxiv.js";
 import { fetchHuggingFace } from "./huggingface.js";
 import { fetchHfPapers } from "./hfpapers.js";
+import { fetchProductHunt } from "./producthunt.js";
 
 /**
  * The compiler's source registry. Each enabled source exposes a uniform
@@ -43,6 +44,10 @@ export function buildSources(cfg: SourcesConfig): Source[] {
   if (cfg.hfpapers?.enabled) {
     const hp = cfg.hfpapers;
     sources.push({ id: "hfpapers", label: "HF Papers", fetch: () => fetchHfPapers(hp) });
+  }
+  if (cfg.producthunt?.enabled) {
+    const ph = cfg.producthunt;
+    sources.push({ id: "producthunt", label: "Product Hunt", fetch: () => fetchProductHunt(ph) });
   }
 
   return sources;

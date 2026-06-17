@@ -74,6 +74,23 @@
     "limit": 100
   },
 
+  "producthunt": {
+    "enabled": true,
+    "_note": "COMMERCIAL intake — launched products (mostly closed/paid) the open feeds (GitHub, HF) can't see. PREFERRED path is the v2 GraphQL API: vote-ranked + topic-filtered = popular, relevant tools with real upvote counts + thumbnails. Set PRODUCTHUNT_TOKEN (free developer token, producthunt.com → API dashboard) to activate it. Without a token it falls back to the keyless Atom feed (newest only, keyword-gated, no votes). Sonnet taste gate is the real filter either way.",
+    "topics": ["artificial-intelligence", "design-tools", "marketing"],
+    "minVotes": 50,
+    "perTopic": 20,
+    "postedWithinDays": 180,
+    "limit": 50,
+    "mustMatch": [
+      "ai", "gpt", "llm", "agent", "generative", "diffusion",
+      "image", "video", "photo", "design", "logo", "brand", "avatar", "art",
+      "creative", "render", "3d", "animation", "motion", "voice", "music", "audio",
+      "deck", "presentation", "slides", "edit", "caption", "model",
+      "midjourney", "runway", "sora", "veo", "flux", "text-to-image", "text-to-video"
+    ]
+  },
+
   "arxiv": {
     "enabled": false,
     "_note": "Papers lane (backup, muted). Raw arXiv keyword search floods incremental papers with no notability signal — HF Papers is primary. Re-enable only if a topic isn't covered there.",

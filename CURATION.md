@@ -59,9 +59,13 @@ The creative domain a thing serves, applied as **multi-select tags** that ride o
 
 What it is → the link → the key info → how you'd use it (a real walkthrough for Tools/Automations; a sharp "here's how you'd use it" for Models/Papers). Actions: **upvote · save · share** (a shareable "fullbleed link").
 
+## Open and closed — both first-class
+
+The catalog is for working creatives, and most of them work in **commercial tools** (Midjourney, Runway, Sora, Adobe Firefly, Figma AI, ElevenLabs, ChatGPT, Claude). Open-source / open-weight work is welcome, but it is **not** the point — a major closed or paid release (a new Midjourney, a frontier model like Fable 5, a paid design app) is as worthy as any open repo. **Judge the work, never the license.** The intake must reflect the real tool landscape, not just what happens to be downloadable. An open-source-only catalog is a sourcing failure, not the goal.
+
 ## Sources
 
-Sources are pipes; this brief is the filter, reused as catch-time rules + the Sonnet taste gate + the checklist for which sources to pull. Live now (no approval): **Hacker News**, **GitHub**, **Hugging Face** (Models), **HF daily papers** (Papers — ranked by community upvotes, the notability signal raw arXiv lacks). **Reddit** pending API approval; raw **arXiv** kept as a muted backup. Each source carries a different signal; the taste gate is the equalizer.
+Sources are pipes; this brief is the filter, reused as catch-time rules + the Sonnet taste gate + the checklist for which sources to pull. Live now (no approval): **Product Hunt** (commercial launches — the paid/closed tools the open feeds can't see), **Hacker News**, **GitHub**, **Hugging Face** (Models), **HF daily papers** (Papers — ranked by community upvotes, the notability signal raw arXiv lacks). **Reddit** pending API approval; raw **arXiv** kept as a muted backup. Each source carries a different signal; the taste gate is the equalizer.
 
 ## Open / later
 
