@@ -67,11 +67,6 @@ const disciplines = DISCIPLINES
     </aside>
 
     <main class="catalog">
-      <header class="lede">
-        <h1 class="lede-title">Real AI work, <span>shown with the how.</span></h1>
-        <p class="lede-meta" id="result-count">{entries.length} entries</p>
-      </header>
-
       <div class="grid" id="grid">
         {entries.map((entry, i) => <Card entry={entry} index={i} feature={i === 0} />)}
       </div>
@@ -246,38 +241,6 @@ const disciplines = DISCIPLINES
     min-width: 0;
   }
 
-  .lede {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--s4);
-    flex-wrap: wrap;
-    padding: var(--s2) 0 var(--s6);
-  }
-
-  .lede-title {
-    margin: 0;
-    font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-    font-weight: var(--w-display);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-
-  .lede-title span {
-    color: var(--ink-35);
-    font-weight: var(--w-med);
-  }
-
-  .lede-meta {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--ink-35);
-  }
-
   .grid {
     position: relative; /* anchor for cards floating out during filter */
     display: grid;
@@ -312,9 +275,9 @@ const disciplines = DISCIPLINES
       top: 60px;
       max-height: calc(100dvh - 60px);
       overflow-y: auto;
-      /* drop the rail past the lede header so the first facet row top-aligns
-         with the first catalog card (offset = the lede header's height) */
-      padding-top: 78px;
+      /* first facet row top-aligns with the first catalog card
+         (= catalog top padding minus the facet-title height) */
+      padding-top: 15px;
     }
   }
 
@@ -364,10 +327,6 @@ const disciplines = DISCIPLINES
     .catalog {
       padding: var(--s4) var(--s4) var(--s12);
     }
-
-    .lede {
-      display: none;
-    }
   }
 </style>
 
@@ -397,9 +356,7 @@ const disciplines = DISCIPLINES
   function updateMeta(cards: HTMLElement[]): void {
     const visible = cards.filter((c) => matches(c)).length;
     const emptyMsg = document.getElementById("empty");
-    const resultCount = document.getElementById("result-count");
     if (emptyMsg) emptyMsg.hidden = visible > 0;
-    if (resultCount) resultCount.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
   }
 
   function apply(animate = true): void {
