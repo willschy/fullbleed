@@ -1,73 +1,49 @@
 # Accounts, URLs & Access — Full Bleed
 
-No secrets are stored in this repo (and none should be). This lists what exists, where
-things live, and what credentials are needed + where they go.
+*Updated June 17, 2026.* No secrets are stored in this repo (`.env` is gitignored). This lists what exists, where things live, and what credentials are needed.
 
 ## URLs
 
 | What | Where |
 |---|---|
-| Live preview site | https://fullbleed.pages.dev (private preview, noindexed) |
+| Live preview site | https://fullbleed.pages.dev (private preview, **noindexed**, auto-deploys from `main`) |
 | GitHub repo | https://github.com/willschy/fullbleed (public) |
 | Cloudflare dashboard | https://dash.cloudflare.com → Workers & Pages → fullbleed |
 | Target domain (not yet registered) | fullbleed.ai |
 
 ## Accounts
 
-- **GitHub:** user `willschy`. Git commit identity in this repo:
-  `willschy <willschy@users.noreply.github.com>`. `gh` CLI is authenticated on Will's machine.
-- **Cloudflare:** account `William.b.schlesinger@gmail.com` (signed up via GitHub OAuth).
-  Account ID `9b99a1ac2f1e71808c11d40a01657724`. Pages project name: `fullbleed`.
-- **Reddit:** account `u/willschybot`. API application submitted June 12, 2026 (awaiting approval).
-- **Anthropic API:** key created and set in `.env` as of June 13, 2026. Powers the judge and writeup
-  stages (`claude-sonnet-4-6`). Working.
-- **Unsplash:** no account/key yet. NEEDED for the thumbnail stock-pull (free, self-serve at
-  unsplash.com/developers, register an app, copy the Access Key). This is the next key required.
-- **Higgsfield MCP** (`generate_image`): used this session to explore AI-generated covers (direction
-  since abandoned in favor of filtered stock). Available if needed for other image work.
+- **GitHub:** user `willschy`. Commit identity `willschy <willschy@users.noreply.github.com>`. `gh` CLI authenticated. The catalog is committed and pushed (latest `128a1cd`).
+- **Cloudflare:** `William.b.schlesinger@gmail.com` (via GitHub OAuth). Account ID `9b99a1ac2f1e71808c11d40a01657724`. Pages project `fullbleed`. Auto-deploys on every push to `main`.
+- **Anthropic API:** key set in `.env`. Powers judge + writeup (`claude-sonnet-4-6`). Working.
+- **Product Hunt:** an API application was created; its **API Key + API Secret are in `.env`** (`PRODUCTHUNT_KEY` / `PRODUCTHUNT_SECRET`). The Product Hunt source's v2 GraphQL API path (vote-ranked, topic-filtered) is live.
+- **Reddit:** account `u/willschybot`. API application submitted June 12, 2026 (still awaiting approval). Source skips gracefully until creds are set.
+- **Higgsfield MCP** (`generate_image`): available if AI image work is ever revisited (the AI-cover direction was rejected, but the tool's there).
 
-## Cloudflare Pages build config (already set, for reference)
+## Cloudflare Pages build config (set, for reference)
 
-- Production branch: `main` (auto-deploys on every push)
-- Framework preset: None
-- Build command: `npm run build`
-- Build output directory: `site/dist`
-- Env var: `NODE_VERSION = 22` (also pinned via `.nvmrc`)
+- Production branch: `main` (auto-deploys on push). Framework preset: None. Build command: `npm run build`. Output: `site/dist`. Env: `NODE_VERSION = 22` (also `.nvmrc`).
 
-## Secrets — what's needed and where they go
+## Secrets — `.env` at repo root (gitignored; template in `.env.example`)
 
-Local dev (`.env` at repo root — gitignored; template in `.env.example`):
 ```
-ANTHROPIC_API_KEY=sk-...   # SET — powers judge + writeup (claude-sonnet-4-6)
-GITHUB_TOKEN=              # optional — raises GitHub search rate limit 10→30/min (no scopes needed)
-UNSPLASH_ACCESS_KEY=      # NEEDED NEXT — for the thumbnail stock-pull (self-serve, free)
-REDDIT_CLIENT_ID=         # from Reddit script app, once API approved (still pending)
+ANTHROPIC_API_KEY=sk-...   # SET — powers judge + writeup
+GITHUB_TOKEN=              # optional — raises GitHub search rate limit 10→30/min
+PRODUCTHUNT_KEY=           # SET — Product Hunt v2 API app key (vote-ranked, topic-filtered pulls)
+PRODUCTHUNT_SECRET=        # SET — Product Hunt v2 API app secret
+REDDIT_CLIENT_ID=          # pending Reddit API approval
 REDDIT_CLIENT_SECRET=
 ```
-For the future GitHub Actions pipeline: the same values go in the repo's
-**Settings → Secrets and variables → Actions** (not yet set up — see PROJECT-STATE roadmap #2).
 
-## Will's open homework (the human-only items)
+For the future GitHub Actions pipeline, the same values go in repo **Settings → Secrets and variables → Actions** (not set up yet).
 
-1. **Lock the thumbnail palette** — react to the five duotone colors at `/lab`. This is the active
-   blocker for finishing imagery. (See handoff README "immediate next step".)
-2. **Unsplash Access Key** — free, self-serve at unsplash.com/developers. Needed for the stock-pull.
-   Drop into `.env` as `UNSPLASH_ACCESS_KEY`.
-3. **Register `fullbleed.ai`** — ~$70–90/yr, 2-yr minimum. Deferred to launch; snipe risk on a
-   guessable name. Grab social handles too.
-4. **Reddit script-app credentials** — once the API application is approved (submitted June 12,
-   ~2–4 wk), create the script app at reddit.com/prefs/apps and add client id + secret to `.env`.
-   Not blocking anything thanks to the no-approval sources.
+## Will's open homework (human-only items)
 
-Done since the original handoff: Anthropic API key created and added (item used to be here). VOICE.md
-was rewritten and locked this session, so the old "redline VOICE.md" task is superseded.
+1. **Register `fullbleed.ai`** — ~$70–90/yr. Deferred to launch; snipe risk on a guessable name. Grab social handles too.
+2. **Reddit script-app credentials** — once the API application is approved (submitted June 12, ~2–4 wk), create the script app at reddit.com/prefs/apps and add client id + secret to `.env`. Not blocking anything.
+
+**Done / retired:** Anthropic key (set), Product Hunt API key+secret (set this session). The old **Unsplash key** homework is **dead** — it was for the stock-photo thumbnail pull, and stock imagery was rejected outright ("stock is out for good"). The old **thumbnail palette-lock** task is dead for the same reason (that whole direction was reverted). Imagery is unsolved but it's a design decision, not a credential — see README "THE IMMEDIATE NEXT STEP".
 
 ## Persistent memory (auto-loads in new chats in this project dir)
 
-The assistant keeps memory at
-`~/.claude/projects/-Users-wschlesinger-Documents-AI-Catalog-Scraper-Tool/memory/`:
-- `MEMORY.md` (index)
-- `ai-catalog-project-overview.md` (status, URLs, pipeline concept)
-- `design-quality-bar.md` (the design-taste calibration)
-
-These load automatically — but `handoff/` is the fuller, version-controlled reference.
+`~/.claude/projects/-Users-wschlesinger-Documents-AI-Catalog-Scraper-Tool/memory/` — `MEMORY.md` (index) plus per-fact files, including the new ones this session: `commit-means-deploy.md`, and the updated `thumbnail-treatment.md` (imagery UNSOLVED — all directions rejected). These load automatically; `handoff/` is the fuller version-controlled reference.

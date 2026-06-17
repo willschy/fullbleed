@@ -1,24 +1,24 @@
 # Full Bleed — Handoff / Resume Here
 
-*Updated June 13/14, 2026. This supersedes the original handoff. Read these four files in order.*
+*Updated June 17, 2026. This supersedes the June 13/14 version. Read these four files in order.*
 
-1. **README.md** (this file) — orientation, how to resume, status, and the exact next step.
-2. **PROJECT-STATE.md** — architecture, what is built, the pipeline, the file map, what is pending.
-3. **DECISIONS-AND-LEARNINGS.md** — every decision, the taste calibration, the gotchas. The "Session 2" section at the bottom is everything from the most recent run of work.
-4. **ACCOUNTS-AND-ACCESS.md** — accounts, API keys, secrets, and Will's open homework.
+1. **README.md** (this file) — orientation, how to resume, current status, the exact next step.
+2. **PROJECT-STATE.md** — architecture, what is built and live, the pipeline, the file map, what is pending.
+3. **DECISIONS-AND-LEARNINGS.md** — every decision and the taste calibration. The "Session 3" section at the bottom is the most recent run of work (the imagery dead-ends and the commercial-intake pivot). Read it.
+4. **ACCOUNTS-AND-ACCESS.md** — accounts, keys, secrets, and Will's open homework.
 
 Source-of-truth docs in the repo root:
-- **CURATION.md** — what gets in, the five categories, the bar. This is THE curation brief and it was written this session. Read it.
-- **VOICE.md** — the locked house voice for entry writeups. Rewritten this session.
-- **project-spec.md** — the original product spec. Still useful for history, but partly superseded by CURATION.md (categories, voice, freshness rule all changed).
+- **CURATION.md** — what gets in, the five categories, the bar. Updated this session with **"Open and closed — both first-class"** (judge the work, never the license). Read it.
+- **VOICE.md** — the locked house voice for entry writeups.
+- **project-spec.md** — original spec (history; categories/voice/freshness/sources now superseded by CURATION.md).
 
-The assistant's persistent memory also auto-loads in a new chat in this directory and already holds the key facts. `handoff/` is the fuller version-controlled reference.
+The assistant's persistent memory also auto-loads in a new chat in this directory and holds the key facts (including the new ones from this session). `handoff/` is the fuller, version-controlled reference.
 
 ---
 
 ## How to resume in a new chat
 
-Open a new chat in this project directory (`/Users/wschlesinger/Documents/AI Catalog Scraper Tool`) and paste:
+Open a new chat in `/Users/wschlesinger/Documents/AI Catalog Scraper Tool` and paste:
 
 > Read everything in `handoff/` then give me a 5-line status and the top 3 next moves. Don't build anything until I say go.
 
@@ -26,47 +26,48 @@ Open a new chat in this project directory (`/Users/wschlesinger/Documents/AI Cat
 
 ## What this is (one paragraph)
 
-Full Bleed is a curated, always-fresh catalog of new, genuinely useful AI work for working creatives. It is now a multi-source **compiler**, not a Reddit scraper. It catches candidates from many no-approval public sources (Hacker News, GitHub, Hugging Face models, Hugging Face daily papers; Reddit is pending API approval), filters them hard, runs each through a Claude Sonnet **taste gate** that scores 1 to 10 against CURATION.md (7+ keeps), then a **writeup stage** writes each one in the house voice (VOICE.md), and they publish as entries on an Astro site. The repo is the database. The product is the curation, the sources are just pipes.
+Full Bleed is a curated, always-fresh catalog of new, genuinely useful AI work for working creatives. It is a multi-source **compiler**: it catches candidates from many public sources — Hacker News, GitHub, Hugging Face models, HF daily papers, and now **Product Hunt** (commercial launches; Reddit pending API approval) — filters them, runs each through a Claude Sonnet **taste gate** that scores 1–10 against CURATION.md (7+ keeps), then a **writeup** stage writes each in the house voice (VOICE.md), and they publish as entries on an Astro site. The repo is the database; the product is the curation; the sources are pipes. **As of this session it covers both open AND commercial/closed work** — the open-only bias is fixed.
 
 ---
 
-## Status at a glance (June 13/14, 2026)
+## Status at a glance (June 17, 2026)
 
-- The **full pipeline runs end to end**: listen, judge, writeup, publish, live site.
-- **20 real, voiced entries are published** on the local site. 4 of the 24 keepers failed their writeup on transient errors and need a quick re-run.
-- The site is updated to the **five new categories**. It runs on the local preview. **Nothing is committed** (57 changed files in the working tree).
-- The one thing in flight is the **thumbnail treatment**. Decision is locked: filtered stock photography run through a per-category **duotone**. The look is prototyped at `/lab` and it works. We are waiting on Will to lock the five-color palette.
+- **The site is LIVE and committed/pushed.** `main` is at commit `128a1cd`, pushed to GitHub, auto-deployed via Cloudflare Pages to https://fullbleed.pages.dev (still `noindex` — private preview, not a public launch).
+- **31 entries published.** The ~20 from the multi-source compiler, plus **10 commercial entries** from Product Hunt (Google Stitch, Figma MCP, Claude in PowerPoint, Chronicle, Claude Design, Magic Patterns, Pitch Agent, Hera, Kodo, and the frontier model **Claude Opus 4.6**).
+- **Product Hunt commercial intake is live and working** — the v2 GraphQL API path (vote-ranked, topic-filtered), using Will's `PRODUCTHUNT_KEY`/`PRODUCTHUNT_SECRET` (now in `.env`).
+- **The pipeline runs end to end:** listen → judge → writeup → publish-entries → live site.
+- **Imagery is UNSOLVED and is now the #1 open problem.** Entries use harvested thumbnails (the original ~21 use OG-card/sample grabs; the 10 Product Hunt entries use PH product screenshots), so the catalog looks **uneven**. Every cover-art direction tried so far has been rejected (see below + DECISIONS Session 3).
+
+> **Important behavior note:** when Will says **"commit,"** he means commit **and push to main** (which deploys). Don't stop at a local commit.
 
 ---
 
-## THE IMMEDIATE NEXT STEP (pick up exactly here)
+## THE IMMEDIATE NEXT STEP
 
-We were dialing in the thumbnail look. The decision is made: **stock photos plus one house duotone treatment, each category a different but cohesive highlight color.** A working prototype lives at `site/src/pages/lab.astro` (run the dev server and open `/lab`). The starter palette:
+**Imagery / cover art.** It is the last unsolved piece and the thing now making the live catalog look uneven. It is a **graveyard** — do not casually re-propose a dead direction. Rejected so far:
 
-| Category | Highlight |
-|---|---|
-| Tools | peach `#F4C7AE` |
-| Automations | amber `#F1D8A6` |
-| Models | teal `#BCDFDD` |
-| Plugins & Skills | lilac `#D5C9EB` |
-| Papers | sage `#CCDDBB` |
+1. **AI-generated risograph covers** (prior session) — "reads as slop."
+2. **Filtered stock photography → blurred-halftone / solarized duotone treatment** (this session) — "ugly as hell, stock is out for good."
+3. **Code-generated Y2K-digital SVG covers** (this session) — also rejected; the whole attempt was reverted.
 
-All five share a near-black ink shadow (`#131312`), which is what makes them read as one family.
-
-**Next, in order:**
-1. Will reacts to and locks the five-color palette (the only open question). Tuning notes: Tools and Automations are both warm and a bit close; highlights run hot on bright photos, so the highlight stop can come down a notch.
-2. Wire the SVG duotone into `Card.astro` and the entry hero, keyed by category.
-3. Get a free Unsplash API key (self-serve, instant), add a stock-pull step that searches an abstract or textural photo per entry, and tint it at render time.
-4. Re-run the 4 missing writeups so the catalog is the full 24.
+Hard constraints for the next attempt (from Will, hard-won):
+- **Not stock.** Stock is out for good.
+- **Not AI-slop.** Must not read as generic AI output.
+- **Not color-coded by category.** Tying cover color to category made the whole site two or three colors (the catalog skews); decouple color from category.
+- **Must look high-quality blown up** on the entry hero (no low-res).
+- **Topic-relevant** — the image should relate to what the entry is about.
+- Will has **decision fatigue** on imagery. When you revisit: lead with a tight, near-final option (not a survey of choices), and **show real pixels** — he reacts to samples, not descriptions, and reverses freely.
 
 ---
 
 ## Top next moves (the broader roadmap)
 
-1. **Finish thumbnails** (palette lock, Card duotone, Unsplash pull). This is the active task.
-2. **Backfill to full strength** — re-run the 4 failed writeups, and re-run listen/judge for fresh candidates. We are at 24 keepers and the launch goal is 50 to 75.
-3. **Site copy** — homepage hero and about page in the new voice. The entry writeup voice is locked. The site chrome copy is the remaining corny stuff and was deliberately deferred.
-4. **Scheduling** — GitHub Actions to run the catcher on a cadence. Parked on purpose until curation and imagery are locked, so we do not automate a half-finished pipeline.
-5. **Commit** — 57 files are uncommitted. Decide what is real vs scratch (PROJECT-STATE lists the scratch) and commit the milestone.
+1. **Imagery** — the active blocker above. Solve cover art within the constraints.
+2. **Grow the catalog toward 50–75** — add more Product Hunt topics / lower the vote floor; re-run listen+judge for fresh candidates across all sources. We're at 31.
+3. **Taxonomy decision (open)** — keep the five categories, or reorganize around **discipline** (image/video/design/photography), which Will floated as possibly a better spine for a visual audience. A "What you do" discipline facet was built this session and then reverted; the question is unresolved.
+4. **Site copy** — homepage hero + about page in the locked VOICE.md voice. Still the leftover "corny" pre-pivot copy. Deferred.
+5. **Scheduling** — GitHub Actions to run the catcher on a cadence. Still parked.
+6. **Pipeline cleanup** — the `--ids` targeting flag silently fails through nested `npm run` hops (writeup/publish process ALL keepers, not the targeted subset). A background task was spawned to fix it; until then, target at the data level. See DECISIONS Session 3.
+7. **Launch prep** — remove the `noindex` meta (Base.astro), register `fullbleed.ai`.
 
-See PROJECT-STATE.md for the full architecture and file map, and DECISIONS-AND-LEARNINGS.md for why everything is the way it is.
+See PROJECT-STATE.md for the architecture and file map, and DECISIONS-AND-LEARNINGS.md (Session 3) for why everything is the way it is.

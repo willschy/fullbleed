@@ -1,128 +1,121 @@
 # Project State — Full Bleed
 
-*Snapshot: June 13/14, 2026. Rewritten this session to reflect the multi-source compiler, the curation brief, the voice, the end-to-end pipeline, and the live site.*
+*Snapshot: June 17, 2026. Rewritten this session to reflect the live/committed catalog, the Product Hunt commercial source, and the imagery situation.*
 
-## The big shift this session
+## The shift this session (Session 3)
 
-It went from a Reddit-only scraper (code-complete but never run) to a **working multi-source compiler that runs end to end** and has 20 real, voiced entries on the site. The Reddit API approval is still pending, but it no longer blocks anything because we built around it with public no-approval sources.
+Three things happened:
+1. **A thumbnail/imagery exploration that Will rejected wholesale and we reverted** — a vibrant palette + a blurred-halftone/solarized stock-duotone treatment, then a Y2K code-generated SVG cover system + a "disciplines" facet. Will hated all of it ("ugly as hell"), asked to undo the entire chat's work, and we did. That revert is commit `18e8c24`, which also **committed + pushed the prior-session catalog work for the first time** (it had been uncommitted).
+2. **Fixed the open-source-only bias.** The catalog only caught open/buildable work (GitHub/HF) and missed the commercial/closed tools working creatives actually use. We added **Product Hunt** as a commercial source and made the brief explicit that closed/paid work is first-class.
+3. **Published the first commercial entries and went live.** Judged 57 Product Hunt launches, kept 13, published 10. Catalog is now **31 entries, committed and deployed** (commit `128a1cd`).
 
 ## Repository shape (npm workspaces monorepo)
 
 ```
 / (repo root)
-├── CURATION.md            # THE curation brief (written this session) — what gets in, the 5 categories, the bar
-├── VOICE.md               # the locked house writeup voice (rewritten this session)
-├── project-spec.md        # original spec (history; categories/voice/freshness now superseded by CURATION.md)
+├── CURATION.md            # THE curation brief. Now includes "Open and closed — both first-class".
+├── VOICE.md               # locked house writeup voice
+├── project-spec.md        # original spec (history)
 ├── README.md
 ├── handoff/               # this briefing
-├── .env                   # ANTHROPIC_API_KEY is set. Reddit + GitHub token + Unsplash not yet. (gitignored)
+├── .env                   # ANTHROPIC_API_KEY, PRODUCTHUNT_KEY, PRODUCTHUNT_SECRET set. (gitignored)
 ├── scraper/               # the pipeline (TypeScript, run with tsx)
 │   ├── config/
-│   │   ├── sources.json   # per-source config + a top-level "filters" block (maxAgeDays, englishOnly)
+│   │   ├── sources.json   # per-source config + a "filters" block. NOW INCLUDES producthunt (topics, minVotes, etc.)
 │   │   ├── blocklist.json
-│   │   └── tags.json      # controlled vocab (categories here are the OLD names; the live taxonomy is the 5 in CURATION.md)
+│   │   └── tags.json
 │   └── src/
-│       ├── types.ts            # Candidate (source-agnostic), Source adapter, all config types
+│       ├── types.ts            # Candidate, Source adapter, all config types. SourceId now includes "producthunt".
 │       ├── store.ts            # paths, JSON load/save, .env loader
-│       ├── filters.ts          # dumbFilter (blocklist + demo), looksEnglish, recencyOk, candidateDate
-│       ├── dedup.ts            # seen-set over Candidate (cross-source dedup by id/url/title)
-│       ├── reddit.ts           # low-level Reddit fetch + redditToCandidate mapper
-│       ├── sources/            # the adapters (this is the compiler)
-│       │   ├── index.ts        # buildSources() registry — add a source = 1 adapter + 1 line here
-│       │   ├── reddit.ts       # skips gracefully if no creds
+│       ├── filters.ts          # dumbFilter, looksEnglish, recencyOk, candidateDate. NO open-source bias.
+│       ├── sources/            # the adapters (the compiler)
+│       │   ├── index.ts        # buildSources() registry — Product Hunt registered here
+│       │   ├── reddit.ts       # skips gracefully if no creds (still pending API approval)
 │       │   ├── hackernews.ts   # Algolia, no key
 │       │   ├── github.ts       # search API, optional GITHUB_TOKEN
-│       │   ├── arena.ts        # channel contents, needs UA (currently disabled in config)
-│       │   ├── arxiv.ts        # Atom API (currently disabled; HF Papers is primary)
+│       │   ├── arena.ts        # disabled in config
+│       │   ├── arxiv.ts        # disabled (HF Papers is primary)
 │       │   ├── huggingface.ts  # models API (Models lane)
-│       │   └── hfpapers.ts     # HF daily_papers, upvote-ranked (Papers lane)
-│       ├── listen.ts           # poll all enabled sources → recency + english + dumb filter → holding pen
-│       ├── promote.ts          # pen → scoring queue (source-aware; Reddit velocity, others stored signal)
-│       ├── judge.ts            # THE TASTE GATE: Sonnet scores vs CURATION.md, 7+ keeps (npm run judge)
-│       ├── writeup.ts          # writes cardTitle/digest/bodyMd in VOICE.md voice (npm run writeup)
-│       ├── publish-entries.ts  # writeups → Astro entry .md + harvested thumbnail (npm run publish-entries)
-│       ├── backfill.ts         # Reddit top-of-year seed (legacy/Reddit-era)
-│       ├── score.ts            # LEGACY Reddit-era scorer (superseded by judge+writeup; kept compiling)
-│       ├── publish.ts          # LEGACY publisher used by review.ts
-│       └── review.ts           # LEGACY approve/kill CLI
-│   └── data/                   # SCRATCH pipeline state (regenerated by runs; safe to delete/regenerate)
-│       ├── pen.json            # holding pen (caught candidates)
+│       │   ├── hfpapers.ts     # HF daily_papers, upvote-ranked (Papers lane)
+│       │   └── producthunt.ts  # NEW — commercial intake. API path (vote-ranked, topic-filtered) + keyless Atom fallback.
+│       ├── listen.ts           # poll enabled sources → recency + english + dumb filter → pen
+│       ├── judge.ts            # THE TASTE GATE: Sonnet vs CURATION.md, 7+ keeps. OVERWRITES verdicts.json each run.
+│       ├── writeup.ts          # writes entries in VOICE.md voice. OVERWRITES writeups.json each run. --ids targeting is BROKEN (see gotchas).
+│       ├── publish-entries.ts  # writeups → Astro entry .md + harvested thumbnail. Publishes EVERY writeup in writeups.json.
+│       └── (legacy: backfill.ts, score.ts, publish.ts, review.ts — Reddit-era, kept compiling)
+│   └── data/                   # SCRATCH pipeline state (committed, but regenerable)
+│       ├── pen.json            # holding pen — ~307 caught candidates (incl. Product Hunt)
 │       ├── seen.json           # dedup set
-│       ├── verdicts.json       # judge results (24 keepers ≤180d among them)
-│       ├── writeups.json       # 20 generated entries
-│       └── keepers.md          # human-readable list of the keepers (browse this)
+│       ├── verdicts.json       # judge results (now includes Product Hunt verdicts)
+│       ├── writeups.json       # 31 generated entries
+│       └── keepers.md          # human-readable keeper list
 └── site/                       # Astro 5 static site
     ├── src/
-    │   ├── content.config.ts   # entries schema — UPDATED to the 5 categories + generic source object
-    │   ├── components/Card.astro      # UPDATED category labels (5)
+    │   ├── content.config.ts   # entries schema (5 categories + disciplines field exists, currently all [])
+    │   ├── components/Card.astro   # renders d.thumbnail; data-category/tools/superseded
     │   └── pages/
-    │       ├── index.astro     # UPDATED category facet list (5)
-    │       ├── entry/[id].astro# UPDATED labels + generic source line; dropped redundant why-line
-    │       └── lab.astro        # SCRATCH thumbnail treatment prototype (the duotone lab; delete later)
-    ├── public/
-    │   ├── thumbs/             # downloaded entry thumbnails (scratch-ish, regenerated by publish)
-    │   └── lab/                # SCRATCH sample images for the duotone lab (s1/s2/s3.jpg; delete later)
-    └── src/content/entries/*.md  # THE DATABASE — 20 real entries (the 10 fixtures were deleted)
+    │       ├── index.astro     # category + tool + freshness facets (the discipline facet built this session was REVERTED)
+    │       ├── entry/[id].astro# hero uses d.thumbnail
+    │       └── lab.astro        # SCRATCH (the old duotone lab; harmless)
+    ├── public/thumbs/          # harvested entry thumbnails (mixed: OG cards + PH product images)
+    └── src/content/entries/*.md  # THE DATABASE — 31 entries
 ```
 
-## The pipeline (commands, all from repo root)
+## The pipeline (commands, from repo root)
 
-Flow: **listen → (promote) → judge → writeup → publish-entries → site**
+Flow: **listen → judge → writeup → publish-entries → site**
 
 ```
-npm run listen           # poll enabled sources, recency+english+dumb filter, fill holding pen
-npm run promote          # pen → scoring queue (optional; judge currently reads the pen directly)
-npm run judge            # Sonnet taste gate vs CURATION.md; npm run judge -- --all for the whole pen
-npm run writeup          # generate entries in VOICE.md voice; -- --ids=a,b targets specific keepers
-npm run publish-entries  # write the 20 entries into the site + harvest thumbnails
-npm run dev              # run the site locally (Astro). Preview/launch config: .claude/launch.json ("site", port 4321)
-npm run build            # build the site (output site/dist)
+npm run listen           # poll enabled sources (incl. Product Hunt), filter, fill pen
+npm run judge            # Sonnet taste gate vs CURATION.md; `-- --all` for the whole pen. OVERWRITES verdicts.json.
+npm run writeup          # generate entries in VOICE.md voice. OVERWRITES writeups.json. (--ids targeting BROKEN — see gotchas)
+npm run publish-entries  # write entries into the site + harvest thumbnails for EVERY writeup in writeups.json
+npm run dev / build      # run / build the Astro site (output site/dist). Launch config: .claude/launch.json ("site", port 4321)
 ```
 
-- Scoring/writeup model: `claude-sonnet-4-6`. Keep threshold: 7+. Needs `ANTHROPIC_API_KEY` (set in .env).
-- Judge cost is ~1 cent per item on Sonnet. A full-pen pass is ~$2 one time; ongoing is pennies because dedup means only new items get judged.
+- Model: `claude-sonnet-4-6`. Keep threshold 7+. Needs `ANTHROPIC_API_KEY`. ~1¢/item judge; full-pen pass ~$2–3.
 
 ## Sources status
 
 | Source | State | Notes |
 |---|---|---|
-| Hacker News | live, no key | Show HN pre-qualified; "story" stream gated on creative keywords. Low yield for this audience (0/18 kept in the full run). |
-| GitHub | live, optional token | Strongest signal. Search is 10/min unauth, 30/min with a free GITHUB_TOKEN. |
-| Hugging Face models | live, no key | Models lane. Pulls top-liked + newest per creative pipeline tag. |
-| HF daily papers | live, no key | Papers lane. Upvote-ranked (the notability signal arXiv lacks). |
-| Reddit | pending API approval | Adapter built; skips gracefully until REDDIT_CLIENT_ID/SECRET are set. |
-| Are.na | built, disabled | Generic public AI channels were noisy; needs Will's own channels. |
-| arXiv | built, disabled | Raw firehose of incremental papers; HF Papers replaced it as primary. |
+| **Product Hunt** | **live (NEW)** | Commercial intake. API path (vote-ranked, topic-filtered: artificial-intelligence/design-tools/marketing) using PRODUCTHUNT_KEY+SECRET; keyless Atom-feed fallback. Vote count = signal. |
+| Hugging Face models | live, no key | Models lane (open weights) |
+| HF daily papers | live, no key | Papers lane (upvote-ranked) |
+| GitHub | live, optional token | Open repos. Strong signal but open-only. |
+| Hacker News | live, no key | Low yield for this audience |
+| Reddit | pending API approval | Adapter built; skips until creds set |
+| Are.na / arXiv | built, disabled | |
 
-## The curation brief (see CURATION.md for the full text)
+## The curation brief (CURATION.md)
 
-- Five categories: **Tools · Automations · Models · Plugins & Skills · Papers** (Papers last, it is the smallest lane).
-- Discipline is a secondary tag axis ("image/video/design/decks…"), surfaced on the site as "what you do," not as "discipline."
-- The bar: new (nothing older than ~6 months by creation date, target ~2), genuinely impressive or useful, differentiated, English, shows real work. Anti-slop is the whole point.
-- The mission: not preaching to AI haters. It serves the AI-curious and enthusiasts, education and curation, by creators for creators.
-
-## The voice (see VOICE.md)
-
-Pragmatic, warm-but-not-best-friend, dry, specific, honest about weaknesses. Hard rules: no em dashes, no semicolons, no exclamation points, no hype words, no AI tells, vary sentence length. The LTX-2 entry is the calibration target. (Lesson learned: an early "dry, terse" pass read cold and condescending; warmth comes from varied sentence length and not stating the obvious.)
+- Five categories: **Tools · Automations · Models · Plugins & Skills · Papers**. Disciplines are a secondary tag axis (image/video/design…), surfaced as "what you do."
+- The bar: new (≤~6 months, target ~2), genuinely impressive/useful, differentiated, English, shows real work.
+- **NEW this session — "Open and closed, both first-class":** judge the work, never the license. A closed/paid release (Midjourney, a frontier model, a paid design app) is as worthy as any open repo. An open-source-only catalog is a sourcing failure. (There was no open-source bias in the judge/filters logic — the bias was purely the sources.)
 
 ## Current catalog state
 
-- Full-pen judge run: 174 judged, 35 kept, then the recency fix (creation date) trimmed to **24 keepers ≤180 days**.
-- Category split of the 24: Models 10, Plugins & Skills 12, Papers 2, Tools 0 (the two Tools entries were just over 180 days). Heavy ComfyUI/open-model skew because GitHub + HF are the sources.
-- **20 entries published** (4 writeups failed transiently). Browse `scraper/data/keepers.md` for the list.
+- **31 entries, live.** Includes the 10 Product Hunt commercial entries (categories: Models ×1 [Claude Opus 4.6], Plugins & Skills ×2 [Figma MCP, Claude in PowerPoint], Tools ×7 [Stitch 3.0, Chronicle, Claude Design, Magic Patterns, Pitch Agent, Hera, Kodo]).
+- The taste gate worked exactly as designed on the commercial intake: of the 57 PH launches, only 13 kept — popular ≠ kept; it killed the CRMs, SEO bots, AI therapy, etc. on-brief.
 
-## Thumbnails (the active task)
+## Imagery (THE open problem)
 
-Decided after a long exploration (see DECISIONS for the full journey): **filtered stock**. Pull a photo from Unsplash per entry, run it through a house **duotone** treatment, each category a different cohesive highlight color, applied as an SVG filter at render time. Prototyped and working at `site/src/pages/lab.astro` (`/lab`). Pending: Will locks the palette, then wire into Card.astro + entry hero, then add the Unsplash pull (needs a free key).
+UNSOLVED. Every direction has been rejected (AI riso → slop; stock duotone → "ugly as hell"; Y2K code-gen covers → reverted). The codebase has **no cover system**. Entries point to **harvested thumbnails**: the original ~21 use OG-card/sample grabs from publish-entries; the 10 Product Hunt entries use PH product screenshots. The catalog therefore looks **mixed/uneven**. Constraints for the next attempt are in README ("THE IMMEDIATE NEXT STEP") and DECISIONS Session 3.
 
-## Pending / blocked
+## Pending / open
 
-- **Thumbnail palette lock** (Will) → then Card duotone + Unsplash key. ACTIVE.
-- **Reddit API approval** (external, ~2 to 4 weeks from June 12).
-- **Unsplash key** (Will, self-serve, free) for the stock pull.
-- 4 failed writeups to re-run; tool-tagger needs word-boundary matching (a "WAN" false positive on LTX-2).
-- Site copy redo (homepage/about) deferred; scheduling deferred; commit deferred.
+- **Imagery** (active blocker — see README).
+- **Grow to 50–75** (more PH topics / lower vote floor; re-run listen+judge).
+- **Taxonomy:** categories vs discipline spine — unresolved.
+- **Site copy** (homepage/about) in VOICE.md — deferred.
+- **Scheduling** (GitHub Actions cadence) — parked.
+- **`--ids` pipeline bug** — background task spawned to fix.
+- **Reddit API** — still pending.
+- **Launch:** remove `noindex`; register `fullbleed.ai`.
 
-## Git / scratch state
+## Git / deploy state
 
-57 files changed, nothing committed. Scratch that can be deleted or regenerated: `scraper/data/*`, `site/public/thumbs/*`, `site/public/lab/*`, `site/src/pages/lab.astro`. Real work to keep: everything in `scraper/src/`, `scraper/config/sources.json`, `CURATION.md`, `VOICE.md`, the site component/schema edits, and the 20 entry .md files.
+- `main` @ `128a1cd`, **pushed to origin, deployed** (Cloudflare Pages → fullbleed.pages.dev, noindexed). Working tree clean except whatever the current chat is doing.
+- Recent commits: `128a1cd` (Product Hunt + 10 commercial entries) ← `18e8c24` (this session's revert + first commit of the catalog build) ← `0681082` (handoff package).
+- `.env` is gitignored (holds ANTHROPIC_API_KEY + PRODUCTHUNT_KEY/SECRET — never committed).
+- `scraper/data/*` is committed scratch (regenerable). `npm run build` from repo root → `site/dist`. CI pinned to Node 22.

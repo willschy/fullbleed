@@ -210,3 +210,44 @@ image-forward. The path, and why each was rejected:
   fact-check papers against the source before publishing.
 - The image-gen and Unsplash work needs no Reddit/scraper credentials. Anthropic key is in .env. GitHub
   token is optional (raises rate limits). Unsplash key is the next one needed.
+
+---
+
+# SESSION 3 (June 17, 2026) — the imagery graveyard, the commercial-intake pivot, going live
+
+Everything above is still valid as history. NOTE: Session 2's "thumbnail saga" (the stock + duotone direction) is now **superseded** — that whole direction was built out further this session and then rejected and reverted. See below.
+
+## Imagery is a GRAVEYARD — read before touching covers
+
+- Every cover-art direction has been tried and rejected. **This session:** (a) a vibrant per-category palette + a blurred-halftone / solarized **stock** duotone treatment baked at publish time — Will: *"ugly as hell, stock is out for good"*; (b) **Y2K-digital code-generated SVG covers** (topic-driven motifs, seeded per-entry palettes, vector so crisp at any size) — also rejected. **Prior session:** AI-generated risograph covers — "slop."
+- Will asked to **undo the entire chat's imagery + disciplines work.** We reverted it surgically (kept all prior catalog / pipeline / voice work) — it is gone from the codebase. That revert is commit `18e8c24`.
+- **Hard constraints for any future attempt:** NOT stock; NOT AI-slop; NOT color-coded by category (tying cover color to category made the whole site 2–3 colors because the catalog skews); must look **high-quality blown up** on the entry hero; **topic-relevant**. Will has **decision fatigue** on imagery — lead with one near-final option, show real pixels, don't present a survey of choices.
+- **Reusable learning from the (reverted) palette work — design-export hex labels lie.** They're CMYK→RGB conversions, and Mac screenshots are wide-gamut (Display P3), so the swatch you *see* is more saturated than its sRGB hex claims. To get true color: eyedrop the actual pixels (Python + Pillow) and convert via the embedded ICC profile to sRGB. For maximum on-screen punch, use Display-P3 CSS / P3-tagged images.
+
+## The open-source-only bias was a real flaw — now fixed
+
+- All original sources (GitHub, HF models, HF papers) are **open-artifact feeds**, so the catalog only ever saw open/buildable work. But working creatives mostly use **commercial** tools (Midjourney, Runway, Adobe, Figma, ChatGPT, Claude). Closed / frontier work (e.g. Fable 5, Claude Opus 4.6) only surfaces via **launch/announcement** sources — never via a repo or model card.
+- **Fix:** added **Product Hunt** as a commercial source, and made CURATION.md explicit — *"Open and closed — both first-class; judge the work, never the license."* Confirmed there was **no** open-source bias in the judge or the filters; the bias was purely the source list.
+- **The taste gate is the equalizer (reconfirmed).** Product Hunt's raw feed is noisy (CRMs, SEO bots, AI therapy). Of 57 PH launches judged, only **13 kept** — it killed the off-domain business SaaS on-brief and kept the creative-relevant commercial tools (Google Stitch, Figma MCP, Claude in PowerPoint, Chronicle, Magic Patterns…) plus the frontier model **Claude Opus 4.6**. **Popular ≠ kept.** We published 10 (deduped the three Google Stitch versions to the latest).
+
+## Product Hunt source — how it works (so you can tune it)
+
+- `scraper/src/sources/producthunt.ts`. Two paths, auto-selected: **API (preferred)** when `PRODUCTHUNT_KEY`+`PRODUCTHUNT_SECRET` (or a `PRODUCTHUNT_TOKEN`) are set — v2 GraphQL `posts(topic, order: VOTES, postedAfter)`, exchanging key+secret for a client-credentials bearer token; otherwise the **keyless Atom feed** (newest only, no votes, keyword-gated).
+- Config in `sources.json`: `topics` (slugs), `minVotes` (popularity floor = 50), `perTopic`, `postedWithinDays`, plus `mustMatch`/`limit` for the fallback. Tune `topics` + `minVotes` to widen/narrow.
+- **Will's PH API Key + Secret are in `.env`**, so the API path is live.
+
+## "Commit" means deploy
+
+- When Will says **"commit,"** he means commit **and push to main** (which auto-deploys via Cloudflare). Do not stop at a local commit. (Also in persistent memory.)
+
+## Pipeline gotchas (new — will bite you)
+
+- **`--ids` targeting is broken.** `npm run writeup -- --ids=a,b` (and publish-entries) never receive the flag — it dies in the nested `npm run -w scraper <script>` hops, so they process ALL keepers/writeups, not a targeted subset. Work around by filtering at the **data level** (edit `writeups.json` before `publish-entries`). A background task was spawned to fix arg forwarding + add `--ids` to publish-entries.
+- **judge.ts and writeup.ts OVERWRITE their output JSON** (`verdicts.json` / `writeups.json`) with only the current run's output. For a targeted run, back up + merge or you wipe the rest. **publish-entries publishes EVERY writeup in `writeups.json`** and re-harvests each thumbnail — so to add new entries without churning the live ones, set `writeups.json` to only the new entries at publish time, then restore the full set.
+- Freshness self-prunes: items drift past the ~180-day ceiling between runs, so keeper counts shrink over time. Expected, not a bug.
+
+## How Will works (reinforced)
+
+- He **reverses freely** — a whole chat's imagery work got thrown out and rebuilt-around without drama. Build, show, let him react; don't over-plan or get attached.
+- **Show real pixels / concrete output** — he reacts to those, not abstract descriptions.
+- Sharp anti-slop, anti-corny radar; cost-aware. He wants the catalog to reflect the **real, commercial-heavy creative-tool landscape**, not an open-source ML subculture.
