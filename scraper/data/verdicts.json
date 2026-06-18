@@ -2761,5 +2761,1337 @@
     "discipline": "none",
     "killReason": "copywriting/content tool — text-as-content, not visual design",
     "summary": "An AI-powered Twitter content assistant that helps users plan, write, and schedule tweets based on ghostwriting frameworks."
+  },
+  {
+    "id": "gh:affaan-m/ECC",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "generic agent harness/dev scaffolding with no specific visual or design creative capability",
+    "summary": "A general-purpose agent performance optimization framework providing skills, memory, and security layers for coding agents like Claude Code, Codex, and Cursor."
+  },
+  {
+    "id": "gh:multica-ai/andrej-karpathy-skills",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "generic coding behavior file with no visual or design-specific utility",
+    "summary": "A CLAUDE.md configuration file that adjusts Claude Code behavior based on Andrej Karpathy's notes on common LLM coding pitfalls, with no design or visual creative scope."
+  },
+  {
+    "id": "gh:JuliusBrussee/caveman",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "token optimization utility for LLM prompting — no visual creative output or design relevance",
+    "summary": "A Claude Code skill that reduces token usage by compressing communication into minimal language, claiming a 65% token reduction."
+  },
+  {
+    "id": "arxiv:2606.06066v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "FontFusion is a plug-and-play conditioning framework for diffusion transformer architectures that enables precise font control in generated images without sacrificing text legibility, using hierarchical token representations and a dual-encoder embedding approach."
+  },
+  {
+    "id": "arxiv:2606.05261v1",
+    "score": 8,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "NIV is a research method and released model that automatically converts a static font into a fully functional variable font by predicting per-point glyph displacements along design axes like weight, width, and slant, with code, dataset, and weights published on GitHub."
+  },
+  {
+    "id": "arxiv:2606.07661v1",
+    "score": 2,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "archival document parsing pipeline — no creative visual output, serves archivists/ML researchers not visual creatives",
+    "summary": "A research paper presenting PereStruct, an automated pipeline combining fine-tuned YOLO and a semantic assembly module to parse complex multi-column layouts in historical newspaper scans."
+  },
+  {
+    "id": "gh:nexu-io/open-design",
+    "score": 8,
+    "keep": true,
+    "category": "Tools",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "Open-source, local-first desktop app that positions itself as a Claude Design alternative, bundling 259+ design skills and 142+ design systems to generate web, desktop, and mobile prototypes, slides, images, and documents via multiple AI coding CLIs with sandboxed preview and HTML/PDF/PPTX/MP4 export."
+  },
+  {
+    "id": "gh:Leonxlnx/taste-skill",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "vague aesthetic nudge with no specific visual discipline, tool, or artifact — description is marketing copy with no substance",
+    "summary": "A claimed AI coding skill that purports to improve output quality by discouraging generic results, with no documented mechanism, visual discipline scope, or demonstrated creative capability."
+  },
+  {
+    "id": "gh:ConardLi/garden-skills",
+    "score": 4,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": "general skill collection bundling unrelated domains (knowledge retrieval, image gen, web design) — no specific creative use case, buried design relevance",
+    "summary": "An open-source collection of Claude Code skills spanning web design, knowledge retrieval, and image generation without a focused visual-creative purpose."
+  },
+  {
+    "id": "gh:google-labs-code/stitch-skills",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A library of agent skills built for the Stitch MCP server, enabling coding agents like Claude Code and Cursor to interact with Google's Stitch UI design-to-code platform."
+  },
+  {
+    "id": "gh:tw93/Waza",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "engineering/developer workflow skills with no visual or design discipline — serves coders, not visual creatives",
+    "summary": "A collection of Claude skills built around common engineering habits and developer workflows."
+  },
+  {
+    "id": "gh:Nutlope/hallmark",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "Hallmark is a design skill for Claude Code, Cursor, and Codex that enforces anti-AI-slop design standards to improve the visual quality of AI-generated UI."
+  },
+  {
+    "id": "gh:dominikmartn/nothing-design-skill",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Claude Code skill that generates UI components in Nothing's monochrome, typographic, industrial design language."
+  },
+  {
+    "id": "gh:SnailSploit/Claude-Red",
+    "score": 1,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "offensive security skills — zero visual/design relevance",
+    "summary": "A library of SKILL.md files for Claude that cover offensive security attack methodologies including SQL injection, shellcode, and EDR evasion."
+  },
+  {
+    "id": "gh:bergside/design-md-chrome",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Chrome extension that scrapes CSS and design tokens from any live website and outputs DESIGN.md files and AI-ready design skill files compatible with the TypeUI/bergside ecosystem."
+  },
+  {
+    "id": "gh:DenisSergeevitch/agents-best-practices",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "generic agentic best-practices repo with no visual or design-specific creative capability",
+    "summary": "A provider-neutral collection of agent skill patterns and best practices for Codex, Claude Code, and agentic harness design, with no specific visual or design creative functionality."
+  },
+  {
+    "id": "gh:JimLiu/baoyu-design",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "An open-source agent skill that replicates Claude Design's UI mockup and wireframing capabilities locally inside Cursor, Claude Code, and similar tools, generating self-contained HTML prototypes, decks, and wireframes without requiring claude.ai/design."
+  },
+  {
+    "id": "gh:Besty0728/Unity-Skills",
+    "score": 5,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "3D",
+    "killReason": "Unity scripting/dev automation — serves game developers not visual/design creatives making designed artifacts",
+    "summary": "A collection of AI automation skills targeting Unity development workflows, with no clear specificity toward visual design tasks like texturing, rigging, or art direction."
+  },
+  {
+    "id": "gh:hamen/material-3-skill",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Claude Code skill that encodes Material Design 3 rules — 30+ components, design tokens, theming, responsive layout, and an MD3 compliance audit — so AI-assisted code generation stays on-spec with Google's design system."
+  },
+  {
+    "id": "gh:rohitg00/awesome-claude-design",
+    "score": 5,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": "aggregator/list repo without original tools or weights — similar resource (bergside/awesome-design-skills with 67 curated DESIGN.md files) already kept; this is a derivative community-curated list with no distinct creative capability of its own",
+    "summary": "A GitHub repository collecting Claude Design DESIGN.md prompts organized by aesthetic family, alongside remix recipes, skills, video teardowns, and community commentary."
+  },
+  {
+    "id": "gh:dominikmartn/hue",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Branding",
+    "killReason": null,
+    "summary": "An open-source Claude Code/Codex skill that ingests a brand's visual identity and generates a complete design system so every AI-built UI stays on-brand."
+  },
+  {
+    "id": "gh:Gabberflast/academic-pptx-skill",
+    "score": 6,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": "presentation content/structure skill — copywriting and argumentation logic, not visual design; the design side is incidental to the academic communication framework",
+    "summary": "A Claude skill that generates structured academic PowerPoint presentations by enforcing slide-writing conventions like action titles, argument hierarchy, and citation standards alongside Anthropic's built-in PPTX skill."
+  },
+  {
+    "id": "gh:aklofas/kicad-happy",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "electronics/PCB design tool — not a visual or graphic design discipline covered by Full Bleed",
+    "summary": "A set of AI agent skills for KiCad that help electronics designers analyze schematics, review PCB layouts, run EMC checks, simulate circuits, and prep boards for fabrication."
+  },
+  {
+    "id": "gh:bitjaru/styleseed",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A design system engine for Claude Code, Codex, and Cursor that provides 74 design rules, 48 components, 7 brand-reference skins, a named motion system, and 15 slash skills to produce non-generic-looking AI-generated UI."
+  },
+  {
+    "id": "gh:minhnv0807/ai-business-skills",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "marketing/copywriting skill bundle — design is a minor bullet point in a business ops package, not a visual creative tool",
+    "summary": "A collection of 63 bilingual Claude Code skills covering marketing strategy, content production, analytics, dropshipping, and branding for Southeast Asian and global markets."
+  },
+  {
+    "id": "gh:KAOPU-XiaoPu/web-design",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Claude Code skill that enforces a spec-first workflow for generating consistent, well-designed web pages, available with 455 GitHub stars and a live demo."
+  },
+  {
+    "id": "gh:geekjourneyx/claude-design-card",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Claude Code skill that generates design cards across 14 formats including platform covers, social sharing cards, and editorial layouts using Anthropic's design conventions."
+  },
+  {
+    "id": "gh:waybarrios/opencode-power-pack",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": "dev tooling pack — code-review and security-review skills for a coding agent, not a visual creative workflow",
+    "summary": "A collection of eleven Claude Code skills ported to OpenCode covering code review, security review, feature development, and frontend design tasks, installable via a single config line."
+  },
+  {
+    "id": "gh:volcengine/OpenViking",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "agent memory/context database infrastructure — no visual creative use case",
+    "summary": "OpenViking is an open-source context database for AI agents that unifies memory, resources, and skills management through a file system paradigm."
+  },
+  {
+    "id": "gh:earthtojake/text-to-cad",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "CAD/robotics/hardware engineering — not a visual or design creative discipline covered by Full Bleed",
+    "summary": "A collection of agent skills for CAD, robotics, and hardware design workflows, accessible via cadskills.xyz."
+  },
+  {
+    "id": "gh:Owl-Listener/designer-skills",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A GitHub collection of agentic skills, commands, and plugins covering the full design workflow — from research and systems to UI, interaction, and delivery — intended for use with AI coding agents."
+  },
+  {
+    "id": "gh:Memento-Teams/Memento-Skills",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "meta-agent orchestration framework with no specific visual discipline or creative output — agents designing agents is pure ML/dev infrastructure",
+    "summary": "A GitHub repository and associated arXiv paper presenting a framework in which AI agents generate and optimize other agents' skill sets, with no specific visual or design application."
+  },
+  {
+    "id": "gh:polyuiislab/infiAgent",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "general agent framework with no specific visual or design creative use case",
+    "summary": "A config-driven, infinite-horizon agent framework for building long-running AI agents like Cowork or AI Scientist, with support for Anthropic skills."
+  },
+  {
+    "id": "gh:aipoch/medical-research-skills",
+    "score": 1,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "medical research workflow, zero visual/design relevance",
+    "summary": "A collection of agent skills targeting medical research tasks such as protocol design, data analysis, and academic writing."
+  },
+  {
+    "id": "gh:carmahhawwari/ui-design-brain",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Cursor agent skill that embeds UI component best practices, layout patterns, and design-system conventions for 60+ interface components to improve the quality of AI-generated UI code."
+  },
+  {
+    "id": "gh:ZeroZ-lab/cc-design",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Claude Code skill file that guides AI agents to produce high-fidelity HTML prototypes and design output, with 806 stars suggesting real traction among design-adjacent developers."
+  },
+  {
+    "id": "gh:cosmicstack-labs/mercury-agent-skills",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "developer workflow automation, no visual or design creative utility",
+    "summary": "A registry of reusable agent skills targeting developer workflows with persistent memory and token-efficient execution, not scoped to any visual or design discipline."
+  },
+  {
+    "id": "gh:harnessclaw/harnessclaw",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "generic AI agent manager with no specific visual or design creative use case",
+    "summary": "An Electron desktop app for managing and chatting with AI agents and skills, with no design-specific functionality described."
+  },
+  {
+    "id": "gh:arpitg1304/robotics-agent-skills",
+    "score": 1,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "robotics/software engineering skills — no visual or design discipline whatsoever",
+    "summary": "A collection of agent skills for AI coding assistants to generate production-grade robotics software using ROS1/ROS2 patterns."
+  },
+  {
+    "id": "gh:safishamsi/graphify",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "code intelligence / knowledge graph tool for developers, no visual or design creative use case",
+    "summary": "A coding assistant skill that converts codebases, SQL schemas, scripts, and documents into a queryable knowledge graph for developer navigation and understanding."
+  },
+  {
+    "id": "gh:santifer/career-ops",
+    "score": 2,
+    "keep": false,
+    "category": "Automations",
+    "discipline": "none",
+    "killReason": "job search workflow automation — no visual creative output, no design discipline",
+    "summary": "A Claude Code-based job search system with 14 skill modes, a Go dashboard, PDF generation, and batch processing for managing job applications."
+  },
+  {
+    "id": "gh:sickn33/antigravity-awesome-skills",
+    "score": 4,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "general skills mega-library with no specific visual/design discipline — design relevance is buried, not the point",
+    "summary": "A GitHub repository offering 1,500+ installable agentic skills across Claude Code, Cursor, Codex CLI, Gemini CLI, and other coding agents, with an installer CLI and community skill collections spanning all domains."
+  },
+  {
+    "id": "gh:coreyhaines31/marketingskills",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "marketing/copywriting skills — not visual, no design discipline",
+    "summary": "A collection of Claude Code skills covering CRO, copywriting, SEO, analytics, and growth engineering for marketing workflows."
+  },
+  {
+    "id": "gh:Imbad0202/academic-research-skills",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "academic writing workflow, no visual or design discipline",
+    "summary": "A set of Claude Code skills for academic research tasks covering the research, writing, review, revision, and finalization pipeline."
+  },
+  {
+    "id": "gh:blader/humanizer",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "copywriting/text content tool — not visual",
+    "summary": "A Claude Code skill that rewrites AI-generated text to make it appear more human-written."
+  },
+  {
+    "id": "gh:OthmanAdi/planning-with-files",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "dev scaffolding for coding agents — no visual or design creative output",
+    "summary": "A SKILL.md-based persistent planning system for AI coding agents that stores markdown task state on disk to survive context resets across Claude Code, Cursor, Codex, and 60+ other agents."
+  },
+  {
+    "id": "gh:zarazhangrui/frontend-slides",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "Design/UI",
+    "killReason": "generic web slide generator with no AI-specific visual design capability; coding scaffold, not a design tool",
+    "summary": "A GitHub repository for generating web-based presentation slides using a coding agent's frontend skills."
+  },
+  {
+    "id": "gh:Donchitos/Claude-Code-Game-Studios",
+    "score": 3,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "game dev pipeline, not a visual/design creative tool — no specific design, illustration, 3D, or typography utility",
+    "summary": "A Claude Code skill set that simulates a full game development studio hierarchy with 49 agents and 72 workflow skills for coordinating game production tasks."
+  },
+  {
+    "id": "gh:mksglu/context-mode",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "ML/dev infrastructure — context window optimization for coding agents, no visual creative utility",
+    "summary": "A context window optimization tool for AI coding agents that sandboxes tool output to reduce token usage across 15 platforms."
+  },
+  {
+    "id": "gh:JCodesMore/ai-website-cloner-template",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "Design/UI",
+    "killReason": "CLI/dev scaffolding that outputs code clones, not a design tool — no AI doing creative visual work",
+    "summary": "A command-line template that uses AI coding agents to scrape and replicate the code structure of any website in one command."
+  },
+  {
+    "id": "gh:teng-lin/notebooklm-py",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "NotebookLM is a research/audio-podcast tool with no visual creative output — wrong audience and discipline entirely",
+    "summary": "An unofficial Python API and Claude Code skill providing programmatic access to Google NotebookLM's features including capabilities beyond the web UI."
+  },
+  {
+    "id": "gh:mukul975/Anthropic-Cybersecurity-Skills",
+    "score": 1,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "cybersecurity skills for AI agents — zero visual or design relevance",
+    "summary": "A collection of 754 structured cybersecurity skills for AI coding agents, mapped to frameworks like MITRE ATT&CK and NIST CSF 2.0, with no connection to visual or design workflows."
+  },
+  {
+    "id": "gh:Manavarya09/design-extract",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A CLI tool and MCP server that extracts a website's full design system into DTCG tokens with emitters for Figma variables, Tailwind v4, shadcn/ui, iOS, Android, Flutter, and includes a CSS health audit and WCAG remediation pass."
+  },
+  {
+    "id": "gh:moltis-org/moltis",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "general-purpose agent server with no visual or design creative utility",
+    "summary": "A self-hosted personal agent server written in Rust that connects multiple LLM providers, messaging platforms, and MCP tools with sandboxed execution and persistent memory."
+  },
+  {
+    "id": "gh:forloopcodes/contextplus",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "developer codebase indexing tool — no visual or design creative use case",
+    "summary": "An MCP server that combines RAG, AST parsing, and spectral clustering to make large codebases semantically searchable as a hierarchical feature graph."
+  },
+  {
+    "id": "gh:iusztinpaul/designing-real-world-ai-agents-workshop",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "ML/dev education workshop for building research+writing agents — no visual or design creative use case",
+    "summary": "A hands-on workshop repository teaching developers how to build a multi-agent AI system using a Deep Research Agent and Writing Workflow served as MCP servers."
+  },
+  {
+    "id": "gh:wilwaldon/Claude-Code-Frontend-Design-Toolkit",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A curated GitHub toolkit of skills, MCP servers, plugins, and CLAUDE.md configurations specifically assembled to improve the visual quality of Claude Code-generated frontend output."
+  },
+  {
+    "id": "gh:saurabhsharma2u/search-console-mcp",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "SEO/analytics data pipeline — no visual creative output, wrong audience entirely",
+    "summary": "An MCP server that connects AI agents to Google Search Console, Bing Webmaster Tools, and GA4 for search and analytics data automation."
+  },
+  {
+    "id": "gh:Kargatharaakash/stitch-mcp",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "An MCP server that connects AI agents to Google Stitch, enabling programmatic access to UI designs created in the Stitch platform."
+  },
+  {
+    "id": "gh:rohanmistry231/Claude-OS",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "developer reference bundle with no visual/design creative utility — generic dev scaffolding",
+    "summary": "A GitHub repository that aggregates Claude documentation, commands, MCP servers, plugins, and agent frameworks into a single reference guide for developers."
+  },
+  {
+    "id": "gh:OpsinTech/opsintech-platform",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "enterprise AI agent infrastructure — multi-tenant orchestration platform with no visual or design-specific capability",
+    "summary": "An enterprise AI agent platform built on LangGraph with multi-tenant architecture, RBAC, sandboxed tool execution, and an admin UI for managing models, MCP servers, and tools, designed for production deployment with Docker and PostgreSQL."
+  },
+  {
+    "id": "gh:AsifKabirAntu/figsor",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "An MCP server that connects Cursor to Figma, allowing designers to create and edit Figma designs through natural language chat commands directly on the canvas."
+  },
+  {
+    "id": "gh:salitronic/eda-agent",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "PCB/EDA engineering tool, not visual or graphic design — no relevance to Full Bleed's audience",
+    "summary": "An open-source MCP server for Altium Designer that provides 290+ tools for schematic capture, PCB layout, library management, and project automation via a DelphiScript bridge."
+  },
+  {
+    "id": "gh:Seeed-Studio/kicad-mcp-server",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "PCB/EDA engineering tool — electronics hardware design, not visual/graphic design",
+    "summary": "An MCP server for KiCad that enables AI-assisted analysis and editing of electronic schematics and PCB layouts."
+  },
+  {
+    "id": "gh:southleft/figma-console-mcp-skills",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A set of Markdown skills for the native Figma MCP server that expose design token management, variable inspection, component analysis, WCAG linting, and accessibility audits directly inside AI coding agents."
+  },
+  {
+    "id": "gh:bergside/design-md-figma",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Figma plugin that reads local styles and variables from a Figma file and exports them as DESIGN.md and SKILL.md files so AI coding tools like Claude Code, Codex, and Cursor can reference a project's design system when generating UI."
+  },
+  {
+    "id": "gh:fspecii/ace-step-ui",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "audio/music — out of scope, no exceptions",
+    "summary": "A local open-source UI for the ACE-Step 1.5 AI music generation model, positioned as a free alternative to Suno."
+  },
+  {
+    "id": "gh:Light-Heart-Labs/DreamServer",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "general AI server infrastructure — LLM inference, voice, RAG, chat UI; image generation is one bullet among many, no specific visual creative use case",
+    "summary": "DreamServer is a self-hosted AI server platform that bundles LLM inference, chat UI, voice, agents, RAG workflows, and image generation on local hardware."
+  },
+  {
+    "id": "gh:kasonye/ui-aesthetics-skill",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A Claude/AI coding agent skill file that encodes aesthetic judgment rules for web UI generation, review, and iterative refinement."
+  },
+  {
+    "id": "gh:DanielSuo117/velocitai",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "UI test automation tooling for QA engineers, not a visual creative tool",
+    "summary": "A Python and Playwright-based harness that uses AI agents to generate and execute UI test code for enterprise applications."
+  },
+  {
+    "id": "gh:princepainter/ComfyUI-PainterAI2V",
+    "score": 2,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "lip-sync audio-visual generation pipeline — audio/video workflow, not a visual design tool",
+    "summary": "A ComfyUI custom node that combines InfiniteTalk lip-sync with Wan2.2's video generation architecture for synchronized audio-visual output with first/last frame control."
+  },
+  {
+    "id": "gh:filliptm/ComfyUI_FL-HeartMuLa",
+    "score": 1,
+    "keep": false,
+    "category": "Plugins & Skills",
+    "discipline": "none",
+    "killReason": "audio — out of scope",
+    "summary": "A set of ComfyUI custom nodes for multilingual AI music and song generation using the HeartMuLa model."
+  },
+  {
+    "id": "gh:Moeblack/ComfyUI-AnimaTool",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Illustration",
+    "killReason": null,
+    "summary": "A ComfyUI custom node that wraps Anima anime/illustration image generation as a Tool Use API with MCP Server, HTTP API, and CLI interfaces for integration with AI coding agents."
+  },
+  {
+    "id": "gh:proximasan/tadpole-studio",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "audio/music — out of scope, full stop",
+    "summary": "A local UI for AI music generation models with quality-of-life features."
+  },
+  {
+    "id": "gh:patrickdappollonio/dux",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "dev scaffolding for coding agents, no visual or design creative use case",
+    "summary": "A terminal UI for running multiple AI coding agents simultaneously in separate git worktrees, with companion terminals, macros, and commit generation."
+  },
+  {
+    "id": "gh:MCERQUA/OpenVoiceUI",
+    "score": 2,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "audio/voice/music platform — out of scope entirely",
+    "summary": "A voice-powered AI assistant platform that connects LLMs with text-to-speech, music generation, and agent orchestration via a web canvas."
+  },
+  {
+    "id": "gh:jau123/MeiGen-AI-Design-MCP",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Image",
+    "killReason": null,
+    "summary": "An MCP server for AI design workflows that integrates GPT Image 2, Nanobanana, and ComfyUI with a 1,400+ curated prompt library and multi-task orchestration for image generation tasks."
+  },
+  {
+    "id": "gh:study8677/awesome-architecture",
+    "score": 1,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "software architecture/distributed systems tutorials — no visual creative discipline anywhere",
+    "summary": "A GitHub repository collecting bilingual system design tutorials and architecture templates covering distributed systems, RAG pipelines, and AI agents."
+  },
+  {
+    "id": "gh:arturitu/the-delegation",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "agentic AI systems explorer, not a visual creative tool — 3D is incidental to the UI, not mesh/texture/rigging work",
+    "summary": "A no-code interactive 3D visualization playground for exploring and designing agentic AI system architectures."
+  },
+  {
+    "id": "gh:bryanyzhu/agentic-ai-system-course",
+    "score": 1,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "none",
+    "killReason": "developer/ML engineering course on agentic systems — no visual creative application whatsoever",
+    "summary": "A skeleton course teaching how to design, build, and operate production AI agents, with no connection to visual or design workflows."
+  },
+  {
+    "id": "gh:myinvestpilot/ai-architecture",
+    "score": 1,
+    "keep": false,
+    "category": "Automations",
+    "discipline": "none",
+    "killReason": "financial/investment workflow system — completely outside visual and design disciplines",
+    "summary": "A design notes repository for an AI-driven investment workflow system using strategy primitives, DAG engines, and validation loops for financial decision-making."
+  },
+  {
+    "id": "gh:kwakseongjae/oh-my-design",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A CLI installer that sets up 221 hand-verified company DESIGN.md reference files and skills into AI coding agents (Claude Code, Codex, Cursor, OpenCode) so they can generate UI code that follows real design systems."
+  },
+  {
+    "id": "gh:redongreen/uSpec",
+    "score": 7,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "uSpec is an agent skill that generates design system documentation for UI components from Cursor, Claude Code, or Codex, outputting directly to Figma or a portable markdown file."
+  },
+  {
+    "id": "gh:ConstantineB6/comfy-pilot",
+    "score": 8,
+    "keep": true,
+    "category": "Plugins & Skills",
+    "discipline": "Image",
+    "killReason": null,
+    "summary": "An MCP server with embedded terminal that gives Claude Code direct read/write access to ComfyUI workflows, enabling AI-assisted editing of generative image pipelines."
+  },
+  {
+    "id": "gh:aqm857886159/Nomi",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "Motion",
+    "killReason": "video generation pipeline with timeline editing — not a design-side motion tool, no specific visual creative capability beyond raw AI video creation workflow",
+    "summary": "A local-first Electron desktop app that takes a written script through AI image and video generation to a timeline editor for export, using user-supplied models and API keys."
+  },
+  {
+    "id": "arxiv:2606.00112v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Design/UI",
+    "killReason": "ML methodology paper on fitness functions for evolutionary systems — no actionable design insight or specific creative tool output",
+    "summary": "An arXiv paper comparing two VLM-based aesthetic scoring methods (CLIP-IQA and pairwise VLM ranking via Glicko) for use as fitness functions in evolutionary generative design systems."
+  },
+  {
+    "id": "arxiv:2605.20731v2",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "A designer-annotated preference dataset covering nine graphic design criteria (typography, layout, color harmony, etc.) across four text-to-image models, paired with a signal-validation framework and a benchmark showing current VLM judges fall short of professional designer agreement."
+  },
+  {
+    "id": "arxiv:2605.16810v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": "diffusion inference technique paper — ML plumbing dressed as typography, no actionable creative output for working designers",
+    "summary": "A training-free framework for rendering occluded text in images using FLUX.1-dev, combining glyph priors and attention-guided mask fusion to keep typography readable behind an overlapping object."
+  },
+  {
+    "id": "arxiv:2605.16409v2",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "ML training pipeline for OCR/translation — no specific creative design insight, architecture paper dressed in design-adjacent language",
+    "summary": "A research paper presenting an OCR-aware multilingual fine-tuning framework using LoRA adaptation and chain-of-thought prompting to improve text extraction and translation in multimodal LLMs."
+  },
+  {
+    "id": "arxiv:2605.12271v2",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "general conditioning architecture paper — no specific creative use case, no shipped tool, and the 'visual spec page' framing is a model infrastructure argument dressed in designer language",
+    "summary": "A paper proposing a training-free framework called V2V-Zero that replaces text prompts with visual specification pages as conditioning inputs for existing vision-language model-based image generators."
+  },
+  {
+    "id": "arxiv:2606.16502v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "A research paper proposing a framework that actively selects which reference glyphs to query from a designer in order to improve few-shot font generation quality with fewer samples."
+  },
+  {
+    "id": "arxiv:2606.13382v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "SmartFont is a diffusion-based few-shot font generation framework that dynamically allocates global and local style conditions across denoising steps to improve glyph quality and style fidelity from limited reference characters."
+  },
+  {
+    "id": "arxiv:2605.05865v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "A diffusion-based framework for one-shot Chinese calligraphy synthesis that uses high-frequency enhancement and a differentiable ink structure loss to improve stroke rendering and visual fidelity from a single reference glyph."
+  },
+  {
+    "id": "arxiv:2604.13797v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "A research paper proposing DRG-Font, a few-shot font generation method that disentangles style and content embeddings to produce stylistically consistent glyphs from minimal reference examples."
+  },
+  {
+    "id": "arxiv:2603.22054v2",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "FontCrafter is a research paper and framework for generating stylized fonts driven by visual element references (flowers, flames, textures), using in-context inpainting to transfer element styles into glyph regions with shape control."
+  },
+  {
+    "id": "arxiv:2602.18874v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "A diffusion model paper proposing structure-level content/style disentanglement for few-shot Chinese font generation, with evaluation metrics for character content quality."
+  },
+  {
+    "id": "arxiv:2601.01593v2",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "GAR-Font is a research paper proposing an autoregressive framework for few-shot font generation that combines global-aware tokenization with multimodal (text + visual) style control to synthesize coherent glyph sets from limited references."
+  },
+  {
+    "id": "arxiv:2603.11505v1",
+    "score": 1,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "semiconductor fabrication engineering — no relevance to visual or design disciplines",
+    "summary": "A conditional GAN model for predicting nanophotonic device fabrication variations (over-etching, corner rounding) from GDS layout files, evaluated against U-Net baselines using IoU on SEM image datasets."
+  },
+  {
+    "id": "arxiv:2602.01046v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "ReLayout is a research framework that enables structure-preserving layout editing of graphic designs by using relation graphs and self-supervised reconstruction to execute geometric editing operations without requiring paired training data."
+  },
+  {
+    "id": "arxiv:2605.27024v1",
+    "score": 2,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "video compression infrastructure — codec-level ML plumbing with no creative design application",
+    "summary": "A neural representation framework for compressing screen-content video (remote desktop, cloud gaming) that outperforms H.264/H.265 at low bitrates by exploiting sharp edges and limited color palettes."
+  },
+  {
+    "id": "arxiv:2605.25191v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "ML architecture paper on diffusion conditioning mechanics — infrastructure insight, not an actionable creative tool or specific design finding",
+    "summary": "A research paper introducing Visual Concept Fusion (VCF), a training-free method for injecting image-based style or composition guidance into Stable Diffusion at inference time by aligning CLIP image features with text embeddings."
+  },
+  {
+    "id": "arxiv:2604.22539v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Design/UI",
+    "killReason": "historical survey of cartographic conventions — no actionable creative output or design insight a practitioner can apply",
+    "summary": "A longitudinal study analyzing design trends in 45,732 academic cartography journal articles from 1990–2020, examining color, layout, and element conventions across Chinese- and English-language publications."
+  },
+  {
+    "id": "arxiv:2604.21689v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "benchmark/evaluation framework for identity consistency — no actionable creative output, serves ML researchers training stylization models not working illustrators",
+    "summary": "A paper introducing StyleID, a human-perception-aligned dataset and metric for evaluating whether facial identity is preserved across stylization techniques like cartoons, sketches, and paintings."
+  },
+  {
+    "id": "arxiv:2604.14791v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Design/UI",
+    "killReason": "data visualization research with no actionable design-tool insight for visual creatives; no typography, branding, illustration, or image discipline relevance",
+    "summary": "An empirical study evaluating four encoding techniques for displaying bivariate edge distributions within adjacency matrix cells, tested on 156 participants across eight analytical tasks."
+  },
+  {
+    "id": "arxiv:2603.22946v1",
+    "score": 2,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "caption generation NLP research on cultural paintings — no actionable design tool, model, or creative workflow output",
+    "summary": "An academic paper proposing an encoder-decoder framework for automatically generating text captions for Naxi Dongba paintings using prompt learning and a visual semantic-generation fusion loss."
+  },
+  {
+    "id": "arxiv:2601.22878v1",
+    "score": 2,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "niche image restoration research with no design-side application; no shipped tool, no actionable creative insight for visual practitioners",
+    "summary": "A paper proposing an unsupervised framework for underwater image enhancement using physics-guided modeling and adaptive spectral correction, evaluated across eight aquatic datasets."
+  },
+  {
+    "id": "arxiv:2512.18930v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "architecture/training method paper — the creative insight (style transfer) is buried inside a diffusion internals technique; no shipped tool, weights, or actionable creative workflow for practitioners",
+    "summary": "A research paper introducing LouvreSAE, a sparse autoencoder method for interpretable artistic style transfer in generative image models using compact steering vectors derived from a few reference images."
+  },
+  {
+    "id": "arxiv:2606.15629v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "academic benchmark dataset for aesthetic scoring models — no actionable creative tool or design insight, just ML evaluation infrastructure",
+    "summary": "A research dataset of 6,526 images rated by 129 annotators across art, fashion, and landscape domains, designed to benchmark cross-domain personalized image aesthetic assessment models."
+  },
+  {
+    "id": "arxiv:2606.05778v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "academic benchmark paper on aesthetic scoring models — no actionable creative insight or tool a visual practitioner can use",
+    "summary": "A research paper proposing RED-Aes, a framework that trains image aesthetic assessment models using relative edit-based comparisons rather than absolute opinion scores, accompanied by a new dataset of edited image pairs with Chain-of-Thought reasoning."
+  },
+  {
+    "id": "arxiv:2606.05635v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": null,
+    "summary": "A research paper proposing a model and benchmark for automatically generating cinematic triple-shot crops (establishing, medium, close-up) from a single human-centric image, aimed at multi-shot composition workflows for commercial and editorial use."
+  },
+  {
+    "id": "arxiv:2605.25347v1",
+    "score": 3,
+    "keep": false,
+    "category": "Models",
+    "discipline": "Image",
+    "killReason": "general text-to-image foundation model, no specific creative use case — same pattern as killed FLUX.2-klein-9B and Ovis-Image",
+    "summary": "ERNIE-Image is an open-source 8B DiT-based text-to-image model from Baidu/ERNIE team, trained with a multi-stage data pipeline and DPO alignment, with a turbo distilled variant and an accompanying aesthetic benchmark."
+  },
+  {
+    "id": "arxiv:2605.19776v2",
+    "score": 2,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "aesthetic scoring benchmark paper — ML training methodology, no actionable creative tool or design insight",
+    "summary": "A research paper introducing PPaint, a dual-protocol image aesthetic assessment benchmark for Chinese paintings, plus a self-distillation method for training VLMs to score aesthetic quality."
+  },
+  {
+    "id": "arxiv:2605.14761v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "academic ML research on preference modeling with no actionable creative tool, insight, or design-side artifact — benchmarks for benchmarks' sake",
+    "summary": "A research paper proposing a deep learning + LLM system that conducts semi-structured interviews to predict individual image aesthetic preferences, outperforming human predictors in experiments."
+  },
+  {
+    "id": "arxiv:2605.05155v3",
+    "score": 5,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": "benchmark/evaluation framework for 3DGS aesthetics — no actionable creative tool or insight a 3D artist can apply today",
+    "summary": "A research paper proposing Aes3D, a framework and dataset for automatically scoring the aesthetic quality of 3D Gaussian Splatting scenes using a lightweight model that predicts composition, harmony, and visual appeal directly from 3DGS primitives."
+  },
+  {
+    "id": "arxiv:2604.17233v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "benchmarks/evaluation research with no actionable creative output — predicts aesthetic ratings, doesn't help a visual creative make something",
+    "summary": "A research paper proposing P-MLLM, a multimodal LLM that predicts personalized image aesthetic scores from user profiles without requiring historical rating data."
+  },
+  {
+    "id": "arxiv:2606.18788v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Typography",
+    "killReason": null,
+    "summary": "A research paper presenting an LLM-driven agent that synthesizes handwriting as SVG stroke sequences conditioned on natural language and a reference style image, without style-specific training."
+  },
+  {
+    "id": "arxiv:2606.09782v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Design/UI",
+    "killReason": "ML pipeline paper for semantic recovery of SVGs — interesting research but no direct creative tool or design workflow utility; output is semantic annotations, not a designed artifact",
+    "summary": "A research paper presenting a multi-stage AI pipeline that recovers semantic structure from deployed SVG visualizations by annotating elements with mark type, visualization role, and data role."
+  },
+  {
+    "id": "arxiv:2605.30174v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Motion",
+    "killReason": "SVG animation pipeline paper — the output is vector animation but the method is fundamentally a video generation + differentiable rendering research contribution, not a design-side tool a motion designer or illustrator can open today",
+    "summary": "A research paper proposing LiveSVG, a zero-shot method that animates SVG files by fitting vector geometry to a generated reference video using differentiable rendering and a dual-level motion representation."
+  },
+  {
+    "id": "arxiv:2605.19551v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Illustration",
+    "killReason": null,
+    "summary": "AnchorFlow is a research paper presenting a method for converting raster images into clean, editable SVGs by using sparse anchor point fields to optimize Bezier path structure for both fidelity and editability."
+  },
+  {
+    "id": "arxiv:2605.14118v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "data visualization infrastructure paper, not a visual design tool — Rust rendering architecture serves developers, not visual creatives",
+    "summary": "Pluot is a Rust-based visualization architecture that lets developers write a single rendering function and deploy it across static/interactive and desktop/web environments, outputting bitmap or vector graphics."
+  },
+  {
+    "id": "arxiv:2605.11913v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Illustration",
+    "killReason": "optimization infrastructure paper — improves vectorization speed/fidelity metrics but the finding isn't specific enough to a design problem to clear the bar; no actionable creative insight beyond 'better polygon soup'",
+    "summary": "A research paper proposing a hierarchical optimization framework for differentiable image vectorization that reduces topology collapse and improves PSNR by up to 1.4 dB at 2.5× faster convergence."
+  },
+  {
+    "id": "arxiv:2605.01517v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Motion",
+    "killReason": null,
+    "summary": "VAnim is a research paper introducing an LLM-based framework for animating SVG files from text instructions using sparse state updates on the SVG DOM tree, with a reinforcement learning approach to preserve vector structure during animation."
+  },
+  {
+    "id": "arxiv:2604.20730v2",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Illustration",
+    "killReason": null,
+    "summary": "A research paper proposing a visual feedback loop for SVG generation where an MLLM renders intermediate canvas states and uses them to guide each subsequent drawing step, improving vector graphics synthesis quality."
+  },
+  {
+    "id": "arxiv:2605.01001v1",
+    "score": 7,
+    "keep": true,
+    "category": "Tools",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "AnimationDiff is a visual comparison tool that lets animators evaluate multiple generated 3D character animations side-by-side or overlaid, with temporal alignment aids and filtering to handle complex spatial and motion data."
+  },
+  {
+    "id": "arxiv:2603.17704v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "DancingBox is a vision-based motion capture system that uses a webcam to track everyday physical objects as proxies, then uses a generative motion model to translate those coarse movements into realistic 3D character animations."
+  },
+  {
+    "id": "arxiv:2606.00137v1",
+    "score": 4,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": "architecture survey, no actionable creative output or specific finding a 3D artist can apply today",
+    "summary": "A comprehensive academic survey covering neural 3D mesh texturing methods from GAN-based to diffusion-based pipelines, reviewing taxonomy, architectures, datasets, and evaluation protocols."
+  },
+  {
+    "id": "arxiv:2605.23804v1",
+    "score": 1,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "none",
+    "killReason": "haptic/tactile signal processing — not visual, not design, entirely out of scope",
+    "summary": "A paper introducing compact spectral representations for synthesizing tactile texture signals with perceptual fidelity on friction-modulation displays."
+  },
+  {
+    "id": "arxiv:2605.13755v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": "ML/autonomous driving pipeline paper — texture diversification serves perception model training, not a visual creative workflow",
+    "summary": "A research paper proposing a method to generate diverse pedestrian textures via StyleGAN2 and map them onto 3D meshes to create synthetic training data for autonomous driving perception models."
+  },
+  {
+    "id": "arxiv:2605.09328v1",
+    "score": 3,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "ML infrastructure paper — diffusion distillation efficiency technique, not a creative tool or actionable design insight",
+    "summary": "A research paper proposing SMFSR, a one-step real-world image super-resolution framework that uses SplitMeanFlow distillation and GAN refinement to improve efficiency without sacrificing texture quality."
+  },
+  {
+    "id": "arxiv:2605.08824v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "A research paper proposing HairGPT, a strand-level autoregressive framework for generating and compositionally editing realistic 3D hairstyles with semantic control over scalp regions and strand hierarchy."
+  },
+  {
+    "id": "arxiv:2603.17735v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": "research pipeline for texture synthesis on 3D meshes with no shipped tool, weights, or artifact — infrastructure paper dressed as creative output",
+    "summary": "TAPESTRY is an arXiv paper proposing a framework that generates geometry-conditioned turntable videos from untextured 3D meshes to drive texture synthesis and neural rendering."
+  },
+  {
+    "id": "arxiv:2603.14249v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": "research paper on a model architecture problem (occlusion handling in reconstruction) without a shipped tool, weights, or actionable creative output for 3D artists",
+    "summary": "A research paper proposing OAHuman, a framework that decouples geometry reconstruction and texture synthesis to improve 3D human reconstruction from single monocular images under occlusion conditions."
+  },
+  {
+    "id": "arxiv:2603.08228v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "GarmentPainter is a diffusion-based framework that synthesizes 3D-consistent garment textures in UV space, guided by a UV position map and a character reference image without requiring mesh-to-image alignment."
+  },
+  {
+    "id": "arxiv:2605.18735v1",
+    "score": 8,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": null,
+    "summary": "A feed-forward single-image relighting method that uses physically based rendering intrinsics to apply arbitrary PBR lighting to photographs, running in under 100ms with code and models publicly released."
+  },
+  {
+    "id": "arxiv:2605.11696v1",
+    "score": 5,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "benchmark/adaptation paper for relighting models — the finding is about domain shift evaluation methodology, not an actionable creative insight or usable tool; the dataset and DPS/TTA framework serve ML researchers closing a sim-to-real gap, not working photographers or retouchers",
+    "summary": "A research paper introducing WildRelight, an in-the-wild dataset and physics-guided adaptation framework for benchmarking and improving single-image relighting models on real-world outdoor scenes."
+  },
+  {
+    "id": "arxiv:2604.15310v2",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": null,
+    "summary": "A paper presenting TokenLight, a method for precise, continuous control over multiple lighting attributes (intensity, color, diffuse, 3D position) in photographs via attribute tokens, demonstrated on synthetic and real images."
+  },
+  {
+    "id": "arxiv:2603.27083v1",
+    "score": 4,
+    "keep": false,
+    "category": "Models",
+    "discipline": "Image",
+    "killReason": "video relighting pipeline — video generation/processing, not a design workflow tool a visual creative would open today",
+    "summary": "LightCtrl is a training-free video relighting method that uses a user-supplied light trajectory to control illumination across video frames by combining an image relighting model with a video diffusion prior for temporal consistency."
+  },
+  {
+    "id": "arxiv:2603.15555v1",
+    "score": 8,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": null,
+    "summary": "A paper introducing LightCtrl, a diffusion-based single-image relighting method that uses sparse latent proxies and a lighting-aware mask to enable controllable, physically grounded changes to light direction, intensity, and color without requiring full intrinsic decomposition."
+  },
+  {
+    "id": "arxiv:2602.01391v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "architecture/training methodology paper; the creative insight (relighting specular materials) is real but the artifact is a research framework, not an actionable tool a visual creative can open today",
+    "summary": "A research paper introducing Augmented Latent Intrinsics (ALI), a method that fuses pixel-aligned visual encoders with latent intrinsic representations to improve image relighting quality on specular materials like metal and glass."
+  },
+  {
+    "id": "arxiv:2601.22135v1",
+    "score": 6,
+    "keep": false,
+    "category": "Papers",
+    "discipline": "Image",
+    "killReason": "architecture paper — physics-inspired diffusion framework with no shipped weights, code, or tool; the relighting capability is real but inaccessible to working creatives today",
+    "summary": "A two-stage diffusion framework for full-image relighting that uses physics-guided neural rendering and batch-aware attention to improve physical plausibility and generalization to real-world scenes."
+  },
+  {
+    "id": "arxiv:2602.00738v1",
+    "score": 7,
+    "keep": true,
+    "category": "Papers",
+    "discipline": "Illustration",
+    "killReason": null,
+    "summary": "A research paper presenting Iconix, a human-AI co-creative system that generates coherent icon grid sets along axes of semantic richness and visual complexity, evaluated in a user study of 32 designers."
+  },
+  {
+    "id": "hf:tencent/HY-World-2.0",
+    "score": 4,
+    "keep": false,
+    "category": "Models",
+    "discipline": "3D",
+    "killReason": "general world model / video generation foundation model — no specific creative tool for 3D artists, buried use case",
+    "summary": "HY-World-2.0 is Tencent's image-to-3D world model releasing weights on Hugging Face, tagged as a world model with 3D generation capabilities."
+  },
+  {
+    "id": "hf:nvidia/Lyra-2.0",
+    "score": 7,
+    "keep": true,
+    "category": "Models",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "Nvidia Lyra 2.0 is a model for image-to-3D generation, converting single images into 3D assets."
+  },
+  {
+    "id": "hf:TencentARC/Pixal3D",
+    "score": 7,
+    "keep": true,
+    "category": "Models",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "Pixal3D is a TencentARC model for image-to-3D generation, converting single images into 3D assets under an MIT license with an accompanying arXiv paper."
+  },
+  {
+    "id": "hf:infinith/UltraShape",
+    "score": 7,
+    "keep": true,
+    "category": "Models",
+    "discipline": "3D",
+    "killReason": null,
+    "summary": "UltraShape is a fine-tuned image-to-3D model built on Hunyuan3D-2.1 that generates 3D meshes from single images, released under Apache 2.0."
+  },
+  {
+    "id": "hf:nvidia/dvlt",
+    "score": 6,
+    "keep": false,
+    "category": "Models",
+    "discipline": "3D",
+    "killReason": "research model for 3D reconstruction/depth estimation — no shipped tool or clear creative workflow, buried under ML plumbing tags (pointmap, looped-transformer, camera-pose) with no designer-facing artifact",
+    "summary": "NVIDIA's DVLT is a Hugging Face model for image-to-3D reconstruction using depth estimation and camera-pose estimation via a looped transformer architecture, fine-tuned on DINOv2."
+  },
+  {
+    "id": "ph:1090558",
+    "score": 3,
+    "keep": false,
+    "category": "Tools",
+    "discipline": "Motion",
+    "killReason": "video localization pipeline — translating on-screen text in videos is content/ops work, not a visual design tool",
+    "summary": "Vozo's Visual Translate detects and translates on-screen text within videos — including slides, diagrams, and callouts — while preserving layout, style, and animation for multilingual video output."
+  },
+  {
+    "id": "ph:1173151",
+    "score": 8,
+    "keep": true,
+    "category": "Tools",
+    "discipline": "Design/UI",
+    "killReason": null,
+    "summary": "Framer 3.0 adds AI Agents that work directly on the design canvas, plus Branching for team experimentation and a new Community marketplace for sharing and monetizing site templates."
   }
 ]
