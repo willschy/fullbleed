@@ -5,15 +5,16 @@ sourceDate: 2026-05-24
 category: tools
 tools:
   - Figma
-  - WAN
 disciplines: ["Design"]
 thumbnail: /thumbs/stitch-3-0-ai-ui-generation-with-direct-figma-export-cover.webp
 credit: "J Williams / Unsplash"
-score: 8
-hoverWhat: Google's Stitch turns text prompts into editable UI screens on a live
-  canvas, then ships them straight to Figma or your build tool in one click.
-hoverWhy: Google's Stitch turns text prompts into editable UI screens on a live
-  canvas, then ships them straight to Figma or your build tool in one click.
+score: 9
+hoverWhat: Google's Stitch generates mobile and web UI screens from text prompts
+  on a live canvas, then hands them off to Figma or your builder of choice in
+  one click.
+hoverWhy: Google's Stitch generates mobile and web UI screens from text prompts
+  on a live canvas, then hands them off to Figma or your builder of choice in
+  one click.
 modelVersions: null
 source:
   origin: Product Hunt
@@ -24,10 +25,10 @@ supersededBy: null
 fixture: false
 ---
 
-**What it is.** Stitch is Google's AI UI design tool. You describe a screen in plain text, and it generates a working layout for mobile or web on a live canvas. Version 3.0 adds streaming edits, so changes appear as they render rather than after a long wait, and in-place AI edits let you click into any element and prompt changes directly on the canvas. From there, one-click export sends your work to Figma, Netlify, Lovable, or Bolt.
+**What it is.** Stitch is a Google tool that generates UI screens for mobile and web from a text prompt. You type what you need, and it renders actual interface layouts on a live canvas. From there you can refine in place, stream edits, and export directly to Figma, Netlify, Lovable, or Bolt.
 
-**Why it matters.** The gap between "I have an idea" and "I have something to show" is where a lot of creative momentum dies. Stitch compresses that gap considerably. You are describing what you want rather than building it component by component, and you end up with something Figma-ready rather than a screenshot you then have to reconstruct by hand.
+**Why it matters.** The gap between a brief and a first real screen is usually where time gets wasted, either in a blank Figma file or a back-and-forth with a developer. Stitch shortens that stretch. For a designer or product team trying to show a client something that looks like a real product, getting to a credible first screen in minutes rather than hours is worth paying attention to.
 
-**How to use it.** Start with a prompt for the screen you actually need, something specific like "a mobile onboarding screen for a photo app, minimal, dark background, three steps." Stitch renders the layout. From there, click into any section and type a follow-up prompt to change it in place, swap the typography, rework a card, adjust the hierarchy. When the screen is close enough to work from, export it to Figma and finish the details there the way you normally would. It fits naturally as a starting-point layer before your real design work begins, rather than a replacement for it.
+**How to use it.** Start with a prompt that describes the screen you actually need, the more specific the better. Something like "onboarding flow for a fitness app, three steps, progress indicator at the top" gives it more to work with than a vague category. The canvas updates as it generates, so you can interrupt and redirect if the first pass is off. Once the layout is close, use the in-place editing to adjust components or copy directly on the canvas. When it looks right, hit export and point it at Figma. The layers come through as editable elements, so a designer can pick up from there without having to redraw anything.
 
-**Limits.** Generated UI tends to need real design judgment applied afterward. Component naming, spacing systems, and responsive behavior will not come out production-ready, so plan for cleanup time in Figma. It works best when your prompt is precise. Vague inputs produce generic results, and the more specific your product's visual language, the harder it is to get Stitch close without a lot of back-and-forth. It is also a Google Labs product, which historically means availability and feature continuity can shift.
+**Limits.** The outputs are starting points, and they will need design polish before they are ready for handoff to engineering. Generated layouts can be generic and component choices may not match your existing design system, which means time spent reconciling things in Figma anyway. Complex interactions and animations are outside what a prompt-to-screen tool like this can express, so anything beyond static layouts needs further work. It is also a Google Labs product, which means the roadmap and long-term availability are not guaranteed.

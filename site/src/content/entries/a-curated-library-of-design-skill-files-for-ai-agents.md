@@ -3,16 +3,18 @@ title: A curated library of design skill files for AI agents
 date: 2026-03-09
 sourceDate: 2026-03-09
 category: plugins-skills
-thumbnail: /thumbs/a-curated-library-of-design-skill-files-for-ai-agents-cover.webp
-credit: "Judy Beth Morris / Unsplash"
 tools:
   - Claude
 disciplines: ["Design"]
-score: 7
-hoverWhat: 67 ready-to-drop DESIGN.md and SKILL.md files that teach agentic
-  tools your taste before they touch a pixel.
-hoverWhy: 67 ready-to-drop DESIGN.md and SKILL.md files that teach agentic tools
-  your taste before they touch a pixel.
+thumbnail: /thumbs/a-curated-library-of-design-skill-files-for-ai-agents-cover.webp
+credit: "Zetong Li / Unsplash"
+score: 8
+hoverWhat: 67 ready-made DESIGN.md and SKILL.md files that tell agentic tools
+  like Claude Design, Cursor, and Codex how to handle design work the way you
+  actually want it done.
+hoverWhy: 67 ready-made DESIGN.md and SKILL.md files that tell agentic tools
+  like Claude Design, Cursor, and Codex how to handle design work the way you
+  actually want it done.
 modelVersions: null
 source:
   origin: GitHub
@@ -23,12 +25,12 @@ supersededBy: null
 fixture: false
 ---
 
-**What it is.** A curated GitHub list of 67 DESIGN.md and SKILL.md files, each one a plain-text document you drop into your project or agent context to tell an AI tool how to think about design. The files cover things like typography rules, component conventions, spacing logic, and visual tone, written in a format that agentic tools can actually read and act on.
+**What it is.** A curated GitHub list of 67 DESIGN.md and SKILL.md files, maintained by bergside. Each file is a plain-text instruction set you drop into a project or tool to shape how an AI agent approaches design decisions, from layout and typography choices to component naming and design system conventions.
 
-**What it plugs into.** Claude Projects (via CLAUDE.md or DESIGN.md in the project root), Google Stitch, Cursor, Codex, and other tools that accept context or skill files at the start of a session. The list lives at github.com/bergside/awesome-design-skills and points out to a browsable directory at typeui.sh.
+**What it plugs into.** Claude Design, Google Stitch, Cursor, Codex, and any other agentic tool that reads context files from your project directory. The pattern is the same one developers already use with CLAUDE.md and similar files to steer agent behavior.
 
-**Why it helps.** When you are generating UI or asking an agent to write component code, the output defaults to whatever the model was trained to consider normal, which is usually generic and a little flat. A skill file shifts that baseline. You are not re-explaining your grid system or your type scale every prompt. It is already in the context, and the agent carries it through the whole session.
+**Why it helps.** Out of the box, most AI agents make design calls that are generic or inconsistent with how your project is actually set up. A well-written DESIGN.md gives the agent a standing brief: your type scale, your component vocabulary, your spacing logic, whatever matters. You stop correcting the same things on every prompt and the agent starts working closer to your actual standard.
 
-**How to set it up.** Browse the list and find a file that fits your stack or is close enough to edit. Download it, adjust any specifics to match your actual system (your font choices, your token names, your spacing scale), and place it where your tool expects it. In Cursor that is usually the project root. In a Claude Project you attach it as a file or paste it into the project instructions. Most of these files are short enough to read and tune in under ten minutes.
+**How to set it up.** Browse the list at the repo or at typeui.sh/design-skills, find a skill file that matches your context (a design system file, a brand voice file, a component spec), and copy it into your project root or paste it into your tool's custom instructions. Edit it to match your own conventions before you use it. The files are plain markdown, so there is nothing to install.
 
-**Limits.** The list is community-contributed, so quality varies. Some files are thorough and well-reasoned; others are thin or written for a specific company's setup and need real work before they are useful to you. The format also depends on the tool actually reading and weighting the context file, which is not guaranteed the same way across every agent. And 67 files sounds like a lot until you realize your specific combination of design system, framework, and tool may not have a close match, meaning you will likely end up treating these as starting points rather than finished solutions.
+**Limits.** The quality across 67 files is uneven, and some will need real editing before they are useful rather than generic. How much any of these files actually influence an agent depends on the tool and how faithfully it reads context, and that varies a lot between Claude Design, Cursor, and Codex. This is also a community list, so coverage is patchy and there are obvious gaps depending on your stack.

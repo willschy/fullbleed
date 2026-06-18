@@ -60,10 +60,10 @@ Respond with ONLY a JSON object, no markdown fence:
 - bodyMd: markdown using the category's bold-label sections.`;
 }
 
-function userMessage(c: Candidate, category: string): string {
+function userMessage(c: Candidate, category: string, summary?: string): string {
   return `Category: ${category}
 Sections to write: ${ANATOMY[category] ?? ANATOMY.Tools}
-
+${summary ? `\nWhat this is (from the curation pass, treat as established fact): ${summary}\n` : ""}
 Candidate:
 ${JSON.stringify(
     {
@@ -81,12 +81,12 @@ ${JSON.stringify(
   )}`;
 }
 
-async function writeOne(client: Anthropic, system: string, c: Candidate, category: string): Promise<Writeup> {
+async function writeOne(client: Anthropic, system: string, c: Candidate, category: string, summary?: string): Promise<Writeup> {
   const res = await client.messages.create({
     model: MODEL,
     max_tokens: 1500,
     system,
-    messages: [{ role: "user", content: userMessage(c, category) }],
+    messages: [{ role: "user", content: userMessage(c, category, summary) }],
   });
   const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
   const p = JSON.parse(text.replace(/^```(json)?\n?|```$/g, "").trim());
@@ -122,12 +122,14 @@ async function main() {
   const client = new Anthropic();
   console.log(`Writing ${keepers.length} ${keepers.length === 1 ? "entry" : "entries"}…\n`);
 
+  const summaryById = new Map(verdicts.map((v) => [v.id, v.summary]));
+
   const out: Writeup[] = [];
   for (const v of keepers) {
     const c = post(v.id);
     if (!c) continue;
     try {
-      const w = await writeOne(client, system, c, v.category);
+      const w = await writeOne(client, system, c, v.category, summaryById.get(v.id));
       out.push(w);
       console.log(`\n══════ [${w.category}] ${w.cardTitle} ══════`);
       console.log(w.digest);
