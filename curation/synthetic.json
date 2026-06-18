@@ -1,0 +1,560 @@
+[
+ {
+  "id": "synth-001",
+  "title": "Paletta \u2013 AI color system generator for brand design",
+  "summary": "Generates complete, accessible color systems from a single seed color or brand brief, exporting tokens directly to Figma, Style Dictionary, and CSS.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-002",
+  "title": "comfyui-depth-warp-nodes \u2013 optical-flow depth warping node pack",
+  "summary": "A set of ComfyUI custom nodes that perform depth-map-guided optical flow warping between frames for temporally stable video diffusion outputs.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-003",
+  "title": "Folio AI \u2013 automated portfolio site builder for creatives",
+  "summary": "Scrapes uploaded work samples and auto-generates a personal portfolio website with AI-written case study copy and responsive layout variants.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-004",
+  "title": "SynthStems-1B \u2013 stem-separation and re-synthesis model weights",
+  "summary": "A 1-billion-parameter model trained on 400k mixed tracks that separates audio into eight stems and optionally re-synthesizes any stem in a target instrument timbre.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-005",
+  "title": "Reframe \u2013 batch aspect-ratio recomposition for video editors",
+  "summary": "Desktop app that uses saliency detection and generative fill to non-destructively reframe existing footage from any source ratio to any target ratio.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-006",
+  "title": "DiffusionRig-3D: Consistent Character Rigging via Latent Anchoring",
+  "summary": "Research paper proposing a method that binds a diffusion model's latent space to a parametric 3D skeleton so generated characters remain anatomically consistent across poses.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-007",
+  "title": "GlyphForge \u2013 logotype sketch-to-vector AI",
+  "summary": "Takes a hand-drawn or rough raster sketch of a wordmark and returns clean, editable SVG vector paths with optically corrected letterforms.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Branding",
+  "url": null
+ },
+ {
+  "id": "synth-008",
+  "title": "mcp-figma-tokens \u2013 MCP server for design-token CRUD in Figma",
+  "summary": "An MCP integration that exposes Figma local variables and token sets as tool calls so AI coding agents can read, write, and synchronize design tokens programmatically.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-009",
+  "title": "PhotoRAW-LLM \u2013 natural-language Lightroom-style editing via vision-language model",
+  "summary": "Fine-tuned vision-language model that translates plain-English editing instructions into precise parametric RAW adjustments compatible with standard XMP sidecar files.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Photography",
+  "url": null
+ },
+ {
+  "id": "synth-010",
+  "title": "Audionaut \u2013 AI music supervisor for indie video creators",
+  "summary": "SaaS tool that analyzes a video's mood, pacing, and cut points and then licenses or generates matching background music with one-click sync.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-011",
+  "title": "Tempering Temporal Consistency: A Survey of Frame-Coherence Techniques in Video Diffusion",
+  "summary": "Comprehensive survey paper cataloging and benchmarking 34 published methods for maintaining temporal consistency in diffusion-based video generation models.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-012",
+  "title": "SceneForge \u2013 text-to-3D scene layout with semantic editing",
+  "summary": "Web app that generates fully furnished 3D room scenes from text prompts and lets users reposition, swap, or restyle individual objects through follow-up natural-language commands.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-013",
+  "title": "n8n-ai-brand-guardian \u2013 automated brand compliance workflow",
+  "summary": "An n8n workflow template that watches a shared asset folder and runs each new file through a vision model to flag off-brand colors, fonts, or logo misuse before publish.",
+  "source": "GitHub",
+  "category": "Automations",
+  "discipline": "Branding",
+  "url": null
+ },
+ {
+  "id": "synth-014",
+  "title": "VocalClone-Fast \u2013 3-second speaker cloning TTS weights",
+  "summary": "Lightweight 380M-parameter text-to-speech model that clones a target voice from as little as three seconds of reference audio with low-latency streaming inference.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-015",
+  "title": "Inkdrop \u2013 AI illustration style transfer for UI icon sets",
+  "summary": "Figma plugin that applies a learned illustration style extracted from an uploaded reference sheet uniformly across an entire icon library in one pass.",
+  "source": "Product Hunt",
+  "category": "Plugins & Skills",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-016",
+  "title": "Show HN: I built a real-time AI color grading proxy for DaVinci Resolve",
+  "summary": "Open-source Python sidecar process that streams frames from DaVinci Resolve's viewer, applies a user-described color grade via a vision-language model, and returns LUT deltas in real time.",
+  "source": "Show HN",
+  "category": "Tools",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-017",
+  "title": "MotionScript \u2013 natural-language keyframe animation for After Effects",
+  "summary": "After Effects panel and JSX bridge that converts plain-English motion descriptions into keyframed property animations on selected layers.",
+  "source": "Product Hunt",
+  "category": "Plugins & Skills",
+  "discipline": "Motion",
+  "url": null
+ },
+ {
+  "id": "synth-018",
+  "title": "SplatEdit: Interactive Gaussian Splatting Scene Editing via Text Prompts",
+  "summary": "Paper introducing a pipeline for editing 3D Gaussian Splat scenes by localizing regions with open-vocabulary segmentation and applying diffusion-based inpainting in 3D.",
+  "source": "HF Papers",
+  "category": "Papers",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-019",
+  "title": "Brandcraft AI \u2013 end-to-end brand identity generator",
+  "summary": "SaaS platform that produces a complete brand kit\u2014logo variants, color palette, type pairing, stationery mockups, and brand voice guidelines\u2014from a single onboarding questionnaire.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Branding",
+  "url": null
+ },
+ {
+  "id": "synth-020",
+  "title": "comfyui-audio-reactive \u2013 audio-driven animation modulation nodes",
+  "summary": "ComfyUI node pack that extracts amplitude, beat, and spectral features from an audio file and maps them to diffusion conditioning parameters for audio-reactive video generation.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Motion",
+  "url": null
+ },
+ {
+  "id": "synth-021",
+  "title": "CopyStack \u2013 AI copywriting workspace for brand teams",
+  "summary": "Collaborative SaaS editor where brand teams manage tone-of-voice rules, approve AI-generated copy variants, and push finalized text to CMS platforms via API.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Copywriting",
+  "url": null
+ },
+ {
+  "id": "synth-022",
+  "title": "adobe-firefly-mcp \u2013 MCP skill wrapper for Adobe Firefly API",
+  "summary": "MCP server that exposes Adobe Firefly's generative fill, text-to-image, and generative expand endpoints as structured tool calls for use in AI agent pipelines.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Image",
+  "url": null
+ },
+ {
+  "id": "synth-023",
+  "title": "NoiseFree-Portrait-v2 \u2013 high-res portrait denoising model",
+  "summary": "Updated diffusion-based portrait denoising model trained on 2M RAW/JPEG pairs, with improved preservation of fine hair detail and skin texture at ISO 12800 and above.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Photography",
+  "url": null
+ },
+ {
+  "id": "synth-024",
+  "title": "Holomesh \u2013 AI-assisted hard-surface 3D modeling for product designers",
+  "summary": "Browser-based 3D modeler that turns rough sketch images or text descriptions into clean, parametric hard-surface meshes ready for keyshot rendering or 3D printing.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-025",
+  "title": "Show HN: Generative UI component library trained on 50k Dribbble shots",
+  "summary": "Open-source fine-tune of a code-generation model on a scraped and cleaned dataset of Dribbble UI designs paired with React component code, released with training scripts.",
+  "source": "Show HN",
+  "category": "Models",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-026",
+  "title": "Attune \u2013 AI mix assistant plugin for DAWs",
+  "summary": "VST3/AU plugin that analyzes a full mix in real time and suggests per-track EQ, compression, and reverb settings modeled on a user-selected reference track.",
+  "source": "Product Hunt",
+  "category": "Plugins & Skills",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-027",
+  "title": "Perceptual Typography: Training LLMs to Reason About Type Hierarchy and Legibility",
+  "summary": "Paper presenting a new benchmark and fine-tuning dataset for evaluating and improving large language models' ability to critique and recommend typographic layout decisions.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-028",
+  "title": "loopcraft \u2013 one-click seamless loop creator for motion graphics",
+  "summary": "CLI tool and web UI that takes any short video clip and uses frame interpolation plus inpainting to stitch it into a perfectly seamless looping GIF or MP4.",
+  "source": "GitHub",
+  "category": "Tools",
+  "discipline": "Motion",
+  "url": null
+ },
+ {
+  "id": "synth-029",
+  "title": "Slate \u2013 AI storyboard generator for video directors",
+  "summary": "Uploads a script or shot list and generates a full storyboard with consistent character art, rough camera angles, and scene descriptions using a custom fine-tuned image model.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-030",
+  "title": "ControlNet-Wireframe \u2013 architectural wireframe-to-render ControlNet weights",
+  "summary": "ControlNet conditioning weights trained specifically on architectural line drawings and blueprints, producing photorealistic interior and exterior renders from wireframe input.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-031",
+  "title": "make-social-assets \u2013 Make.com blueprint for automated social image generation",
+  "summary": "A ready-to-import Make.com scenario that pulls new blog posts from a CMS webhook and generates on-brand Open Graph images and short-form social variants via an image API.",
+  "source": "GitHub",
+  "category": "Automations",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-032",
+  "title": "Quill \u2013 AI long-form content strategist for creative agencies",
+  "summary": "Agency-focused content platform with client workspace isolation, AI drafting, SEO scoring, and a built-in approval workflow that routes copy through client sign-off before publish.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Copywriting",
+  "url": null
+ },
+ {
+  "id": "synth-033",
+  "title": "TextureSynth-XL \u2013 tileable texture generation fine-tune",
+  "summary": "SDXL fine-tune optimized for generating seamlessly tileable PBR texture maps (albedo, roughness, normal, AO) from text or image prompts for game and archviz pipelines.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-034",
+  "title": "Show HN: ffmpeg-ai-transcoder \u2013 natural language ffmpeg command generator",
+  "summary": "A small Python CLI that takes a plain-English description of a video transcoding task and outputs a validated ffmpeg command, optionally executing it after user confirmation.",
+  "source": "Show HN",
+  "category": "Tools",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-035",
+  "title": "BrandScan \u2013 AI competitive brand audit tool",
+  "summary": "Crawls a target brand's public digital presence and returns a structured audit of visual identity consistency, tone-of-voice patterns, and gap opportunities versus specified competitors.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Branding",
+  "url": null
+ },
+ {
+  "id": "synth-036",
+  "title": "Ambient Diffusion: Generating Spatial Audio Beds from Scene Descriptions",
+  "summary": "Research paper presenting a latent diffusion model conditioned on text scene descriptions that generates multi-channel spatial audio atmospheres for film and game use.",
+  "source": "HF Papers",
+  "category": "Papers",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-037",
+  "title": "portrait-relighter \u2013 one-shot portrait relighting diffusion model",
+  "summary": "Diffusion model that takes a portrait photo and a target lighting description or HDRI map and realistically relights the subject while preserving identity and fine detail.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Photography",
+  "url": null
+ },
+ {
+  "id": "synth-038",
+  "title": "comfyui-prompt-matrix-node \u2013 exhaustive prompt variant batch node",
+  "summary": "Single ComfyUI node that parses a prompt with bracketed variable slots and automatically queues every combination as a batch, outputting a labeled contact-sheet image.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Image",
+  "url": null
+ },
+ {
+  "id": "synth-039",
+  "title": "Kinetic \u2013 AI motion design system for brands",
+  "summary": "SaaS platform where brand teams define animation principles once and then export on-brand motion presets to After Effects, Lottie, and CSS transitions from a single source of truth.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Motion",
+  "url": null
+ },
+ {
+  "id": "synth-040",
+  "title": "Adaptive Noise Scheduling for High-Fidelity Portrait Generation",
+  "summary": "Paper proposing a dynamic noise schedule that adjusts per-region during diffusion sampling based on semantic segmentation masks, improving fine detail in faces and hair.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "Image",
+  "url": null
+ },
+ {
+  "id": "synth-041",
+  "title": "zapier-ai-product-photography \u2013 Zapier template for automated product photo backgrounds",
+  "summary": "A Zapier workflow that monitors a Dropbox folder for new product cutout images and automatically generates multiple lifestyle background variants using a generative fill API.",
+  "source": "GitHub",
+  "category": "Automations",
+  "discipline": "Photography",
+  "url": null
+ },
+ {
+  "id": "synth-042",
+  "title": "Proxi \u2013 AI-powered proximity and spacing linter for Figma",
+  "summary": "Figma plugin that audits spacing, alignment, and proximity relationships across a file and suggests fixes aligned to the file's own detected grid and spacing scale.",
+  "source": "Product Hunt",
+  "category": "Plugins & Skills",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-043",
+  "title": "Show HN: I trained a LoRA on every Saul Bass poster and released it",
+  "summary": "A public LoRA adapter fine-tuned on a curated dataset of 340 Saul Bass film posters and graphics, released with training config, trigger words, and sample prompts.",
+  "source": "Show HN",
+  "category": "Models",
+  "discipline": "Branding",
+  "url": null
+ },
+ {
+  "id": "synth-044",
+  "title": "MeshDreamer-v2 \u2013 multi-view consistent text-to-mesh model",
+  "summary": "Updated text-to-3D mesh model that generates watertight, UV-unwrapped meshes with PBR materials from text or image prompts in under 90 seconds on a consumer GPU.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-045",
+  "title": "ChordCraft \u2013 AI chord progression and arrangement generator",
+  "summary": "Web app where musicians describe a mood, genre, and instrumentation and receive MIDI chord progressions, voicings, and a basic arrangement skeleton exportable to any DAW.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-046",
+  "title": "StyleScore: A Benchmark for Evaluating Aesthetic Consistency in AI Image Sequences",
+  "summary": "Paper introducing a new evaluation benchmark and automated metric suite for measuring visual style consistency across multiple generated images intended to form a cohesive set.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "Image",
+  "url": null
+ },
+ {
+  "id": "synth-047",
+  "title": "reactive-lottie-ai \u2013 AI-generated Lottie animations from component descriptions",
+  "summary": "CLI and Node.js library that accepts a UI component description and outputs a production-ready Lottie JSON animation file for micro-interaction states like loading, success, and error.",
+  "source": "GitHub",
+  "category": "Tools",
+  "discipline": "Motion",
+  "url": null
+ },
+ {
+  "id": "synth-048",
+  "title": "Prism \u2013 AI image direction tool for creative teams",
+  "summary": "Collaborative platform where art directors write image briefs, generate reference boards via integrated diffusion APIs, and deliver annotated creative direction to photographers and retouchers.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Photography",
+  "url": null
+ },
+ {
+  "id": "synth-049",
+  "title": "Real-Time Neural Garment Simulation for Clothed Human Avatars",
+  "summary": "Paper describing a lightweight neural network that approximates high-fidelity cloth physics for dressed digital humans at interactive frame rates without a traditional physics solver.",
+  "source": "HF Papers",
+  "category": "Papers",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-050",
+  "title": "copyai-brand-voice-mcp \u2013 MCP skill for brand-voice-consistent copy generation",
+  "summary": "MCP server that ingests a brand voice document and exposes a copywriting tool call that constrains any connected LLM agent to produce on-brand copy for specified formats and channels.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Copywriting",
+  "url": null
+ },
+ {
+  "id": "synth-051",
+  "title": "Flicker \u2013 AI-assisted film grain and analog texture toolkit",
+  "summary": "Lightroom and Photoshop plugin that applies procedurally generated, ISO-accurate film grain profiles built from real scanned film stocks rather than simple noise overlays.",
+  "source": "Product Hunt",
+  "category": "Plugins & Skills",
+  "discipline": "Photography",
+  "url": null
+ },
+ {
+  "id": "synth-052",
+  "title": "Show HN: Open-source AI spec writer \u2013 paste a Figma link, get an engineering spec",
+  "summary": "Python web app that fetches a Figma frame via API, runs it through a vision-language model, and outputs a structured Markdown engineering specification with component inventory and interaction notes.",
+  "source": "Show HN",
+  "category": "Tools",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-053",
+  "title": "AudioSep-v3 \u2013 language-queried audio source separation weights",
+  "summary": "Third-generation model that separates any sound source described in natural language from a mixture audio file, with improved performance on overlapping timbres and noisy environments.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-054",
+  "title": "Cascade \u2013 AI-driven design handoff annotation tool",
+  "summary": "Sits between Figma and development and automatically annotates exported assets with spacing, typography, and interaction specs inferred by a vision model rather than manually defined.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-055",
+  "title": "VideoColorist-LoRA \u2013 cinematic color grading LoRA collection for video diffusion",
+  "summary": "A collection of 12 LoRA adapters for a video diffusion base model, each trained on a specific cinematographer's body of work to transfer their characteristic color language to new footage.",
+  "source": "Hugging Face",
+  "category": "Models",
+  "discipline": "Video",
+  "url": null
+ },
+ {
+  "id": "synth-056",
+  "title": "Font Intent: Classifying Typographic Emotion with Contrastive Vision-Language Training",
+  "summary": "Research paper training a contrastive model to align typeface images with emotional and functional descriptors, enabling semantic font search and pairing recommendations.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "Design/UI",
+  "url": null
+ },
+ {
+  "id": "synth-057",
+  "title": "airtable-content-calendar-ai \u2013 AI content calendar automation for Airtable",
+  "summary": "An Airtable scripting automation and base template that uses an LLM API to fill a monthly content calendar with AI-drafted post concepts, captions, and asset briefs keyed to brand guidelines stored in the base.",
+  "source": "GitHub",
+  "category": "Automations",
+  "discipline": "Copywriting",
+  "url": null
+ },
+ {
+  "id": "synth-058",
+  "title": "Volum \u2013 AI spatial audio design tool for immersive media",
+  "summary": "Browser-based tool for composing binaural and Ambisonics spatial audio scenes using AI-assisted source placement, room modeling, and distance attenuation for VR, film, and game audio.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Audio/Music",
+  "url": null
+ },
+ {
+  "id": "synth-059",
+  "title": "Canonical Viewpoint Selection for Generative 3D Object Presentation",
+  "summary": "Paper proposing an algorithm that automatically selects the most informative canonical viewpoint for a generated 3D object to maximize recognizability in 2D thumbnail previews.",
+  "source": "arXiv",
+  "category": "Papers",
+  "discipline": "3D",
+  "url": null
+ },
+ {
+  "id": "synth-060",
+  "title": "comfyui-style-transfer-xl \u2013 real-time SDXL style transfer node with reference image injection",
+  "summary": "ComfyUI node that extracts a style embedding from a reference image using a trained adapter and injects it into any SDXL generation without altering the structural content conditioning.",
+  "source": "GitHub",
+  "category": "Plugins & Skills",
+  "discipline": "Image",
+  "url": null
+ },
+ {
+  "id": "synth-061",
+  "title": "TitleCard \u2013 AI-generated motion title sequences for filmmakers",
+  "summary": "Generates animated title card sequences in After Effects or as standalone video files from a film title, genre keywords, and tone description, with custom font and color options.",
+  "source": "Product Hunt",
+  "category": "Tools",
+  "discipline": "Motion",
+  "url": null
+ },
+ {
+  "id": "synth-062",
+  "title": "Show HN: Brand logo consistency scorer using CLIP embeddings",
+  "summary": "Small open-source tool that embeds a library of brand asset images with CLIP and outputs a consistency heatmap showing which assets drift furthest from the brand's visual centroid.",
+  "source": "Show HN",
+  "category": "Tools",
+  "discipline": "Branding",
+  "url": null
+ }
+]

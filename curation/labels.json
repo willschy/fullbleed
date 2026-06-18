@@ -1,0 +1,769 @@
+{
+ "keeps": [
+  {
+   "title": "Brew ",
+   "summary": "Brew is an AI-powered email marketing tool that generates copy, design, audience targeting, and automation logic from a plain-English description.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Stitch 2.0 by Google",
+   "summary": "Stitch 2.0 is a Google AI design tool that generates production-ready UI from natural language, voice, and image input, with built-in design system consistency and prototype export.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "black-forest-labs/FLUX.2-klein-4B",
+   "summary": "Black Forest Labs' FLUX.2-klein is a new 4B-parameter image generation and editing model from the makers of FLUX.1, released under Apache 2.0, supporting text-to-image, image-to-image, and image editing tasks.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "AKCodez/higgsfield-claude-skills \u2014 19 Claude Code skills for Higgsfield AI \u2014 automate image generation, Seedance 2.0 video creation, and full UGC ad pipelines with Playwright browser automation",
+   "summary": "A set of 19 Claude Code skills that wire Higgsfield AI into automated pipelines for image generation, Seedance 2.0 video creation, and UGC ad production via Playwright browser automation.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "bergside/typeui \u2014 Build better UI with Codex, Claude, Cursor and other AI tools",
+   "summary": "A GitHub repo and associated site claiming to help build UI components using AI coding tools like Codex, Claude, and Cursor, with no clear demo or standout capability shown.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Chronicle 2.0",
+   "summary": "Chronicle 2.0 is an AI-powered presentation tool that converts notes, prompts, or existing decks into branded slide decks through a conversational refinement interface.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Design Agent by Lokuma",
+   "summary": "Lokuma Design Agent is a design layer that AI coding agents (Claude Code, Codex, etc.) can call to apply layout, typography, and visual structure to generated outputs like landing pages.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Claude in PowerPoint",
+   "summary": "Claude is now available as a native add-in inside Microsoft PowerPoint, letting users build, edit, and iterate on slides while respecting existing layouts, fonts, and slide masters, with live data connectors pulling in context from external tools.",
+   "source": "Product Hunt",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Loki.Build",
+   "summary": "Loki.Build is an AI-native landing page builder that generates pages from prompts and includes editing, SEO, and hosting.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "artokun/comfyui-mcp \u2014 Claude Code plugin + MCP server for ComfyUI \u2014 88 tools, 14 AI skills (Flux, WAN, LTX video, Qwen), live graph editing from your Claude session. Generate images & video, manage models and custom nodes.",
+   "summary": "An MCP server and Claude Code plugin that exposes 88 tools and 14 AI skills (Flux, WAN, LTX video, Qwen) so you can control ComfyUI \u2014 generate images and video, edit workflows, manage models and custom nodes \u2014 directly from a Claude session.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Stitch 3.0 by Google",
+   "summary": "Stitch 3.0 is Google's AI-powered UI design tool that generates and iterates mobile and web screens from text prompts on a live canvas, with one-click export to Figma, Netlify, Lovable, and Bolt.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "AgriciDaniel/claude-ads \u2014 Comprehensive paid advertising audit & optimization skill for Claude Code. 250+ checks across Google, Meta, YouTube, LinkedIn, TikTok, Microsoft & Apple Ads with weighted scoring, parallel agents, industry templates, and AI creative generation.",
+   "summary": "A Claude Code skill that runs 250+ automated checks across major ad platforms (Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple Ads) with weighted scoring, parallel agents, industry templates, and AI creative generation for paid advertising audits.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Cowork",
+   "summary": "Cowork is a desktop app that gives Claude access to a local folder so it can read, edit, and create files autonomously on assigned tasks.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Claude Design by Anthropic Labs",
+   "summary": "Claude Design is Anthropic's conversational design tool that generates prototypes, slides, and one-pagers from text prompts and refines them through dialogue, with export support.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Figma for Agents",
+   "summary": "Figma's use_figma MCP server lets AI coding agents access your design system directly, so agent-generated designs can stay on-brand and consistent with existing components.",
+   "source": "Product Hunt",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "alexisrolland/ComfyUI-Blender \u2014 Custom nodes and add-on to use ComfyUI from Blender.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "bergside/awesome-design-skills \u2014 List of 67 awesome DESIGN.md and SKILL.md design skill files for agentic tools like Claude Design, Google Stitch, Codex, Cursor, and other AI tools",
+   "summary": "A curated collection of 67 DESIGN.md and SKILL.md skill files for wiring design intent into agentic AI tools like Claude, Cursor, and Google Stitch.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Cardboard",
+   "summary": "Cardboard is an agentic AI video editor that analyzes raw footage and assembles a final cut autonomously, positioned as an AI-driven alternative to traditional timeline editing.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "jtydhr88/comfyui-custom-node-skills \u2014 A curated collection of [Claude Code skills](https://docs.anthropic.com/en/docs/claude-code/skills) for developing ComfyUI custom nodes. These skills give Claude comprehensive knowledge of the ComfyUI node system, covering both the V3 (recommended) and V1 (legacy) APIs.",
+   "summary": "A set of Claude Code skills that give Claude deep knowledge of the ComfyUI node system (V1 and V3 APIs), enabling it to help developers build and configure custom ComfyUI nodes.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Perceptual Typography: Training LLMs to Reason About Type Hierarchy and Legibility",
+   "summary": "Paper presenting a new benchmark and fine-tuning dataset for evaluating and improving large language models' ability to critique and recommend typographic layout decisions.",
+   "source": "arXiv",
+   "category": "Papers",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "DiffusionRig-3D: Consistent Character Rigging via Latent Anchoring",
+   "summary": "Research paper proposing a method that binds a diffusion model's latent space to a parametric 3D skeleton so generated characters remain anatomically consistent across poses.",
+   "source": "arXiv",
+   "category": "Papers",
+   "discipline": "3D"
+  },
+  {
+   "title": "StyleScore: A Benchmark for Evaluating Aesthetic Consistency in AI Image Sequences",
+   "summary": "Paper introducing a new evaluation benchmark and automated metric suite for measuring visual style consistency across multiple generated images intended to form a cohesive set.",
+   "source": "arXiv",
+   "category": "Papers",
+   "discipline": "Image"
+  },
+  {
+   "title": "Folio AI \u2013 automated portfolio site builder for creatives",
+   "summary": "Scrapes uploaded work samples and auto-generates a personal portfolio website with AI-written case study copy and responsive layout variants.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "Font Intent: Classifying Typographic Emotion with Contrastive Vision-Language Training",
+   "summary": "Research paper training a contrastive model to align typeface images with emotional and functional descriptors, enabling semantic font search and pairing recommendations.",
+   "source": "arXiv",
+   "category": "Papers",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "MeshDreamer-v2 \u2013 multi-view consistent text-to-mesh model",
+   "summary": "Updated text-to-3D mesh model that generates watertight, UV-unwrapped meshes with PBR materials from text or image prompts in under 90 seconds on a consumer GPU.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "3D"
+  },
+  {
+   "title": "BrandScan \u2013 AI competitive brand audit tool",
+   "summary": "Crawls a target brand's public digital presence and returns a structured audit of visual identity consistency, tone-of-voice patterns, and gap opportunities versus specified competitors.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Branding"
+  },
+  {
+   "title": "MotionScript \u2013 natural-language keyframe animation for After Effects",
+   "summary": "After Effects panel and JSX bridge that converts plain-English motion descriptions into keyframed property animations on selected layers.",
+   "source": "Product Hunt",
+   "category": "Plugins & Skills",
+   "discipline": "Motion"
+  },
+  {
+   "title": "Reframe \u2013 batch aspect-ratio recomposition for video editors",
+   "summary": "Desktop app that uses saliency detection and generative fill to non-destructively reframe existing footage from any source ratio to any target ratio.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Video"
+  },
+  {
+   "title": "Inkdrop \u2013 AI illustration style transfer for UI icon sets",
+   "summary": "Figma plugin that applies a learned illustration style extracted from an uploaded reference sheet uniformly across an entire icon library in one pass.",
+   "source": "Product Hunt",
+   "category": "Plugins & Skills",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "Real-Time Neural Garment Simulation for Clothed Human Avatars",
+   "summary": "Paper describing a lightweight neural network that approximates high-fidelity cloth physics for dressed digital humans at interactive frame rates without a traditional physics solver.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": "3D"
+  },
+  {
+   "title": "Paletta \u2013 AI color system generator for brand design",
+   "summary": "Generates complete, accessible color systems from a single seed color or brand brief, exporting tokens directly to Figma, Style Dictionary, and CSS.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "GlyphForge \u2013 logotype sketch-to-vector AI",
+   "summary": "Takes a hand-drawn or rough raster sketch of a wordmark and returns clean, editable SVG vector paths with optically corrected letterforms.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Branding"
+  },
+  {
+   "title": "portrait-relighter \u2013 one-shot portrait relighting diffusion model",
+   "summary": "Diffusion model that takes a portrait photo and a target lighting description or HDRI map and realistically relights the subject while preserving identity and fine detail.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "Photography"
+  },
+  {
+   "title": "TextureSynth-XL \u2013 tileable texture generation fine-tune",
+   "summary": "SDXL fine-tune optimized for generating seamlessly tileable PBR texture maps (albedo, roughness, normal, AO) from text or image prompts for game and archviz pipelines.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "3D"
+  }
+ ],
+ "kills": [
+  {
+   "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+   "summary": "InterleaveThinker is a multi-agent pipeline (planner + critic trained with GRPO) that adds interleaved text-image sequence generation capability to existing image generators like FLUX, achieving performance comparable to GPT-5 on interleaved generation benchmarks.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "happycapy",
+   "summary": "Happycapy is a browser-based GUI that wraps Claude Code as an agent-native computing environment requiring no setup, now also available on mobile.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "SpatialClaw: Rethinking Action Interface for Agentic Spatial Reasoning",
+   "summary": "SpatialClaw is a training-free framework that uses iterative Python code execution as an action interface to improve spatial reasoning in vision-language models across 3D/4D benchmarks.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "ZSeven-W/openpencil \u2014 The world's first open-source AI-native vector design tool and the first to feature concurrent Agent Teams. Design-as-Code. Turn prompts into UI directly on the live canvas. A modern alternative to Pencil.",
+   "summary": "An open-source, self-described AI-native vector design tool that claims to turn prompts into UI on a live canvas, positioned as an alternative to Pencil Project.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Hugo-Dz/spritefusion-pixel-snapper \u2014 A tool to snap pixels to a perfect grid. Designed to fix messy and inconsistent pixel art generated by AI.",
+   "summary": "A web tool that snaps AI-generated pixel art to a clean grid, correcting the misaligned or inconsistent pixels that diffusion models typically produce.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "FireRedTeam/FireRed-Image-Edit-1.0",
+   "summary": "",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "VideoMDM: Towards 3D Human Motion Generation From 2D Supervision",
+   "summary": "VideoMDM is a diffusion-based framework that learns 3D human motion generation from 2D video supervision alone \u2014 no 3D ground truth required \u2014 by reprojecting predicted 3D poses back to 2D for training, nearly matching fully 3D-supervised methods on standard benchmarks.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "Visko-Platform/VEFX-Bench \u2014 VEFX-Bench: A Holistic Benchmark for Generic Video Editing and Visual Effects",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "Saganaki22/ComfyUI-FishAudioS2 \u2014 ComfyUI custom nodes for Fish Audio S2-Pro TTS \u2014 voice clone, multi-speaker, and text-to-speech",
+   "summary": "A set of ComfyUI custom nodes that wire Fish Audio S2-Pro TTS into ComfyUI for text-to-speech, voice cloning, and multi-speaker synthesis.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "farizanjum/fixtral \u2014 Fixtral is an AI-powered Photoshop assistant that automates image edits requested on Reddit's r/PhotoshopRequest using Google's Gemini AI models.",
+   "summary": "Fixtral is a GitHub project that monitors r/PhotoshopRequest on Reddit and uses Google Gemini to automatically fulfill image-edit requests posted there.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "black-forest-labs/FLUX.2-klein-9B",
+   "summary": "FLUX.2-klein-9B is a new 9-billion-parameter image generation and editing model from Black Forest Labs, supporting image-to-image workflows and compatible with the diffusers ecosystem.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "InternVideo3: Agentify Foundation Models with Multimodal Contextual Reasoning",
+   "summary": "InternVideo3 is a research framework for long-horizon video understanding that uses closed-loop multimodal reasoning and a new attention mechanism to improve performance on video comprehension benchmarks.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+   "summary": "HYDRA-X is a 7B unified multimodal model that handles image and video understanding and generation through a single Vision Transformer tokenizer, with architectural findings on temporal attention and compression that improve editing consistency.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "safzanpirani/flux-kontext-diff-merge \u2014 This node preserves image quality by selectively merging only the changed regions from AI-generated edits back into the original image.",
+   "summary": "A ComfyUI custom node for Flux Kontext that detects changed regions between an AI edit and the original image, then composites only those regions back in to preserve source image quality.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Fathom 3.0",
+   "summary": "Fathom 3.0 is an AI meeting notetaker with bot-free capture, ChatGPT/Claude integrations, and account-wide search.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "GalaxyXieyu/Design-Learn \u2014 Extract reference-site design language into reusable rules for AI coding tools.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "GoogleCloudPlatform/gcc-creative-studio \u2014 Google Cloud Creative Studio is a comprehensive, all-in-one Generative AI Platform designed as a deployable solution for your own Google Cloud project. It serves as a powerful reference implementation and creative suite, showcasing the full spectrum of Google's state-of-the-art generative AI models on Vertex AI.",
+   "summary": "A self-deployable Google Cloud reference app that surfaces Vertex AI generative models in a single creative-suite interface.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Lightricks/LTX-2.3",
+   "summary": "LTX-2.3 is Lightricks' latest open video generation model supporting text-to-video, image-to-video, video-to-video, and audio-video generation in a single release with strong community traction on Hugging Face.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "zai-org/SCAIL-2",
+   "summary": "",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "AIDC-AI/Ovis-Image \u2014 Ovis-Image is a 7B text-to-image model specifically optimized for high-quality text rendering, designed to operate efficiently under stringent computational constraints.",
+   "summary": "Ovis-Image is a 7B text-to-image model from AIDC-AI built specifically for accurate, high-quality text rendering within tight compute constraints.",
+   "source": "GitHub",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "QwenLM/Qwen3-Omni \u2014 Qwen3-omni is a natively end-to-end, omni-modal LLM developed by the Qwen team at Alibaba Cloud, capable of understanding text, audio, images, and video, as well as generating speech in real time.",
+   "summary": "Qwen3-Omni is Alibaba Cloud's end-to-end omnimodal LLM that can understand text, audio, images, and video while generating speech in real time.",
+   "source": "GitHub",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "UditAkhourii/adhd \u2014 ADHD \u2014 a skill for coding agents. Tree-of-thought with pruning, built on the Claude & Codex Agent SDK. Fans out parallel divergent thoughts under different cognitive frames, scores, prunes traps, deepens the survivors. The no-brainer skill for creative and interdisciplinary work.",
+   "summary": "A GitHub repo implementing a tree-of-thought reasoning skill for coding agents built on the Claude and Codex Agent SDK, designed to fan out and prune parallel reasoning paths.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Azornes/Comfyui-Resolution-Master \u2014 Custom node for total control over resolution and aspect ratio. It provides an intuitive interface with an interactive canvas, advanced scaling options, extensive presets (SDXL, Flux, WAN), and a manager for custom presets, as well as model-specific optimizations for high-quality AI image generation.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "unsloth/LTX-2.3-GGUF",
+   "summary": "",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "CodeGoat24/Pref-GRPO \u2014 Official implementation of Pref-GRPO: Pairwise Preference Reward-based GRPO for Stable Text-to-Image Reinforcement Learning",
+   "summary": "A GitHub repo implementing Pref-GRPO, a reinforcement learning training method for text-to-image models that uses pairwise preference rewards to stabilize the GRPO training loop.",
+   "source": "GitHub",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "lovisdotio/NanoBananaLoraDatasetGenerator \u2014 \ud83c\udf4c Create LoRA training datasets for Flux 2, Z-Image, Qwen Image Edit & more! Uses FAL.ai + Nano Banana Pro. 100% browser-based, no server needed.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "alibaba-damo-academy/T2I-Distill \u2014 [Tutorial] Few-Step Distillation for Text-to-Image Generation: A Practical Guide",
+   "summary": "A GitHub tutorial repository from Alibaba DAMO Academy covering few-step distillation methods for text-to-image generation, aimed at practitioners who want to understand the technique landscape.",
+   "source": "GitHub",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "liconstudio/ComfyUI-Licon-MSR \u2014   A ComfyUI custom node designed for LTX 2.3 MSR (Multiple-Subject-Reference) LoRA workflows.",
+   "summary": "A ComfyUI custom node that enables multi-subject reference LoRA workflows using LTX 2.3 MSR, allowing consistent character/subject generation across video or image outputs.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Lightricks/LTX-2",
+   "summary": "LTX-2 is Lightricks' new multimodal video generation model supporting text-to-video, image-to-video, video-to-video, and audio-video synthesis in a single release.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "vrgamegirl19/comfyui-vrgamedevgirl \u2014 Custom ComfyUI nodes for film grain, color matching, and video enhancement.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "GAIR/daVinci-MagiHuman",
+   "summary": "MagiHuman is a multimodal model from GAIR that generates synchronized video and audio from images, text, or combined inputs, supporting multiple languages under an Apache 2.0 license.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "Magic Patterns Agent 2.0",
+   "summary": "Magic Patterns Agent 2.0 is an AI design tool that generates UI prototypes from a prompt using your existing design system, then hands off production-ready components to engineering.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "BobJohnson24/ComfyUI-INT8-Fast \u2014 Custom node to load models in INT8 for 1.5~2X Speed gains on 30 series cards.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Pitch Agent",
+   "summary": "Pitch Agent is an AI feature built into the Pitch presentation app that generates and refines slides from prompts and file attachments while working from your existing templates and design language rather than generic layouts.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "fal/ltx2.3-audio-reactive-lora",
+   "summary": "A LoRA adapter for Lightricks LTX-2.3 that claims to make video generation react to audio beats and music, enabling music-video-style outputs from image or text inputs.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "julianoczkowski/designer-skills \u2014 A collection of agent skills for designers who prototype and build with AI coding tools. These skills encode design process so AI follows a structured path instead of producing random output.",
+   "summary": "A GitHub repo of agent skills that encode structured design process steps for use with AI coding tools, so the AI follows a deliberate workflow rather than producing unconstrained output.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Kwai Keye-VL-2.0 Technical Report",
+   "summary": "Kwai Keye-VL-2.0-30B-A3B is an open-source MoE multimodal model that processes up to 256K context for long-video understanding and agentic tasks, achieving state-of-the-art results on long-video benchmarks at its parameter scale.",
+   "source": "HF Papers",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "microsoft/Lens \u2014 Lens is a 3.8B-parameter text-to-image diffusion model that achieves quality competitive with and in several cases surpassing models like FLUX and SD3, while requiring significantly less training compute. Key ideas include maximizing data information density per batch and accelerating convergence. ",
+   "summary": "Lens is a 3.8B-parameter text-to-image diffusion model from Microsoft that claims quality competitive with FLUX and SD3 while using significantly less training compute, achieved through higher data information density per batch.",
+   "source": "GitHub",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "james-see/ltx-video-mac \u2014 Native macOS app for AI video generation using LTX-Video model, optimized for Apple Silicon",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "yolain/ComfyUI-Easy-Sam3 \u2014 A ComfyUI custom node package for [SAM3 (Segment Anything Model 3)](https://github.com/facebookresearch/sam3), providing powerful image and video segmentation capabilities with text prompts.",
+   "summary": "A ComfyUI custom node package that wraps Meta's SAM3 (Segment Anything Model 3) to add text-prompted image and video segmentation directly into ComfyUI workflows.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "diodiogod/TTS-Audio-Suite \u2014 A ComfyUI custom node integration for local multi-engine multi-language Text-to-Speech and Voice Conversion. Supports: RVC, Echo-TTS, Qwen3-TTS, Cozy Voice 3, Step Audio EditX, IndexTTS-2, Chatterbox (classic and multilingual), F5-TTS, Higgs Audio 2 and VibeVoice with unlimited text length, SRT timing, Character support, and many audio tools",
+   "summary": "A ComfyUI custom node suite that integrates ten-plus local TTS and voice conversion engines (including Qwen3-TTS, F5-TTS, Chatterbox, and RVC) with SRT timing support and unlimited text length into a single wirable pipeline.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "unsloth/Qwen-Image-Edit-2511-GGUF",
+   "summary": "A GGUF-quantized version of Qwen's image editing model packaged by Unsloth for local inference, with no demo, artifact, or result shown.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "Roblox/cubepart",
+   "summary": "",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "lilylilith/AnyPose",
+   "summary": "",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "lightx2v/Qwen-Image-Edit-2511-Lightning",
+   "summary": "",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "thedeoxen/FLUX.2-klein-9B-manga-colorization-by-reference-LORA",
+   "summary": "A LoRA adapter for FLUX.2-klein-9B that colorizes manga panels by reference image, released on Hugging Face with minimal documentation or demonstrated results.",
+   "source": "Hugging Face",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "Qwen/Qwen-Image-Edit-2511",
+   "summary": "Qwen-Image-Edit-2511 is a Qwen-released image editing model (Apache 2.0) that takes an image and text instruction as input and outputs an edited image, with 1047 HF likes and an associated arXiv paper.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": ""
+  },
+  {
+   "title": "Loova Agents",
+   "summary": "",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": ""
+  },
+  {
+   "title": "alonw0/web-asset-generator \u2014 Claude skill to generate favicons, app icons, and social media images from logos, text, or emojis. Supports emoji suggestions, validation, and framework auto-integration.",
+   "summary": "A Claude skill (MCP-style) that generates favicons, app icons, and social media images from logos, text, or emojis, with emoji suggestions, output validation, and automatic framework integration.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "DarioFT/ComfyUI-Qwen3-ASR \u2014 ComfyUI custom nodes for Qwen3-ASR (Automatic Speech Recognition) - audio-to-text transcription supporting 52 languages and dialects.",
+   "summary": "A ComfyUI custom node that wraps Qwen3-ASR for audio-to-text transcription inside ComfyUI workflows, supporting 52 languages.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "yejy53/RealGen \u2014 RealGen: Photorealistic Text-to-Image Generation via Detector-Guided Rewards.",
+   "summary": "",
+   "source": "GitHub",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "shootthesound/comfyUI-Realtime-Lora \u2014 Train and block edit and save  LoRAs directly inside ComfyUI for Z-image, Flux Klein, SDXL, Flux, WAN 2.2, SD 1.5",
+   "summary": "A ComfyUI plugin that lets you train, block-edit, and save LoRAs in real time directly inside ComfyUI, supporting Flux, SDXL, WAN 2.2, SD 1.5, and other model families.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": ""
+  },
+  {
+   "title": "Reroute, Don't Remove: Recoverable Visual Token Routing for Vision-Language Models",
+   "summary": "A training-free plug-in that replaces irreversible visual token pruning in vision-language models with recoverable routing, improving grounding accuracy under aggressive token reduction without changing compute budgets.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": ""
+  },
+  {
+   "title": "SynthStems-1B \u2013 stem-separation and re-synthesis model weights",
+   "summary": "A 1-billion-parameter model trained on 400k mixed tracks that separates audio into eight stems and optionally re-synthesizes any stem in a target instrument timbre.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "Audio/Music"
+  },
+  {
+   "title": "airtable-content-calendar-ai \u2013 AI content calendar automation for Airtable",
+   "summary": "An Airtable scripting automation and base template that uses an LLM API to fill a monthly content calendar with AI-drafted post concepts, captions, and asset briefs keyed to brand guidelines stored in the base.",
+   "source": "GitHub",
+   "category": "Automations",
+   "discipline": "Copywriting"
+  },
+  {
+   "title": "SplatEdit: Interactive Gaussian Splatting Scene Editing via Text Prompts",
+   "summary": "Paper introducing a pipeline for editing 3D Gaussian Splat scenes by localizing regions with open-vocabulary segmentation and applying diffusion-based inpainting in 3D.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": "3D"
+  },
+  {
+   "title": "Show HN: ffmpeg-ai-transcoder \u2013 natural language ffmpeg command generator",
+   "summary": "A small Python CLI that takes a plain-English description of a video transcoding task and outputs a validated ffmpeg command, optionally executing it after user confirmation.",
+   "source": "Show HN",
+   "category": "Tools",
+   "discipline": "Video"
+  },
+  {
+   "title": "Show HN: I trained a LoRA on every Saul Bass poster and released it",
+   "summary": "A public LoRA adapter fine-tuned on a curated dataset of 340 Saul Bass film posters and graphics, released with training config, trigger words, and sample prompts.",
+   "source": "Show HN",
+   "category": "Models",
+   "discipline": "Branding"
+  },
+  {
+   "title": "Attune \u2013 AI mix assistant plugin for DAWs",
+   "summary": "VST3/AU plugin that analyzes a full mix in real time and suggests per-track EQ, compression, and reverb settings modeled on a user-selected reference track.",
+   "source": "Product Hunt",
+   "category": "Plugins & Skills",
+   "discipline": "Audio/Music"
+  },
+  {
+   "title": "make-social-assets \u2013 Make.com blueprint for automated social image generation",
+   "summary": "A ready-to-import Make.com scenario that pulls new blog posts from a CMS webhook and generates on-brand Open Graph images and short-form social variants via an image API.",
+   "source": "GitHub",
+   "category": "Automations",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "reactive-lottie-ai \u2013 AI-generated Lottie animations from component descriptions",
+   "summary": "CLI and Node.js library that accepts a UI component description and outputs a production-ready Lottie JSON animation file for micro-interaction states like loading, success, and error.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": "Motion"
+  },
+  {
+   "title": "Show HN: Open-source AI spec writer \u2013 paste a Figma link, get an engineering spec",
+   "summary": "Python web app that fetches a Figma frame via API, runs it through a vision-language model, and outputs a structured Markdown engineering specification with component inventory and interaction notes.",
+   "source": "Show HN",
+   "category": "Tools",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "comfyui-prompt-matrix-node \u2013 exhaustive prompt variant batch node",
+   "summary": "Single ComfyUI node that parses a prompt with bracketed variable slots and automatically queues every combination as a batch, outputting a labeled contact-sheet image.",
+   "source": "GitHub",
+   "category": "Plugins & Skills",
+   "discipline": "Image"
+  },
+  {
+   "title": "Cascade \u2013 AI-driven design handoff annotation tool",
+   "summary": "Sits between Figma and development and automatically annotates exported assets with spacing, typography, and interaction specs inferred by a vision model rather than manually defined.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Design/UI"
+  },
+  {
+   "title": "Ambient Diffusion: Generating Spatial Audio Beds from Scene Descriptions",
+   "summary": "Research paper presenting a latent diffusion model conditioned on text scene descriptions that generates multi-channel spatial audio atmospheres for film and game use.",
+   "source": "HF Papers",
+   "category": "Papers",
+   "discipline": "Audio/Music"
+  },
+  {
+   "title": "AudioSep-v3 \u2013 language-queried audio source separation weights",
+   "summary": "Third-generation model that separates any sound source described in natural language from a mixture audio file, with improved performance on overlapping timbres and noisy environments.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "Audio/Music"
+  },
+  {
+   "title": "Adaptive Noise Scheduling for High-Fidelity Portrait Generation",
+   "summary": "Paper proposing a dynamic noise schedule that adjusts per-region during diffusion sampling based on semantic segmentation masks, improving fine detail in faces and hair.",
+   "source": "arXiv",
+   "category": "Papers",
+   "discipline": "Image"
+  },
+  {
+   "title": "CopyStack \u2013 AI copywriting workspace for brand teams",
+   "summary": "Collaborative SaaS editor where brand teams manage tone-of-voice rules, approve AI-generated copy variants, and push finalized text to CMS platforms via API.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Copywriting"
+  },
+  {
+   "title": "loopcraft \u2013 one-click seamless loop creator for motion graphics",
+   "summary": "CLI tool and web UI that takes any short video clip and uses frame interpolation plus inpainting to stitch it into a perfectly seamless looping GIF or MP4.",
+   "source": "GitHub",
+   "category": "Tools",
+   "discipline": "Motion"
+  },
+  {
+   "title": "Show HN: I built a real-time AI color grading proxy for DaVinci Resolve",
+   "summary": "Open-source Python sidecar process that streams frames from DaVinci Resolve's viewer, applies a user-described color grade via a vision-language model, and returns LUT deltas in real time.",
+   "source": "Show HN",
+   "category": "Tools",
+   "discipline": "Video"
+  },
+  {
+   "title": "PhotoRAW-LLM \u2013 natural-language Lightroom-style editing via vision-language model",
+   "summary": "Fine-tuned vision-language model that translates plain-English editing instructions into precise parametric RAW adjustments compatible with standard XMP sidecar files.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "Photography"
+  },
+  {
+   "title": "Slate \u2013 AI storyboard generator for video directors",
+   "summary": "Uploads a script or shot list and generates a full storyboard with consistent character art, rough camera angles, and scene descriptions using a custom fine-tuned image model.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Video"
+  },
+  {
+   "title": "VocalClone-Fast \u2013 3-second speaker cloning TTS weights",
+   "summary": "Lightweight 380M-parameter text-to-speech model that clones a target voice from as little as three seconds of reference audio with low-latency streaming inference.",
+   "source": "Hugging Face",
+   "category": "Models",
+   "discipline": "Audio/Music"
+  },
+  {
+   "title": "ChordCraft \u2013 AI chord progression and arrangement generator",
+   "summary": "Web app where musicians describe a mood, genre, and instrumentation and receive MIDI chord progressions, voicings, and a basic arrangement skeleton exportable to any DAW.",
+   "source": "Product Hunt",
+   "category": "Tools",
+   "discipline": "Audio/Music"
+  },
+  {
+   "title": "Tempering Temporal Consistency: A Survey of Frame-Coherence Techniques in Video Diffusion",
+   "summary": "Comprehensive survey paper cataloging and benchmarking 34 published methods for maintaining temporal consistency in diffusion-based video generation models.",
+   "source": "arXiv",
+   "category": "Papers",
+   "discipline": "Video"
+  }
+ ]
+}

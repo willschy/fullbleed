@@ -1,0 +1,184 @@
+[
+ {
+  "type": "keep",
+  "ids": [
+   "synth-017",
+   "synth-033"
+  ],
+  "ts": "2026-06-17T22:14:59.165Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-054",
+   "synth-016"
+  ],
+  "ts": "2026-06-17T22:15:23.024Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-018",
+   "synth-052"
+  ],
+  "ts": "2026-06-17T22:15:43.548Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-021",
+   "synth-053"
+  ],
+  "ts": "2026-06-17T22:16:06.686Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-056",
+  "loser": "synth-036",
+  "ts": "2026-06-17T22:16:27.634Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-015",
+  "loser": "synth-014",
+  "ts": "2026-06-17T22:16:48.514Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-034",
+   "synth-026"
+  ],
+  "ts": "2026-06-17T22:17:02.556Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-034",
+   "synth-011"
+  ],
+  "ts": "2026-06-17T22:17:18.720Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-035",
+  "loser": "synth-014",
+  "ts": "2026-06-17T22:17:26.077Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-003",
+  "loser": "synth-043",
+  "ts": "2026-06-17T22:17:44.919Z"
+ },
+ {
+  "type": "keep",
+  "ids": [
+   "synth-005",
+   "synth-027"
+  ],
+  "ts": "2026-06-17T22:18:05.381Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-005",
+  "loser": "synth-004",
+  "ts": "2026-06-17T22:18:18.214Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-047",
+   "synth-045"
+  ],
+  "ts": "2026-06-17T22:18:32.924Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-021",
+  "loser": "synth-045",
+  "ts": "2026-06-17T22:18:42.650Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-047",
+   "synth-009"
+  ],
+  "ts": "2026-06-17T22:18:48.993Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-031",
+   "synth-040"
+  ],
+  "ts": "2026-06-17T22:19:16.485Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-033",
+  "loser": "synth-009",
+  "ts": "2026-06-17T22:19:26.339Z"
+ },
+ {
+  "type": "keep",
+  "ids": [
+   "synth-056",
+   "synth-006"
+  ],
+  "ts": "2026-06-17T22:19:39.997Z"
+ },
+ {
+  "type": "keep",
+  "ids": [
+   "synth-007",
+   "synth-017"
+  ],
+  "ts": "2026-06-17T22:19:53.489Z"
+ },
+ {
+  "type": "keep",
+  "ids": [
+   "synth-049",
+   "synth-035"
+  ],
+  "ts": "2026-06-17T22:20:07.410Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-044",
+  "loser": "synth-040",
+  "ts": "2026-06-17T22:20:19.977Z"
+ },
+ {
+  "type": "pick",
+  "winner": "synth-001",
+  "loser": "synth-028",
+  "ts": "2026-06-17T22:20:33.885Z"
+ },
+ {
+  "type": "keep",
+  "ids": [
+   "synth-046",
+   "synth-037"
+  ],
+  "ts": "2026-06-17T22:20:51.810Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-038",
+   "synth-057"
+  ],
+  "ts": "2026-06-17T22:21:14.481Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "synth-029",
+   "synth-053"
+  ],
+  "ts": "2026-06-17T22:21:25.227Z"
+ }
+]

@@ -1,0 +1,349 @@
+[
+ {
+  "winner": "gh:bergside/typeui",
+  "loser": "gh:UditAkhourii/adhd",
+  "ts": "2026-06-17T21:33:49.134Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1089427",
+  "loser": "gh:alibaba-damo-academy/T2I-Distill",
+  "ts": "2026-06-17T21:48:04.445Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.13679",
+   "hf:FireRedTeam/FireRed-Image-Edit-1.0"
+  ],
+  "ts": "2026-06-17T21:48:26.639Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:Azornes/Comfyui-Resolution-Master",
+   "gh:diodiogod/TTS-Audio-Suite"
+  ],
+  "ts": "2026-06-17T21:48:38.849Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:AKCodez/higgsfield-claude-skills",
+  "loser": "ph:1127525",
+  "ts": "2026-06-17T21:49:20.647Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hf:unsloth/Qwen-Image-Edit-2511-GGUF",
+   "hf:fal/ltx2.3-audio-reactive-lora"
+  ],
+  "ts": "2026-06-17T21:49:34.402Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hf:lilylilith/AnyPose",
+   "gh:yolain/ComfyUI-Easy-Sam3"
+  ],
+  "ts": "2026-06-17T21:49:53.744Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:julianoczkowski/designer-skills",
+   "hfpaper:2606.12412"
+  ],
+  "ts": "2026-06-17T21:50:05.559Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1106192",
+  "loser": "ph:1133288",
+  "ts": "2026-06-17T21:50:14.536Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.13364",
+   "hf:thedeoxen/FLUX.2-klein-9B-manga-colorization-by-reference-LORA"
+  ],
+  "ts": "2026-06-17T21:50:48.007Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1101888",
+  "loser": "hf:Lightricks/LTX-2",
+  "ts": "2026-06-17T21:50:55.741Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hf:unsloth/Qwen-Image-Edit-2511-GGUF",
+   "hf:zai-org/SCAIL-2"
+  ],
+  "ts": "2026-06-17T21:51:05.325Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:alexisrolland/ComfyUI-Blender",
+  "loser": "gh:QwenLM/Qwen3-Omni",
+  "ts": "2026-06-17T21:51:15.159Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:AgriciDaniel/claude-ads",
+  "loser": "gh:yejy53/RealGen",
+  "ts": "2026-06-17T21:51:38.424Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:Visko-Platform/VEFX-Bench",
+   "gh:CodeGoat24/Pref-GRPO"
+  ],
+  "ts": "2026-06-17T21:52:02.139Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:liconstudio/ComfyUI-Licon-MSR",
+   "hf:fal/ltx2.3-audio-reactive-lora"
+  ],
+  "ts": "2026-06-17T21:52:24.557Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hf:Lightricks/LTX-2.3",
+   "hf:GAIR/daVinci-MagiHuman"
+  ],
+  "ts": "2026-06-17T21:52:37.907Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1089427",
+  "loser": "hfpaper:2606.13673",
+  "ts": "2026-06-17T21:52:54.152Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1062017",
+  "loser": "ph:1143406",
+  "ts": "2026-06-17T21:53:17.200Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:alonw0/web-asset-generator",
+   "hfpaper:2606.12195"
+  ],
+  "ts": "2026-06-17T21:54:16.068Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:bergside/typeui",
+  "loser": "gh:farizanjum/fixtral",
+  "ts": "2026-06-17T21:54:41.319Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1149886",
+  "loser": "ph:1074937",
+  "ts": "2026-06-17T21:54:45.535Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1089427",
+  "loser": "gh:microsoft/Lens",
+  "ts": "2026-06-17T21:54:53.428Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:GoogleCloudPlatform/gcc-creative-studio",
+   "gh:Saganaki22/ComfyUI-FishAudioS2"
+  ],
+  "ts": "2026-06-17T21:55:04.670Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hf:Roblox/cubepart",
+   "hf:lilylilith/AnyPose"
+  ],
+  "ts": "2026-06-17T21:55:26.953Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1126180",
+  "loser": "gh:Hugo-Dz/spritefusion-pixel-snapper",
+  "ts": "2026-06-17T21:55:56.662Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:artokun/comfyui-mcp",
+  "loser": "hf:unsloth/LTX-2.3-GGUF",
+  "ts": "2026-06-17T21:56:14.403Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1094627",
+  "loser": "gh:Hugo-Dz/spritefusion-pixel-snapper",
+  "ts": "2026-06-17T21:56:31.328Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:bergside/typeui",
+  "loser": "gh:vrgamegirl19/comfyui-vrgamedevgirl",
+  "ts": "2026-06-17T21:57:06.591Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:bergside/awesome-design-skills",
+  "loser": "gh:julianoczkowski/designer-skills",
+  "ts": "2026-06-17T21:57:17.799Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:lovisdotio/NanoBananaLoraDatasetGenerator",
+   "gh:ZSeven-W/openpencil"
+  ],
+  "ts": "2026-06-17T21:57:30.945Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1050863",
+  "loser": "ph:1123888",
+  "ts": "2026-06-17T21:57:48.790Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:artokun/comfyui-mcp",
+  "loser": "gh:Azornes/Comfyui-Resolution-Master",
+  "ts": "2026-06-17T21:57:53.982Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:jtydhr88/comfyui-custom-node-skills",
+  "loser": "hf:black-forest-labs/FLUX.2-klein-9B",
+  "ts": "2026-06-17T21:58:02.082Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hf:unsloth/Qwen-Image-Edit-2511-GGUF",
+   "ph:1143406"
+  ],
+  "ts": "2026-06-17T21:58:08.791Z"
+ },
+ {
+  "type": "pick",
+  "winner": "hf:black-forest-labs/FLUX.2-klein-4B",
+  "loser": "hf:Qwen/Qwen-Image-Edit-2511",
+  "ts": "2026-06-17T21:58:16.050Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:Hugo-Dz/spritefusion-pixel-snapper",
+   "hf:unsloth/Qwen-Image-Edit-2511-GGUF"
+  ],
+  "ts": "2026-06-17T21:58:22.940Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.12195",
+   "gh:yolain/ComfyUI-Easy-Sam3"
+  ],
+  "ts": "2026-06-17T21:58:36.434Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.13364",
+   "gh:DarioFT/ComfyUI-Qwen3-ASR"
+  ],
+  "ts": "2026-06-17T21:58:44.973Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1082371",
+  "loser": "gh:safzanpirani/flux-kontext-diff-merge",
+  "ts": "2026-06-17T21:58:49.191Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.13289",
+   "gh:BobJohnson24/ComfyUI-INT8-Fast"
+  ],
+  "ts": "2026-06-17T21:59:02.137Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "gh:GalaxyXieyu/Design-Learn",
+   "hf:unsloth/LTX-2.3-GGUF"
+  ],
+  "ts": "2026-06-17T21:59:15.487Z"
+ },
+ {
+  "type": "keep",
+  "ids": [
+   "ph:1151377",
+   "gh:AgriciDaniel/claude-ads"
+  ],
+  "ts": "2026-06-17T21:59:23.054Z"
+ },
+ {
+  "type": "pick",
+  "winner": "gh:alexisrolland/ComfyUI-Blender",
+  "loser": "gh:james-see/ltx-video-mac",
+  "ts": "2026-06-17T21:59:49.284Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "ph:1155361",
+   "gh:shootthesound/comfyUI-Realtime-Lora"
+  ],
+  "ts": "2026-06-17T21:59:59.868Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1106192",
+  "loser": "gh:AIDC-AI/Ovis-Image",
+  "ts": "2026-06-17T22:00:03.782Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.10651",
+   "hf:lightx2v/Qwen-Image-Edit-2511-Lightning"
+  ],
+  "ts": "2026-06-17T22:00:10.459Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1133288",
+  "loser": "gh:safzanpirani/flux-kontext-diff-merge",
+  "ts": "2026-06-17T22:00:16.278Z"
+ },
+ {
+  "type": "pick",
+  "winner": "ph:1093404",
+  "loser": "hfpaper:2606.12412",
+  "ts": "2026-06-17T22:00:16.502Z"
+ },
+ {
+  "type": "kill",
+  "ids": [
+   "hfpaper:2606.13673",
+   "gh:yolain/ComfyUI-Easy-Sam3"
+  ],
+  "ts": "2026-06-17T22:00:26.337Z"
+ }
+]
