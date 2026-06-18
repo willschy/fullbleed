@@ -27,7 +27,8 @@
 ## Secrets — `.env` at repo root (gitignored; template in `.env.example`)
 
 ```
-ANTHROPIC_API_KEY=sk-...   # SET — powers judge + writeup
+ANTHROPIC_API_KEY=sk-...   # SET — powers judge + writeup + cover art-direction + discipline tagging
+UNSPLASH_ACCESS_KEY=       # SET — cover-art photo source (covers/cover_engine.py). Free Unsplash dev app.
 GITHUB_TOKEN=              # optional — raises GitHub search rate limit 10→30/min
 PRODUCTHUNT_KEY=           # SET — Product Hunt v2 API app key (vote-ranked, topic-filtered pulls)
 PRODUCTHUNT_SECRET=        # SET — Product Hunt v2 API app secret
@@ -42,7 +43,7 @@ For the future GitHub Actions pipeline, the same values go in repo **Settings �
 1. **Register `fullbleed.ai`** — ~$70–90/yr. Deferred to launch; snipe risk on a guessable name. Grab social handles too.
 2. **Reddit script-app credentials** — once the API application is approved (submitted June 12, ~2–4 wk), create the script app at reddit.com/prefs/apps and add client id + secret to `.env`. Not blocking anything.
 
-**Done / retired:** Anthropic key (set), Product Hunt API key+secret (set this session). The old **Unsplash key** homework is **dead** — it was for the stock-photo thumbnail pull, and stock imagery was rejected outright ("stock is out for good"). The old **thumbnail palette-lock** task is dead for the same reason (that whole direction was reverted). Imagery is unsolved but it's a design decision, not a credential — see README "THE IMMEDIATE NEXT STEP".
+**Done / retired:** Anthropic key (set), Product Hunt key+secret (set), and **Unsplash Access Key (SET, Session 4)** — it powers the thermal cover system (a free Unsplash developer app; only the *Access Key* is needed, not the secret). Note: imagery was **solved** Session 4 via heavily-treated real photos, so the earlier "stock is out for good" stance was reopened by Will once the transform made the source unrecognizable as stock. For a future GitHub Actions pipeline, the cover step needs `UNSPLASH_ACCESS_KEY` + `ANTHROPIC_API_KEY` + Python (numpy/Pillow, `covers/requirements.txt`) on the runner — it does NOT run in the Cloudflare build.
 
 ## Persistent memory (auto-loads in new chats in this project dir)
 

@@ -251,3 +251,83 @@ Everything above is still valid as history. NOTE: Session 2's "thumbnail saga" (
 - He **reverses freely** — a whole chat's imagery work got thrown out and rebuilt-around without drama. Build, show, let him react; don't over-plan or get attached.
 - **Show real pixels / concrete output** — he reacts to those, not abstract descriptions.
 - Sharp anti-slop, anti-corny radar; cost-aware. He wants the catalog to reflect the **real, commercial-heavy creative-tool landscape**, not an open-source ML subculture.
+
+---
+
+# SESSION 4 (June 17–18, 2026) — thermal imagery, the dark/Discipline IA, and the big curation recalibration
+
+Everything above is still valid as history. This session shipped the imagery system, reworked the site IA,
+and — most importantly — **recalibrated the taste gate from Will's actual votes**, which sharpened and
+partly corrected the Session-3 read of his taste.
+
+## Imagery — SOLVED (the graveyard ended)
+
+Winning direction: a **thermal / infrared gradient-map on a REAL photo**, plus heavy film grain,
+motion-smear, and haze. Smooth and grainy, NOT pixelated. How we got there:
+- Will gave a 5-family × 3-value palette (sampled TRUE via eyedrop, not the dull CMYK→RGB export hexes).
+- The voxel/pixel-reconstruction direction (code-generated *subjects*) was tried and abandoned —
+  procedural subjects became blobs. The reference Will kept pointing at was the smooth thermal one.
+- Breakthrough: **the look needs a real lit subject** (a face/hand/form), so we **reopened real-image
+  sourcing** (Will's call — the heavy transform makes "stock" unrecognizable as stock). Sourcing =
+  **per-entry Unsplash auto-pull** (Will picked it; Openverse's free corpus was too noisy/irrelevant).
+- Hard rules (Will): **no pure black, no pure white** (pixels clamped ~28–220), **even hue split** across
+  the grid (dominant family cycled per-entry, decoupled from category), topic-relevant subject.
+- Optimized to responsive WebP; wired into the pipeline (`covers/cover_engine.py`), idempotent.
+- Reusable lesson: design-export hex labels read DULLER than the wide-gamut swatch — eyedrop real pixels.
+
+## Site IA — dark-only, Discipline/Type, Saved top-right
+
+- **Dark is the brand** (covers were tuned on dark) — light mode retired.
+- The **taxonomy question is resolved:** rail = **Discipline** (what it's for) + **Type** (what it is).
+  The long **Tool** facet caused a messy scroll and was removed (tools still tag cards). Label choice was
+  grounded in UX research (NN/g: two filter groups need distinct, non-synonymous names → "Discipline +
+  Type", not "Category + Type").
+- **Saved** moved to the top-right utility nav (NN/g + Baymard: that's where people look for a saved view).
+- Will reads alignment off real pixels and measures things ("the gray box should top-align with the
+  thumbnail") — honor pixel-exact UI rules.
+
+## Curation — recalibrated to Will's votes (THE core work)
+
+The heart of the session. **Curation IS the product**, and the picker wasn't matching Will's taste.
+
+- **Diagnosis:** the judge scored absolute 1–10 against a written brief — the *noisiest, least reliable*
+  preference method (research: pairwise > rating scales). That's why picks felt off.
+- **Method (research-backed, small-data):** NOT a trained Bradley-Terry/RLHF reward model (needs
+  thousands–100k+ comparisons; impossible from one curator). Instead **pairwise A/B elicitation +
+  LLM-judge few-shot calibration**. Built `curation/label.mjs` (pick the more worthwhile of two, plus
+  "Both belong" / "Neither" for absolute keeps/kills, active-sampled on close calls). Will did ~50
+  real-pen votes + ~25 on a synthetic spread (`curation/gen_synthetic.py`).
+- **The taste it revealed (sharper than Session 3's "commercial tools" read):** Full Bleed is
+  **visual/design-first** — Design/UI · 3D · typography · branding · illustration · image — in ANY form
+  (tool, agent skill/MCP, a *specific* model, or a *creative-relevant* paper). The dominant axis is
+  **discipline, not format. OUT:** audio/music (hard no), copywriting, most video, **general foundation
+  models**, **ML-infra papers** (noise schedulers, efficiency, surveys), low-level ComfyUI nodes / dev
+  plumbing, generic workflow automations.
+- **Key correction:** "models/papers are out" (an early read) was a confound — it's *infrastructure vs
+  creative-relevant*. A texture/relighting/mesh model or a typography/aesthetics paper KEEPS; LTX-2
+  (video), Qwen-Omni (audio), FLUX/Lens (general) and noise-scheduling papers KILL.
+- **Result:** rewrote `CURATION.md`, recalibrated `judge.ts` to few-shot on `curation/labels.json`.
+  **Agreement 62% → 91%** on Will's labeled items; re-judging yields a clean **31-keeper set** (all
+  visual disciplines, zero audio/video/papers).
+- **Sources rebalanced by measured hit-rate** (`sources.json`): Product Hunt 18% (best), GitHub 12%, HF
+  12%, **Hacker News 0%, HF Papers 0%**. Muted HN + HF Papers; retargeted GitHub to design/skills;
+  focused Product Hunt on AI + design-tools (stripped audio/music/voice); narrowed HF to image/3D;
+  replaced dead HF Papers with a **tight creative-arXiv** (cs.GR/cs.HC) for the papers Will keeps.
+
+## Technical gotchas (new this session)
+
+- **Anthropic rate limits bite at this account's tier (~TPM-bound).** Re-judging 307 candidates 8-wide
+  blew past it → ~half failed with 429s. Fixes baked into `judge.ts`: **system-prompt caching** (the
+  brief + few-shot are identical every call → ~10× speedup), a **concurrency pool capped at 4**,
+  `new Anthropic({ maxRetries: 8 })`, and a **`--resume` flag** (keep existing verdicts, judge only gaps,
+  merge — don't overwrite). The judge still OVERWRITES `verdicts.json` unless `--resume`.
+- Taste tooling lives in `curation/`: `label.mjs` (A/B server, `node curation/label.mjs [synth]`),
+  `gen_synthetic.py`, `build_labels.py`, `draft_brief.py`, and the vote/label JSON.
+
+## The open thread (where to resume)
+
+The judge is recalibrated and committed, but **the live catalog still reflects the OLD judge**. Next:
+validate the rebalanced sources (`npm run listen` → `npm run judge`, watch the hit-rate), then **refresh
+the catalog** — cut the off-taste entries, run writeup → disciplines → cover on the new keepers. One edge
+to decide: the brief's marketing-ops cut is slightly too aggressive (judge wobbles on `claude-ads`, which
+Will kept).

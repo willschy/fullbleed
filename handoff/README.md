@@ -1,14 +1,14 @@
 # Full Bleed — Handoff / Resume Here
 
-*Updated June 17, 2026. This supersedes the June 13/14 version. Read these four files in order.*
+*Updated June 18, 2026. This supersedes the June 17 version. Read these four files in order.*
 
 1. **README.md** (this file) — orientation, how to resume, current status, the exact next step.
 2. **PROJECT-STATE.md** — architecture, what is built and live, the pipeline, the file map, what is pending.
-3. **DECISIONS-AND-LEARNINGS.md** — every decision and the taste calibration. The "Session 3" section at the bottom is the most recent run of work (the imagery dead-ends and the commercial-intake pivot). Read it.
+3. **DECISIONS-AND-LEARNINGS.md** — every decision and the taste calibration. The **"Session 4"** section at the bottom is the most recent run (the thermal imagery system, the dark/Discipline-Type IA, and the big curation recalibration to a visual/design-first taste). Read it.
 4. **ACCOUNTS-AND-ACCESS.md** — accounts, keys, secrets, and Will's open homework.
 
 Source-of-truth docs in the repo root:
-- **CURATION.md** — what gets in, the five categories, the bar. Updated this session with **"Open and closed — both first-class"** (judge the work, never the license). Read it.
+- **CURATION.md** — what gets in and the bar. **Rewritten Session 4** to the **visual/design-first** taste (design/UI · 3D · typography · branding · illustration · image; out: audio/music, copywriting, most video, foundation models, infra papers). Read it. (Old brief backed up at `curation/CURATION-prev.md`.)
 - **VOICE.md** — the locked house voice for entry writeups.
 - **project-spec.md** — original spec (history; categories/voice/freshness/sources now superseded by CURATION.md).
 
@@ -26,17 +26,17 @@ Open a new chat in `/Users/wschlesinger/Documents/AI Catalog Scraper Tool` and p
 
 ## What this is (one paragraph)
 
-Full Bleed is a curated, always-fresh catalog of new, genuinely useful AI work for working creatives. It is a multi-source **compiler**: it catches candidates from many public sources — Hacker News, GitHub, Hugging Face models, HF daily papers, and now **Product Hunt** (commercial launches; Reddit pending API approval) — filters them, runs each through a Claude Sonnet **taste gate** that scores 1–10 against CURATION.md (7+ keeps), then a **writeup** stage writes each in the house voice (VOICE.md), and they publish as entries on an Astro site. The repo is the database; the product is the curation; the sources are pipes. **As of this session it covers both open AND commercial/closed work** — the open-only bias is fixed.
+Full Bleed is a curated, always-fresh catalog of new AI work for **visual & design creatives**. It is a multi-source **compiler**: it catches candidates from public sources — **Product Hunt** (best source), **GitHub** (design/skills), **Hugging Face** (image/3D models), and a tight **arXiv** (creative papers) — filters them, runs each through a Claude Sonnet **taste gate** now **calibrated on Will's actual A/B votes** (visual/design-first; 91% agreement), then a **writeup** stage (VOICE.md) and a **cover** stage (thermal Unsplash treatment) publish them as entries on an Astro site. The repo is the database; **the curation IS the product**; the sources are pipes. Covers both open and commercial work — judged on the work, not the license.
 
 ---
 
-## Status at a glance (June 17, 2026)
+## Status at a glance (June 18, 2026)
 
-- **The site is LIVE and committed/pushed.** `main` is at commit `128a1cd`, pushed to GitHub, auto-deployed via Cloudflare Pages to https://fullbleed.pages.dev (still `noindex` — private preview, not a public launch).
-- **31 entries published.** The ~20 from the multi-source compiler, plus **10 commercial entries** from Product Hunt (Google Stitch, Figma MCP, Claude in PowerPoint, Chronicle, Claude Design, Magic Patterns, Pitch Agent, Hera, Kodo, and the frontier model **Claude Opus 4.6**).
-- **Product Hunt commercial intake is live and working** — the v2 GraphQL API path (vote-ranked, topic-filtered), using Will's `PRODUCTHUNT_KEY`/`PRODUCTHUNT_SECRET` (now in `.env`).
-- **The pipeline runs end to end:** listen → judge → writeup → publish-entries → live site.
-- **Imagery is UNSOLVED and is now the #1 open problem.** Entries use harvested thumbnails (the original ~21 use OG-card/sample grabs; the 10 Product Hunt entries use PH product screenshots), so the catalog looks **uneven**. Every cover-art direction tried so far has been rejected (see below + DECISIONS Session 3).
+- **The site is LIVE.** `main` auto-deploys via Cloudflare Pages to https://fullbleed.pages.dev (still `noindex` — private preview). Latest commit `591033f`.
+- **31 entries published — but built by the OLD judge.** The live catalog does **not** yet reflect the recalibrated taste (see Curation below). It contains off-taste entries the new judge cuts and is missing new design-first keepers.
+- **Imagery is SOLVED and shipped** (was the #1 blocker, a long graveyard). Every entry has a **thermal cover**: a topic-relevant Unsplash photo run through a pure-code treatment (gradient-map → grain → motion-smear → haze), vibrant, **no pure black/white**, even hue split. Auto-pull + photographer attribution + responsive WebP (480/960/1333). Self-sustaining via `npm run cover` (`covers/cover_engine.py`). See DECISIONS Session 4.
+- **Site IA reworked + shipped:** **dark-only** (light mode retired); left rail = **Discipline** (Design/Image/Video/3D/Audio) + **Type** (the 5 categories) facets — old **Tool** facet removed; **Saved** moved to the top-right nav; homepage headline removed (top slot reserved for future callout banners).
+- **Curation RECALIBRATED — the big work this session.** The judge scored absolute 1–10 vs a brief (the noisiest method), so picks felt off. Built an **A/B taste labeler** (`curation/label.mjs`), collected ~75 of Will's votes (real pen + a synthetic spread), and pinned his real POV: **visual/design-first** (Design/UI · 3D · typography · branding · illustration · image), in any form. **Out:** audio/music, copywriting, most video, general foundation models, infra papers, dev plumbing, generic automations. Rewrote `CURATION.md` + recalibrated `judge.ts` (few-shot on Will's votes). **Judge↔Will agreement 62% → 91%.** Also rebalanced `sources.json` to the new taste (muted Hacker News + HF Papers — both 0% keep-rate; retargeted GitHub/Product Hunt/HF, added a tight creative-arXiv).
 
 > **Important behavior note:** when Will says **"commit,"** he means commit **and push to main** (which deploys). Don't stop at a local commit.
 
@@ -44,30 +44,23 @@ Full Bleed is a curated, always-fresh catalog of new, genuinely useful AI work f
 
 ## THE IMMEDIATE NEXT STEP
 
-**Imagery / cover art.** It is the last unsolved piece and the thing now making the live catalog look uneven. It is a **graveyard** — do not casually re-propose a dead direction. Rejected so far:
+**Refresh the live catalog to the recalibrated (91%) taste.** The site still shows the old judge's picks. Two steps (nothing here is run yet):
 
-1. **AI-generated risograph covers** (prior session) — "reads as slop."
-2. **Filtered stock photography → blurred-halftone / solarized duotone treatment** (this session) — "ugly as hell, stock is out for good."
-3. **Code-generated Y2K-digital SVG covers** (this session) — also rejected; the whole attempt was reverted.
+1. **Validate the rebalanced sources:** `npm run listen` (new `sources.json`) → `npm run judge` — confirm per-source hit-rate jumps and a fresh on-taste pool appears. The judge is fast now (prompt caching, ~3 min for the whole pen; `--resume` fills any 429 gaps).
+2. **Rebuild from the new keepers:** cut the off-taste live entries (the `.md` **and** their `-cover.webp` trio) — e.g. LTX-2, Lens, the papers — and run `npm run writeup` (VOICE.md) → `npm run disciplines` → `npm run cover` on the new design-first keepers (Stitch 2.0, Loki.Build, Photoshop-MCP, the design-skill collections, etc.), then commit/deploy. ⚠️ Pipeline gotchas: `writeup`/`judge` OVERWRITE their JSON; `--ids` targeting is broken — target at the data level.
 
-Hard constraints for the next attempt (from Will, hard-won):
-- **Not stock.** Stock is out for good.
-- **Not AI-slop.** Must not read as generic AI output.
-- **Not color-coded by category.** Tying cover color to category made the whole site two or three colors (the catalog skews); decouple color from category.
-- **Must look high-quality blown up** on the entry hero (no low-res).
-- **Topic-relevant** — the image should relate to what the entry is about.
-- Will has **decision fatigue** on imagery. When you revisit: lead with a tight, near-final option (not a survey of choices), and **show real pixels** — he reacts to samples, not descriptions, and reverses freely.
+One edge to decide first: the brief's marketing-ops cut is slightly too aggressive (judge wobbles on ad/skill items like `claude-ads`, which Will *kept*). Soften the rule if wanted.
 
 ---
 
 ## Top next moves (the broader roadmap)
 
-1. **Imagery** — the active blocker above. Solve cover art within the constraints.
-2. **Grow the catalog toward 50–75** — add more Product Hunt topics / lower the vote floor; re-run listen+judge for fresh candidates across all sources. We're at 31.
-3. **Taxonomy decision (open)** — keep the five categories, or reorganize around **discipline** (image/video/design/photography), which Will floated as possibly a better spine for a visual audience. A "What you do" discipline facet was built this session and then reverted; the question is unresolved.
-4. **Site copy** — homepage hero + about page in the locked VOICE.md voice. Still the leftover "corny" pre-pivot copy. Deferred.
-5. **Scheduling** — GitHub Actions to run the catcher on a cadence. Still parked.
-6. **Pipeline cleanup** — the `--ids` targeting flag silently fails through nested `npm run` hops (writeup/publish process ALL keepers, not the targeted subset). A background task was spawned to fix it; until then, target at the data level. See DECISIONS Session 3.
-7. **Launch prep** — remove the `noindex` meta (Base.astro), register `fullbleed.ai`.
+1. **Catalog refresh** — the immediate step above: make the live catalog reflect the 91% judge.
+2. **Grow toward 50–75** — the rebalanced sources + a scheduled catcher should grow it; re-run listen on a cadence.
+3. **Newsletter** — the footer "Join" capture isn't wired; it's the return-loop / moat. Capture + a weekly "what's new" digest.
+4. **Shareable covers (OG images)** — the thermal covers are a ready-made growth asset; make entries unfurl on social with their cover.
+5. **Callout banners** — the homepage top slot (headline removed) wants a positioning line / featured pick for newcomers.
+6. **Scheduling** — GitHub Actions to run listen→judge→writeup→disciplines→cover on a cadence (the "always fresh" moat). Parked.
+7. **Launch prep** — remove `noindex` (Base.astro), register `fullbleed.ai`.
 
-See PROJECT-STATE.md for the architecture and file map, and DECISIONS-AND-LEARNINGS.md (Session 3) for why everything is the way it is.
+See PROJECT-STATE.md for the architecture/file map and pipeline, and DECISIONS-AND-LEARNINGS.md (Session 4) for why this session's calls were made.

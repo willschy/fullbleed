@@ -1,6 +1,20 @@
 # Project State — Full Bleed
 
-*Snapshot: June 17, 2026. Rewritten this session to reflect the live/committed catalog, the Product Hunt commercial source, and the imagery situation.*
+*Snapshot: June 18, 2026 (Session 4). The sections below predate this and are kept as history — where they conflict, this block (plus the pipeline section and handoff/README) wins.*
+
+## Session 4 — current state (June 18)
+
+Three big things shipped/changed since June 17:
+
+1. **Imagery SOLVED + shipped** (was the #1 blocker, a long graveyard). Every entry has a **thermal cover**: a topic-relevant Unsplash photo → pure-code treatment (luminance gradient-mapped through a dominant palette family → film grain → motion-smear → haze), vibrant, **no pure black/white**, even hue split. Auto-pull (Unsplash API, quality-gate + best-of-N), photographer attribution (a `credit` field + entry-page line), responsive WebP (480/960/1333) served via `srcset`. Production: `covers/cover_engine.py` (`npm run cover`); discipline tagging `covers/tag_disciplines.py` (`npm run disciplines`); `samples/` is the exploration lab. `publish-entries.ts` no longer harvests thumbnails (writes `thumbnail:null`; the cover step fills it).
+
+2. **Site IA reworked + shipped.** **Dark-only** (light mode + toggle removed; `:root` locked dark in `site/src/styles/global.css`). Left rail = **Discipline** (Design/Image/Video/3D/Audio — from each entry's `disciplines` field) + **Type** (the 5 categories, renamed from "Category"); the old **Tool** facet removed. **Saved** moved to the top-right utility nav. Homepage headline removed (top reserved for callout banners).
+
+3. **Curation RECALIBRATED to a visual/design-first taste (judge↔Will 62% → 91%).** See DECISIONS Session 4 + the rewritten `CURATION.md` + `curation/` (the A/B taste labeler `label.mjs`, vote data, calibration scripts). `judge.ts` now few-shots on Will's actual votes (`curation/labels.json`), emits a discipline, and is fast/resilient (system-prompt caching, concurrency pool capped at 4, `maxRetries` through 429s, `--resume`). `sources.json` rebalanced by measured per-source hit-rate (muted Hacker News + HF Papers at 0%; retargeted GitHub/Product Hunt/HF; added a tight creative-arXiv).
+
+**The live catalog (31 entries) was built by the OLD judge** and does NOT yet reflect the new taste — refreshing it is the immediate next step (see handoff/README). Latest commit on `main`: `591033f`.
+
+---
 
 ## The shift this session (Session 3)
 
