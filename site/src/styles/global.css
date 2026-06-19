@@ -41,6 +41,7 @@
 
   /* motion */
   --ease-out: cubic-bezier(0.2, 0.65, 0.2, 1);
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.3, 1.2, 0.4, 1);
   --dur-fast: 150ms;
   --dur: 240ms;
@@ -73,6 +74,9 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* always reserve the scrollbar track so the centered nav doesn't shift
+     between a long (scrollbar) and short (no scrollbar) page */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -120,31 +124,29 @@ button {
   line-height: 1.4;
 }
 
-/* one intentional page transition: outgoing settles back + fades,
-   incoming rises into place. Exit quicker than enter so it feels snappy. */
+/* one calm page transition: a clean opacity crossfade, no movement, no bounce.
+   The persistent top nav is excluded (transition:persist), so only the page
+   body content cross-dissolves while the nav stays put. */
 ::view-transition-old(root) {
-  animation: 180ms var(--ease-out) both fb-page-out;
+  animation: 120ms var(--ease-out) both fb-page-out;
 }
 
 ::view-transition-new(root) {
-  animation: 320ms var(--ease-spring) 60ms both fb-page-in;
+  animation: 220ms var(--ease-calm) 20ms both fb-page-in;
 }
 
 @keyframes fb-page-out {
   to {
     opacity: 0;
-    transform: translateY(-8px);
   }
 }
 
 @keyframes fb-page-in {
   from {
     opacity: 0;
-    transform: translateY(14px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -164,8 +166,9 @@ html.vt-nav .infocard {
     transition-duration: 0.01ms !important;
   }
 
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

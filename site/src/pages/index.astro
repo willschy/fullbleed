@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import TopNav from "../components/TopNav.astro";
 import Card from "../components/Card.astro";
 
 const entries = (await getCollection("entries")).sort(
@@ -27,8 +26,6 @@ const disciplines = DISCIPLINES
 ---
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
-  <TopNav />
-
   <div class="shell">
     <aside class="rail" aria-label="Filters">
       <section class="facet">
@@ -68,7 +65,7 @@ const disciplines = DISCIPLINES
 
     <main class="catalog">
       <div class="grid" id="grid">
-        {entries.map((entry, i) => <Card entry={entry} index={i} feature={i === 0} />)}
+        {entries.map((entry, i) => <Card entry={entry} index={i} />)}
       </div>
       <p class="empty" id="empty" hidden>Nothing cleared the bar here yet — the standard stays high.</p>
     </main>
@@ -249,12 +246,6 @@ const disciplines = DISCIPLINES
     align-items: start;
   }
 
-  @media (min-width: 860px) {
-    .grid > :global(.is-feature) {
-      grid-column: span 2;
-    }
-  }
-
   .empty {
     color: var(--ink-50);
     text-align: center;
@@ -345,14 +336,6 @@ const disciplines = DISCIPLINES
     return typeOk && discOk && freshOk && queryOk && savedOk;
   }
 
-  function resetFloating(card: HTMLElement): void {
-    delete card.dataset.exiting;
-    for (const p of ["position", "left", "top", "width", "height", "margin", "pointerEvents", "zIndex"] as const) {
-      card.style[p] = "";
-    }
-    card.style.display = "none";
-  }
-
   function updateMeta(cards: HTMLElement[]): void {
     const visible = cards.filter((c) => matches(c)).length;
     const emptyMsg = document.getElementById("empty");
@@ -365,8 +348,8 @@ const disciplines = DISCIPLINES
     const cards = [...grid.querySelectorAll<HTMLElement>(".card")];
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // clear any cards still mid-exit from a previous rapid change
-    for (const c of cards) if (c.dataset.exiting) resetFloating(c);
+    // cancel any in-flight filter animations so rapid re-filtering doesn't stack
+    for (const c of cards) c.getAnimations().forEach((a) => { if (a.id === "fb-flip") a.cancel(); });
 
     const willShow = new Map(cards.map((c) => [c, matches(c)]));
 
@@ -376,73 +359,54 @@ const disciplines = DISCIPLINES
       return;
     }
 
-    // FLIP — First: positions of everything currently in flow
-    const gridRect = grid.getBoundingClientRect();
+    // FLIP — First: current positions of everything visible
     const first = new Map<HTMLElement, DOMRect>();
     for (const c of cards) if (c.style.display !== "none") first.set(c, c.getBoundingClientRect());
 
-    // apply visibility; collect cards leaving the flow to float out separately
-    const exiting: [HTMLElement, DOMRect][] = [];
-    for (const c of cards) {
-      if (willShow.get(c)) {
-        c.style.display = "";
-      } else {
-        if (first.has(c)) exiting.push([c, first.get(c)!]);
-        c.style.display = "none";
-      }
-    }
+    const survivors = cards.filter((c) => willShow.get(c));
+    const exits = cards.filter((c) => !willShow.get(c) && first.has(c));
 
-    // Last: new positions of the survivors
-    const last = new Map<HTMLElement, DOMRect>();
-    for (const c of cards) if (willShow.get(c)) last.set(c, c.getBoundingClientRect());
-
-    for (const c of cards) {
-      if (!willShow.get(c)) continue;
-      c.getAnimations().forEach((a) => { if (a.id === "fb-flip") a.cancel(); });
-      const f = first.get(c);
-      const l = last.get(c)!;
-      if (f) {
-        // survivor — glide from old position to new
-        const dx = f.left - l.left;
-        const dy = f.top - l.top;
-        if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+    // glide survivors to their new spots; fade newcomers in
+    const flip = () => {
+      for (const c of survivors) c.style.display = "";
+      const last = new Map(survivors.map((c) => [c, c.getBoundingClientRect()] as const));
+      for (const c of survivors) {
+        const f = first.get(c);
+        const l = last.get(c)!;
+        if (f) {
+          const dx = f.left - l.left;
+          const dy = f.top - l.top;
+          if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+            const a = c.animate(
+              [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "translate(0, 0)" }],
+              { duration: 320, easing: EASE },
+            );
+            a.id = "fb-flip";
+          }
+        } else {
           const a = c.animate(
-            [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "translate(0, 0)" }],
-            { duration: 460, easing: EASE },
+            [{ opacity: 0, transform: "scale(0.985)" }, { opacity: 1, transform: "none" }],
+            { duration: 240, easing: EASE },
           );
           a.id = "fb-flip";
         }
-      } else {
-        // newcomer — fade and lift in
-        const a = c.animate(
-          [{ opacity: 0, transform: "scale(0.97) translateY(8px)" }, { opacity: 1, transform: "none" }],
-          { duration: 420, easing: EASE, delay: 80 },
-        );
-        a.id = "fb-flip";
       }
-    }
+    };
 
-    // float the removed cards out over their old spots while the grid reflows beneath
-    for (const [c, f] of exiting) {
-      c.dataset.exiting = "1";
-      c.style.display = "";
-      c.style.position = "absolute";
-      c.style.margin = "0";
-      c.style.left = `${f.left - gridRect.left}px`;
-      c.style.top = `${f.top - gridRect.top}px`;
-      c.style.width = `${f.width}px`;
-      c.style.height = `${f.height}px`;
-      c.style.pointerEvents = "none";
-      c.style.zIndex = "0";
-      const a = c.animate(
-        [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(0.96)" }],
-        { duration: 280, easing: EASE },
-      );
-      const done = () => resetFloating(c); // idempotent
-      a.onfinish = done;
-      a.oncancel = done;
-      // fallback: if animation events are throttled (e.g. backgrounded tab), still clean up
-      setTimeout(done, 360);
+    if (exits.length) {
+      // fade leaving cards out in place, THEN collapse the grid around the survivors
+      let pending = exits.length;
+      const settle = () => { if (--pending <= 0) flip(); };
+      for (const c of exits) {
+        const a = c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, easing: EASE });
+        a.id = "fb-flip";
+        let fin = false;
+        const done = () => { if (fin) return; fin = true; c.style.display = "none"; settle(); };
+        a.onfinish = done;
+        setTimeout(done, 220); // fallback if events are throttled (backgrounded tab)
+      }
+    } else {
+      flip();
     }
 
     updateMeta(cards);
@@ -474,19 +438,6 @@ const disciplines = DISCIPLINES
       return;
     }
 
-    /* touch devices: first tap reveals, second tap navigates */
-    if (!window.matchMedia("(hover: hover)").matches) {
-      const link = target.closest<HTMLAnchorElement>(".card-link");
-      const card = link?.closest<HTMLElement>(".card");
-      const open = document.querySelector<HTMLElement>(".card.is-open");
-      if (card && card !== open) {
-        e.preventDefault();
-        open?.classList.remove("is-open");
-        card.classList.add("is-open");
-      } else if (!card && open) {
-        open.classList.remove("is-open");
-      }
-    }
   });
 
   document.addEventListener("input", (e) => {

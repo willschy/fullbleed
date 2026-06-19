@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
-import TopNav from "../../components/TopNav.astro";
 import Card from "../../components/Card.astro";
 
 export async function getStaticPaths() {
@@ -34,8 +33,6 @@ const related = allEntries
 ---
 
 <Base title={`${d.title} — Full Bleed`} description={d.hoverWhat}>
-  <TopNav />
-
   <main class="entry">
     <figure class="hero">
       {d.thumbnail && (

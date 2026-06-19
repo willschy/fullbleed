@@ -35,9 +35,11 @@
     position: sticky;
     top: 0;
     z-index: 40;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    /* solid fill, no backdrop-filter — blur repaints a frame late during the
+       page swap, which reads as the nav "refreshing". A solid paper bar paints
+       instantly and stays rock-steady across navigations (it is persisted). */
+    background: var(--paper);
+    border-bottom: 1px solid var(--hairline);
   }
 
   .topnav-inner {
