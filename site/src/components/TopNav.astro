@@ -220,24 +220,26 @@
       display: none;
     }
 
+    /* two-row header: brand + Saved on top, full-width search beneath */
     .topnav-inner {
-      grid-template-columns: auto 1fr auto;
-      gap: var(--s3);
-      padding: 0 var(--s4);
-      height: 56px;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: var(--s4);
+      row-gap: var(--s3);
+      height: auto;
+      padding: var(--s4) var(--s4) var(--s3);
+      align-items: center;
     }
 
     .wordmark {
-      font-size: 0.9375rem;
+      grid-column: 1;
+      grid-row: 1;
     }
 
-    .search {
-      width: 100%;
-      justify-self: stretch;
-    }
-
-    /* keep only Saved on mobile, as a single icon */
     .topnav-links {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
       gap: 0;
     }
 
@@ -252,6 +254,12 @@
 
     .topnav-saved > span:not(.saved-badge) {
       display: none;
+    }
+
+    .search {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      width: 100%;
     }
   }
 </style>

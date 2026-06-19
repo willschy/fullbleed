@@ -27,7 +27,7 @@ const disciplines = DISCIPLINES
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
   <div class="shell">
-    <div class="sheet-scrim" data-sheet-close hidden></div>
+    <div class="sheet-scrim" data-sheet-close></div>
     <aside class="rail" id="filter-rail" aria-label="Filters">
       <div class="sheet-head">
         <span class="sheet-grip" aria-hidden="true"></span>
@@ -475,11 +475,13 @@ const disciplines = DISCIPLINES
       z-index: 55;
       background: rgba(8, 8, 7, 0.6);
       opacity: 0;
+      pointer-events: none; /* don't swallow taps while the sheet is closed */
       transition: opacity 0.3s var(--ease-out);
     }
 
     .sheet-scrim.on {
       opacity: 1;
+      pointer-events: auto;
     }
 
     /* the rail becomes a bottom sheet */
@@ -498,11 +500,13 @@ const disciplines = DISCIPLINES
       border-top-right-radius: 20px;
       box-shadow: 0 -12px 44px rgba(0, 0, 0, 0.55);
       transform: translateY(101%);
+      pointer-events: none; /* off-screen when closed; don't intercept taps */
       transition: transform 0.4s var(--ease-calm);
     }
 
     .rail.is-open {
       transform: translateY(0);
+      pointer-events: auto;
     }
 
     .sheet-head {
@@ -612,7 +616,6 @@ const disciplines = DISCIPLINES
     const rail = document.getElementById("filter-rail");
     const scrim = document.querySelector<HTMLElement>(".sheet-scrim");
     if (!rail || !scrim) return;
-    scrim.hidden = false;
     rail.classList.add("is-open");
     requestAnimationFrame(() => scrim.classList.add("on"));
     document.body.classList.add("sheet-locked");
@@ -625,7 +628,6 @@ const disciplines = DISCIPLINES
     if (!rail || !scrim) return;
     rail.classList.remove("is-open");
     scrim.classList.remove("on");
-    setTimeout(() => { if (!rail.classList.contains("is-open")) scrim.hidden = true; }, 340);
   }
 
   function updateFilterCount(): void {
