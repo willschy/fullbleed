@@ -316,6 +316,9 @@ const disciplines = DISCIPLINES
     display: flex;
     flex-direction: column;
     gap: 4px;
+    /* override .grid's `align-items: start`, which in a flex column would let
+       short-content rows shrink-wrap and throw the right-aligned dates ragged */
+    align-items: stretch;
   }
 
   .grid.list :global(.card) {
