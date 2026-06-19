@@ -65,7 +65,7 @@ const disciplines = DISCIPLINES
           <span class="switch" aria-hidden="true"></span>
           <span>Current only</span>
         </label>
-        <p class="facet-hint">Hides superseded workflows — only approaches that are still the best way.</p>
+        <p class="facet-hint">Hides superseded workflows, so you only see the approaches that still hold up.</p>
       </section>
     </aside>
 
@@ -90,7 +90,7 @@ const disciplines = DISCIPLINES
       <div class="grid" id="grid">
         {entries.map((entry, i) => <Card entry={entry} index={i} />)}
       </div>
-      <p class="empty" id="empty" hidden>Nothing cleared the bar here yet — the standard stays high.</p>
+      <p class="empty" id="empty" hidden>Nothing cleared the bar here yet. The standard stays high.</p>
     </main>
   </div>
 </Base>
@@ -444,15 +444,27 @@ const disciplines = DISCIPLINES
       display: inline-flex;
       align-items: center;
       gap: 7px;
+      min-height: 44px;
       border: 1px solid var(--hairline);
       background: var(--fill-1);
       color: var(--ink);
       font-family: var(--font-sans);
       font-size: 0.875rem;
       font-weight: var(--w-med);
-      padding: 9px 15px;
+      padding: 0 16px;
       border-radius: var(--r-pill);
       cursor: pointer;
+    }
+
+    /* roomier touch targets on the view toggle + freshness switch
+       (38 + the toggle's 3px padding each side = a 44px control, matching Filters) */
+    .vt-btn {
+      min-height: 38px;
+      padding: 0 15px;
+    }
+
+    .current-toggle {
+      min-height: 44px;
     }
 
     .filters-count {

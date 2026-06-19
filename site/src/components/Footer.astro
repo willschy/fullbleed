@@ -6,7 +6,7 @@
     </a>
 
     <form class="f-form" id="nl-form" novalidate>
-      <input id="nl-email" type="email" required placeholder="you@studio.com — the weekly-ish best" aria-label="Email address for the weekly-ish best of Full Bleed" />
+      <input id="nl-email" type="email" required placeholder="you@studio.com" aria-label="Email address for the weekly-ish best of Full Bleed" />
       <button type="submit">Join</button>
     </form>
 
@@ -174,13 +174,13 @@
     const fine = document.getElementById("nl-fine")!;
     if (!email || !email.includes("@")) {
       fine.hidden = false;
-      fine.textContent = "That email doesn't look right — try again?";
+      fine.textContent = "That email doesn't look right. Try again?";
       return;
     }
     localStorage.setItem("fb-newsletter-intent", email);
     form.querySelector("input")!.setAttribute("disabled", "");
     form.querySelector("button")!.setAttribute("disabled", "");
     fine.hidden = false;
-    fine.textContent = "✓ Noted — the list goes live with launch, and you're first on it.";
+    fine.textContent = "✓ Noted. The list goes live with launch, and you're first on it.";
   });
 </script>

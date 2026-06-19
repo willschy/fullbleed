@@ -47,7 +47,7 @@ const related = allEntries
       {successor && (
         <a class="hero-superseded" href={`/entry/${successor.id}/`}>
           <span class="sup-label">Superseded</span>
-          <span>A newer approach replaced this — see “{successor.data.title}”</span>
+          <span>A newer approach replaced this. See “{successor.data.title}”</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h14m-7-7 7 7-7 7" />
           </svg>
@@ -176,8 +176,6 @@ const related = allEntries
     padding: 8px 14px;
     border-radius: var(--r-pill);
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 2px 12px rgba(10, 10, 9, 0.12);
     font-size: 0.8125rem;
     font-weight: var(--w-med);
@@ -201,8 +199,6 @@ const related = allEntries
     padding: var(--s3) var(--s4);
     border-radius: var(--r-md);
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     font-size: 0.8438rem;
     font-weight: var(--w-med);
     color: var(--ink);
