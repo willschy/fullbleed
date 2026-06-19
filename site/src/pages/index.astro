@@ -27,7 +27,13 @@ const disciplines = DISCIPLINES
 
 <Base title="Full Bleed — real-world AI work, for working creatives">
   <div class="shell">
-    <aside class="rail" aria-label="Filters">
+    <div class="sheet-scrim" data-sheet-close hidden></div>
+    <aside class="rail" id="filter-rail" aria-label="Filters">
+      <div class="sheet-head">
+        <span class="sheet-grip" aria-hidden="true"></span>
+        <span class="sheet-title">Filters</span>
+        <button class="sheet-done" type="button" data-sheet-close>Done</button>
+      </div>
       <section class="facet">
         <h2 class="facet-title">Discipline</h2>
         <button class="facet-row is-active" data-facet="discipline" data-value="all">
@@ -65,6 +71,11 @@ const disciplines = DISCIPLINES
 
     <main class="catalog">
       <div class="catalog-bar">
+        <button class="filters-btn" type="button" data-sheet-open aria-haspopup="dialog">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+          <span>Filters</span>
+          <span class="filters-count" data-filters-count hidden>0</span>
+        </button>
         <div class="view-toggle" role="group" aria-label="View mode">
           <button class="vt-btn is-active" type="button" data-view="grid" aria-pressed="true" aria-label="Grid view">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
@@ -272,6 +283,13 @@ const disciplines = DISCIPLINES
     margin-bottom: var(--s4);
   }
 
+  /* the filter sheet + its trigger are mobile-only; hidden on desktop */
+  .filters-btn,
+  .sheet-head,
+  .sheet-scrim {
+    display: none;
+  }
+
   .view-toggle {
     display: inline-flex;
     gap: 2px;
@@ -409,52 +427,165 @@ const disciplines = DISCIPLINES
     }
   }
 
-  /* ---------- mobile/tablet: rail collapses to scrolling chip rows ---------- */
+  /* ---------- mobile/tablet: filters live in a bottom sheet ---------- */
   @media (max-width: 1023px) {
-    .rail {
-      gap: var(--s4);
-      padding: var(--s4) var(--s4) 0;
-    }
-
-    .facet {
-      flex-direction: row;
-      align-items: center;
-      gap: var(--s2);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .facet::-webkit-scrollbar {
-      display: none;
-    }
-
-    .facet-title {
-      margin: 0 var(--s2) 0 0;
-      flex: none;
-    }
-
-    .facet-row {
-      width: auto;
-      flex: none;
-      background: var(--fill-1);
-      white-space: nowrap;
-    }
-
-    .facet-count {
-      display: none;
-    }
-
-    .facet-fresh {
-      flex-wrap: wrap;
-    }
-
-    .facet-hint {
-      display: none;
-    }
-
     .catalog {
       padding: var(--s4) var(--s4) var(--s12);
     }
+
+    /* catalog bar: Filters trigger (left) + view toggle (right) */
+    .catalog-bar {
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--s4);
+    }
+
+    .filters-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--hairline);
+      background: var(--fill-1);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: var(--w-med);
+      padding: 9px 15px;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+    }
+
+    .filters-count {
+      min-width: 18px;
+      padding: 1px 5px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* scrim */
+    .sheet-scrim {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      background: rgba(8, 8, 7, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s var(--ease-out);
+    }
+
+    .sheet-scrim.on {
+      opacity: 1;
+    }
+
+    /* the rail becomes a bottom sheet */
+    .rail {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      gap: var(--s6);
+      max-height: 82dvh;
+      overflow-y: auto;
+      padding: 0 var(--s6) calc(var(--s8) + env(safe-area-inset-bottom));
+      background: var(--surface);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0 -12px 44px rgba(0, 0, 0, 0.55);
+      transform: translateY(101%);
+      transition: transform 0.4s var(--ease-calm);
+    }
+
+    .rail.is-open {
+      transform: translateY(0);
+    }
+
+    .sheet-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--surface);
+      padding: var(--s6) 0 var(--s3);
+    }
+
+    .sheet-grip {
+      position: absolute;
+      top: 9px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--fill-3);
+    }
+
+    .sheet-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+    }
+
+    .sheet-done {
+      border: none;
+      background: none;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: var(--w-med);
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    /* facets stacked with comfortable tap targets in the sheet */
+    .facet-row {
+      padding: 11px var(--s3);
+      font-size: 1rem;
+    }
+
+    .facet-row.is-active {
+      background: var(--fill-2);
+    }
+  }
+
+  /* ---------- mobile: leaner list rows ---------- */
+  @media (max-width: 600px) {
+    .grid.list :global(.card-link) {
+      grid-template-columns: 64px 1fr;
+      gap: var(--s3);
+      padding: 9px 14px 9px 8px;
+    }
+
+    .grid.list :global(.card-media) {
+      width: 64px;
+      height: 44px;
+    }
+
+    .grid.list :global(.card-title) {
+      -webkit-line-clamp: 2;
+      font-size: 0.9375rem;
+    }
+
+    .grid.list :global(.card-digest) {
+      display: none;
+    }
+
+    .grid.list :global(.card-save) {
+      display: none;
+    }
+  }
+
+  :global(body.sheet-locked) {
+    overflow: hidden;
   }
 </style>
 
@@ -476,6 +607,40 @@ const disciplines = DISCIPLINES
     });
   }
 
+  // mobile filter bottom sheet
+  function openSheet(): void {
+    const rail = document.getElementById("filter-rail");
+    const scrim = document.querySelector<HTMLElement>(".sheet-scrim");
+    if (!rail || !scrim) return;
+    scrim.hidden = false;
+    rail.classList.add("is-open");
+    requestAnimationFrame(() => scrim.classList.add("on"));
+    document.body.classList.add("sheet-locked");
+  }
+
+  function closeSheet(): void {
+    const rail = document.getElementById("filter-rail");
+    const scrim = document.querySelector<HTMLElement>(".sheet-scrim");
+    document.body.classList.remove("sheet-locked");
+    if (!rail || !scrim) return;
+    rail.classList.remove("is-open");
+    scrim.classList.remove("on");
+    setTimeout(() => { if (!rail.classList.contains("is-open")) scrim.hidden = true; }, 340);
+  }
+
+  function updateFilterCount(): void {
+    const currentOnly = document.getElementById("current-only") as HTMLInputElement | null;
+    let n = 0;
+    if (state.category !== "all") n++;
+    if (state.discipline !== "all") n++;
+    if (currentOnly?.checked) n++;
+    if (state.savedOnly) n++;
+    document.querySelectorAll<HTMLElement>("[data-filters-count]").forEach((el) => {
+      el.textContent = String(n);
+      el.toggleAttribute("hidden", n === 0);
+    });
+  }
+
   function matches(card: HTMLElement): boolean {
     const currentOnly = document.getElementById("current-only") as HTMLInputElement | null;
     const typeOk = state.category === "all" || card.dataset.category === state.category;
@@ -490,6 +655,7 @@ const disciplines = DISCIPLINES
     const visible = cards.filter((c) => matches(c)).length;
     const emptyMsg = document.getElementById("empty");
     if (emptyMsg) emptyMsg.hidden = visible > 0;
+    updateFilterCount();
   }
 
   function apply(animate = true): void {
@@ -565,6 +731,10 @@ const disciplines = DISCIPLINES
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
 
+    // mobile filter sheet open / close
+    if (target.closest("[data-sheet-open]")) { openSheet(); return; }
+    if (target.closest("[data-sheet-close]")) { closeSheet(); return; }
+
     // grid / list view toggle
     const viewBtn = target.closest<HTMLElement>(".vt-btn");
     if (viewBtn) {
@@ -631,6 +801,7 @@ const disciplines = DISCIPLINES
       savedBtn.classList.toggle("is-active", state.savedOnly);
       savedBtn.setAttribute("aria-pressed", String(state.savedOnly));
     }
+    closeSheet();
     applyView();
     apply(false);
   });

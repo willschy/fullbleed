@@ -221,9 +221,14 @@
     }
 
     .topnav-inner {
-      grid-template-columns: auto 1fr;
-      gap: var(--s4);
+      grid-template-columns: auto 1fr auto;
+      gap: var(--s3);
       padding: 0 var(--s4);
+      height: 56px;
+    }
+
+    .wordmark {
+      font-size: 0.9375rem;
     }
 
     .search {
@@ -231,7 +236,21 @@
       justify-self: stretch;
     }
 
+    /* keep only Saved on mobile, as a single icon */
     .topnav-links {
+      gap: 0;
+    }
+
+    .topnav-link {
+      display: none;
+    }
+
+    .topnav-saved {
+      gap: 4px;
+      padding: var(--s2);
+    }
+
+    .topnav-saved > span:not(.saved-badge) {
       display: none;
     }
   }
