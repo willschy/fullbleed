@@ -64,6 +64,18 @@ const disciplines = DISCIPLINES
     </aside>
 
     <main class="catalog">
+      <div class="catalog-bar">
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button class="vt-btn is-active" type="button" data-view="grid" aria-pressed="true" aria-label="Grid view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+            <span>Grid</span>
+          </button>
+          <button class="vt-btn" type="button" data-view="list" aria-pressed="false" aria-label="List view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.4" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.4" fill="currentColor" stroke="none"/></svg>
+            <span>List</span>
+          </button>
+        </div>
+      </div>
       <div class="grid" id="grid">
         {entries.map((entry, i) => <Card entry={entry} index={i} />)}
       </div>
@@ -253,6 +265,128 @@ const disciplines = DISCIPLINES
     font-size: 0.875rem;
   }
 
+  /* ---------- view toggle ---------- */
+  .catalog-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--s4);
+  }
+
+  .view-toggle {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    background: var(--fill-1);
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-pill);
+  }
+
+  .vt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: none;
+    color: var(--ink-50);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: var(--w-med);
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  }
+
+  .vt-btn:hover {
+    color: var(--ink);
+  }
+
+  .vt-btn.is-active {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-rest);
+  }
+
+  .vt-btn svg {
+    flex: none;
+  }
+
+  /* ---------- list mode: dense, text-forward index ---------- */
+  .grid.list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .grid.list :global(.card) {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .grid.list :global(.card):hover {
+    transform: none;
+    background: var(--fill-1);
+    border-color: var(--hairline);
+    box-shadow: none;
+  }
+
+  .grid.list :global(.card):hover :global(.card-img) {
+    transform: none;
+  }
+
+  .grid.list :global(.card-link) {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: var(--s4);
+    align-items: center;
+    padding: 8px 44px 8px 10px;
+  }
+
+  .grid.list :global(.card-media) {
+    aspect-ratio: auto;
+    width: 88px;
+    height: 56px;
+    border-radius: 8px;
+  }
+
+  .grid.list :global(.card-body) {
+    padding: 0;
+    min-width: 0;
+  }
+
+  .grid.list :global(.card-kicker) {
+    margin-bottom: 3px;
+  }
+
+  .grid.list :global(.card-title) {
+    font-size: 0.9375rem;
+    -webkit-line-clamp: 1;
+    min-height: 0;
+  }
+
+  .grid.list :global(.card-digest) {
+    -webkit-line-clamp: 1;
+    min-height: 0;
+    margin-top: 2px;
+    color: var(--ink-50);
+  }
+
+  .grid.list :global(.badge) {
+    display: none;
+  }
+
+  .grid.list :global(.card-save) {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  .grid.list :global(.card):hover :global(.card-save),
+  .grid.list :global(.card):focus-within :global(.card-save) {
+    transform: translateY(-50%);
+  }
+
   /* ---------- desktop: pinned rail + scrolling grid ---------- */
   @media (min-width: 1024px) {
     .shell {
@@ -325,6 +459,19 @@ const disciplines = DISCIPLINES
   /* delegated so handlers survive ClientRouter swaps; state resets per page-load */
   const state = { category: "all", discipline: "all", query: "", savedOnly: false };
   const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+  // grid <-> list view, remembered across visits
+  function applyView(): void {
+    const grid = document.getElementById("grid");
+    if (!grid) return;
+    const v = localStorage.getItem("fb-view") === "list" ? "list" : "grid";
+    grid.classList.toggle("list", v === "list");
+    document.querySelectorAll<HTMLButtonElement>(".vt-btn").forEach((b) => {
+      const on = b.dataset.view === v;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+  }
 
   function matches(card: HTMLElement): boolean {
     const currentOnly = document.getElementById("current-only") as HTMLInputElement | null;
@@ -415,6 +562,14 @@ const disciplines = DISCIPLINES
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
 
+    // grid / list view toggle
+    const viewBtn = target.closest<HTMLElement>(".vt-btn");
+    if (viewBtn) {
+      localStorage.setItem("fb-view", viewBtn.dataset.view ?? "grid");
+      applyView();
+      return;
+    }
+
     // "Saved" toggle — lives in the top-right nav now; on the catalog it filters in place
     // (the href="/?saved=1" is only used when arriving from another page).
     const savedBtn = target.closest<HTMLElement>("#saved-toggle");
@@ -473,6 +628,7 @@ const disciplines = DISCIPLINES
       savedBtn.classList.toggle("is-active", state.savedOnly);
       savedBtn.setAttribute("aria-pressed", String(state.savedOnly));
     }
+    applyView();
     apply(false);
   });
 </script>
