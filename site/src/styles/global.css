@@ -150,6 +150,19 @@ button {
   }
 }
 
+/* the top nav is its own transition group with NO animation — lifted out of the
+   page crossfade so it never fades or blinks; it just stays. */
+::view-transition-group(fb-nav) {
+  animation: none !important;
+}
+
+/* the card cover -> entry hero morph: only the single clicked cover is tagged
+   fb-cover (in Base.astro) right before navigation, so just it expands. */
+::view-transition-group(fb-cover) {
+  animation-duration: 380ms;
+  animation-timing-function: var(--ease-calm);
+}
+
 /* entrance animations play on first load only — not on every client-side navigation */
 html.vt-nav .card,
 html.vt-nav .lede,

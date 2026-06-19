@@ -37,6 +37,38 @@ const { title, description = "A curated, always-fresh catalog of groundbreaking 
     </script>
 
     <script is:inline>
+      // Premium card -> entry transition: only the clicked card's cover morphs
+      // into the hero. We tag that single element in the capture phase, before
+      // Astro starts the view transition, so nothing else detaches.
+      (function () {
+        if (!document.startViewTransition) return; // no native VT -> plain crossfade
+        document.addEventListener(
+          "click",
+          function (e) {
+            var t = e.target;
+            if (!t || !t.closest) return;
+            var cardLink = t.closest(".card-link");
+            var hero = document.querySelector(".hero img");
+            if (cardLink) {
+              if (hero) hero.style.viewTransitionName = "none"; // avoid a duplicate name
+              var img = cardLink.querySelector(".card-img");
+              if (img) img.style.viewTransitionName = "fb-cover";
+            } else if (hero && t.closest("a")) {
+              hero.style.viewTransitionName = "none"; // leaving via a non-card link -> plain crossfade
+            }
+          },
+          true,
+        );
+        // clear any stray cover name once a navigation settles
+        document.addEventListener("astro:page-load", function () {
+          document.querySelectorAll(".card-img").forEach(function (el) {
+            el.style.viewTransitionName = "";
+          });
+        });
+      })();
+    </script>
+
+    <script is:inline>
       // bookmarks — localStorage, no account. Global + delegated so it works
       // on every page and survives client-side navigation.
       (function () {
